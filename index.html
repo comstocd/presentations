@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Report — Case Repository</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .hero-intro { max-width: 640px; margin-bottom: 2rem; }
+  .section-label { font-family: var(--font-ui); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 2rem 0 .75rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .stats-bar { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat .n { font-family: var(--font-ui); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat .lbl { font-family: var(--font-ui); font-size: .78rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="index.html">📋 Morning Report</a></div>
+  <a href="https://github.com" target="_blank">GitHub</a>
+</header>
+
+<main class="page-wrap">
+  <div class="case-hero" style="background:#f0f3f8; border-left-color:var(--accent);">
+    <div class="meta">Internal Medicine · Case Repository</div>
+    <h1>Morning Report</h1>
+    <p class="hero-intro" style="margin-bottom:0; font-family:var(--font-ui); font-size:.95rem; color:var(--muted);">
+      A curated repository of teaching cases from morning report, enhanced with evidence-based analysis,
+      guideline references (UpToDate, NEJM, IDSA, ACC/AHA, GOLD, Endocrine Society), and clinical pearls.
+      Each case is formatted for self-study, teaching, and review.
+    </p>
+    <div class="tags" style="margin-top:1rem;">
+      <span class="tag blue">Internal Medicine</span>
+      <span class="tag green">Evidence-Based</span>
+      <span class="tag teal">Print-Friendly</span>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="n">16</div><div class="lbl">Case Reports</div></div>
+    <div class="stat"><div class="n">13</div><div class="lbl">Clinical Topics</div></div>
+    <div class="stat"><div class="n">∞</div><div class="lbl">Teaching Points</div></div>
+  </div>
+
+  <p class="section-label">Case Presentations — Clinical</p>
+
+  <div class="index-grid">
+
+    <a href="cases/01-pedal-edema-hypoalbuminemia.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 01</div>
+        <div class="card-title">Pedal Edema &amp; Hypoalbuminemia</div>
+        <div class="card-subtitle">56F · Chronic pancreatitis, EtOH abuse, anasarca, BNP 182</div>
+        <div class="card-tags">
+          <span class="tag amber">GI/Nutrition</span>
+          <span class="tag blue">Cardiology</span>
+          <span class="tag">Nephrology</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/02-adrenal-incidentaloma.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 02</div>
+        <div class="card-title">Adrenal Incidentaloma &amp; COPD Screening</div>
+        <div class="card-subtitle">63M · PCP visit; adrenal mass on CT, 24 pack-year smoking hx</div>
+        <div class="card-tags">
+          <span class="tag teal">Endocrinology</span>
+          <span class="tag blue">Pulmonology</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/03-etoh-withdrawal-hypercalcemia.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 03</div>
+        <div class="card-title">EtOH Withdrawal &amp; Severe Hypercalcemia</div>
+        <div class="card-subtitle">56M · Ca 16.7 mg/dL, CIWA escalation, delirium tremens</div>
+        <div class="card-tags">
+          <span class="tag red">Critical Care</span>
+          <span class="tag amber">Toxicology</span>
+          <span class="tag teal">Endocrinology</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/04-syncope-seizure.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 04</div>
+        <div class="card-title">Syncope vs. Seizure</div>
+        <div class="card-subtitle">44M · LOC at work, 3-year hx, known bradycardia</div>
+        <div class="card-tags">
+          <span class="tag blue">Cardiology</span>
+          <span class="tag">Neurology</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/05-acute-adrenal-insufficiency.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 05</div>
+        <div class="card-title">Acute Adrenal Insufficiency</div>
+        <div class="card-subtitle">Stress dosing, crisis recognition, secondary AI</div>
+        <div class="card-tags">
+          <span class="tag teal">Endocrinology</span>
+          <span class="tag red">Critical Care</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/06-hepatorenal-syndrome.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 06</div>
+        <div class="card-title">AKI &amp; Hepatorenal Syndrome</div>
+        <div class="card-subtitle">Cirrhosis physiology, HRS-AKI diagnosis &amp; treatment</div>
+        <div class="card-tags">
+          <span class="tag">Hepatology</span>
+          <span class="tag blue">Nephrology</span>
+          <span class="tag red">Critical Care</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/07-necrotizing-fasciitis.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 07</div>
+        <div class="card-title">Necrotizing Fasciitis</div>
+        <div class="card-subtitle">EMT with ingrown hair → sepsis, NF Type I, LRINEC score</div>
+        <div class="card-tags">
+          <span class="tag red">Surgical Emergency</span>
+          <span class="tag green">Infectious Disease</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/08-renal-subcapsular-hematoma.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 08</div>
+        <div class="card-title">Renal Subcapsular Hematoma</div>
+        <div class="card-subtitle">35M · Post-lithotripsy retroperitoneal hemorrhage, IR management</div>
+        <div class="card-tags">
+          <span class="tag red">Urology</span>
+          <span class="tag blue">Interventional Radiology</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/09-palliative-care-downs.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 09</div>
+        <div class="card-title">Palliative Care &amp; End-of-Life</div>
+        <div class="card-subtitle">74M · Down syndrome, ESRD, aspiration pneumonia, MOLST/NYS law</div>
+        <div class="card-tags">
+          <span class="tag">Palliative Care</span>
+          <span class="tag blue">Nephrology</span>
+          <span class="tag amber">Ethics/Legal</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/10-anastomotic-leak-sepsis.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 10</div>
+        <div class="card-title">Anastomotic Leak &amp; Septic Shock</div>
+        <div class="card-subtitle">58F · Post-LAR fecal peritonitis, multiorgan failure</div>
+        <div class="card-tags">
+          <span class="tag red">Critical Care</span>
+          <span class="tag green">Infectious Disease</span>
+          <span class="tag">Surgery</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/11-shoulder-infection.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 11</div>
+        <div class="card-title">Post-Op Shoulder Infection</div>
+        <div class="card-subtitle">65M · Deep SSI after rotator cuff repair, hardware removal</div>
+        <div class="card-tags">
+          <span class="tag green">Infectious Disease</span>
+          <span class="tag">Orthopedics</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/12-vestibular-migraine.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 12</div>
+        <div class="card-title">Vestibular Migraine</div>
+        <div class="card-subtitle">Dizziness, ataxia, nystagmus — rule out posterior stroke</div>
+        <div class="card-tags">
+          <span class="tag">Neurology</span>
+          <span class="tag blue">Emergency Medicine</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+    <a href="cases/16-acute-gastroenteritis.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Case 16</div>
+        <div class="card-title">Acute Gastroenteritis</div>
+        <div class="card-subtitle">64M · &gt;20 watery stools/day, NAGMA, negative GI PCR × 2, specimen transport failure</div>
+        <div class="card-tags">
+          <span class="tag green">Infectious Disease</span>
+          <span class="tag amber">Stewardship</span>
+          <span class="tag red">Patient Safety</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="section-label">Educational / Procedural Topics</p>
+
+  <div class="index-grid">
+
+    <a href="cases/13-aecopd.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Topic 13</div>
+        <div class="card-title">AECOPD</div>
+        <div class="card-subtitle">GOLD guidelines · bronchodilators, steroids, antibiotics, NIV</div>
+        <div class="card-tags">
+          <span class="tag blue">Pulmonology</span>
+          <span class="tag green">GOLD 2024</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/14-pain-management.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Topic 14</div>
+        <div class="card-title">Sub-Acute Pain Management</div>
+        <div class="card-subtitle">CDC 2022 guidelines · multimodal analgesia · opioid risk stratification</div>
+        <div class="card-tags">
+          <span class="tag amber">Pain Medicine</span>
+          <span class="tag green">CDC 2022</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="cases/15-thoracentesis.html" style="text-decoration:none; color:inherit;">
+      <div class="case-card">
+        <div class="card-num">Topic 15</div>
+        <div class="card-title">Thoracentesis</div>
+        <div class="card-subtitle">Indications, technique, Light's criteria, ultrasound guidance, complications</div>
+        <div class="card-tags">
+          <span class="tag blue">Procedures</span>
+          <span class="tag teal">Pulmonology</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="callout gray" style="margin-top:2.5rem; font-family:var(--font-ui); font-size:.85rem;">
+    <strong>Disclaimer:</strong> These case presentations are for educational purposes only. Clinical decision-making should be guided by current guidelines, patient-specific factors, and institutional protocols. Content is enhanced with evidence-based references current as of 2024–2025.
+  </div>
+</main>
+
+<footer class="site-footer">
+  Morning Report Case Repository · Internal Medicine · Built for GitHub Pages
+</footer>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Report · Discussion Questions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+  :root {
+    --navy:       #0D2137;
+    --navy-mid:   #112233;
+    --teal:       #028090;
+    --teal-dark:  #01606D;
+    --teal-light: #E0F4F6;
+    --white:      #FFFFFF;
+    --slate:      #475569;
+    --slate-light:#94A3B8;
+    --body:       #1E293B;
+    --accent:     #F59E0B;
+    --red:        #DC2626;
+    --green:      #16A34A;
+    --card-bg:    #F8FAFB;
+    --border:     #E2E8F0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 90% -10%, rgba(2,128,144,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at -5% 90%, rgba(2,128,144,0.12) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .header p {
+    color: var(--slate-light);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 3rem;
+    height: 3px;
+    background: var(--teal);
+    margin: 1.2rem 0 1.5rem;
+  }
+
+  /* Question cards */
+  .questions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .q-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--teal);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .q-card.open {
+    border-left-color: var(--accent);
+  }
+
+  .q-trigger {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    transition: background 0.15s;
+  }
+
+  .q-trigger:hover {
+    background: rgba(2,128,144,0.08);
+  }
+
+  .q-num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--teal);
+    color: var(--white);
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.05rem;
+    transition: background 0.2s;
+  }
+
+  .q-card.open .q-num {
+    background: var(--accent);
+    color: var(--navy);
+  }
+
+  .q-content {
+    flex: 1;
+  }
+
+  .q-text {
+    font-size: 0.975rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #E2E8F0;
+  }
+
+  .q-meta {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .q-toggle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding-top: 0.1rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .q-card.open .q-toggle {
+    color: var(--accent);
+  }
+
+  .q-toggle svg {
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+  }
+
+  .q-card.open .q-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  /* Answer panel */
+  .q-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(.4,0,.2,1);
+  }
+
+  .q-card.open .q-answer {
+    max-height: 600px;
+  }
+
+  .q-answer-inner {
+    padding: 0 1.25rem 1.25rem 4.25rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1rem;
+  }
+
+  .answer-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .answer-body {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #CBD5E1;
+    font-weight: 300;
+  }
+
+  .answer-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .answer-body .highlight {
+    display: inline-block;
+    background: rgba(2,128,144,0.2);
+    border: 1px solid rgba(2,128,144,0.4);
+    color: #7DD3DB;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin: 0.1rem 0.2rem;
+  }
+
+  .answer-body .warning {
+    display: inline-block;
+    background: rgba(220,38,38,0.15);
+    border: 1px solid rgba(220,38,38,0.35);
+    color: #FCA5A5;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0.1rem 0.2rem;
+  }
+
+  .answer-items {
+    list-style: none;
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .answer-items li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-size: 0.88rem;
+    color: #CBD5E1;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .answer-items li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    margin-top: 0.45rem;
+  }
+
+  .answer-items li.warn::before { background: var(--red); }
+  .answer-items li.go::before   { background: var(--green); }
+  .answer-items li.note::before { background: var(--accent); }
+
+  /* Footer */
+  .footer {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .footer-left {
+    font-size: 0.78rem;
+    color: var(--slate-light);
+    font-weight: 300;
+  }
+
+  .expand-all {
+    background: none;
+    border: 1px solid rgba(2,128,144,0.4);
+    color: var(--teal);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .expand-all:hover {
+    background: rgba(2,128,144,0.12);
+  }
+</style>
+</head>
+<body>
+<div style="background:#0D2137; border-bottom:1px solid rgba(255,255,255,0.1); padding:.6rem 1.5rem; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:.82rem; display:flex; gap:1rem; align-items:center; position:sticky; top:0; z-index:100;">
+  <a href="../index.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">📋 Morning Report</a>
+  <span style="color:rgba(255,255,255,0.25);">·</span>
+  <a href="16-acute-gastroenteritis.html" style="color:rgba(2,128,144,0.9); text-decoration:none;">← Case 16: Acute Gastroenteritis</a>
+</div>
+
+<div class="page-wrap">
+
+  <header class="header">
+    <div class="tag">Morning Report · May 2026</div>
+    <h1>Discussion Questions</h1>
+    <div class="divider"></div>
+    <p>Acute Gastroenteritis: A Case-Based Review &nbsp;·&nbsp; Click any question to reveal the answer</p>
+  </header>
+
+  <div class="questions" id="questions">
+
+    <!-- Q1 -->
+    <div class="q-card" id="q1">
+      <button class="q-trigger" onclick="toggle('q1')">
+        <div class="q-num">1</div>
+        <div class="q-content">
+          <div class="q-text">A 28-year-old returns from Mexico with 3 days of watery diarrhea, no blood, no fever. GI PCR is negative. What is the most likely untested etiology, and how would you treat empirically?</div>
+          <div class="q-meta">Traveler's diarrhea · Diagnostic gap · Empiric therapy</div>
+        </div>
+        <div class="q-toggle">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            <strong>Most likely etiology: ETEC</strong> (Enterotoxigenic <em>E. coli</em>) — the leading cause of traveler's diarrhea, accounting for ~30–40% of cases. Produces heat-labile (LT) and/or heat-stable (ST) enterotoxins that drive secretory diarrhea via cAMP/cGMP. <span class="highlight">Not covered by standard GI multiplex PCR panels.</span>
+          </div>
+          <ul class="answer-items">
+            <li class="go"><strong>Azithromycin</strong> 1g single dose or 500mg daily × 3 days — preferred in most regions due to rising FQ resistance; also covers Campylobacter</li>
+            <li class="go"><strong>Rifaximin</strong> 200mg TID × 3 days — non-invasive; stays in gut; ideal for non-bloody watery diarrhea; not effective if invasive organism suspected</li>
+            <li class="note"><strong>Loperamide</strong> can be co-administered for symptom control in non-bloody, non-febrile illness</li>
+            <li><strong>Ciprofloxacin</strong> — still used but FQ resistance in Campylobacter exceeds 25% in many regions; no longer first-line empirically</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card" id="q2">
+      <button class="q-trigger" onclick="toggle('q2')">
+        <div class="q-num">2</div>
+        <div class="q-content">
+          <div class="q-text">You order a GI PCR on a patient with bloody diarrhea and low-grade fever. It returns positive for STEC stx2. The team wants to start antibiotics. What do you tell them?</div>
+          <div class="q-meta">STEC · HUS risk · Antibiotic contraindication</div>
+        </div>
+        <div class="q-toggle">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            <span class="warning">Do NOT start antibiotics.</span> Antibiotic use in STEC infection is associated with increased risk of Hemolytic Uremic Syndrome (HUS). Proposed mechanism: antibiotics lyse bacteria → massive Shiga toxin release → systemic absorption → endothelial injury → thrombotic microangiopathy.
+          </div>
+          <ul class="answer-items">
+            <li class="warn">Antibiotics — <strong>contraindicated</strong>; avoid FQs, TMP-SMX, and beta-lactams</li>
+            <li class="warn">Loperamide — <strong>contraindicated</strong>; prolongs mucosal toxin contact time</li>
+            <li class="go">IV fluid resuscitation — cornerstone of management; maintain perfusion to protect kidneys</li>
+            <li>Monitor CBC, creatinine, urinalysis q24–48h for HUS triad: microangiopathic hemolytic anemia, thrombocytopenia, AKI</li>
+            <li class="note">Nephrology consult if creatinine rising or thrombocytopenia develops</li>
+            <li>Notify public health — STEC is a reportable condition; outbreak investigation may be warranted</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card" id="q3">
+      <button class="q-trigger" onclick="toggle('q3')">
+        <div class="q-num">3</div>
+        <div class="q-content">
+          <div class="q-text">Your patient has been on azithromycin for 4 days for presumed Campylobacter gastroenteritis. The GI PCR returns negative. Do you complete the course or stop? What factors guide your decision?</div>
+          <div class="q-meta">Antibiotic stewardship · GI motility effect · Clinical judgment</div>
+        </div>
+        <div class="q-toggle">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            There is no single correct answer — this is a stewardship judgment call. Consider:
+          </div>
+          <ul class="answer-items">
+            <li class="note"><strong>Specimen quality matters:</strong> Was the PCR performed on a well-collected, promptly transported specimen? A transport delay (as in this case) raises the possibility of false negative — though NAAT is generally robust</li>
+            <li class="warn"><strong>Azithromycin is a motilin receptor agonist</strong> — prokinetic effect may be perpetuating diarrhea in the absence of a confirmed target; completing the course may worsen symptoms</li>
+            <li class="go"><strong>If day 4 of 5 and clinically stable:</strong> Reasonable to complete — marginal stewardship gain from stopping one day early</li>
+            <li class="warn"><strong>If symptoms worsening or prolonged:</strong> Consider stopping and reassessing — continuing without a target violates core stewardship principles</li>
+            <li><strong>Document your reasoning</strong> — "empiric azithromycin initiated for presumed Campylobacter; GI PCR returned negative; course completed given proximity to completion and clinical stability" is a defensible note</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card" id="q4">
+      <button class="q-trigger" onclick="toggle('q4')">
+        <div class="q-num">4</div>
+        <div class="q-content">
+          <div class="q-text">A patient with watery diarrhea, K of 3.2, and HCO₃ of 18 is being fluid-resuscitated with normal saline. What metabolic disturbance are you likely to worsen, and what fluid would you recommend instead?</div>
+          <div class="q-meta">NAGMA · IV fluid selection · Electrolyte repletion</div>
+        </div>
+        <div class="q-toggle">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            <strong>Worsening disturbance: Hyperchloremic Non-Anion Gap Metabolic Acidosis (NAGMA).</strong> Normal saline (Na 154, Cl 154 mEq/L) delivers a large chloride load. Combined with ongoing GI bicarbonate losses from diarrhea, this further drives HCO₃ down via hyperchloremic displacement and dilution.
+          </div>
+          <ul class="answer-items">
+            <li class="warn"><strong>Normal saline</strong> → worsens hyperchloremia; worsens NAGMA; avoid in diarrheal illness with metabolic acidosis</li>
+            <li class="go"><strong>Lactated Ringer's</strong> (Na 130, Cl 109, lactate 28 mEq/L) — lactate is metabolized to bicarbonate by the liver; lower chloride avoids worsening the acidosis; first-line for diarrheal dehydration</li>
+            <li class="note"><strong>Potassium repletion:</strong> K 3.2 requires active repletion; goal ≥4.0 given ongoing losses. Each 0.1 mEq/L rise in serum K reflects ~100–200 mEq of total-body deficit at lower values</li>
+            <li><strong>Check magnesium:</strong> Hypomagnesemia impairs renal potassium retention and can render K repletion ineffective; correct Mg first</li>
+            <li>Oral rehydration solution (ORS) remains appropriate if the patient can tolerate PO; WHO ORS uses sodium-glucose cotransport mechanism — independent of the secretory defect</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card" id="q5">
+      <button class="q-trigger" onclick="toggle('q5')">
+        <div class="q-num">5</div>
+        <div class="q-content">
+          <div class="q-text">A GI PCR panel specimen collected on a Friday afternoon is never transported to the reference lab over the weekend. The patient — who is not a physician — has no idea. What systems-level interventions could prevent this?</div>
+          <div class="q-meta">Patient safety · Systems analysis · Quality improvement</div>
+        </div>
+        <div class="q-toggle">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill: none="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            This case illustrates two independent failures: <strong>transport</strong> (specimen never moved) and <strong>communication</strong> (result not relayed after it was finalized). Systems interventions should address both:
+          </div>
+          <ul class="answer-items">
+            <li class="go"><strong>Automated transport confirmation:</strong> LIS alert generated if specimen is not logged at reference lab within expected window (e.g., 4 hours post-collection)</li>
+            <li class="go"><strong>Weekend transport protocol:</strong> Designated backup transport for time-sensitive specimens collected Friday PM or weekends; standing arrangement with secondary reference lab</li>
+            <li class="go"><strong>Provider notification loop:</strong> Automatic flag to ordering provider if specimen not received within expected timeframe — silent failures become visible</li>
+            <li class="go"><strong>Patient portal notification:</strong> MyChart/portal message with expected result timeframe; automated delay alert if result not returned on schedule</li>
+            <li class="note"><strong>Equity lens:</strong> A non-physician patient cannot call the reference lab, identify the failure, or arrange redirection. The safeguard must exist in the system, not rely on patient sophistication</li>
+            <li><strong>Formal RCA:</strong> Every specimen transport failure should enter the patient safety reporting system; root cause analysis to identify whether this is a recurring gap vs. isolated incident</li>
+            <li class="warn"><strong>Stewardship implication:</strong> Diagnostic delays enable empiric antibiotic use without confirmed targets — patient safety and stewardship are inseparable in this context</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card" id="q6">
+      <button class="q-trigger" onclick="toggle('q6')">
+        <div class="q-num" style="background:var(--accent);color:var(--navy);">6</div>
+        <div class="q-content">
+          <div class="q-text">A resident with resolving gastroenteritis is taking loperamide and having 2 formed BMs per day. They feel ready to return to direct patient care. Are they cleared? What criteria must be met, and what documentation is required?</div>
+          <div class="q-meta">HCW return to work · CDC/HICPAC · Institutional policy</div>
+        </div>
+        <div class="q-toggle" style="color:var(--accent)">
+          Answer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="q-answer">
+        <div class="q-answer-inner">
+          <div class="answer-label">Answer</div>
+          <div class="answer-body">
+            <strong>Not necessarily cleared</strong> — the clinical picture is encouraging but several criteria must be explicitly met before return to direct patient care.
+          </div>
+          <ul class="answer-items">
+            <li class="warn"><strong>Loperamide suppression ≠ symptom-free.</strong> CDC/HICPAC and most institutional policies require symptom-free status — not pharmacologically controlled symptoms. The resident must demonstrate absence of diarrhea without relying on loperamide, or the clock has not started.</li>
+            <li class="go"><strong>48-hour minimum:</strong> CDC/HICPAC requires at least 48 hours symptom-free after the last episode of diarrhea before returning to direct patient care.</li>
+            <li class="note"><strong>72 hours at many institutions</strong> for direct patient care roles — confirm your institutional policy. Do not self-clear; Employee Health or Occupational Medicine makes this determination.</li>
+            <li class="go"><strong>Formed stool is the clinical benchmark</strong> — not reduced frequency alone. Two formed BMs per day without loperamide support would be reassuring; two formed BMs on loperamide leaves the underlying status unclear.</li>
+            <li><strong>Pathogen-specific escalations:</strong> If STEC, Shigella, Salmonella, or Hepatitis A were confirmed, exclusion criteria are significantly more stringent (multiple negative cultures required). Unknown etiology defaults to standard gastroenteritis protocol.</li>
+            <li class="note"><strong>Documentation required:</strong> Physician clearance letter specifying the anticipated return date, uploaded to the institutional occupational health system (e.g., ReadySet). A note from the treating physician or ED physician of record within the same health system is typically acceptable.</li>
+            <li><strong>Notify the rotation supervisor</strong> and GME coordinator of the expected return date in writing — protects the resident if the process encounters delays outside their control.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /questions -->
+
+  <footer class="footer">
+    <div class="footer-left">
+      Guthrie Lourdes Hospital · Internal Medicine Residency · May 2026
+    </div>
+    <button class="expand-all" id="expandBtn" onclick="toggleAll()">Reveal All Answers</button>
+  </footer>
+
+</div>
+
+<script>
+  function toggle(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+    updateExpandBtn();
+  }
+
+  function toggleAll() {
+    const cards = document.querySelectorAll('.q-card');
+    const allOpen = [...cards].every(c => c.classList.contains('open'));
+    cards.forEach(c => allOpen ? c.classList.remove('open') : c.classList.add('open'));
+    updateExpandBtn();
+  }
+
+  function updateExpandBtn() {
+    const cards = document.querySelectorAll('.q-card');
+    const allOpen = [...cards].every(c => c.classList.contains('open'));
+    document.getElementById('expandBtn').textContent = allOpen ? 'Collapse All' : 'Reveal All Answers';
+  }
+</script>
+</body>
+</html>

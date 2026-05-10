@@ -1,0 +1,19 @@
+# GitHub Pages / Jekyll Configuration
+title: "Morning Report"
+description: "Internal Medicine Case Repository — Evidence-Based Teaching Cases"
+baseurl: ""
+url: ""
+
+# Theme
+theme: null
+
+# Exclude from build
+exclude:
+  - README.md
+  - "*.sh"
+
+# Default layouts (not using Jekyll layouts — pure HTML)
+defaults: []
+
+# Enable GitHub Pages safe mode
+safe: true
