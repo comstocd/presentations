@@ -1,66 +1,119 @@
-# Morning Report — Case Repository
+# 📋 Morning Report — Case Repository
 
-A curated collection of enhanced internal medicine morning report presentations, formatted for GitHub Pages.
+**Internal Medicine · Guthrie Lourdes Hospital · David Comstock, MD**
 
-## Contents
+A curated repository of teaching cases from morning report and educational procedural topics, enhanced with evidence-based analysis, guideline references (UpToDate, NEJM, IDSA, ACC/AHA, GOLD, Endocrine Society), and clinical pearls. Each case is formatted for self-study, teaching, and point-of-care review.
 
-- **12 clinical cases** with evidence-based analysis, differential diagnoses, pathophysiology, and management algorithms
-- **3 educational topics** (AECOPD, Pain Management, Thoracentesis)
-- All cases reference current guidelines: GOLD 2024, IDSA, ACC/AHA, Endocrine Society, Surviving Sepsis 2021, CDC 2022, and more
+🔗 **Live site:** [https://comstocd.github.io/presentations/](https://comstocd.github.io/presentations/)
 
-## Setup: GitHub Pages
+---
 
-### Option 1 — Deploy from `main` branch
+## Repository Contents
 
-1. Push this repository to GitHub
-2. Go to **Settings → Pages**
-3. Source: **Deploy from a branch** → `main` / `root`
-4. Click **Save**
-5. Your site will be live at `https://<username>.github.io/<repository-name>/`
+| # | Items | Type |
+|---|---|---|
+| 14 | Clinical case presentations | Morning report cases |
+| 4 | Educational / procedural topics | Systematic reviews |
+| **18** | **Total** | |
 
-### Option 2 — Deploy from `/docs` folder
+---
 
-If you prefer to keep the site files in a `docs/` subdirectory:
+## Clinical Case Presentations
 
-1. Move all files into a `docs/` folder
-2. Go to **Settings → Pages**
-3. Source: **Deploy from a branch** → `main` / `docs`
-4. Click **Save**
+| # | Title | Patient | Specialties |
+|---|---|---|---|
+| 01 | [Pedal Edema & Hypoalbuminemia](cases/01-pedal-edema-hypoalbuminemia.html) | 56F · Chronic pancreatitis, EtOH abuse, anasarca, BNP 182 | GI / Nutrition · Cardiology · Nephrology |
+| 02 | [Adrenal Incidentaloma & COPD Screening](cases/02-adrenal-incidentaloma.html) | 63M · PCP visit; adrenal mass on CT, 24 pack-year smoking hx | Endocrinology · Pulmonology |
+| 03 | [EtOH Withdrawal & Severe Hypercalcemia](cases/03-etoh-withdrawal-hypercalcemia.html) | 56M · Ca 16.7 mg/dL, CIWA escalation, delirium tremens | Critical Care · Toxicology · Endocrinology |
+| 04 | [Syncope vs. Seizure](cases/04-syncope-seizure.html) | 44M · LOC at work, 3-year hx, known bradycardia | Cardiology · Neurology |
+| 05 | [Acute Adrenal Insufficiency](cases/05-acute-adrenal-insufficiency.html) | Stress dosing, crisis recognition, secondary AI | Endocrinology · Critical Care |
+| 06 | [AKI & Hepatorenal Syndrome](cases/06-hepatorenal-syndrome.html) | Cirrhosis physiology, HRS-AKI diagnosis and treatment | Hepatology · Nephrology · Critical Care |
+| 07 | [Necrotizing Fasciitis](cases/07-necrotizing-fasciitis.html) | EMT with ingrown hair → sepsis, NF Type I, LRINEC score | Surgical Emergency · Infectious Disease |
+| 08 | [Renal Subcapsular Hematoma](cases/08-renal-subcapsular-hematoma.html) | 35M · Post-lithotripsy retroperitoneal hemorrhage, IR management | Urology · Interventional Radiology |
+| 09 | [Palliative Care & End-of-Life](cases/09-palliative-care-downs.html) | 74M · Down syndrome, ESRD, aspiration pneumonia, MOLST/NYS law | Palliative Care · Nephrology · Ethics |
+| 10 | [Anastomotic Leak & Septic Shock](cases/10-anastomotic-leak-sepsis.html) | 58F · Post-LAR fecal peritonitis, multiorgan failure | Critical Care · Infectious Disease · Surgery |
+| 11 | [Post-Op Shoulder Infection](cases/11-shoulder-infection.html) | 65M · Deep SSI after rotator cuff repair, hardware removal | Infectious Disease · Orthopedics |
+| 12 | [Vestibular Migraine](cases/12-vestibular-migraine.html) | Dizziness, ataxia, nystagmus -- rule out posterior stroke | Neurology · Emergency Medicine |
+| 16 | [Acute Gastroenteritis](cases/16-acute-gastroenteritis.html) | 64M · >20 watery stools/day, NAGMA, negative GI PCR x2, specimen transport failure | Infectious Disease · Stewardship · Patient Safety |
+| 17 | ["Ownership": Radiation Colitis & SBO](cases/17-ownership-radiation-colitis.html) | 84M · Pelvic radiation, ureteral stent, missed diagnosis, multi-consultant fragmentation, loop colostomy, PE | Surgery / GI · Patient Safety · Systems Medicine |
 
-## File Structure
+---
+
+## Educational / Procedural Topics
+
+| # | Title | Focus | Specialties |
+|---|---|---|---|
+| 13 | [Acute Exacerbation of COPD (AECOPD)](cases/13-aecopd.html) | GOLD 2024 guidelines · bronchodilators, steroids, antibiotics, NIV | Pulmonology · GOLD 2024 |
+| 14 | [Sub-Acute Pain Management](cases/14-pain-management.html) | CDC 2022 guidelines · multimodal analgesia · opioid risk stratification | Pain Medicine · CDC 2022 |
+| 15 | [Thoracentesis](cases/15-thoracentesis.html) | Indications, technique, Light's criteria, ultrasound guidance, complications | Procedures · Pulmonology |
+| 18 | [Intrathymic Thymopoiesis and T Cell Development](cases/18-thymopoiesis.html) | Progenitor migration, beta-selection, V(D)J recombination, positive/negative selection, AIRE, lineage commitment, thymic involution | Immunology · Hematology |
+
+---
+
+## Topic 18 — What's New
+
+**Intrathymic Thymopoiesis and T Cell Development** is the most recently added educational topic. It covers:
+
+- Progenitor migration and Notch-driven T lineage commitment
+- Double negative (DN1-DN4) developmental stages with surface markers
+- Beta-selection checkpoint and pre-TCR assembly
+- V(D)J recombination mechanisms and CDR3 junctional diversity
+- Positive selection by cortical thymic epithelial cells (cTECs) and MHC restriction
+- Negative selection, AIRE, and central tolerance
+- CD4/CD8 lineage commitment and the kinetic signaling model
+- Repertoire outcomes including regulatory T cell agonist selection
+- Thymic involution, aging, and connection to inflammaging and clonal hematopoiesis (CHIP)
+- Clinical correlates: DiGeorge syndrome, SCID variants, APECED, thymoma, HIV/AIDS
+
+---
+
+## Structure
 
 ```
-/
-├── index.html          ← Main landing page
-├── assets/
-│   └── style.css       ← Shared stylesheet
-├── cases/
-│   ├── 01-pedal-edema-hypoalbuminemia.html
-│   ├── 02-adrenal-incidentaloma.html
-│   ├── 03-etoh-withdrawal-hypercalcemia.html
-│   ├── 04-syncope-seizure.html
-│   ├── 05-acute-adrenal-insufficiency.html
-│   ├── 06-hepatorenal-syndrome.html
-│   ├── 07-necrotizing-fasciitis.html
-│   ├── 08-renal-subcapsular-hematoma.html
-│   ├── 09-palliative-care-downs.html
-│   ├── 10-anastomotic-leak-sepsis.html
-│   ├── 11-shoulder-infection.html
-│   ├── 12-vestibular-migraine.html
-│   ├── 13-aecopd.html
-│   ├── 14-pain-management.html
-│   └── 15-thoracentesis.html
-├── README.md
-└── _config.yml         ← Jekyll config for GitHub Pages
+presentations/
+├── index.html              # Repository landing page
+├── README.md               # This file
+└── cases/
+    ├── 01-pedal-edema-hypoalbuminemia.html
+    ├── 02-adrenal-incidentaloma.html
+    ├── 03-etoh-withdrawal-hypercalcemia.html
+    ├── 04-syncope-seizure.html
+    ├── 05-acute-adrenal-insufficiency.html
+    ├── 06-hepatorenal-syndrome.html
+    ├── 07-necrotizing-fasciitis.html
+    ├── 08-renal-subcapsular-hematoma.html
+    ├── 09-palliative-care-downs.html
+    ├── 10-anastomotic-leak-sepsis.html
+    ├── 11-shoulder-infection.html
+    ├── 12-vestibular-migraine.html
+    ├── 13-aecopd.html
+    ├── 14-pain-management.html
+    ├── 15-thoracentesis.html
+    ├── 16-acute-gastroenteritis.html
+    ├── 17-ownership-radiation-colitis.html
+    └── 18-thymopoiesis.html
 ```
+
+---
 
 ## Design
 
-- Academic / minimal theme: white background, neutral palette, print-friendly
-- Responsive layout (mobile-friendly)
-- Each case: TOC, key labs (with reference ranges), differential table, evidence-based management, clinical pearls, references
-- Print CSS included — each case prints cleanly as a PDF
+Each page uses a consistent single-file HTML format with embedded CSS:
+
+- **Sticky navigation** with breadcrumb back to index
+- **Hero section** with topic number, specialty tags, and description
+- **Sidebar table of contents** with anchor navigation (desktop)
+- **Evidence-based content** with guideline citations and clinical pearls
+- **Responsive layout** for mobile and desktop
+- **Print-friendly** formatting
+- No external JavaScript dependencies; no build step required
+
+---
 
 ## Disclaimer
 
-These materials are for **educational purposes only**. Clinical decision-making should be based on current guidelines, institutional protocols, and patient-specific factors. Content reflects evidence available as of 2024–2025.
+These case presentations are for **educational purposes only**. Clinical decision-making should be guided by current guidelines, patient-specific factors, and institutional protocols. Content references evidence current as of 2024-2025.
+
+---
+
+*Morning Report Case Repository · Internal Medicine · Built for GitHub Pages · David Comstock, MD · Guthrie Lourdes Hospital*
