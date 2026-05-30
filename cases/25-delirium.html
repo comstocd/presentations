@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 25 — Delirium | Morning Report</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="../index.html">Morning Report</a></div>
+  <a href="../index.html">&larr; All Cases</a>
+</header>
+
+<main class="page-wrap">
+
+  <div class="case-hero">
+    <div class="meta">Topic 25 &middot; Critical Care / Geriatrics / Neurology</div>
+    <h1>Delirium</h1>
+    <p style="font-family:var(--font-ui); font-size:.92rem; color:var(--muted); margin-bottom:0;">
+      Delirium is an acute disturbance in attention and awareness with additional cognitive dysfunction,
+      representing a medical emergency that is frequently missed, undertreated, and associated with
+      increased mortality, prolonged hospitalization, long-term cognitive decline, and institutionalization.
+      It is not a normal part of aging, not inevitable, and often preventable.
+    </p>
+    <div class="tags">
+      <span class="tag red">Critical Care</span>
+      <span class="tag">Geriatrics</span>
+      <span class="tag blue">Neurology</span>
+      <span class="tag green">PADIS Guidelines 2018 &middot; AGS</span>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#definition">Definition &amp; DSM-5 Criteria</a></li>
+      <li><a href="#subtypes">Subtypes</a></li>
+      <li><a href="#epidemiology">Epidemiology &amp; Outcomes</a></li>
+      <li><a href="#pathophysiology">Pathophysiology</a></li>
+      <li><a href="#risk">Risk Factors &amp; Precipitants</a></li>
+      <li><a href="#assessment">Assessment Tools: CAM &amp; CAM-ICU</a></li>
+      <li><a href="#differential">Differential Diagnosis</a></li>
+      <li><a href="#workup">Workup</a></li>
+      <li><a href="#nonpharm">Non-Pharmacologic Management</a></li>
+      <li><a href="#pharm">Pharmacologic Management</a></li>
+      <li><a href="#icu">ICU Delirium: PADIS &amp; ABCDEF Bundle</a></li>
+      <li><a href="#special">Special Populations</a></li>
+      <li><a href="#pearls">Clinical Pearls</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- DEFINITION -->
+  <div class="section" id="definition">
+    <h2>Definition &amp; DSM-5 Criteria</h2>
+
+    <div class="criteria-box">
+      <div class="criteria-head">DSM-5 Diagnostic Criteria for Delirium (All Five Required)</div>
+      <div class="criteria-body">
+        <ol>
+          <li><strong>Disturbance in attention</strong> (reduced ability to direct, focus, sustain, and shift attention) and <strong>awareness</strong> (reduced orientation to the environment)</li>
+          <li>The disturbance develops <strong>acutely</strong> (hours to days) and represents a <strong>change from baseline</strong>; it tends to fluctuate in severity throughout the day</li>
+          <li>An additional disturbance in <strong>cognition</strong> (memory deficit, disorientation, language, visuospatial ability, or perception)</li>
+          <li>The disturbances are <strong>not better explained</strong> by a pre-existing, established, or evolving neurocognitive disorder (dementia)</li>
+          <li>The disturbance is a <strong>direct physiological consequence</strong> of another medical condition, substance intoxication or withdrawal, or multiple etiologies</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <h3>The Three Essential Features to Memorize</h3>
+      <p style="margin:0;"><strong>Acute onset, fluctuating course, and inattention.</strong> These three features distinguish delirium from dementia (chronic, non-fluctuating, attention relatively preserved early) and from psychiatric illness (no acute onset, attention intact, no medical trigger). If a patient cannot recite the months of the year backwards or cannot maintain focus during your history, that is inattention &mdash; assess further.</p>
+    </div>
+  </div>
+
+  <!-- SUBTYPES -->
+  <div class="section" id="subtypes">
+    <h2>Subtypes</h2>
+
+    <div class="two-col">
+      <div class="criteria-box">
+        <div class="criteria-head">Hyperactive Delirium (~25%)</div>
+        <div class="criteria-body">
+          <ul>
+            <li>Agitation, restlessness, combativeness</li>
+            <li>Pulling at lines and tubes</li>
+            <li>Yelling, thrashing</li>
+            <li>Hallucinations (visual &gt; auditory)</li>
+            <li>Easily <strong>recognized</strong> &mdash; the patient who is "difficult"</li>
+            <li>Associated with alcohol/sedative withdrawal, medications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria-box">
+        <div class="criteria-head">Hypoactive Delirium (~50%) &mdash; The Dangerous One</div>
+        <div class="criteria-body">
+          <ul>
+            <li>Somnolence, withdrawal, psychomotor slowing</li>
+            <li>Minimal spontaneous movement or speech</li>
+            <li>Appears "calm" or "resting comfortably"</li>
+            <li>Frequently <strong>missed</strong> and mistaken for depression, fatigue, or expected illness behavior</li>
+            <li>Associated with worse outcomes than hyperactive</li>
+            <li>More common in elderly, hepatic encephalopathy, opioid toxicity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">Mixed Delirium (~25%)</div>
+      <div class="criteria-body">
+        <p style="margin:0;">Features of both hyperactive and hypoactive delirium, fluctuating between them throughout the day. Most common subtype in ICU patients. The patient who was agitated overnight and now seems "better" in the morning may simply be in the hypoactive phase of mixed delirium.</p>
+      </div>
+    </div>
+
+    <div class="callout red">
+      <h3>Hypoactive Delirium Is Missed &gt;70% of the Time</h3>
+      <p style="margin:0;">Studies using systematic screening tools consistently show hypoactive delirium goes unrecognized by nurses and physicians in the majority of cases &mdash; recognition rates without systematic screening are often below 30%. The quiet, withdrawn patient does not trigger concern the way an agitated patient does. Active delirium screening with a validated tool (CAM or CAM-ICU) on every patient, every shift, is the most reliable way to identify hypoactive delirium.</p>
+    </div>
+  </div>
+
+  <!-- EPIDEMIOLOGY -->
+  <div class="section" id="epidemiology">
+    <h2>Epidemiology &amp; Outcomes</h2>
+
+    <table class="lab-table">
+      <thead><tr><th>Setting</th><th>Prevalence / Incidence</th></tr></thead>
+      <tbody>
+        <tr><td>General medical wards</td><td>14&ndash;24% on admission; 6&ndash;56% develop during hospitalization</td></tr>
+        <tr><td>ICU (mechanically ventilated)</td><td class="abn">40&ndash;80%; varies substantially by sedation practice, patient population, and screening method &mdash; lighter sedation protocols are associated with lower rates</td></tr>
+        <tr><td>Post-operative (non-cardiac)</td><td>15&ndash;25%</td></tr>
+        <tr><td>Post-cardiac surgery</td><td>Up to 50%</td></tr>
+        <tr><td>Hip fracture repair</td><td>35&ndash;65%</td></tr>
+        <tr><td>Palliative / end-of-life</td><td>Up to 90% in final hours</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Consequences of Delirium</h3>
+    <ul>
+      <li><strong>Mortality:</strong> 10&ndash;26% during hospitalization; 22&ndash;76% at 6 months; independent predictor of death after adjustment for severity of illness</li>
+      <li><strong>Long-term cognitive decline:</strong> Delirium is associated with accelerated progression to dementia in cohort studies; some analyses report 2&ndash;8-fold increased risk of dementia at follow-up, though causal direction and confounding by shared risk factors remain debated</li>
+      <li><strong>Hospital LOS:</strong> Adds average 5&ndash;10 days to hospitalization</li>
+      <li><strong>Functional decline:</strong> Loss of ADLs that may not recover; increased institutionalization</li>
+      <li><strong>Post-ICU:</strong> Post-intensive care syndrome (PICS) &mdash; cognitive, psychological, and physical impairments persisting months to years after ICU discharge</li>
+      <li><strong>Cost:</strong> Estimated at $164 billion annually in the US in older analyses (direct costs alone); current estimates vary but remain in the tens of billions; this is one of the most costly hospital-acquired conditions</li>
+    </ul>
+  </div>
+
+  <!-- PATHOPHYSIOLOGY -->
+  <div class="section" id="pathophysiology">
+    <h2>Pathophysiology</h2>
+
+    <p>Delirium results from widespread disruption of cerebral network connectivity, particularly the prefrontal cortex and its connections mediating attention and executive function. Multiple neurobiological mechanisms converge:</p>
+
+    <table class="lab-table">
+      <thead><tr><th>Mechanism</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Neuroinflammation</strong></td><td>Systemic inflammation (cytokines: IL-1, IL-6, TNF-&alpha;) crosses the blood-brain barrier &rarr; microglial activation &rarr; neuronal dysfunction. Explains why sepsis, surgery, and any severe illness can precipitate delirium.</td></tr>
+        <tr><td><strong>Neurotransmitter imbalance</strong></td><td>Reduced acetylcholine (ACh) &mdash; the predominant hypothesis; excess dopamine; reduced GABA; excess glutamate. ACh deficiency impairs attention circuits; explains why anticholinergic medications are a major risk factor and why physostigmine can temporarily reverse some delirium.</td></tr>
+        <tr><td><strong>Oxidative stress</strong></td><td>Hypoxia, ischemia, mitochondrial dysfunction &rarr; reactive oxygen species &rarr; neuronal injury. Relevant in sepsis, respiratory failure, cardiac surgery.</td></tr>
+        <tr><td><strong>Neuroendocrine dysregulation</strong></td><td>Elevated cortisol (stress response) suppresses hippocampal neurogenesis and impairs memory consolidation. HPA axis dysregulation contributes to cognitive dysfunction.</td></tr>
+        <tr><td><strong>Sleep-wake cycle disruption</strong></td><td>Loss of circadian rhythm &rarr; melatonin dysregulation &rarr; altered arousal and attention. ICU environment (light, noise, continuous interventions) perpetuates this.</td></tr>
+        <tr><td><strong>Cerebral blood flow alterations</strong></td><td>Hypoperfusion (hypotension, hypoxia, anemia) impairs neuronal energy metabolism; particularly damaging in patients with pre-existing cerebrovascular disease.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RISK FACTORS -->
+  <div class="section" id="risk">
+    <h2>Risk Factors &amp; Precipitants</h2>
+
+    <p>Delirium results from the interaction of <strong>predisposing factors</strong> (baseline vulnerability) and <strong>precipitating factors</strong> (acute insults). A highly vulnerable patient (elderly, demented, deaf) may develop delirium from a mild insult (one sleeping pill); a low-vulnerability patient may require multiple severe insults.</p>
+
+    <div class="two-col">
+      <div class="criteria-box">
+        <div class="criteria-head">Predisposing Factors (Baseline Vulnerability)</div>
+        <div class="criteria-body">
+          <ul>
+            <li>Advanced age (&gt;65) &mdash; strongest predictor</li>
+            <li>Pre-existing cognitive impairment / dementia</li>
+            <li>Severe underlying illness (high APACHE, SOFA)</li>
+            <li>Functional dependence (ADL impairment)</li>
+            <li>Sensory impairment (vision, hearing)</li>
+            <li>Dehydration / malnutrition at baseline</li>
+            <li>Prior history of delirium</li>
+            <li>Depression or other psychiatric illness</li>
+            <li>Alcohol use disorder</li>
+            <li>Sleep deprivation at baseline</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria-box">
+        <div class="criteria-head">Precipitating Factors (The "MOVE IT" Mnemonic)</div>
+        <div class="criteria-body">
+          <ul>
+            <li><strong>M</strong>edications &mdash; see table below</li>
+            <li><strong>O</strong>xygen deficiency (hypoxia, hypercapnia, anemia)</li>
+            <li><strong>V</strong>ascular (MI, stroke, PE, hypotension)</li>
+            <li><strong>E</strong>lectrolytes (Na, Ca, Mg, glucose, uremia)</li>
+            <li><strong>I</strong>nfection (UTI, pneumonia, sepsis, meningitis)</li>
+            <li><strong>T</strong>rauma / Pain / Surgery / Immobility</li>
+          </ul>
+          <p style="font-size:.83rem; margin-top:.5rem; margin-bottom:0;">Additional: urinary retention, constipation, fecal impaction, sleep deprivation, environmental factors (ICU, restraints), withdrawal (alcohol, benzos, opioids)</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>High-Risk Medications (Anticholinergic Burden)</h3>
+    <table class="lab-table">
+      <thead><tr><th>Category</th><th>Examples</th><th>Mechanism</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Anticholinergics</strong></td><td>Diphenhydramine (Benadryl), hydroxyzine, benztropine, scopolamine, oxybutynin, tricyclic antidepressants</td><td>Block central muscarinic receptors &rarr; ACh deficiency &rarr; delirium</td></tr>
+        <tr><td><strong>Benzodiazepines</strong></td><td>Lorazepam, diazepam, midazolam, temazepam</td><td>GABA-A agonism &rarr; sedation, paradoxical agitation, delirium; major ICU delirium driver</td></tr>
+        <tr><td><strong>Opioids</strong></td><td>All; meperidine highest risk (normeperidine metabolite)</td><td>CNS depression + anticholinergic metabolites; meperidine especially deliriogenic &mdash; avoid</td></tr>
+        <tr><td><strong>H2 blockers</strong></td><td>Famotidine (less), cimetidine, ranitidine</td><td>Cross BBB; central anticholinergic effects; cimetidine highest risk; use PPI instead in high-risk patients</td></tr>
+        <tr><td><strong>Corticosteroids</strong></td><td>Prednisone, dexamethasone, methylprednisolone</td><td>Dose-dependent CNS effects; mania, psychosis, depression</td></tr>
+        <tr><td><strong>Fluoroquinolones</strong></td><td>Ciprofloxacin, levofloxacin</td><td>GABA-A antagonism; especially in elderly and renal failure</td></tr>
+        <tr><td><strong>Anticancer agents</strong></td><td>Methotrexate (high-dose), ifosfamide, cytarabine</td><td>Direct neurotoxicity</td></tr>
+        <tr><td><strong>Muscle relaxants</strong></td><td>Cyclobenzaprine, baclofen, methocarbamol</td><td>Anticholinergic + CNS depressant</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ASSESSMENT -->
+  <div class="section" id="assessment">
+    <h2>Assessment Tools: CAM &amp; CAM-ICU</h2>
+
+    <h3>Confusion Assessment Method (CAM)</h3>
+    <p>The gold standard bedside tool for diagnosing delirium outside the ICU. Validated against DSM criteria; sensitivity 94%, specificity 89% when administered correctly. Requires a brief cognitive assessment (e.g., digit span, days of week backwards) to assess Feature 2.</p>
+
+    <div class="criteria-box">
+      <div class="criteria-head">CAM Diagnostic Algorithm: Delirium = Features 1 + 2 + (3 OR 4)</div>
+      <div class="criteria-body">
+        <ol>
+          <li><strong>Feature 1: Acute onset and fluctuating course</strong><br>
+            "Is there evidence of an acute change in mental status from baseline? Does the abnormal behavior fluctuate during the day?"</li>
+          <li><strong>Feature 2: Inattention</strong> (Required)<br>
+            "Does the patient have difficulty focusing attention?" &mdash; Test: digits forward/backward, months of year backwards, squeeze hand when you say the letter "A" in a random letter sequence</li>
+          <li><strong>Feature 3: Disorganized thinking</strong><br>
+            "Does the patient have disorganized or incoherent thinking?" &mdash; Rambling speech, illogical flow, unpredictable topic switching, unclear or irrelevant answers</li>
+          <li><strong>Feature 4: Altered level of consciousness</strong><br>
+            Anything other than alert and appropriate: hyperalert, lethargic, stuporous, or comatose</li>
+        </ol>
+        <p style="font-size:.83rem; margin:0;"><strong>Delirium present if:</strong> Feature 1 AND Feature 2 AND (Feature 3 OR Feature 4)</p>
+      </div>
+    </div>
+
+    <h3>CAM-ICU</h3>
+    <p>Adapted for mechanically ventilated, non-verbal patients. Replaces verbal cognitive testing with non-verbal tasks. Also uses a 4-feature structure. First assess level of arousal with the <strong>Richmond Agitation-Sedation Scale (RASS)</strong>:</p>
+
+    <div class="criteria-box">
+      <div class="criteria-head">RASS Scale</div>
+      <div class="criteria-body">
+        <table style="width:100%; font-size:.85rem;">
+          <thead><tr><th>Score</th><th>Term</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>+4</td><td>Combative</td><td>Violent, immediate danger to staff</td></tr>
+            <tr><td>+3</td><td>Very agitated</td><td>Pulls/removes tubes; aggressive</td></tr>
+            <tr><td>+2</td><td>Agitated</td><td>Frequent nonpurposeful movement; fights ventilator</td></tr>
+            <tr><td>+1</td><td>Restless</td><td>Anxious but movements not aggressive</td></tr>
+            <tr><td class="abn">0</td><td>Alert and calm</td><td>Target for most ICU patients</td></tr>
+            <tr><td>-1</td><td>Drowsy</td><td>Not fully alert; sustained awakening &gt;10 sec to voice</td></tr>
+            <tr><td>-2</td><td>Light sedation</td><td>Briefly awakens to voice (&lt;10 sec)</td></tr>
+            <tr><td>-3</td><td>Moderate sedation</td><td>Movement or eye opening to voice; no eye contact</td></tr>
+            <tr><td>-4</td><td>Deep sedation</td><td>No response to voice; movement to physical stimulus</td></tr>
+            <tr><td>-5</td><td>Unarousable</td><td>No response to voice or physical stimulus</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.83rem; margin-top:.5rem; margin-bottom:0;">CAM-ICU cannot be assessed if RASS &le;&minus;3 (deep sedation/unarousable). In these patients, delirium assessment is deferred until sedation is lightened. Target RASS 0 to &minus;1 for most mechanically ventilated patients (PADIS guidelines).</p>
+      </div>
+    </div>
+
+    <h3>Other Tools</h3>
+    <ul>
+      <li><strong>3D-CAM:</strong> 3-minute diagnostic interview version of CAM for non-ICU settings; faster than full CAM</li>
+      <li><strong>ICDSC (Intensive Care Delirium Screening Checklist):</strong> 8-item nurse-administered tool; alternative to CAM-ICU</li>
+      <li><strong>4AT:</strong> Brief assessment tool (alertness, AMT4, attention, acute change); validated in ED and general medical settings; takes &lt;2 minutes</li>
+    </ul>
+  </div>
+
+  <!-- DIFFERENTIAL -->
+  <div class="section" id="differential">
+    <h2>Differential Diagnosis</h2>
+
+    <table class="diff-table">
+      <thead><tr><th>Condition</th><th>Key Distinguishing Features</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Dementia</strong></td>
+          <td>Chronic, progressive; no acute onset; attention relatively preserved early; no fluctuation; no clear medical precipitant. <em>Note: Dementia is the #1 predisposing factor for delirium &mdash; both can coexist.</em></td>
+        </tr>
+        <tr>
+          <td><strong>Depression</strong></td>
+          <td>Psychomotor slowing and withdrawal can mimic hypoactive delirium; onset over weeks-months not hours-days; attention and orientation usually intact; no fluctuation; no medical trigger. CAM negative.</td>
+        </tr>
+        <tr>
+          <td><strong>Psychosis (primary)</strong></td>
+          <td>Usually younger patient; hallucinations often auditory &gt; visual; no medical trigger; attention relatively intact; chronic or episodic (not acute and fluctuating in the delirium sense). Rule out medical cause first.</td>
+        </tr>
+        <tr>
+          <td><strong>Non-convulsive status epilepticus (NCSE)</strong></td>
+          <td>Can present identically to delirium; altered consciousness without overt convulsions; <strong>EEG required to diagnose</strong>; consider in any refractory or unexplained delirium, especially post-seizure or after generalized convulsion</td>
+        </tr>
+        <tr>
+          <td><strong>Encephalitis / Meningitis</strong></td>
+          <td>Fever, headache, meningismus, CSF pleocytosis; viral encephalitis (HSV) can present acutely with behavioral change; LP required when CNS infection is on differential</td>
+        </tr>
+        <tr>
+          <td><strong>Stroke / CNS lesion</strong></td>
+          <td>Focal neurological deficits; acute onset but typically non-fluctuating; right parietal or thalamic strokes can cause confusion without focal deficits &mdash; MRI brain may be required</td>
+        </tr>
+        <tr>
+          <td><strong>Wernicke's encephalopathy</strong></td>
+          <td>Triad of encephalopathy, oculomotor dysfunction, ataxia; thiamine deficiency; give thiamine empirically in any AUD or malnourished patient with delirium</td>
+        </tr>
+        <tr>
+          <td><strong>Drug intoxication / withdrawal</strong></td>
+          <td>Alcohol withdrawal, benzodiazepine withdrawal, opioid intoxication, anticholinergic toxidrome; toxicology screen and medication review essential</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WORKUP -->
+  <div class="section" id="workup">
+    <h2>Workup</h2>
+
+    <p>The workup for delirium is a search for the underlying cause(s). There is no lab test that diagnoses delirium itself &mdash; it is a clinical diagnosis. The evaluation is guided by history, physical exam, and identification of likely precipitants.</p>
+
+    <h3>Minimum Evaluation in Every Patient</h3>
+    <ul>
+      <li><strong>Medication reconciliation</strong> &mdash; the single highest-yield intervention; review every medication for deliriogenic potential; check for recent additions or dose changes</li>
+      <li><strong>Vitals review</strong> &mdash; hypoxia, hypotension, fever, tachycardia, hypertensive emergency</li>
+      <li><strong>BMP / CMP</strong> &mdash; sodium, glucose, creatinine/BUN (uremia), calcium, liver enzymes</li>
+      <li><strong>CBC</strong> &mdash; infection (leukocytosis/leukopenia), anemia</li>
+      <li><strong>Urinalysis</strong> &mdash; UTI (but beware: asymptomatic bacteriuria does not cause delirium; only treat if symptomatic)</li>
+      <li><strong>Blood cultures</strong> &mdash; if fever or signs of infection</li>
+      <li><strong>Chest X-ray</strong> &mdash; pneumonia, pulmonary edema</li>
+      <li><strong>Pulse oximetry / ABG</strong> &mdash; hypoxia, hypercapnia</li>
+      <li><strong>Toxicology screen</strong> &mdash; if substance use disorder or unexplained presentation</li>
+      <li><strong>Thyroid function</strong> &mdash; if not recently checked; hypothyroidism and hyperthyroidism both cause delirium</li>
+    </ul>
+
+    <h3>Directed Testing Based on Clinical Suspicion</h3>
+    <table class="lab-table">
+      <thead><tr><th>Suspicion</th><th>Test</th></tr></thead>
+      <tbody>
+        <tr><td>CNS infection / SAH</td><td>LP (after CT head to exclude mass lesion/herniation risk)</td></tr>
+        <tr><td>Non-convulsive status epilepticus</td><td>EEG &mdash; urgent if refractory or unexplained delirium</td></tr>
+        <tr><td>Stroke / structural lesion</td><td>CT head non-contrast (acute); MRI brain with DWI (gold standard)</td></tr>
+        <tr><td>Cardiac ischemia</td><td>ECG, troponin</td></tr>
+        <tr><td>Adrenal insufficiency</td><td>AM cortisol, ACTH stimulation</td></tr>
+        <tr><td>Wernicke's encephalopathy</td><td>Thiamine level (but treat empirically; don't wait for result)</td></tr>
+        <tr><td>Heavy metal / toxin exposure</td><td>Heavy metal screen, ammonia (hepatic encephalopathy)</td></tr>
+        <tr><td>Autoimmune encephalitis</td><td>Anti-NMDA receptor, LGI1, CASPR2 antibodies; consider in young patients with subacute encephalopathy, seizures, psychiatric features</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber">
+      <h3>Asymptomatic Bacteriuria &ne; Cause of Delirium</h3>
+      <p style="margin:0;">One of the most common overdiagnosis errors in inpatient medicine. A positive UA with bacteria in an elderly patient with delirium does not mean UTI is causing the delirium. Asymptomatic bacteriuria is present in 25&ndash;50% of elderly women at baseline. Treating it with antibiotics does not improve delirium and drives resistance. Only treat if there are localizing urinary symptoms (dysuria, urgency, frequency) or clear evidence of urosepsis. Continue the delirium workup to find the real cause.</p>
+    </div>
+  </div>
+
+  <!-- NON-PHARM -->
+  <div class="section" id="nonpharm">
+    <h2>Non-Pharmacologic Management</h2>
+
+    <div class="callout blue">
+      <h3>Non-Pharmacologic Interventions Are First-Line &mdash; Not Optional</h3>
+      <p style="margin:0;">The Hospital Elder Life Program (HELP) RCT demonstrated that multicomponent non-pharmacologic strategies reduced delirium incidence by approximately one-third in at-risk hospitalized patients, and subsequent quality improvement studies support this benefit. No medication has been shown to reliably prevent delirium. Non-pharmacologic care is not "soft medicine" &mdash; it is the evidence-based standard.</p>
+    </div>
+
+    <table class="lab-table">
+      <thead><tr><th>Domain</th><th>Intervention</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Orientation</strong></td><td>Visible clock and calendar; frequent reorientation by staff and family; whiteboard with date, location, care team names; consistent caregivers</td><td>Reduce confusion about time and place; familiar faces reduce anxiety</td></tr>
+        <tr><td><strong>Sensory</strong></td><td>Ensure glasses and hearing aids are in use; adequate lighting; speak clearly and slowly; minimize competing noise</td><td>Sensory deprivation and misperception drive delirium; correcting it is modifiable</td></tr>
+        <tr><td><strong>Sleep</strong></td><td>Cluster nighttime care; minimize nighttime interruptions; darken room at night; earplugs and eye masks; avoid caffeine PM; melatonin 0.5&ndash;3 mg QHS (low-dose)</td><td>Sleep deprivation is both a precipitant and a perpetuator of delirium; circadian rhythm restoration reduces ICU delirium</td></tr>
+        <tr><td><strong>Mobility</strong></td><td>Ambulation or active range of motion daily; physical therapy early in admission; minimize physical restraints; minimize tethers (Foley, telemetry, IV lines) that limit movement</td><td>Immobility drives delirium; early mobility has among the strongest evidence of any non-pharmacologic intervention for ICU delirium and functional recovery</td></tr>
+        <tr><td><strong>Hydration &amp; Nutrition</strong></td><td>Ensure adequate oral fluid intake; early enteral nutrition in ICU; treat constipation; minimize fasting periods</td><td>Dehydration and malnutrition perpetuate delirium; constipation and urinary retention are often missed precipitants</td></tr>
+        <tr><td><strong>Cognitive stimulation</strong></td><td>Engage in conversation; provide activities, reading, music; involve family; show familiar photos or videos</td><td>Cognitive engagement preserves attentional networks; familiar stimuli are grounding</td></tr>
+        <tr><td><strong>Medication review</strong></td><td>Discontinue or minimize deliriogenic medications; avoid PRN benzodiazepines and anticholinergics in high-risk patients; use non-pharmacologic sleep aids first</td><td>Medications are the most modifiable precipitant; review every day</td></tr>
+        <tr><td><strong>Environment</strong></td><td>Single room if possible; minimize room changes; family presence and engagement; avoid physical restraints</td><td>Physical restraints increase agitation and worsen delirium; family presence is a powerful grounding intervention</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout red">
+      <h3>Physical Restraints Worsen Delirium</h3>
+      <p style="margin:0;">Physical restraints are associated with increased agitation, longer delirium duration, pressure injuries, aspiration, DVT, and death. They do not prevent patients from falling or removing lines in the long run &mdash; patients in restraints injure themselves trying to escape. Restraints should be a last resort for immediate safety only, with a documented clinical rationale, time limit, and reassessment every shift. One-to-one sitter, family presence, and de-escalation are preferable alternatives.</p>
+    </div>
+  </div>
+
+  <!-- PHARM -->
+  <div class="section" id="pharm">
+    <h2>Pharmacologic Management</h2>
+
+    <div class="callout amber">
+      <h3>No Medication Is FDA-Approved for Delirium</h3>
+      <p style="margin:0;">Despite widespread use, no medication has been shown in high-quality RCTs to reduce delirium duration, severity, or mortality. Pharmacologic treatment is reserved for patients whose delirium poses a safety risk to themselves or others (severe agitation, pulling at life-sustaining devices), or for symptom relief when non-pharmacologic measures are insufficient. Treat the underlying cause first.</p>
+    </div>
+
+    <table class="diff-table">
+      <thead><tr><th>Agent</th><th>Dose</th><th>Role</th><th>Key Considerations</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Haloperidol (Haldol)</strong></td>
+          <td>0.5&ndash;2 mg PO/IV/IM q4&ndash;8h PRN; start low in elderly</td>
+          <td>Most-used agent for acute agitation in delirium; controls hyperactive symptoms</td>
+          <td>Does not shorten delirium duration (HOPE-ICU, MIND-USA trials); prolongs QTc &mdash; baseline ECG, avoid if QTc &gt;500; EPS risk (acute dystonia, akathisia); avoid in Lewy body dementia (severe EPS, neuroleptic malignant syndrome); IV route prolongs QTc more than PO/IM</td>
+        </tr>
+        <tr>
+          <td><strong>Quetiapine (Seroquel)</strong></td>
+          <td>12.5&ndash;50 mg PO BID&ndash;TID PRN; PO only</td>
+          <td>Atypical antipsychotic; sedating; useful in hyperactive delirium with sleep disruption</td>
+          <td>Less EPS than haloperidol; still prolongs QTc; metabolic side effects with prolonged use; no IV formulation; used in Parkinson's (lower EPS risk among atypicals); <strong>in Lewy body dementia, clozapine is actually the safest antipsychotic if one is required &mdash; quetiapine has lower EPS risk than typical agents but is not risk-free in LBD</strong>; MIND-USA showed no benefit over placebo for delirium outcomes in ICU</td>
+        </tr>
+        <tr>
+          <td><strong>Olanzapine (Zyprexa)</strong></td>
+          <td>2.5&ndash;5 mg PO/IM QD&ndash;BID</td>
+          <td>Atypical; sedating; used in agitated delirium</td>
+          <td>IM available; less QTc prolongation than haloperidol; metabolic effects; avoid in elderly with aspiration risk (sedating); avoid in Lewy body</td>
+        </tr>
+        <tr>
+          <td><strong>Melatonin</strong></td>
+          <td>0.5&ndash;3 mg PO QHS</td>
+          <td>Sleep-wake cycle regulation; delirium prevention</td>
+          <td>Very safe; modest supportive evidence for prevention in surgical and medical patients across several small trials; reasonable low-risk adjunct for sleep promotion; not for acute agitation management</td>
+        </tr>
+        <tr>
+          <td><strong>Dexmedetomidine</strong></td>
+          <td>0.2&ndash;1.5 mcg/kg/hr IV infusion</td>
+          <td>ICU sedation associated with less delirium than benzodiazepines; useful in hypoactive delirium in ventilated patients</td>
+          <td>MENDS and SEDCOM trials: dexmedetomidine &gt; lorazepam/midazolam for delirium-free days in ICU; bradycardia and hypotension; requires ICU setting; not for acute agitation outside ICU</td>
+        </tr>
+        <tr>
+          <td><strong>Benzodiazepines</strong></td>
+          <td>Variable</td>
+          <td>Avoid in most delirium &mdash; worsen and prolong it. Specific indications: alcohol/sedative withdrawal delirium (first-line); seizure; extreme agitation threatening airway; terminal agitation at end of life (comfort-focused care)</td>
+          <td>In non-withdrawal delirium: benzodiazepines increase delirium severity and duration, increase aspiration risk, and may cause paradoxical agitation in elderly. Do not use PRN lorazepam for "agitation" in a delirious patient unless withdrawal is confirmed or seizure is occurring.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout red">
+      <h3>Avoid Benzodiazepines in Non-Withdrawal Delirium</h3>
+      <p style="margin:0;">Lorazepam (Ativan) is among the most commonly prescribed and most harmful pharmacologic interventions for delirium outside of withdrawal. It is consistently associated with worsening delirium in non-withdrawal settings. The delirious elderly patient who receives "Ativan 0.5 mg IV for agitation" at 2 AM is often more confused and more dangerous by 4 AM. Outside of alcohol or sedative withdrawal delirium, seizure, and terminal agitation in the actively dying patient, benzodiazepines should be avoided as first-line treatment.</p>
+    </div>
+  </div>
+
+  <!-- ICU -->
+  <div class="section" id="icu">
+    <h2>ICU Delirium: PADIS Guidelines &amp; ABCDEF Bundle</h2>
+
+    <h3>PADIS Guidelines (2018)</h3>
+    <p>The Society of Critical Care Medicine's Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption (PADIS) guidelines represent the comprehensive evidence-based framework for managing delirium in the ICU. Key recommendations:</p>
+    <ul>
+      <li>Screen for delirium every shift using CAM-ICU or ICDSC</li>
+      <li>Target light sedation (RASS 0 to &minus;1) rather than deep sedation</li>
+      <li>Use dexmedetomidine over benzodiazepines when sedation is required in mechanically ventilated patients</li>
+      <li>Do not use haloperidol or atypical antipsychotics routinely to prevent or treat ICU delirium (MIND-USA)</li>
+      <li>Mobilize patients early and progressively</li>
+      <li>Promote sleep by clustering care and minimizing unnecessary nighttime interventions</li>
+    </ul>
+
+    <div class="criteria-box">
+      <div class="criteria-head">ABCDEF Bundle: ICU Liberation</div>
+      <div class="criteria-body">
+        <ul>
+          <li><strong>A</strong> &mdash; Assess, prevent, and manage <strong>pain</strong> (use NRS or CPOT; treat pain first before sedation)</li>
+          <li><strong>B</strong> &mdash; Both <strong>spontaneous awakening trials (SAT)</strong> and <strong>spontaneous breathing trials (SBT)</strong> daily</li>
+          <li><strong>C</strong> &mdash; <strong>Choice of sedation and analgesia</strong> (analgesia-first; dexmedetomidine or propofol over benzos; target lightest effective sedation)</li>
+          <li><strong>D</strong> &mdash; <strong>Delirium</strong> assess, prevent, and manage (CAM-ICU every shift; multicomponent non-pharmacologic bundle)</li>
+          <li><strong>E</strong> &mdash; Early <strong>mobility and exercise</strong> (physical and occupational therapy from day 1 of ICU)</li>
+          <li><strong>F</strong> &mdash; <strong>Family engagement and empowerment</strong> (open visitation; family at bedside; family-centered rounds)</li>
+        </ul>
+        <p style="font-size:.83rem; margin:0;">Full ABCDEF bundle implementation is associated with a 68% lower odds of delirium, shorter mechanical ventilation, lower 7-day mortality, and higher likelihood of discharge home vs. institution (Pun et al., Crit Care Med 2019).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECIAL POPULATIONS -->
+  <div class="section" id="special">
+    <h2>Special Populations</h2>
+
+    <table class="diff-table">
+      <thead><tr><th>Population</th><th>Key Considerations</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Elderly (&gt;65)</strong></td>
+          <td>Highest risk group; start all medications at lowest possible dose; avoid anticholinergics, benzodiazepines, meperidine, H2 blockers (Beers Criteria); delirium may be the only presenting sign of serious illness (MI, PE, sepsis); family history is critical for establishing baseline</td>
+        </tr>
+        <tr>
+          <td><strong>Dementia</strong></td>
+          <td>Hardest to distinguish from delirium; baseline cognitive testing from family/caregiver is essential; CAM should be applied against the patient's own cognitive baseline; hypoactive delirium superimposed on dementia is almost universally missed; any acute behavioral change in a dementia patient is delirium until proven otherwise</td>
+        </tr>
+        <tr>
+          <td><strong>Lewy Body Dementia (LBD)</strong></td>
+          <td>Profound sensitivity to antipsychotics &mdash; even low-dose haloperidol can cause severe, irreversible parkinsonism or neuroleptic malignant syndrome. If an antipsychotic is truly required, <strong>clozapine</strong> is the safest option in LBD; quetiapine is sometimes used but carries risk. Ask about fluctuating cognition, visual hallucinations, and parkinsonism before prescribing any antipsychotic.</td>
+        </tr>
+        <tr>
+          <td><strong>Parkinson's Disease</strong></td>
+          <td>High delirium risk; dopamine agonists themselves can cause psychosis and delirium; avoid D2 blockers (typical antipsychotics, metoclopramide, prochlorperazine); quetiapine or clozapine are safest if antipsychotic needed; ensure PD medications are not held (missed doses cause acute deterioration)</td>
+        </tr>
+        <tr>
+          <td><strong>Post-operative</strong></td>
+          <td>Pain is a major unrecognized precipitant; adequate analgesia is delirium prevention; regional anesthesia may reduce delirium compared to general anesthesia in hip surgery; avoid prophylactic melatonin has modest evidence; avoid routine prophylactic antipsychotics (no evidence)</td>
+        </tr>
+        <tr>
+          <td><strong>End-of-life / Palliative</strong></td>
+          <td>Terminal delirium (last hours to days of life) is common and often irreversible. Goals of care discussion with family is essential. Low-dose haloperidol or chlorpromazine for symptom relief; benzodiazepines (midazolam) may be appropriate for refractory terminal agitation in the dying patient when comfort is the goal.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PEARLS -->
+  <div class="section" id="pearls">
+    <h2>Clinical Pearls</h2>
+
+    <div class="pearl"><span><strong>Hypoactive delirium kills quietly.</strong> The agitated patient gets attention; the quiet, withdrawn patient gets missed. More than half of all delirium is hypoactive or mixed. Any patient who seems "more tired than usual" or "just not themselves" deserves a CAM assessment. A patient who stares at the ceiling and does not engage is not resting &mdash; they may be delirious.</span></div>
+
+    <div class="pearl"><span><strong>Diphenhydramine (Benadryl) is contraindicated in hospitalized elderly patients.</strong> It is the most anticholinergic over-the-counter medication available. Ordered routinely for sleep or pruritus, it is a leading cause of iatrogenic delirium. Use melatonin 0.5&ndash;3 mg for sleep. Use hydroxyzine cautiously (also anticholinergic but less so than diphenhydramine). Document "no diphenhydramine" as a clinical preference in high-risk patients.</span></div>
+
+    <div class="pearl"><span><strong>The midnight agitation call: don't reflex to lorazepam.</strong> When called about an agitated patient at 2 AM, the instinct is to order Ativan. In a non-withdrawing patient, lorazepam will make the delirium worse by morning. First: go see the patient. Check for urinary retention (straight cath if needed), pain, hypoxia, hypoglycemia, and a full medication list. Then try reorientation and de-escalation. If pharmacotherapy is truly needed, haloperidol 0.5&ndash;1 mg is preferable to lorazepam in the non-withdrawing patient.</span></div>
+
+    <div class="pearl"><span><strong>A positive urine culture in a delirious elderly patient is not the diagnosis.</strong> Asymptomatic bacteriuria is present in up to 50% of elderly women. Attributing delirium to "UTI" without localizing urinary symptoms leads to unnecessary antibiotics, missed real diagnoses, and C. diff. Complete the full workup regardless of the UA result.</span></div>
+
+    <div class="pearl"><span><strong>Screen every patient, every shift, with a validated tool.</strong> Clinical impression alone misses &gt;70% of hypoactive delirium. A brief CAM takes 2&ndash;3 minutes. Institutionalizing systematic delirium screening (like systematic pain scoring) is the most impactful systems intervention for reducing delirium burden at the unit level. Delirium prevalence data is also a quality metric.</span></div>
+
+    <div class="pearl"><span><strong>Family is medicine.</strong> A familiar voice, a familiar face, and a gentle hand are the most powerful delirium interventions available. Families should be encouraged to stay, talk to the patient, bring familiar objects, and participate actively in reorientation. Open visitation policies in the ICU are associated with reduced delirium rates. Never view family presence as an inconvenience &mdash; it is a clinical intervention.</span></div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="section" id="references">
+    <h2>References</h2>
+    <ol class="ref-list">
+      <li>Devlin JW, Skrobik Y, Gelinas C, et al. "Clinical Practice Guidelines for the Prevention and Management of Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption in Adult Patients in the ICU (PADIS)." <em>Crit Care Med</em>. 2018;46(9):e825&ndash;e873.</li>
+      <li>Inouye SK, van Dyck CH, Alessi CA, Balkin S, Siegal AP, Horwitz RI. "Clarifying confusion: the Confusion Assessment Method." <em>Ann Intern Med</em>. 1990;113(12):941&ndash;948.</li>
+      <li>Ely EW, Margolin R, Francis J, et al. "Evaluation of delirium in critically ill patients: validation of the Confusion Assessment Method for the Intensive Care Unit (CAM-ICU)." <em>Crit Care Med</em>. 2001;29(7):1370&ndash;1379.</li>
+      <li>Inouye SK, Bogardus ST Jr, Charpentier PA, et al. "A multicomponent intervention to prevent delirium in hospitalized older patients." <em>N Engl J Med</em>. 1999;340(9):669&ndash;676. [HELP program]</li>
+      <li>Pun BT, Balas MC, Barnes-Daly MA, et al. "Caring for Critically Ill Patients with the ABCDEF Bundle: Results of the ICU Liberation Collaborative in Over 15,000 Adults." <em>Crit Care Med</em>. 2019;47(1):3&ndash;14.</li>
+      <li>Girard TD, Exline MC, Carson SS, et al. (MIND-USA). "Haloperidol and Ziprasidone for Treatment of Delirium in Critical Illness." <em>N Engl J Med</em>. 2018;379(26):2506&ndash;2516.</li>
+      <li>Riker RR, Shehabi Y, Bokesch PM, et al. (SEDCOM). "Dexmedetomidine vs Midazolam for Sedation of Critically Ill Patients." <em>JAMA</em>. 2009;301(5):489&ndash;499.</li>
+      <li>American Geriatrics Society. "American Geriatrics Society 2023 updated AGS Beers Criteria for potentially inappropriate medication use in older adults." <em>J Am Geriatr Soc</em>. 2023;71(7):2052&ndash;2081.</li>
+      <li>Saczynski JS, Marcantonio ER, Quach L, et al. "Cognitive trajectories after postoperative delirium." <em>N Engl J Med</em>. 2012;367(1):30&ndash;39.</li>
+      <li>Wilson JE, Mart MF, Cunningham C, et al. "Delirium." <em>Nat Rev Dis Primers</em>. 2020;6(1):90.</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="../index.html">&larr; Back to Case Repository</a> &middot; Morning Report &middot; For educational use only
+</footer>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 27 — Diabetic Ketoacidosis | Morning Report</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="../index.html">Morning Report</a></div>
+  <a href="../index.html">&larr; All Cases</a>
+</header>
+
+<main class="page-wrap">
+
+  <div class="case-hero">
+    <div class="meta">Topic 27 &middot; Endocrinology / Critical Care / Emergency Medicine</div>
+    <h1>Diabetic Ketoacidosis</h1>
+    <p style="font-family:var(--font-ui); font-size:.92rem; color:var(--muted); margin-bottom:0;">
+      DKA is an acute, life-threatening metabolic emergency defined by the triad of hyperglycemia,
+      high anion gap metabolic acidosis, and ketonemia. It occurs predominantly in Type 1 DM but
+      is increasingly seen in Type 2. Mortality is Mortality is &lt;1% with appropriate management but riseslt;1% in uncomplicated adult DKA with timely management but rises
+      sharply with delayed recognition, cerebral edema (predominantly a pediatric complication), or missed precipitant. The protocol is
+      precise: fluids first, insulin after potassium is safe, and never stop insulin before starting
+      dextrose.
+    </p>
+    <div class="tags">
+      <span class="tag teal">Endocrinology</span>
+      <span class="tag red">Critical Care</span>
+      <span class="tag blue">Emergency Medicine</span>
+      <span class="tag green">ADA 2023 &middot; Endocrine Society</span>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#definition">Definition &amp; Diagnostic Criteria</a></li>
+      <li><a href="#pathophysiology">Pathophysiology</a></li>
+      <li><a href="#precipitants">Precipitants: The 5 I's</a></li>
+      <li><a href="#presentation">Clinical Presentation</a></li>
+      <li><a href="#labs">Laboratory Evaluation</a></li>
+      <li><a href="#dka-vs-hhs">DKA vs. HHS</a></li>
+      <li><a href="#fluids">Fluid Resuscitation</a></li>
+      <li><a href="#potassium">Potassium Replacement</a></li>
+      <li><a href="#insulin">Insulin Protocol</a></li>
+      <li><a href="#bicarb">Bicarbonate: When &amp; When Not</a></li>
+      <li><a href="#phosphate">Phosphate</a></li>
+      <li><a href="#resolution">Resolution Criteria &amp; Transition to SQ Insulin</a></li>
+      <li><a href="#cerebral">Cerebral Edema</a></li>
+      <li><a href="#euglycemic">Euglycemic DKA</a></li>
+      <li><a href="#pearls">Clinical Pearls</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- DEFINITION -->
+  <div class="section" id="definition">
+    <h2>Definition &amp; Diagnostic Criteria</h2>
+
+    <div class="criteria-box">
+      <div class="criteria-head">ADA Diagnostic Criteria for DKA</div>
+      <div class="criteria-body">
+        <table style="width:100%; font-size:.85rem;">
+          <thead><tr><th>Parameter</th><th>Mild DKA</th><th>Moderate DKA</th><th>Severe DKA</th></tr></thead>
+          <tbody>
+            <tr><td>Plasma glucose (mg/dL)</td><td>&gt;250</td><td>&gt;250</td><td>&gt;250</td></tr>
+            <tr><td>Arterial pH</td><td>7.25&ndash;7.30</td><td>7.00&ndash;7.24</td><td class="abn">&lt;7.00</td></tr>
+            <tr><td>Serum bicarbonate (mEq/L)</td><td>15&ndash;18</td><td>10&ndash;15</td><td class="abn">&lt;10</td></tr>
+            <tr><td>Urine/serum ketones</td><td>Positive</td><td>Positive</td><td>Positive</td></tr>
+            <tr><td>Anion gap</td><td>&gt;10</td><td>&gt;12</td><td>&gt;12</td></tr>
+            <tr><td>Mental status</td><td>Alert</td><td>Alert / drowsy</td><td class="abn">Stupor / coma</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <h3>The Triad to Memorize</h3>
+      <p style="margin:0;"><strong>Hyperglycemia + High anion gap metabolic acidosis + Ketonemia/ketonuria.</strong> Note: glucose can be &lt;200 mg/dL in euglycemic DKA (SGLT2 inhibitor use, starvation, pregnancy, alcohol). Never exclude DKA solely on the basis of a normal glucose in the right clinical context.</p>
+    </div>
+  </div>
+
+  <!-- PATHOPHYSIOLOGY -->
+  <div class="section" id="pathophysiology">
+    <h2>Pathophysiology</h2>
+
+    <p>DKA results from absolute or relative insulin deficiency combined with excess counter-regulatory hormones (glucagon, cortisol, catecholamines, growth hormone). This creates a perfect metabolic storm:</p>
+
+    <table class="lab-table">
+      <thead><tr><th>Process</th><th>Mechanism</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hyperglycemia</strong></td><td>Decreased glucose uptake (no insulin); increased hepatic gluconeogenesis and glycogenolysis (glucagon excess)</td><td>Osmotic diuresis &rarr; polyuria, polydipsia, dehydration, electrolyte wasting</td></tr>
+        <tr><td><strong>Ketogenesis</strong></td><td>Without insulin, adipose tissue undergoes uncontrolled lipolysis &rarr; free fatty acids flood the liver &rarr; beta-oxidation &rarr; acetyl-CoA accumulation &rarr; ketone body synthesis (&beta;-hydroxybutyrate, acetoacetate, acetone)</td><td>High anion gap metabolic acidosis; fruity breath (acetone)</td></tr>
+        <tr><td><strong>Counter-regulatory excess</strong></td><td>Glucagon activates hepatic ketogenesis and gluconeogenesis; cortisol and catecholamines amplify lipolysis and insulin resistance</td><td>Amplifies both hyperglycemia and ketosis; explains why DKA persists even when glucose starts falling with treatment</td></tr>
+        <tr><td><strong>Osmotic diuresis</strong></td><td>Glycosuria draws water and electrolytes (Na, K, Cl, Mg, PO4) into urine</td><td>Total body water deficit 3&ndash;6 L; total body K deficit 3&ndash;5 mEq/kg despite potentially elevated serum K</td></tr>
+        <tr><td><strong>Transcellular K shift</strong></td><td>Acidosis drives K out of cells (H+ in, K+ out); insulin deficiency prevents cellular K uptake</td><td>Serum K may be normal or high despite massive total body K depletion; serum K will fall precipitously with insulin and fluid therapy</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout red">
+      <h3>Why Potassium Is the Most Dangerous Electrolyte in DKA</h3>
+      <p style="margin:0;">Total body potassium is depleted in all patients with DKA from osmotic diuresis. However, serum K may be normal or even elevated due to transcellular shift from acidosis. When insulin is given, K shifts back into cells rapidly. If serum K is already low before insulin starts, insulin will drive it into fatal hypokalemia (&lt;2.5 mEq/L) causing cardiac arrhythmia. This is why the protocol requires: check K first, replace to &ge;3.5 mEq/L before starting insulin, and replace aggressively throughout.</p>
+    </div>
+  </div>
+
+  <!-- PRECIPITANTS -->
+  <div class="section" id="precipitants">
+    <h2>Precipitants: The 5 I's</h2>
+
+    <table class="lab-table">
+      <thead><tr><th>Precipitant</th><th>Details</th><th>Clinical Clue</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Infection</strong></td><td>Most common precipitant (~40%); any infection increases counter-regulatory hormones; UTI, pneumonia, cellulitis most common; sepsis can occur concurrently</td><td>Fever, leukocytosis, localizing symptoms; UA, CXR, blood cultures in every DKA</td></tr>
+        <tr><td><strong>Insulin non-compliance / Inadequate insulin</strong></td><td>Second most common (~25%); missed doses, pump failure, insulin degradation, financial barriers, intentional omission (eating disorders, psychological)</td><td>History of prior DKA; young T1DM; no identifiable illness; repeated admissions</td></tr>
+        <tr><td><strong>Initial presentation of diabetes</strong></td><td>New-onset T1DM presenting in DKA (~10&ndash;20%); may also occur in T2DM</td><td>No prior diabetes history; high A1c; weight loss; polyuria/polydipsia preceding admission by weeks</td></tr>
+        <tr><td><strong>Ischemia / Infarction</strong></td><td>MI, stroke, PE, mesenteric ischemia; severe physiologic stress drives counter-regulatory response even with adequate insulin</td><td>EKG, troponin, CT in all patients with DKA and cardiovascular risk; silent MI is common in DM</td></tr>
+        <tr><td><strong>Intoxication / Drugs</strong></td><td>Cocaine (catecholamine surge); alcohol (inhibits gluconeogenesis but triggers ketosis &rarr; alcoholic ketoacidosis, often with lower glucose); SGLT2 inhibitors (euglycemic DKA); corticosteroids; atypical antipsychotics; thiazides</td><td>Toxicology screen; medication review; SGLT2 inhibitor use is critical to identify</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber">
+      <h3>Always Find the Precipitant</h3>
+      <p style="margin:0;">Treating the DKA without identifying and treating the precipitant leads to recurrence. Order blood cultures, urinalysis, chest X-ray, EKG, and troponin in every DKA patient. In patients with abdominal pain, remember that DKA itself causes abdominal pain (from gastric dysmotility and acidosis) &mdash; but if abdominal pain is severe or does not improve with DKA treatment, pursue further evaluation for a surgical abdomen.</p>
+    </div>
+  </div>
+
+  <!-- PRESENTATION -->
+  <div class="section" id="presentation">
+    <h2>Clinical Presentation</h2>
+
+    <div class="two-col">
+      <div class="criteria-box">
+        <div class="criteria-head">Symptoms</div>
+        <div class="criteria-body">
+          <ul>
+            <li>Polyuria, polydipsia (osmotic diuresis)</li>
+            <li>Nausea, vomiting, abdominal pain</li>
+            <li>Generalized weakness, fatigue</li>
+            <li>Weight loss (catabolism)</li>
+            <li>Altered mental status (mild to coma in severe DKA)</li>
+            <li>Symptoms of precipitant (cough, dysuria, chest pain)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="criteria-box">
+        <div class="criteria-head">Signs</div>
+        <div class="criteria-body">
+          <ul>
+            <li><strong>Kussmaul respirations</strong> &mdash; deep, rapid, sighing breaths; respiratory compensation for metabolic acidosis</li>
+            <li><strong>Fruity breath</strong> &mdash; acetone (not all clinicians can detect this)</li>
+            <li>Tachycardia, hypotension (volume depletion)</li>
+            <li>Dry mucous membranes, poor skin turgor</li>
+            <li>Fever (if infection) or hypothermia (severe acidosis)</li>
+            <li>Diffuse abdominal tenderness (DKA-related vs. surgical)</li>
+            <li>Decreased reflexes (hypokalemia)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LABS -->
+  <div class="section" id="labs">
+    <h2>Laboratory Evaluation</h2>
+
+    <h3>Initial Workup</h3>
+    <table class="lab-table">
+      <thead><tr><th>Test</th><th>Finding in DKA</th><th>Clinical Significance</th></tr></thead>
+      <tbody>
+        <tr><td>Glucose</td><td class="abn">Usually &gt;250 mg/dL; may be lower in euglycemic DKA</td><td>Drives osmotic diuresis; monitor q1h during treatment</td></tr>
+        <tr><td>Serum ketones (&beta;-hydroxybutyrate)</td><td class="abn">&gt;3 mmol/L (normal &lt;0.6)</td><td>Direct measure of ketosis; preferred over urine ketones; POC meters available</td></tr>
+        <tr><td>Urine ketones</td><td class="abn">Moderate-large</td><td>Detects acetoacetate (not &beta;-hydroxybutyrate); may be misleadingly negative early in DKA when &beta;-OHB predominates</td></tr>
+        <tr><td>Arterial/venous pH</td><td class="abn">&lt;7.30 (mild) to &lt;7.00 (severe)</td><td>Venous pH is 0.02&ndash;0.03 units lower than arterial; venous acceptable for monitoring</td></tr>
+        <tr><td>Bicarbonate</td><td class="abn">&lt;18 mEq/L</td><td>Reflects degree of acidosis; tracks response to treatment</td></tr>
+        <tr><td>Anion gap</td><td class="abn">&gt;10&ndash;12 mEq/L</td><td>AG = Na &minus; (Cl + HCO3); unmeasured anions = ketoacids; must close with treatment</td></tr>
+        <tr><td>Potassium</td><td>Variable: low, normal, or high</td><td>Always check before insulin; high K with acidosis masks total body depletion; replace to &ge;3.5 before insulin</td></tr>
+        <tr><td>Sodium</td><td>Low, normal, or high</td><td>Pseudohyponatremia from hyperglycemia; corrected Na = measured Na + 1.6 &times; [(glucose &minus; 100)/100]; use corrected Na for fluid calculations</td></tr>
+        <tr><td>BUN/Cr</td><td class="abn">Elevated (prerenal AKI from dehydration)</td><td>Renal function guides fluid rate; watch for AKI with treatment</td></tr>
+        <tr><td>Phosphate</td><td>Usually normal or high on presentation; falls with treatment</td><td>Replace if symptomatic or &lt;1.0 mg/dL; routine replacement not recommended</td></tr>
+        <tr><td>Osmolality</td><td class="abn">Elevated</td><td>Calculated: 2(Na) + glucose/18 + BUN/2.8; effective osmolality excludes BUN</td></tr>
+        <tr><td>HbA1c</td><td>Elevated (reflects preceding glycemic control)</td><td>Distinguishes new-onset from chronic poor control; guides outpatient management</td></tr>
+        <tr><td>CBC</td><td class="abn">Leukocytosis (stress response)</td><td>WBC up to 15&ndash;20k from DKA alone; fever or WBC &gt;25k suggests infection</td></tr>
+        <tr><td>Lipase</td><td>May be elevated</td><td>DKA causes elevated lipase without true pancreatitis; only pursue CT if severe abdominal pain persists after DKA resolves</td></tr>
+        <tr><td>Troponin / EKG</td><td>Variable</td><td>Silent MI is common precipitant in T2DM; obtain in all adults with DKA</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Monitoring During Treatment</h3>
+    <table class="lab-table">
+      <thead><tr><th>Parameter</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Point-of-care glucose</td><td>Every 1 hour</td></tr>
+        <tr><td>Basic metabolic panel (electrolytes, BUN, Cr)</td><td>Every 2&ndash;4 hours</td></tr>
+        <tr><td>Venous blood gas (pH, HCO3)</td><td>Every 2&ndash;4 hours until resolved</td></tr>
+        <tr><td>Serum ketones (&beta;-OHB)</td><td>Every 2&ndash;4 hours if available</td></tr>
+        <tr><td>Anion gap calculation</td><td>With each BMP; closure signals resolution</td></tr>
+        <tr><td>Urine output</td><td>Hourly via Foley in moderate-severe DKA</td></tr>
+        <tr><td>Neurological status</td><td>Every 1&ndash;2 hours (cerebral edema risk)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DKA VS HHS -->
+  <div class="section" id="dka-vs-hhs">
+    <h2>DKA vs. HHS</h2>
+
+    <table class="diff-table">
+      <thead><tr><th>Feature</th><th>DKA</th><th>HHS</th><th>Mixed (as in Case 21)</th></tr></thead>
+      <tbody>
+        <tr><td>Typical diabetes type</td><td>T1DM (also T2DM)</td><td>T2DM</td><td>T2DM with severe decompensation</td></tr>
+        <tr><td>Glucose</td><td>&gt;250 mg/dL</td><td>&gt;600 mg/dL</td><td class="abn">Often &gt;600 mg/dL</td></tr>
+        <tr><td>pH</td><td class="abn">&lt;7.30</td><td>&gt;7.30</td><td class="abn">&lt;7.30</td></tr>
+        <tr><td>Bicarbonate</td><td class="abn">&lt;18 mEq/L</td><td>&gt;18 mEq/L</td><td class="abn">&lt;18 mEq/L</td></tr>
+        <tr><td>Ketones</td><td class="abn">Moderate&ndash;large</td><td>Absent or trace</td><td class="abn">Present</td></tr>
+        <tr><td>Serum osmolality</td><td>Variable (&lt;320 typically)</td><td class="abn">&gt;320 mOsm/kg</td><td class="abn">&gt;320 mOsm/kg</td></tr>
+        <tr><td>Mental status</td><td>Alert to stupor</td><td class="abn">Stupor to coma (correlates with osmolality)</td><td class="abn">Encephalopathy</td></tr>
+        <tr><td>Fluid deficit</td><td>3&ndash;6 L</td><td class="abn">8&ndash;12 L</td><td class="abn">Large</td></tr>
+        <tr><td>Insulin deficiency</td><td>Absolute</td><td>Relative (enough to suppress ketosis)</td><td>Variable</td></tr>
+        <tr><td>Mortality</td><td>&lt;5%</td><td class="abn">10&ndash;20%</td><td>High</td></tr>
+        <tr><td>Primary treatment emphasis</td><td>Insulin + fluids + K replacement</td><td>Aggressive fluid resuscitation; cautious insulin</td><td>Both protocols applied simultaneously</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FLUIDS -->
+  <div class="section" id="fluids">
+    <h2>Fluid Resuscitation</h2>
+
+    <div class="callout blue">
+      <h3>Fluids First &mdash; Before Insulin</h3>
+      <p style="margin:0;">Volume resuscitation is the first and most urgent intervention in DKA. Fluids alone lower glucose (dilution, improved renal clearance), improve perfusion, and correct acidosis. Starting insulin before adequate volume resuscitation worsens hypokalemia and may impair cerebral perfusion. In severe DKA, initial fluid resuscitation takes priority even before the first insulin dose.</p>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">ADA Fluid Protocol</div>
+      <div class="criteria-body">
+        <ol>
+          <li><strong>Initial bolus:</strong> 1 L of 0.9% NS (normal saline) over the first hour. In hemodynamic compromise, give more rapidly.</li>
+          <li><strong>Subsequent fluids</strong> based on corrected sodium and hemodynamic status:
+            <ul>
+              <li>Corrected Na <strong>low or normal</strong>: 0.9% NS at 250&ndash;500 mL/hr</li>
+              <li>Corrected Na <strong>high</strong>: 0.45% NS (half-normal saline) at 250&ndash;500 mL/hr</li>
+            </ul>
+          </li>
+          <li><strong>When glucose reaches 200 mg/dL:</strong> Switch to D5W + 0.45% NS (or D5 + 0.9% NS) at 150&ndash;250 mL/hr to prevent hypoglycemia while continuing insulin to clear ketones</li>
+          <li><strong>Total fluid deficit</strong> in DKA is typically 3&ndash;6 L; replace over 24&ndash;48 hours; avoid over-resuscitation causing cerebral edema or pulmonary edema</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <h3>NS vs. Balanced Crystalloids in DKA: TOPS &amp; FLUID Trials</h3>
+      <p style="margin:0;">Emerging evidence (TOPS trial, 2021) suggests balanced crystalloids (PlasmaLyte, LR) may resolve DKA faster than NS, with less hyperchloremic acidosis and fewer electrolyte disturbances. The ADA currently recommends NS as the standard but acknowledges balanced crystalloids are a reasonable alternative. Large volumes of NS cause hyperchloremic non-anion gap metabolic acidosis, which can complicate interpretation of resolution criteria. Consider switching to balanced crystalloid after initial resuscitation if hyperchloremia is a concern.</p>
+    </div>
+  </div>
+
+  <!-- POTASSIUM -->
+  <div class="section" id="potassium">
+    <h2>Potassium Replacement</h2>
+
+    <div class="callout red">
+      <h3>The Most Critical Safety Step in DKA Management</h3>
+      <p style="margin:0;">Check serum potassium before starting insulin. If K &lt;3.5 mEq/L, hold insulin and replace potassium first. Giving insulin with hypokalemia can cause fatal cardiac arrhythmia. This rule has no exceptions.</p>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">Potassium Replacement Protocol</div>
+      <div class="criteria-body">
+        <table style="width:100%; font-size:.85rem;">
+          <thead><tr><th>Serum K (mEq/L)</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td class="abn">&lt;3.5</td><td class="abn"><strong>Hold insulin.</strong> Replace K at 40 mEq/hr IV until K &ge;3.5. Recheck K q1&ndash;2h. Start insulin only when K &ge;3.5.</td></tr>
+            <tr><td>3.5&ndash;5.0</td><td>Start insulin. Add 20&ndash;40 mEq K per liter of IV fluid. Recheck K q2&ndash;4h.</td></tr>
+            <tr><td class="abn">&gt;5.0</td><td>Start insulin. Hold IV potassium supplementation. Recheck K q2h; begin replacing when &lt;5.0.</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.83rem; margin-top:.5rem; margin-bottom:0;">Use KCl (potassium chloride) as the primary replacement salt. Potassium phosphate can be used for a portion of replacement if phosphate is also low (replaces both simultaneously). Maximum safe IV KCl rate via peripheral IV: 10&ndash;20 mEq/hr. Rates &gt;20 mEq/hr require central access and continuous cardiac monitoring.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSULIN -->
+  <div class="section" id="insulin">
+    <h2>Insulin Protocol</h2>
+
+    <h3>Standard IV Insulin Infusion Protocol</h3>
+    <div class="criteria-box">
+      <div class="criteria-head">ADA Insulin Infusion Protocol</div>
+      <div class="criteria-body">
+        <ol>
+          <li><strong>Confirm K &ge;3.5 mEq/L</strong> before starting insulin (see above).</li>
+          <li><strong>Optional bolus:</strong> Regular insulin 0.1 units/kg IV push. Many institutions omit the bolus (no demonstrated benefit and increases hypoglycemia/hypokalemia risk); not recommended in children.</li>
+          <li><strong>Infusion:</strong> Regular insulin 0.1 units/kg/hr IV continuous infusion. Use ideal body weight in obese patients.</li>
+          <li><strong>Target glucose fall:</strong> 50&ndash;75 mg/dL/hr. If glucose does not fall by &ge;50 mg/dL in the first hour, double the infusion rate.</li>
+          <li><strong>When glucose reaches 200 mg/dL:</strong>
+            <ul>
+              <li>Reduce insulin infusion to 0.02&ndash;0.05 units/kg/hr</li>
+              <li>Add dextrose to IV fluids (D5W + 0.45% NS) to maintain glucose 150&ndash;200 mg/dL</li>
+              <li><strong>Do not stop insulin until DKA is resolved</strong> &mdash; ketosis requires ongoing insulin even after glucose normalizes</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="callout red">
+      <h3>Never Stop Insulin Just Because Glucose Is Normal</h3>
+      <p style="margin:0;">This is the most common DKA management error. Insulin is required to suppress ketogenesis &mdash; not just to lower glucose. When glucose reaches 200 mg/dL, the correct action is to add dextrose to the IV fluids AND reduce (not stop) the insulin infusion. Stopping insulin prematurely allows ketone production to resume, prolonging DKA. The insulin infusion should continue until the anion gap is closed and pH is &ge;7.30, regardless of the glucose level.</p>
+    </div>
+
+    <h3>Subcutaneous Insulin as an Alternative (Mild-Moderate DKA)</h3>
+    <p>For mild-to-moderate DKA (pH &ge;7.00, HCO3 &ge;10, alert patient tolerating fluids orally), rapid-acting subcutaneous insulin (lispro or aspart) given every 1&ndash;2 hours has been shown comparable to IV insulin infusion in selected single-center studies and may allow management in a step-down unit. Evidence is based on small trials (Umpierrez 2004) and should be applied with clinical judgment. Not appropriate for severe DKA, altered mental status, hemodynamic instability, or inability to tolerate oral fluids.</p>
+  </div>
+
+  <!-- BICARB -->
+  <div class="section" id="bicarb">
+    <h2>Bicarbonate: When &amp; When Not</h2>
+
+    <div class="callout amber">
+      <h3>Bicarbonate Is Not Routinely Recommended in DKA</h3>
+      <p style="margin:0;">The ADA does not recommend routine bicarbonate administration in DKA. Insulin and fluids correct the acidosis by stopping ketone production and allowing bicarbonate to regenerate. Exogenous bicarbonate may paradoxically worsen intracellular and CNS acidosis (CO2 crosses BBB faster than HCO3), increase hypokalemia, slow ketone clearance, and cause metabolic alkalosis overshoot.</p>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">Bicarbonate: The Only Accepted Indication</div>
+      <div class="criteria-body">
+        <ul>
+          <li>Severe life-threatening acidemia: pH &lt;6.9</li>
+          <li>Hyperkalemia with EKG changes (bicarbonate shifts K into cells as temporizing measure)</li>
+          <li>Hemodynamic instability attributed to severe acidosis (catecholamine resistance)</li>
+        </ul>
+        <p><strong>Dose if used:</strong> Sodium bicarbonate 100 mEq in 400 mL sterile water + 20 mEq KCl over 2 hours. Repeat pH assessment in 2 hours. Stop when pH &ge;7.0.</p>
+        <p style="margin:0; font-size:.83rem;">Note: Evidence for bicarbonate even in pH &lt;6.9 is limited; it remains controversial. Some experts recommend a single dose with close monitoring rather than repeated administration.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOSPHATE -->
+  <div class="section" id="phosphate">
+    <h2>Phosphate</h2>
+
+    <p>Total body phosphate is depleted in DKA from osmotic diuresis, but serum phosphate is usually normal or elevated on presentation due to transcellular shift (acidosis, catabolism). With insulin therapy and volume resuscitation, phosphate shifts back into cells, and serum levels fall.</p>
+
+    <ul>
+      <li><strong>Routine phosphate replacement is not recommended</strong> (clinical trials show no outcome benefit)</li>
+      <li><strong>Replace if:</strong> Serum phosphate &lt;1.0 mg/dL with symptoms (muscle weakness, hemolytic anemia, respiratory failure), or in patients with cardiac dysfunction, anemia, or respiratory compromise where hypophosphatemia may cause clinical deterioration</li>
+      <li><strong>Dose:</strong> Potassium phosphate 20&ndash;40 mmol IV over 4&ndash;12 hours (replaces both K and PO4 simultaneously &mdash; account for K contribution in total K replacement calculations)</li>
+      <li>Avoid aggressive phosphate replacement in renal failure (hyperphosphatemia risk)</li>
+    </ul>
+  </div>
+
+  <!-- RESOLUTION -->
+  <div class="section" id="resolution">
+    <h2>Resolution Criteria &amp; Transition to SQ Insulin</h2>
+
+    <div class="criteria-box">
+      <div class="criteria-head">DKA Resolution Criteria (All Three Required)</div>
+      <div class="criteria-body">
+        <ul>
+          <li>Blood glucose &lt;200 mg/dL</li>
+          <li>Serum bicarbonate &ge;15 mEq/L</li>
+          <li>Venous pH &ge;7.30</li>
+          <li><em>And/or:</em> Anion gap &le;12 mEq/L (some guidelines add this as a fourth criterion)</li>
+        </ul>
+        <p style="font-size:.83rem; margin-top:.5rem; margin-bottom:0;">Glucose normalizes first; pH and anion gap closure lag. Do not transition to SQ insulin based on glucose alone &mdash; wait for biochemical resolution of ketoacidosis.</p>
+      </div>
+    </div>
+
+    <h3>Transition to Subcutaneous Insulin</h3>
+    <ol>
+      <li>Patient must be able to eat and drink</li>
+      <li>DKA resolution criteria met (above)</li>
+      <li>Give first SQ dose of long-acting insulin (glargine or detemir) <strong>2 hours before stopping the insulin infusion</strong> &mdash; this "overlap" prevents rebound ketosis from the gap between stopping IV insulin (half-life ~5 minutes) and onset of SQ basal insulin (~2 hours)</li>
+      <li>For known diabetic: resume their home insulin regimen; adjust doses based on this admission</li>
+      <li>For new-onset diabetes: consult endocrinology; initiate basal-bolus insulin regimen; provide diabetes education before discharge</li>
+      <li>Discharge planning: identify and address precipitant; ensure insulin supply and supplies; outpatient follow-up within 1 week</li>
+    </ol>
+
+    <div class="callout red">
+      <h3>The 2-Hour Overlap Rule</h3>
+      <p style="margin:0;">Stopping the IV insulin infusion without giving SQ insulin first leads to rebound hyperglycemia and recurrent ketosis within 1&ndash;2 hours. Glargine or detemir must be administered at least 1&ndash;2 hours before the infusion is stopped. This is a protocol step that is frequently missed on overnight transitions &mdash; document it explicitly in orders and the care plan.</p>
+    </div>
+  </div>
+
+  <!-- CEREBRAL EDEMA -->
+  <div class="section" id="cerebral">
+    <h2>Cerebral Edema</h2>
+
+    <div class="callout red">
+      <h3>The Most Feared Complication of DKA Treatment</h3>
+      <p style="margin:0;">Cerebral edema is rare and occurs predominantly in <strong>children and adolescents</strong>; it is uncommon in adults with DKA. In pediatric series, incidence is approximately 0.5&ndash;1% of DKA episodes, with mortality reported at 20&ndash;40% in modern case series (older literature cited higher rates). It typically develops 4&ndash;12 hours after DKA treatment is initiated, not at presentation. Risk is associated with aggressive early fluid and insulin therapy, though the precise mechanism remains debated.</p>
+    </div>
+
+    <h3>Risk Factors</h3>
+    <ul>
+      <li>Age &lt;20 years (especially young children)</li>
+      <li>New-onset diabetes presenting in DKA</li>
+      <li>Severe DKA (low pH, high BUN at presentation)</li>
+      <li>Rapid glucose fall (&gt;100 mg/dL/hr)</li>
+      <li>Large, rapid fluid resuscitation (especially hypotonic fluids)</li>
+      <li>Bicarbonate administration</li>
+      <li>Failure of serum Na to rise as glucose falls (suggests osmotic shift into CNS)</li>
+    </ul>
+
+    <h3>Recognition &amp; Management</h3>
+    <table class="lab-table">
+      <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Warning signs</strong></td><td>Sudden worsening headache; change in mental status; pupil changes; bradycardia with hypertension (Cushing's triad); incontinence; declining level of consciousness despite improving labs</td></tr>
+        <tr><td><strong>Immediate management</strong></td><td>Reduce IV fluid rate; elevate head of bed 30&deg;; <strong>mannitol 0.5&ndash;1 g/kg IV over 20 minutes</strong> (first-line); hypertonic saline (3% NaCl 5&ndash;10 mL/kg over 30 min) as alternative or adjunct</td></tr>
+        <tr><td><strong>Do not</strong></td><td>Do not delay treatment for CT scan if clinical picture is consistent; CT may be normal early in cerebral edema</td></tr>
+        <tr><td><strong>Disposition</strong></td><td>ICU; neurosurgery consultation; ICP monitoring in refractory cases</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Prevention</h3>
+    <ul>
+      <li>Target glucose fall of 50&ndash;75 mg/dL/hr (not faster)</li>
+      <li>Monitor neurological status hourly during treatment</li>
+      <li>Ensure serum Na rises appropriately as glucose falls (corrected Na should increase by ~1.6 mEq for every 100 mg/dL fall in glucose)</li>
+      <li>Avoid hypotonic fluids in the first 4&ndash;6 hours</li>
+      <li>Avoid bicarbonate unless pH &lt;6.9</li>
+    </ul>
+  </div>
+
+  <!-- EUGLYCEMIC DKA -->
+  <div class="section" id="euglycemic">
+    <h2>Euglycemic DKA</h2>
+
+    <div class="callout amber">
+      <h3>A Diagnosis That Is Frequently Missed</h3>
+      <p style="margin:0;">Euglycemic DKA (euDKA) is defined as DKA with glucose &lt;250 mg/dL. It meets all other DKA criteria (HAGMA, ketonemia) but presents with near-normal glucose, leading to delayed or missed diagnosis. The glucose is low because ketone production occurs without adequate glucose production, or because glucose has been lowered by prior insulin, caloric restriction, or renal clearance.</p>
+    </div>
+
+    <h3>Causes of Euglycemic DKA</h3>
+    <table class="lab-table">
+      <thead><tr><th>Cause</th><th>Mechanism</th><th>Key Clinical Clue</th></tr></thead>
+      <tbody>
+        <tr><td class="abn"><strong>SGLT2 inhibitors</strong> (most common)</td><td>Glucosuria lowers plasma glucose while ketogenesis continues; insulin deficiency + low glucose = euglycemic DKA</td><td>Patient taking empagliflozin, dapagliflozin, canagliflozin; must be held perioperatively and with illness</td></tr>
+        <tr><td><strong>Pregnancy</strong></td><td>Accelerated starvation ketosis; low glucose threshold for DKA in pregnant T1DM</td><td>Pregnant diabetic patient; glucose may be only 150&ndash;200 mg/dL in DKA</td></tr>
+        <tr><td><strong>Starvation / prolonged fasting</strong></td><td>Reduced glucose intake + insulin deficiency &rarr; ketosis without marked hyperglycemia</td><td>Poor oral intake, vomiting, alcohol use</td></tr>
+        <tr><td><strong>Partial insulin treatment</strong></td><td>Enough insulin to suppress glucose rise but insufficient to prevent ketogenesis</td><td>Patient took some but not all insulin doses</td></tr>
+        <tr><td><strong>Alcoholic ketoacidosis</strong></td><td>Ethanol inhibits gluconeogenesis; NADH excess redirects pyruvate away from glucose; ketogenesis from lipolysis</td><td>AUD; glucose often low-normal; AKA is a distinct entity from diabetic DKA (no insulin deficiency required) and is treated with dextrose + thiamine; can coexist with DKA in patients with T1DM</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout blue">
+      <h3>SGLT2 Inhibitors: Perioperative &amp; Illness Protocol</h3>
+      <p style="margin:0;">SGLT2 inhibitors (empagliflozin, dapagliflozin, canagliflozin, ertugliflozin) must be <strong>held 3&ndash;4 days before elective surgery</strong> and during any acute illness, prolonged NPO status, or hospital admission. Continuing them perioperatively or during critical illness is associated with euglycemic DKA. Any patient on an SGLT2 inhibitor who presents with HAGMA and ketonemia has euglycemic DKA until proven otherwise, regardless of their glucose level.</p>
+    </div>
+  </div>
+
+  <!-- PEARLS -->
+  <div class="section" id="pearls">
+    <h2>Clinical Pearls</h2>
+
+    <div class="pearl"><span><strong>Check potassium before insulin, every time.</strong> If K &lt;3.5 mEq/L, hold insulin and replace first. This is the most critical safety step in DKA management. Total body K is always depleted; serum K may be misleadingly normal or high due to acidosis. Once insulin drives K back into cells, life-threatening hypokalemia can develop within minutes to hours. The protocol sequence is: fluids &rarr; check K &rarr; replace K if needed &rarr; then insulin.</span></div>
+
+    <div class="pearl"><span><strong>Never stop insulin just because glucose is 200.</strong> Insulin is required to suppress ketogenesis, not just lower glucose. When glucose reaches 200 mg/dL, add dextrose to the IV fluids and reduce (not stop) the insulin infusion. Continue until the anion gap is closed and pH &ge;7.30. Stopping insulin prematurely is the most common cause of prolonged DKA and re-ketosis during treatment.</span></div>
+
+    <div class="pearl"><span><strong>The 2-hour overlap when transitioning to SQ insulin is non-negotiable.</strong> The IV insulin infusion has a half-life of ~5 minutes. Stopping it without pre-giving basal insulin leaves the patient with no insulin coverage for 2+ hours, long enough to restart ketogenesis. Administer glargine or detemir at least 2 hours before stopping the infusion. Document this explicitly in the transition order. It is most often missed on overnight handoffs.</span></div>
+
+    <div class="pearl"><span><strong>Think SGLT2 inhibitor in any unexplained HAGMA with normal or low glucose.</strong> Euglycemic DKA is missed because clinicians anchor on hyperglycemia. Any patient on an SGLT2 inhibitor with an anion gap acidosis and ketones has euglycemic DKA until proven otherwise &mdash; even if their glucose is 140 mg/dL. Check their medication list.</span></div>
+
+    <div class="pearl"><span><strong>Abdominal pain in DKA: treat the DKA first.</strong> DKA itself causes nausea, vomiting, and diffuse abdominal pain from gastric dysmotility and the acidotic state. If abdominal pain resolves with DKA treatment, no further abdominal workup is needed. If severe abdominal pain persists or worsens despite adequate DKA management, pursue CT abdomen for a surgical cause (pancreatitis, ischemia, perforation). Elevated lipase in DKA is common and does not necessarily indicate acute pancreatitis.</span></div>
+
+    <div class="pearl"><span><strong>Cerebral edema presents as neurological deterioration during treatment, not at onset &mdash; and it is predominantly a pediatric complication.</strong> In adults it is rare; in children it remains the leading cause of DKA-related death. The child or young adult who was alert on admission but develops sudden headache, confusion, or pupil changes 4&ndash;8 hours into treatment has cerebral edema until proven otherwise. Act immediately: reduce fluid rate, elevate HOB, give mannitol 0.5&ndash;1 g/kg IV. Do not wait for CT to treat.</span></div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="section" id="references">
+    <h2>References</h2>
+    <ol class="ref-list">
+      <li>Kitabchi AE, Umpierrez GE, Miles JM, Fisher JN. "Hyperglycemic crises in adult patients with diabetes." <em>Diabetes Care</em>. 2009;32(7):1335&ndash;1343.</li>
+      <li>American Diabetes Association. "Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State." <em>Diabetes Care</em>. 2023;46(Suppl 1):S244&ndash;S254.</li>
+      <li>Umpierrez G, Korytkowski M. "Diabetic emergencies — ketoacidosis, hyperglycaemic hyperosmolar state and hypoglycaemia." <em>Nat Rev Endocrinol</em>. 2016;12(4):222&ndash;232.</li>
+      <li>Watts W, Edge JA. "How can cerebral edema during diabetic ketoacidosis be prevented?" <em>Pediatr Diabetes</em>. 2014;15(4):261&ndash;267.</li>
+      <li>Glaser N, Barnett P, McCaslin I, et al. "Risk factors for cerebral edema in children with diabetic ketoacidosis." <em>N Engl J Med</em>. 2001;344(4):264&ndash;269.</li>
+      <li>Self WH, Evans CS, Jenkins CA, et al. (TOPS Trial). "Clinical Effects of Balanced Crystalloids vs Saline in Adults with Diabetic Ketoacidosis." <em>JAMA Intern Med</em>. 2021;181(11):1474&ndash;1483.</li>
+      <li>Peters AL, Buschur EO, Buse JB, et al. "Euglycemic Diabetic Ketoacidosis: A Potential Complication of Treatment With Sodium&ndash;Glucose Cotransporter 2 Inhibition." <em>Diabetes Care</em>. 2015;38(9):1687&ndash;1693.</li>
+      <li>Umpierrez GE, Latif K, Stoever J, et al. "Efficacy of subcutaneous insulin lispro versus continuous intravenous regular insulin for the treatment of patients with diabetic ketoacidosis." <em>Am J Med</em>. 2004;117(5):291&ndash;296.</li>
+      <li>Hirsch IB, Emmett M. "Diabetic ketoacidosis and hyperosmolar hyperglycemic state in adults: Treatment." In: <em>UpToDate</em>. Accessed 2023.</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="../index.html">&larr; Back to Case Repository</a> &middot; Morning Report &middot; For educational use only
+</footer>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>
