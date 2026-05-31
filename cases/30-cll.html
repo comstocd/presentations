@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 30 — Chronic Lymphocytic Leukemia | Morning Report</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="../index.html">Morning Report</a></div>
+  <a href="../index.html">&larr; All Cases</a>
+</header>
+
+<main class="page-wrap">
+
+  <div class="case-hero">
+    <div class="meta">Topic 30 &middot; Hematology / Oncology</div>
+    <h1>Chronic Lymphocytic Leukemia</h1>
+    <p style="font-family:var(--font-ui); font-size:.92rem; color:var(--muted); margin-bottom:0;">
+      CLL is the most common leukemia in adults in Western countries. Most patients are asymptomatic at
+      diagnosis and many never require treatment. When treatment becomes necessary, the landscape has
+      shifted decisively from chemoimmunotherapy to targeted agents &mdash; BTK inhibitors and BCL2
+      inhibitors &mdash; with profound improvements in outcomes. Every internist encounters CLL; knowing
+      when to watch, when to refer, and what the targets mean is essential.
+    </p>
+    <div class="tags">
+      <span class="tag amber">Hematology</span>
+      <span class="tag">Oncology</span>
+      <span class="tag green">NCCN v2.2026 &middot; JAMA 2023 &middot; NEJM 2020</span>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#epidemiology">Epidemiology &amp; Overview</a></li>
+      <li><a href="#pathobiology">Pathobiology &amp; Immunophenotype</a></li>
+      <li><a href="#prognostic">Prognostic Markers</a></li>
+      <li><a href="#presentation">Clinical Presentation</a></li>
+      <li><a href="#diagnosis">Diagnosis: CLL vs. SLL vs. MBL</a></li>
+      <li><a href="#staging">Staging: Rai &amp; Binet</a></li>
+      <li><a href="#when-to-treat">When to Treat</a></li>
+      <li><a href="#treatment">First-Line Treatment</a></li>
+      <li><a href="#subsequent">Subsequent-Line Therapy</a></li>
+      <li><a href="#complications">Complications &amp; Supportive Care</a></li>
+      <li><a href="#pearls">Clinical Pearls</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- EPIDEMIOLOGY -->
+  <div class="section" id="epidemiology">
+    <h2>Epidemiology &amp; Overview</h2>
+    <ul>
+      <li><strong>Most common leukemia in adults</strong> in Western countries</li>
+      <li>Median age at diagnosis: <strong>~72 years</strong>; rare before age 40</li>
+      <li>Male predominance (~60%)</li>
+      <li>Incidence: approximately 20,000 new cases per year in the US (I believe this is approximate; verify from current SEER data)</li>
+      <li>~70% of patients are asymptomatic at diagnosis &mdash; found incidentally on CBC</li>
+      <li>Course is highly variable: some patients never require treatment; others have aggressive disease requiring early intervention</li>
+      <li>Median survival has improved dramatically with targeted therapy; many patients with low-risk CLL have near-normal life expectancy</li>
+    </ul>
+
+    <div class="callout blue">
+      <h3>CLL Is Not an Emergency &mdash; But It Requires a Framework</h3>
+      <p style="margin:0;">The most important initial decisions in CLL are: (1) confirm the diagnosis with flow cytometry, (2) exclude mantle cell lymphoma, (3) assess prognostic markers before any treatment is contemplated, and (4) resist the urge to treat based on lymphocyte count alone. Most patients benefit from initial observation.</p>
+    </div>
+  </div>
+
+  <!-- PATHOBIOLOGY -->
+  <div class="section" id="pathobiology">
+    <h2>Pathobiology &amp; Immunophenotype</h2>
+
+    <h3>Immunophenotype: The Diagnostic Fingerprint</h3>
+    <p>CLL cells are mature CD5+ B lymphocytes that have escaped normal apoptotic control. The characteristic immunophenotype on flow cytometry:</p>
+
+    <table class="lab-table">
+      <thead><tr><th>Marker</th><th>CLL</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>CD5</td><td class="abn">Positive</td><td>Key distinguishing feature; normally expressed on T cells, not B cells; also positive in mantle cell lymphoma</td></tr>
+        <tr><td>CD23</td><td class="abn">Positive</td><td>Helps distinguish CLL from mantle cell lymphoma (CD23 negative in MCL)</td></tr>
+        <tr><td>CD19</td><td class="abn">Positive</td><td>Pan-B-cell marker</td></tr>
+        <tr><td>CD20</td><td>Dim positive</td><td>Weak expression; contrast with normal B cells or other B-cell lymphomas (bright CD20)</td></tr>
+        <tr><td>Surface immunoglobulin (sIg)</td><td>Dim positive</td><td>Weak expression is characteristic</td></tr>
+        <tr><td>CD79b</td><td>Dim/negative</td><td>Weak expression</td></tr>
+        <tr><td>Cyclin D1 / t(11;14)</td><td>Negative</td><td>Must be negative to exclude mantle cell lymphoma</td></tr>
+        <tr><td>FMC7</td><td>Negative/dim</td><td>Negative in most CLL; positive in MCL</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Two Core Pathobiological Mechanisms</h3>
+    <div class="two-col">
+      <div class="criteria-box">
+        <div class="criteria-head">BCL2 Overexpression &rarr; Impaired Apoptosis</div>
+        <div class="criteria-body">
+          <p>BCL2 (B-cell leukemia/lymphoma 2) is the master anti-apoptotic protein. CLL cells overexpress BCL2, preventing programmed cell death and allowing malignant B cells to accumulate.</p>
+          <p style="margin:0;"><strong>Therapeutic target:</strong> Venetoclax (BCL2 inhibitor) directly inhibits this protein, restoring apoptosis in CLL cells.</p>
+        </div>
+      </div>
+      <div class="criteria-box">
+        <div class="criteria-head">Constitutive BCR Signaling &rarr; Proliferation</div>
+        <div class="criteria-body">
+          <p>Constitutive activation of the B-cell receptor (BCR) pathway drives CLL cell proliferation via downstream kinases including <strong>Bruton tyrosine kinase (BTK)</strong> and PI3K&delta;.</p>
+          <p style="margin:0;"><strong>Therapeutic targets:</strong> BTK inhibitors (ibrutinib, acalabrutinib, zanubrutinib) block BTK; PI3K inhibitors (idelalisib, duvelisib) block the PI3K arm.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Morphology on Peripheral Smear</h3>
+    <ul>
+      <li>Small, mature lymphocytes with <strong>condensed chromatin</strong> ("soccer ball" or "cracked mud" chromatin) and scant cytoplasm</li>
+      <li><strong>Smudge cells (Gumprecht nuclear shadows)</strong> &mdash; fragile CLL cells ruptured during slide preparation; classic finding on peripheral smear; more smudge cells generally correlates with better prognosis</li>
+    </ul>
+  </div>
+
+  <!-- PROGNOSTIC MARKERS -->
+  <div class="section" id="prognostic">
+    <h2>Prognostic Markers</h2>
+
+    <div class="callout amber">
+      <h3>Prognostic Testing: Informative at Diagnosis, Essential Before Treatment</h3>
+      <p style="margin:0;">Comprehensive prognostic testing is not required at diagnosis if the patient is asymptomatic and will be observed. However, it is <strong>essential before initiating any treatment</strong>, as results determine appropriate therapy selection (particularly del(17p)/TP53 status, which precludes chemoimmunotherapy).</p>
+    </div>
+
+    <table class="diff-table">
+      <thead><tr><th>Marker</th><th>Significance</th><th>Clinical Impact</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>IGHV mutation status</strong></td>
+          <td>Unmutated (&lt;2% deviation from germline) in ~50% of patients</td>
+          <td class="abn">Unmutated = more aggressive course, shorter time to treatment, inferior outcomes with chemoimmunotherapy. Mutated IGHV = more indolent; FCR-based chemoimmunotherapy provides durable remissions in this subset.</td>
+        </tr>
+        <tr>
+          <td class="abn"><strong>del(17p) / TP53 mutation</strong></td>
+          <td class="abn">Present in ~5&ndash;10% at diagnosis; higher at relapse</td>
+          <td class="abn">Most important adverse marker. Resistance to chemoimmunotherapy. Requires targeted therapy (BTK inhibitor or BCL2 inhibitor). Associated with aggressive disease and shorter survival with conventional treatment.</td>
+        </tr>
+        <tr>
+          <td><strong>del(11q)</strong></td>
+          <td>Associated with bulky lymphadenopathy</td>
+          <td>Adverse prognosis; benefits from BTK inhibitor therapy</td>
+        </tr>
+        <tr>
+          <td><strong>del(13q) (sole abnormality)</strong></td>
+          <td>Most common cytogenetic finding in CLL (~50%)</td>
+          <td>Favorable prognosis when present as the sole abnormality; indolent course</td>
+        </tr>
+        <tr>
+          <td><strong>Trisomy 12</strong></td>
+          <td>~15% of CLL</td>
+          <td>Intermediate prognosis; associated with atypical morphology and immunophenotype</td>
+        </tr>
+        <tr>
+          <td><strong>Complex karyotype</strong> (&ge;3 abnormalities)</td>
+          <td>Detected by CpG-stimulated metaphase cytogenetics</td>
+          <td class="abn">Adverse; associated with TP53 pathway dysfunction even without del(17p)</td>
+        </tr>
+        <tr>
+          <td><strong>Beta-2-microglobulin (B2M)</strong></td>
+          <td>Serum level reflects tumor burden</td>
+          <td>Elevated B2M associated with advanced stage, shorter time to treatment, inferior survival</td>
+        </tr>
+        <tr>
+          <td><strong>ZAP-70 / CD38</strong></td>
+          <td>Surrogate markers for IGHV status (imperfect)</td>
+          <td>Positive ZAP-70 or CD38 &ge;30% suggest unmutated IGHV; IGHV sequencing is definitive</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PRESENTATION -->
+  <div class="section" id="presentation">
+    <h2>Clinical Presentation</h2>
+
+    <h3>Incidental Discovery (Most Common)</h3>
+    <p>Approximately 70% of patients are asymptomatic at diagnosis, identified by unexplained lymphocytosis on routine CBC. The absolute lymphocyte count (ALC) is typically &gt;5 &times; 10&sup9;/L and may be markedly elevated (&gt;100 &times; 10&sup9;/L) without symptoms.</p>
+
+    <h3>Symptomatic Presentations</h3>
+    <table class="lab-table">
+      <thead><tr><th>Feature</th><th>Approximate Frequency</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Lymphadenopathy</td><td>~50%</td><td>Typically painless, bilateral, generalized; cervical, axillary, inguinal most common</td></tr>
+        <tr><td>Hepatosplenomegaly</td><td>~20&ndash;50%</td><td>Splenomegaly may cause early satiety, left-sided abdominal fullness</td></tr>
+        <tr><td>B symptoms</td><td>5&ndash;10%</td><td>Drenching night sweats, unintentional weight loss &ge;10% in 6 months, unexplained fever; suggest more aggressive disease or Richter transformation</td></tr>
+        <tr><td>Autoimmune hemolytic anemia (AIHA)</td><td>&lt;10%</td><td>Warm antibody AIHA most common; direct antiglobulin test (DAT) positive; not a treatment indication in itself unless refractory to steroids</td></tr>
+        <tr><td>Immune thrombocytopenia (ITP)</td><td>&lt;5%</td><td>Immune-mediated platelet destruction; distinguish from marrow infiltration (different management)</td></tr>
+        <tr><td>Hypogammaglobulinemia</td><td>Up to 10% at diagnosis; increases with disease duration</td><td>Impaired antibody production &rarr; recurrent sinopulmonary infections; monitor IgG levels</td></tr>
+        <tr><td>Richter transformation</td><td>~2&ndash;10% lifetime risk</td><td>Transformation to aggressive lymphoma (usually DLBCL); sudden clinical worsening, rapidly enlarging nodes, markedly elevated LDH, B symptoms; poor prognosis</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout red">
+      <h3>Richter Transformation: Always Consider in Sudden Clinical Change</h3>
+      <p style="margin:0;">Any CLL patient with sudden constitutional symptoms, rapidly enlarging lymph nodes, markedly elevated LDH, or new extranodal disease should be evaluated urgently for Richter transformation. PET-CT is useful to identify the highest-metabolic-activity node for targeted biopsy. Transformation to DLBCL carries a median survival of approximately 1 year even with treatment.</p>
+    </div>
+  </div>
+
+  <!-- DIAGNOSIS -->
+  <div class="section" id="diagnosis">
+    <h2>Diagnosis: CLL vs. SLL vs. MBL</h2>
+
+    <div class="criteria-box">
+      <div class="criteria-head">Diagnostic Criteria (NCCN / iwCLL)</div>
+      <div class="criteria-body">
+        <table style="width:100%; font-size:.85rem;">
+          <thead><tr><th>Entity</th><th>Monoclonal B cells</th><th>Other Features</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>CLL</strong></td>
+              <td class="abn">&ge;5 &times; 10&sup9;/L in peripheral blood</td>
+              <td>Characteristic immunophenotype; CD5+, CD23+, dim CD20, dim sIg, cyclin D1&minus;</td>
+              <td>Confirm with flow cytometry; prognostic workup; observation vs. treatment</td>
+            </tr>
+            <tr>
+              <td><strong>SLL</strong> (small lymphocytic lymphoma)</td>
+              <td>&lt;5 &times; 10&sup9;/L in peripheral blood</td>
+              <td>Lymphadenopathy or splenomegaly; lymph node biopsy shows same CLL immunophenotype</td>
+              <td>Lymph node biopsy required for diagnosis; same biology and treatment approach as CLL</td>
+            </tr>
+            <tr>
+              <td><strong>MBL</strong> (monoclonal B-cell lymphocytosis)</td>
+              <td>&lt;5 &times; 10&sup9;/L</td>
+              <td>No lymphadenopathy, organomegaly, cytopenias, or disease-related symptoms</td>
+              <td>Observe; progresses to CLL requiring treatment at approximately 1&ndash;2% per year; annual CBC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Excluding Mantle Cell Lymphoma</h3>
+    <div class="callout amber">
+      <h3>CD5+ B-Cell Lymphoma: Always Exclude MCL</h3>
+      <p style="margin:0;">Both CLL and mantle cell lymphoma (MCL) are CD5+ B-cell malignancies and can appear similar on initial flow cytometry. MCL is an aggressive lymphoma requiring prompt treatment; CLL is often observed. Distinguishing features: CLL is CD23+, cyclin D1&minus;, FMC7&minus;/dim, CD20 dim; MCL is CD23&minus;/dim, cyclin D1+, t(11;14) by FISH, FMC7+, CD20 bright. FISH for t(11;14) and/or cyclin D1 staining should be performed whenever the immunophenotype is atypical or CD23 is negative.</p>
+    </div>
+
+    <h3>Required Diagnostic Workup</h3>
+    <ul>
+      <li><strong>Peripheral blood flow cytometry</strong> &mdash; necessary and often sufficient for CLL diagnosis</li>
+      <li><strong>CBC with differential</strong> &mdash; ALC, degree of anemia, thrombocytopenia</li>
+      <li><strong>Comprehensive metabolic panel</strong> &mdash; LDH (Richter concern), uric acid, hepatic function</li>
+      <li><strong>Direct antiglobulin test (DAT)</strong> &mdash; screen for autoimmune hemolytic anemia</li>
+      <li><strong>Quantitative immunoglobulins</strong> &mdash; establish baseline for hypogammaglobulinemia monitoring</li>
+      <li><strong>Bone marrow biopsy</strong> &mdash; not required for CLL diagnosis; used to evaluate unexplained cytopenias (distinguish immune from marrow infiltration) or before treatment in selected cases</li>
+      <li><strong>CT scan</strong> &mdash; not routinely required at diagnosis; used for staging and treatment planning</li>
+    </ul>
+
+    <h3>Prognostic Testing (Before Treatment)</h3>
+    <ul>
+      <li>FISH panel: del(17p), del(11q), del(13q), trisomy 12</li>
+      <li>TP53 sequencing (detects mutations even without del(17p) on FISH)</li>
+      <li>IGHV mutation status</li>
+      <li>Beta-2-microglobulin</li>
+      <li>CpG-stimulated metaphase karyotype (detects complex karyotype)</li>
+    </ul>
+  </div>
+
+  <!-- STAGING -->
+  <div class="section" id="staging">
+    <h2>Staging: Rai &amp; Binet</h2>
+
+    <div class="two-col">
+      <div class="criteria-box">
+        <div class="criteria-head">Rai Staging (US)</div>
+        <div class="criteria-body">
+          <table style="width:100%; font-size:.85rem;">
+            <thead><tr><th>Stage</th><th>Features</th><th>Risk</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>Lymphocytosis only</td><td>Low</td></tr>
+              <tr><td>I</td><td>+ Lymphadenopathy</td><td>Intermediate</td></tr>
+              <tr><td>II</td><td>+ Hepato/splenomegaly</td><td>Intermediate</td></tr>
+              <tr><td>III</td><td>+ Anemia (Hgb &lt;11 g/dL)</td><td>High</td></tr>
+              <tr><td>IV</td><td>+ Thrombocytopenia (plt &lt;100k)</td><td>High</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="criteria-box">
+        <div class="criteria-head">Binet Staging (Europe)</div>
+        <div class="criteria-body">
+          <table style="width:100%; font-size:.85rem;">
+            <thead><tr><th>Stage</th><th>Features</th><th>Risk</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td>&lt;3 lymphoid areas involved; no anemia or thrombocytopenia</td><td>Low</td></tr>
+              <tr><td>B</td><td>&ge;3 lymphoid areas; no anemia or thrombocytopenia</td><td>Intermediate</td></tr>
+              <tr><td>C</td><td>Anemia (Hgb &lt;10 g/dL) or thrombocytopenia (plt &lt;100k), regardless of lymphoid areas</td><td>High</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:.83rem; margin:.5rem 0 0;">Lymphoid areas counted: cervical, axillary, inguinal (bilateral = 1), liver, spleen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <h3>Staging Limitations</h3>
+      <p style="margin:0;">Rai and Binet staging are based on clinical examination and CBC alone and were developed before modern molecular markers. They remain useful for broadly communicating disease burden and prognosis but do not capture the key prognostic information provided by IGHV status, del(17p)/TP53, and cytogenetics. Staging alone should not drive treatment decisions without the full molecular context.</p>
+    </div>
+  </div>
+
+  <!-- WHEN TO TREAT -->
+  <div class="section" id="when-to-treat">
+    <h2>When to Treat</h2>
+
+    <div class="callout red">
+      <h3>Watch and Wait Is the Standard for Asymptomatic CLL</h3>
+      <p style="margin:0;">Multiple randomized trials have shown that early treatment of asymptomatic CLL does not improve survival compared to treatment at the time of disease progression. Asymptomatic patients, regardless of stage or lymphocyte count, should be observed. Early treatment exposes patients to side effects without benefit. The absolute lymphocyte count alone &mdash; no matter how high &mdash; is not an indication for treatment.</p>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">NCCN Treatment Indications (Active Disease)</div>
+      <div class="criteria-body">
+        <p>Treatment is indicated when any of the following are present:</p>
+        <ul>
+          <li>Significant B symptoms (drenching night sweats, weight loss &ge;10% in 6 months, fever &gt;38&deg;C for &ge;2 weeks without infection)</li>
+          <li>Progressive or symptomatic splenomegaly (&gt;6 cm below left costal margin)</li>
+          <li>Progressive or symptomatic lymphadenopathy (&gt;10 cm in longest diameter, or rapidly progressive)</li>
+          <li>Progressive anemia and/or thrombocytopenia due to marrow infiltration (Rai stage III/IV, Binet C)</li>
+          <li>Steroid-refractory autoimmune hemolytic anemia or immune thrombocytopenia</li>
+          <li>Rapid lymphocyte doubling time &mdash; doubling in &lt;6 months (with ALC &gt;30 &times; 10&sup9;/L); or doubling in &lt;2 months</li>
+          <li>Symptomatic or threatened end-organ dysfunction from CLL infiltration</li>
+        </ul>
+        <p style="font-size:.83rem; margin:0;"><strong>Not an indication:</strong> Elevated ALC alone, positive prognostic markers without symptoms, or patient/physician anxiety about a high WBC.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TREATMENT -->
+  <div class="section" id="treatment">
+    <h2>First-Line Treatment</h2>
+
+    <div class="callout blue">
+      <h3>The Shift to Targeted Therapy</h3>
+      <p style="margin:0;">First-line treatment for CLL has shifted decisively from chemoimmunotherapy (FCR, BR) to targeted agents. BTK inhibitors and BCL2 inhibitors are now the preferred first-line options for virtually all patients. Chemoimmunotherapy retains a role in a narrow group: young, fit patients with mutated IGHV and no del(17p)/TP53, where FCR can provide long-term remissions &mdash; but this population is small and this approach is less commonly chosen as targeted options mature.</p>
+    </div>
+
+    <h3>First-Line Options by Patient Category</h3>
+
+    <div class="criteria-box">
+      <div class="criteria-head">Without del(17p) / TP53 Mutation &mdash; Preferred (NCCN Category 1)</div>
+      <div class="criteria-body">
+        <table style="width:100%; font-size:.85rem;">
+          <thead><tr><th>Regimen</th><th>Class</th><th>Duration</th><th>Key Features</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Acalabrutinib &plusmn; obinutuzumab</strong></td><td>BTK inhibitor &plusmn; CD20 mAb</td><td>Continuous</td><td>Fewer CV side effects than ibrutinib; category 1</td></tr>
+            <tr><td><strong>Zanubrutinib</strong></td><td>BTK inhibitor (2nd gen)</td><td>Continuous</td><td>Highly selective; excellent CV safety profile; category 1</td></tr>
+            <tr><td><strong>Venetoclax + obinutuzumab</strong></td><td>BCL2 inhibitor + CD20 mAb</td><td>Fixed (~12 months)</td><td>Time-limited therapy; TLS risk requires ramp-up; high rates of uMRD</td></tr>
+            <tr><td><strong>Venetoclax + acalabrutinib &plusmn; obinutuzumab</strong></td><td>BCL2 + BTK combination</td><td>Fixed</td><td>Emerging fixed-duration doublet/triplet; category 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="criteria-box">
+      <div class="criteria-head">With del(17p) / TP53 Mutation &mdash; Same Targeted Agents, No Chemoimmunotherapy</div>
+      <div class="criteria-body">
+        <p style="margin:0;">del(17p) and TP53 mutations confer resistance to all chemoimmunotherapy regimens. The same BTK inhibitor and BCL2 inhibitor-based regimens are recommended as for standard-risk CLL. Chemoimmunotherapy (FCR, BR, chlorambucil-based) is <strong>not appropriate</strong> in this population. Outcomes with targeted agents are similar regardless of del(17p) status, though long-term follow-up data continue to mature.</p>
+      </div>
+    </div>
+
+    <h3>BTK Inhibitors vs. BCL2 Inhibitors: Choosing Between Them</h3>
+    <table class="diff-table">
+      <thead><tr><th>Feature</th><th>BTK Inhibitors (cBTKi)</th><th>BCL2 Inhibitor (Venetoclax-based)</th></tr></thead>
+      <tbody>
+        <tr><td>Treatment duration</td><td>Continuous (indefinite)</td><td>Fixed (~12 months)</td></tr>
+        <tr><td>Administration</td><td>Oral daily pill</td><td>Oral daily pill; requires dose ramp-up</td></tr>
+        <tr><td>TLS risk</td><td>Low</td><td class="abn">Present; requires risk assessment, monitoring, and careful dose escalation</td></tr>
+        <tr><td>MRD negativity rates</td><td>Lower (continuous suppression model)</td><td>Higher (especially with obinutuzumab combination)</td></tr>
+        <tr><td>Atrial fibrillation risk</td><td class="abn">Ibrutinib ~10&ndash;16%; acalabrutinib/zanubrutinib lower (~3&ndash;5%)</td><td>Low</td></tr>
+        <tr><td>Hypertension</td><td class="abn">Common, especially with ibrutinib</td><td>Less common</td></tr>
+        <tr><td>Bleeding risk</td><td class="abn">Platelet inhibition; hold peri-procedurally</td><td>Lower</td></tr>
+        <tr><td>Neutropenia</td><td>Less common</td><td class="abn">Common; monitor CBC</td></tr>
+        <tr><td>Arthralgias / myalgias</td><td class="abn">Common with ibrutinib; less with 2nd gen</td><td>Less common</td></tr>
+        <tr><td>If disease progresses</td><td>Switch to BCL2 inhibitor-based regimen</td><td>Switch to BTK inhibitor-based regimen</td></tr>
+        <tr><td>Best fit for</td><td>Patients preferring simplicity; those who cannot comply with TLS monitoring; high cardiovascular risk may favor 2nd-gen agents</td><td>Patients preferring time-limited treatment; those with AF or bleeding risk; achieving uMRD is a goal</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout blue">
+      <h3>No Proven Advantage to Sequencing Order</h3>
+      <p style="margin:0;">There is currently no evidence that starting with a BTK inhibitor before a BCL2 inhibitor (or vice versa) improves overall outcomes. Both classes are available at relapse if the other was used first-line. Patient-specific factors &mdash; comorbidities, preference for continuous vs. time-limited therapy, TLS risk, AF history, and bleeding risk &mdash; should drive the choice.</p>
+    </div>
+
+    <h3>MRD-Guided Therapy: An Emerging Paradigm</h3>
+    <p>Measurable residual disease (MRD) refers to CLL cells detectable below the level of standard morphologic assessment, measured by flow cytometry or PCR. Achieving undetectable MRD (uMRD) is associated with prolonged progression-free survival. The FLAIR trial (Munir et al., NEJM 2025) demonstrated that MRD-guided ibrutinib&ndash;venetoclax was superior to both ibrutinib monotherapy and FCR, allowing individualized treatment duration based on uMRD status &mdash; a potential pathway to treatment-free remission for selected patients.</p>
+
+    <h3>Role of Chemoimmunotherapy in 2025</h3>
+    <p>FCR (fludarabine, cyclophosphamide, rituximab) may still be considered in young (&lt;65), fit patients with mutated IGHV and no del(17p)/TP53, where long-term remissions (&gt;10 years) are observed in a subset. However, this population is narrow, and increasing evidence supports targeted agents even here due to superior tolerability. Ibrutinib and obinutuzumab-chlorambucil are category 2A options for frail/elderly patients. Chemoimmunotherapy is <strong>never appropriate</strong> for del(17p)/TP53-mutant disease.</p>
+  </div>
+
+  <!-- SUBSEQUENT THERAPY -->
+  <div class="section" id="subsequent">
+    <h2>Subsequent-Line Therapy</h2>
+
+    <table class="diff-table">
+      <thead><tr><th>Prior Treatment</th><th>Preferred Subsequent Options</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>BCL2 inhibitor-based first-line</td>
+          <td>Covalent BTK inhibitor (acalabrutinib or zanubrutinib)</td>
+          <td>Switch to the other class; ibrutinib generally avoided given better-tolerated 2nd-gen options</td>
+        </tr>
+        <tr>
+          <td>Covalent BTK inhibitor-based first-line</td>
+          <td>Venetoclax &plusmn; rituximab or obinutuzumab</td>
+          <td>Fixed-duration; high response rates; MURANO and CLL14 trials demonstrate efficacy in this setting</td>
+        </tr>
+        <tr>
+          <td>Both BTK and BCL2 inhibitors</td>
+          <td class="abn">Pirtobrutinib (noncovalent BTK inhibitor) &mdash; NCCN category 1; CAR-T therapy (lisocabtagene maraleucel); clinical trial; PI3K inhibitors; allogeneic HCT in eligible patients</td>
+          <td>Pirtobrutinib active even after covalent BTK inhibitor resistance; liso-cel approved for relapsed/refractory CLL after &ge;2 prior lines including BTKi and BCL2i</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber">
+      <h3>BTK Inhibitor Resistance Mutations</h3>
+      <p style="margin:0;">Resistance to covalent BTK inhibitors (ibrutinib, acalabrutinib, zanubrutinib) most commonly occurs via BTK C481S mutation, which prevents covalent drug binding. <strong>Pirtobrutinib</strong> is a noncovalent (reversible) BTK inhibitor that retains activity against C481S-mutant BTK and has demonstrated meaningful response rates in patients who have progressed on covalent BTK inhibitors. It is an important addition to the relapsed/refractory armamentarium.</p>
+    </div>
+  </div>
+
+  <!-- COMPLICATIONS -->
+  <div class="section" id="complications">
+    <h2>Complications &amp; Supportive Care</h2>
+
+    <h3>Infectious Complications</h3>
+    <ul>
+      <li><strong>Hypogammaglobulinemia</strong> is common and worsens with treatment; monitor IgG levels; intravenous immunoglobulin (IVIG) replacement is indicated for recurrent serious bacterial infections (sinopulmonary) with documented IgG &lt;500 mg/dL &mdash; does not improve survival but reduces infection frequency</li>
+      <li><strong>Opportunistic infections</strong> increase with targeted and chemoimmunotherapy: PCP prophylaxis with TMP-SMX (or dapsone/inhaled pentamidine if sulfa allergy) during treatment; antiviral prophylaxis (acyclovir/valacyclovir) for herpes reactivation; anti-fungal prophylaxis in selected high-risk patients</li>
+      <li><strong>Hepatitis B reactivation risk</strong>: screen all patients with HBsAg, anti-HBc, and anti-HBs before treatment; anti-HBc-positive patients require monitoring or prophylactic antiviral therapy during treatment</li>
+      <li><strong>COVID-19 and respiratory viruses</strong>: impaired humoral response to vaccination; may not mount adequate antibody response; consider pre-exposure prophylaxis strategies in high-risk patients</li>
+    </ul>
+
+    <h3>Autoimmune Complications</h3>
+    <ul>
+      <li><strong>AIHA:</strong> Treat with corticosteroids (prednisone 1 mg/kg); rituximab for steroid-refractory; CLL-directed therapy may be needed if AIHA is refractory</li>
+      <li><strong>ITP:</strong> Similar approach to AIHA; IVIG for acute severe thrombocytopenia; eltrombopag or romiplostim for refractory ITP; distinguish from marrow infiltration with bone marrow biopsy</li>
+      <li><strong>Pure red cell aplasia (PRCA):</strong> Rare; treat with cyclosporine</li>
+    </ul>
+
+    <h3>Tumor Lysis Syndrome (TLS) with Venetoclax</h3>
+    <p>Venetoclax carries significant TLS risk due to rapid apoptosis of CLL cells. A mandatory dose ramp-up over 5 weeks is required (20 &rarr; 50 &rarr; 100 &rarr; 200 &rarr; 400 mg daily), with TLS risk assessment at each dose level based on ALC and lymph node size. High-risk patients require hospitalization for initial doses. Prophylaxis: allopurinol, aggressive hydration, electrolyte monitoring, uric acid monitoring.</p>
+
+    <h3>Vaccination &amp; Preventive Care</h3>
+    <ul>
+      <li>Vaccinate before treatment if possible (better immune response)</li>
+      <li>Inactivated vaccines recommended: influenza annually, pneumococcal (PCV20 or PCV15 + PPSV23), COVID-19, shingles (recombinant Shingrix preferred over live ZVL)</li>
+      <li>Live vaccines (MMR, varicella, yellow fever) generally avoided during treatment</li>
+      <li>Age-appropriate cancer screening should continue</li>
+    </ul>
+  </div>
+
+  <!-- PEARLS -->
+  <div class="section" id="pearls">
+    <h2>Clinical Pearls</h2>
+
+    <div class="pearl"><span><strong>The lymphocyte count is almost never the reason to treat.</strong> CLL patients with ALC of 200,000/&mu;L who are asymptomatic should be observed, not treated. The watch-and-wait strategy has been validated in multiple randomized trials showing no survival benefit to early treatment. The decision to treat is based on symptoms, cytopenias from marrow infiltration, and rapidly progressive disease &mdash; not a number on the CBC.</span></div>
+
+    <div class="pearl"><span><strong>Always exclude mantle cell lymphoma before calling it CLL.</strong> Both are CD5+ B-cell malignancies. MCL is aggressive and requires immediate treatment; CLL is often observed for years. Check CD23, cyclin D1, and FISH for t(11;14) whenever the immunophenotype is atypical, CD23 is negative, or CD20 is brightly expressed. Misclassifying MCL as CLL is a serious diagnostic error.</span></div>
+
+    <div class="pearl"><span><strong>del(17p) and TP53 mutations must be checked before any treatment decision.</strong> These mutations confer resistance to all chemoimmunotherapy. A patient treated with FCR who has del(17p) will not respond and will be exposed to significant toxicity. BTK or BCL2 inhibitor-based therapy is the only appropriate choice in this setting. TP53 sequencing detects mutations even when FISH for del(17p) is negative &mdash; both tests are needed.</span></div>
+
+    <div class="pearl"><span><strong>Ibrutinib's cardiovascular toxicity is a real clinical problem.</strong> Atrial fibrillation occurs in approximately 10&ndash;16% of patients on ibrutinib, with rates increasing with age and duration of therapy. Hypertension, ventricular arrhythmias, and bleeding (through BTK-mediated platelet inhibition) are also recognized. Second-generation agents (acalabrutinib, zanubrutinib) have substantially improved cardiovascular safety profiles and are generally preferred for new patients requiring a BTK inhibitor.</span></div>
+
+    <div class="pearl"><span><strong>Smudge cells on peripheral smear point toward CLL.</strong> The fragility of CLL cells during blood smear preparation produces characteristic Gumprecht nuclear shadows (smudge cells). Their presence in a patient with lymphocytosis should prompt flow cytometry. A high smudge cell count has been associated with more indolent disease in some series &mdash; a counterintuitive but clinically useful observation.</span></div>
+
+    <div class="pearl"><span><strong>Sudden clinical deterioration in a CLL patient = Richter transformation until proven otherwise.</strong> A patient with stable, indolent CLL who develops rapidly enlarging lymph nodes, fever, night sweats, and a markedly elevated LDH has Richter transformation until a biopsy proves otherwise. PET-CT identifies the highest-avidity node; targeted biopsy is essential. This is a medical urgency &mdash; transformation to DLBCL carries a poor prognosis and requires prompt oncology referral.</span></div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="section" id="references">
+    <h2>References</h2>
+    <ol class="ref-list">
+      <li>Shadman M. "Diagnosis and Treatment of Chronic Lymphocytic Leukemia: A Review." <em>JAMA</em>. 2023;329(11):918&ndash;932.</li>
+      <li>Burger JA. "Treatment of Chronic Lymphocytic Leukemia." <em>N Engl J Med</em>. 2020;383(5):460&ndash;473.</li>
+      <li>National Comprehensive Cancer Network. "Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma." NCCN Clinical Practice Guidelines in Oncology. Version 2.2026. December 2025.</li>
+      <li>Hallek M, Shanafelt TD, Eichhorst B. "Chronic Lymphocytic Leukaemia." <em>Lancet</em>. 2018;391(10129):1524&ndash;1537.</li>
+      <li>Jain N, Wierda WG, O'Brien S. "Chronic Lymphocytic Leukaemia." <em>Lancet</em>. 2024;403(10432):1205&ndash;1221.</li>
+      <li>Hallek M, Al-Sawaf O. "Chronic lymphocytic leukemia: 2022 update on diagnostic and therapeutic procedures." <em>Am J Hematol</em>. 2021;96(12):1679&ndash;1705.</li>
+      <li>Hallek M. "Chronic Lymphocytic Leukemia: 2025 Update on the Epidemiology, Pathogenesis, Diagnosis, and Therapy." <em>Am J Hematol</em>. 2025;100(1):73&ndash;105.</li>
+      <li>Davids MS, Stilgenbauer S, Tam CS. "First-Line Treatment for CLL in the Era of Targeted Therapy." <em>Blood Cancer J</em>. 2026.</li>
+      <li>Munir T, Girvan S, Cairns DA, et al. "Measurable Residual Disease&ndash;Guided Therapy for Chronic Lymphocytic Leukemia." <em>N Engl J Med</em>. 2025 (FLAIR trial).</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="../index.html">&larr; Back to Case Repository</a> &middot; Morning Report &middot; For educational use only
+</footer>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>
