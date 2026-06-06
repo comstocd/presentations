@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Topic 35 — CNS Infections | Morning Report</title>
+<style>
+  :root {
+    --bg: #ffffff; --bg2: #f6f8fa; --bg3: #eaeef2;
+    --border: #d0d7de; --text: #1f2328; --muted: #656d76;
+    --blue: #0969da; --blue-bg: #ddf4ff; --blue-border: #54aeff;
+    --green: #1a7f37; --green-bg: #dafbe1; --green-border: #4ac26b;
+    --yellow: #9a6700; --yellow-bg: #fff8c5; --yellow-border: #d4a72c;
+    --red: #cf222e; --red-bg: #ffebe9; --red-border: #ff8182;
+    --purple: #8250df; --purple-bg: #fbefff; --purple-border: #c297ff;
+    --orange: #bc4c00; --orange-bg: #fff1e5; --orange-border: #fb8f44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.6;
+  }
+
+  #deck { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 38px 52px 58px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease; overflow: hidden;
+  }
+  .slide.active { opacity: 1; pointer-events: all; }
+  .slide-content { background: var(--bg); }
+  .slide-accent  { background: var(--bg2); }
+  .slide-title   { background: var(--bg); justify-content: center; }
+  .slide-danger  { background: #fff5f5; }
+
+  .slide-body {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; padding-right: 4px;
+  }
+  .slide-body::-webkit-scrollbar { width: 3px; }
+  .slide-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .slide-label { font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+  .slide h1 { font-size: 36px; font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 14px; }
+  .slide h2 { font-size: 26px; font-weight: 700; color: var(--text);
+    padding-bottom: 10px; border-bottom: 2px solid var(--border); margin-bottom: 18px; }
+  .slide h3 { font-size: 18px; font-weight: 600; color: var(--text); margin: 16px 0 8px; }
+  .slide p  { color: var(--text); margin-bottom: 10px; font-size: 16px; }
+  .slide ul, .slide ol { padding-left: 20px; margin-bottom: 10px; }
+  .slide li { margin-bottom: 5px; font-size: 16px; color: var(--text); line-height: 1.5; }
+  .slide strong { font-weight: 600; }
+  .tagline { font-size: 19px; color: var(--muted); max-width: 640px; line-height: 1.55; margin-bottom: 22px; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .badge { font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 99px; border: 1px solid; }
+  .badge-blue   { background: var(--blue-bg);   color: var(--blue);   border-color: var(--blue-border); }
+  .badge-green  { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+  .badge-red    { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-border); }
+
+  .callout { border-radius: 8px; padding: 11px 15px; margin: 10px 0;
+    border-left: 4px solid; font-size: 15px; line-height: 1.6; }
+  .callout-label { font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .callout-blue   { background: var(--blue-bg);   border-color: var(--blue);         color: #0550ae; }
+  .callout-blue   .callout-label { color: var(--blue); }
+  .callout-yellow { background: var(--yellow-bg); border-color: var(--yellow-border); color: var(--yellow); }
+  .callout-yellow .callout-label { color: var(--yellow); }
+  .callout-red    { background: var(--red-bg);    border-color: var(--red);           color: #82071e; }
+  .callout-red    .callout-label { color: var(--red); }
+  .callout-green  { background: var(--green-bg);  border-color: var(--green);         color: #116329; }
+  .callout-green  .callout-label { color: var(--green); }
+  .callout-orange { background: var(--orange-bg); border-color: var(--orange-border); color: var(--orange); }
+  .callout-orange .callout-label { color: var(--orange); }
+  .callout-purple { background: var(--purple-bg); border-color: var(--purple);        color: #5a32a3; }
+  .callout-purple .callout-label { color: var(--purple); }
+
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--bg3); color: var(--muted); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 8px 11px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 14px; color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg2); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+
+  .card        { background: var(--bg);       border: 1px solid var(--border);        border-radius: 10px; padding: 12px 14px; }
+  .card-accent { background: var(--bg2);       border: 1px solid var(--border);        border-radius: 10px; padding: 12px 14px; }
+  .card-red    { background: var(--red-bg);    border: 1px solid var(--red-border);    border-radius: 10px; padding: 12px 14px; }
+  .card-green  { background: var(--green-bg);  border: 1px solid var(--green-border);  border-radius: 10px; padding: 12px 14px; }
+  .card-yellow { background: var(--yellow-bg); border: 1px solid var(--yellow-border); border-radius: 10px; padding: 12px 14px; }
+  .card-blue   { background: var(--blue-bg);   border: 1px solid var(--blue-border);   border-radius: 10px; padding: 12px 14px; }
+  .card-purple { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: 10px; padding: 12px 14px; }
+  .card-orange { background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: 10px; padding: 12px 14px; }
+  .card-title  { font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); margin-bottom: 7px; }
+
+  /* TIMELINE */
+  .timeline { list-style: none; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline li { padding: 0 0 14px 34px; position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: 7px; top: 5px;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--blue); }
+  .tl-label { font-size: 12px; font-weight: 700; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+  /* DECISION FLOW */
+  .flow-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 9px; }
+  .flow-num  { width: 24px; height: 24px; border-radius: 50%; background: var(--blue);
+    color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .flow-body { flex: 1; font-size: 15px; line-height: 1.5; }
+  .flow-title { font-weight: 600; }
+
+  .pearl { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 16px; margin: 8px 0; font-size: 15px; line-height: 1.6; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+
+  .refs { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .refs li { margin-bottom: 7px; }
+
+  /* CHAPTER HEADER — section divider slides */
+  .chapter-header {
+    display: flex; flex-direction: column; justify-content: center; height: 100%;
+  }
+  .chapter-num { font-size: 72px; font-weight: 800; color: var(--bg3);
+    line-height: 1; margin-bottom: 8px; }
+  .chapter-title { font-size: 30px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+  .chapter-sub { font-size: 18px; color: var(--muted); max-width: 540px; line-height: 1.5; }
+
+  #nav { position: fixed; bottom: 0; left: 0; right: 0; height: 44px;
+    background: var(--bg); border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; z-index: 200; user-select: none; }
+  .nav-btn { background: none; border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 14px; font-size: 14px; font-weight: 500; color: var(--text);
+    cursor: pointer; transition: background 0.1s; }
+  .nav-btn:hover { background: var(--bg2); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  #slide-counter { font-size: 14px; color: var(--muted); font-weight: 500; }
+  #progress-bar  { position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--blue); transition: width 0.2s ease; z-index: 300; }
+
+  @media (max-width: 720px) {
+    .slide { padding: 20px 14px 56px; }
+    .slide h1 { font-size: 26px; } .slide h2 { font-size: 19px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+
+<script>
+const SLIDES = [
+
+// ── 1. TITLE ──────────────────────────────────────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="slide-label">Topic 35 &middot; Infectious Disease / Neurology / Critical Care</div>
+<h1>CNS Infections</h1>
+<p class="tagline">Meningitis, encephalitis, brain abscess, and focal CNS infections. The window between "LP now" and "CT first" closes quickly. Antibiotics must precede imaging when delay is unavoidable. Getting these decisions right requires knowing the pathogens, the CSF patterns, and exactly when to reach for acyclovir before the culture returns.</p>
+<div class="badge-row">
+  <span class="badge badge-red">Infectious Disease</span>
+  <span class="badge badge-purple">Neurology</span>
+  <span class="badge badge-blue">Critical Care</span>
+  <span class="badge badge-yellow">IDSA Guidelines</span>
+</div>
+<div style="margin-top:28px;font-size:15px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// ── 2. CASE VIGNETTE ──────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="timeline">
+  <li>
+    <div class="tl-label">History</div>
+    <p style="margin:0;">52M, no significant PMH, presents with 18-hour history of fever (39.4&deg;C), severe headache, and progressive neck stiffness. Wife reports confusion since this morning. No recent travel. No sick contacts. Vaccinated as child; uncertain if boosters current.</p>
+  </li>
+  <li>
+    <div class="tl-label">Vitals &amp; Exam</div>
+    <p style="margin:0;">T 39.6&deg;C, HR 114, BP 98/62, RR 22, SpO2 96% RA. Drowsy, answers simple questions. Stiff neck with passive flexion. Kernig's sign positive bilaterally. No papilledema on fundoscopy. No focal neuro deficits. No petechiae or purpura.</p>
+  </li>
+  <li>
+    <div class="tl-label">ED Decision</div>
+    <p style="margin:0;">CT head ordered. No mass lesion, no midline shift, ventricles symmetric. <strong>LP performed immediately after CT.</strong> CSF: opening pressure 380 mm H2O. Turbid, straw-colored. WBC 4,200 (94% PMN). Glucose 22 mg/dL (serum 108). Protein 480 mg/dL. Gram stain: Gram-positive diplococci.</p>
+  </li>
+  <li>
+    <div class="tl-label">Orders</div>
+    <p style="margin:0;">Ceftriaxone 2g IV q12h + vancomycin 15&ndash;20 mg/kg IV q8&ndash;12h + dexamethasone 0.15 mg/kg IV q6h &mdash; dexamethasone given <em>before</em> first antibiotic dose. Blood cultures already drawn.</p>
+  </li>
+</ul>
+<div class="callout callout-red">
+  <span class="callout-label">The Core Teaching Point of This Case</span>
+  <strong>Do not let imaging delay antibiotics.</strong> If CT is required before LP, draw blood cultures and give the first antibiotic dose immediately after. Every hour of antibiotic delay in bacterial meningitis increases mortality. Dexamethasone must be given with or before the first antibiotic dose to be effective &mdash; it has no benefit if given afterward.
+</div>
+</div>
+`},
+
+// ── 3. CLINICAL REASONING — PATIENT EVALUATION ───────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Clinical Reasoning: Evaluating the Patient</h2>
+<div class="slide-body">
+<style>
+  .cr-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .cr-entry { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; }
+  .cr-entry-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px; }
+  .cr-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 6px; }
+  .cr-item { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px 11px; font-size: 14px; line-height: 1.45; }
+  .cr-item strong { display: block; font-size: 13px; color: var(--muted); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cr-arrow { text-align: center; font-size: 18px; color: var(--muted); line-height: 1; }
+  .cr-branch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .cr-branch { border-radius: 8px; padding: 10px 12px; font-size: 14px; line-height: 1.5; border: 1px solid; }
+  .cr-branch-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+  .cr-branch.blue   { background: var(--blue-bg);   border-color: var(--blue-border);   }
+  .cr-branch.purple { background: var(--purple-bg); border-color: var(--purple-border); }
+  .cr-branch.red    { background: var(--red-bg);    border-color: var(--red-border);    }
+  .cr-branch.orange { background: var(--orange-bg); border-color: var(--orange-border); }
+  .cr-branch.blue   .cr-branch-title { color: var(--blue);   }
+  .cr-branch.purple .cr-branch-title { color: var(--purple); }
+  .cr-branch.red    .cr-branch-title { color: var(--red);    }
+  .cr-branch.orange .cr-branch-title { color: var(--orange); }
+  .cr-branch ul { padding-left: 14px; margin: 0; }
+  .cr-branch li { margin-bottom: 3px; color: var(--text); }
+  .cr-connector { display: flex; justify-content: space-around; padding: 0 24px; }
+  .cr-tick { font-size: 13px; color: var(--muted); text-align: center; font-weight: 600; }
+</style>
+<div class="cr-wrap">
+
+  <!-- ROW 1: History -->
+  <div class="cr-entry">
+    <div class="cr-entry-title">Step 1 &mdash; History: Establish Tempo and Context</div>
+    <div class="cr-cols">
+      <div class="cr-item"><strong>Onset &amp; tempo</strong>Hours&ndash;days: bacterial or viral. Days&ndash;weeks: TB or fungal. Hyperacute maximal onset: rule out SAH first.</div>
+      <div class="cr-item"><strong>Exposures &amp; season</strong>Mosquitoes June&ndash;Oct (arboviruses). Fresh water (Naegleria). Travel. Animal contact (rabies). Rodents (LCMV). SW/Ohio Valley endemic mycoses.</div>
+      <div class="cr-item"><strong>Immune status</strong>Age &gt;50: add Listeria coverage. HIV/AIDS: Cryptococcus, toxoplasma, PML. Transplant: CMV, Aspergillus. Natalizumab/rituximab: PML.</div>
+      <div class="cr-item"><strong>Prior CNS disease</strong>Prior neurosurgery, shunt, drain, or head trauma: nosocomial pathogens &mdash; Staph, Pseudomonas, Cutibacterium acnes.</div>
+      <div class="cr-item"><strong>Medications</strong>NSAIDs, TMP-SMX, IVIG: drug-induced aseptic meningitis. Key clue: symptoms began shortly after starting the drug and resolve when it is stopped.</div>
+      <div class="cr-item"><strong>Vaccination gaps</strong>Meningococcal quadrivalent covers A, C, W, Y &mdash; not serogroup B. Unvaccinated contacts of meningococcemia need prophylaxis regardless of their own status.</div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Exam -->
+  <div class="cr-entry">
+    <div class="cr-entry-title">Step 2 &mdash; Exam: Localize the Syndrome</div>
+    <div class="cr-cols">
+      <div class="cr-item"><strong>Meningeal signs</strong>Nuchal rigidity, Kernig's, Brudzinski's. Sensitivity ~50% each &mdash; absence does not exclude meningitis. High specificity when present.</div>
+      <div class="cr-item"><strong>Consciousness</strong>Alert: viral meningitis likely. Altered/confused: bacterial meningitis or encephalitis. Aphasia, olfactory hallucinations, memory loss: HSV-1 until proven otherwise.</div>
+      <div class="cr-item"><strong>Focal deficits</strong>Present: brain abscess, HSV encephalitis, subdural empyema, spinal epidural abscess. CN VI palsy: TB (basilar). Flaccid paralysis: WNV or AFM.</div>
+      <div class="cr-item"><strong>Fundoscopy</strong>Papilledema = CT before LP mandatory. Do not skip this exam &mdash; it is the single finding most consistently omitted in busy EDs and most likely to change your immediate management.</div>
+      <div class="cr-item"><strong>Skin</strong>Petechiae/purpura: meningococcemia &mdash; give antibiotics immediately, do not wait for LP. Vesicular rash: VZV (may be absent). Maculopapular rash: enterovirus or early meningococcemia.</div>
+      <div class="cr-item"><strong>Spine</strong>Vertebral percussion tenderness + fever + neurologic deficit: spinal epidural abscess. MRI with contrast urgently. Deficit present = surgical emergency.</div>
+    </div>
+  </div>
+
+  <!-- ARROW -->
+  <div class="cr-arrow">&#x25BC;</div>
+
+  <!-- ROW 3: Syndrome branches -->
+  <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:4px;">Step 3 &mdash; Syndromic Classification Drives Empiric Therapy</div>
+  <div class="cr-branch-row">
+    <div class="cr-branch blue">
+      <div class="cr-branch-title">Meningitis</div>
+      <ul>
+        <li>Fever + headache + nuchal rigidity</li>
+        <li>Photophobia, phonophobia</li>
+        <li>Meningeal signs present</li>
+        <li>Consciousness relatively preserved (early)</li>
+        <li><strong>LP is diagnostic</strong></li>
+      </ul>
+    </div>
+    <div class="cr-branch purple">
+      <div class="cr-branch-title">Encephalitis</div>
+      <ul>
+        <li>Altered consciousness &gt;24h (required)</li>
+        <li>+ Fever, seizure, focal deficits, CSF pleocytosis, abnormal MRI/EEG</li>
+        <li>Temporal lobe signs: HSV-1</li>
+        <li><strong>MRI + LP + acyclovir empirically</strong></li>
+      </ul>
+    </div>
+    <div class="cr-branch red">
+      <div class="cr-branch-title">Brain Abscess</div>
+      <ul>
+        <li>Headache + focal deficits + fever (only 50%)</li>
+        <li>Ring-enhancing lesion on CT/MRI</li>
+        <li>Subacute onset days&ndash;weeks</li>
+        <li>Seizures common</li>
+        <li><strong>Do not LP &mdash; herniation risk</strong></li>
+      </ul>
+    </div>
+    <div class="cr-branch orange">
+      <div class="cr-branch-title">Spinal / Epidural</div>
+      <ul>
+        <li>Fever + spinal pain + neurologic deficit</li>
+        <li>Radicular pain pattern</li>
+        <li>Risk: IVDU, HD lines, endocarditis</li>
+        <li><strong>MRI with contrast urgently</strong></li>
+        <li>Surgical emergency if deficit present</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+`},
+
+// ── 4. WHEN TO CT BEFORE LP ───────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>CT Before LP: The Decision</h2>
+<div class="slide-body">
+<div class="callout callout-red">
+  <span class="callout-label">Cardinal Rule</span>
+  If CT is required before LP, <strong>draw blood cultures first, then give antibiotics immediately.</strong> Do not wait for CT results or LP results to start empiric therapy in suspected bacterial meningitis. LP culture yield drops after antibiotics but the clinical stakes are too high to wait.
+</div>
+<h3>Indications for CT Head Before LP (IDSA)</h3>
+<div class="grid-2">
+  <div class="card-red">
+    <div class="card-title" style="color:var(--red);">CT First &mdash; Then LP</div>
+    <ul style="font-size:15px;">
+      <li>Altered mental status / decreased consciousness</li>
+      <li>Focal neurologic deficits</li>
+      <li>Papilledema on fundoscopy</li>
+      <li>New-onset seizure</li>
+      <li>History of CNS disease (mass, stroke, infection)</li>
+      <li>Immunocompromised state (HIV, solid organ transplant, steroids)</li>
+    </ul>
+  </div>
+  <div class="card-green">
+    <div class="card-title" style="color:var(--green);">LP Without CT &mdash; Acceptable</div>
+    <ul style="font-size:15px;">
+      <li>Alert, oriented, cooperative</li>
+      <li>No focal neuro deficits</li>
+      <li>No papilledema</li>
+      <li>No new seizure</li>
+      <li>No immunocompromise</li>
+      <li>No history of CNS disease</li>
+    </ul>
+    <p style="font-size:15px;color:var(--green);margin-top:6px;font-weight:600;">LP is of limited utility without AMS or focal findings in suspected meningitis &mdash; but LP is still required for diagnosis.</p>
+  </div>
+</div>
+<h3 style="margin-top:10px;">The Sequence When CT Is Required</h3>
+<div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><span class="flow-title">Blood cultures &times;2</span> &mdash; immediately, before any antibiotic</div></div>
+<div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><span class="flow-title">Dexamethasone + first antibiotic dose</span> &mdash; immediately after blood cultures, before CT</div></div>
+<div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><span class="flow-title">CT head</span> &mdash; rule out mass lesion / herniation risk</div></div>
+<div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><span class="flow-title">LP</span> &mdash; as soon as CT clears; opening pressure, cell count, glucose, protein, Gram stain, culture, PCR</div></div>
+<div class="callout callout-blue">
+  <span class="callout-label">Evidence: Glimåker et al., CID 2018</span>
+  Prospective national cohort of adult bacterial meningitis in Sweden: patients who underwent prompt LP (without prior CT) had significantly better outcomes than those who had CT-first LP &mdash; even after adjusting for severity. Routine CT before LP delays both diagnosis and treatment and is not supported by outcome data. CT is indicated selectively based on clinical criteria, not reflexively in all patients.
+</div>
+</div>
+`},
+
+// ── 5. CSF INTERPRETATION ─────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>CSF Interpretation</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Normal</th><th>Viral Meningitis</th><th>Bacterial Meningitis</th><th>TB / Fungal</th><th>HSV Encephalitis</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Opening pressure</strong></td>
+      <td>70&ndash;180 mm H2O</td>
+      <td>&le;250</td>
+      <td><strong>200&ndash;500+</strong></td>
+      <td>Elevated</td>
+      <td>Normal&ndash;mildly elevated</td>
+    </tr>
+    <tr>
+      <td><strong>WBC count</strong></td>
+      <td>&lt;5/&micro;L</td>
+      <td>50&ndash;1,000/&micro;L</td>
+      <td><strong>1,000&ndash;5,000/&micro;L</strong></td>
+      <td>100&ndash;500/&micro;L</td>
+      <td>10&ndash;500/&micro;L</td>
+    </tr>
+    <tr>
+      <td><strong>Predominant cell</strong></td>
+      <td>Lymphocytes</td>
+      <td>Lymphocytes (may be PMN early)</td>
+      <td><strong>Neutrophils (PMN)</strong></td>
+      <td>Lymphocytes</td>
+      <td>Lymphocytes (RBCs if hemorrhagic)</td>
+    </tr>
+    <tr>
+      <td><strong>Glucose</strong></td>
+      <td>&gt;60% serum</td>
+      <td>&gt;45 mg/dL (normal)</td>
+      <td><strong>&lt;40 mg/dL (low)</strong></td>
+      <td>Low (&lt;45)</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <td><strong>Protein</strong></td>
+      <td>15&ndash;45 mg/dL</td>
+      <td>&lt;200 mg/dL (mildly elevated)</td>
+      <td><strong>100&ndash;500 mg/dL</strong></td>
+      <td>Elevated (100&ndash;500)</td>
+      <td>Mildly elevated</td>
+    </tr>
+    <tr>
+      <td><strong>Gram stain</strong></td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>Positive 60&ndash;90%</td>
+      <td>AFB smear: &lt;40% sensitive</td>
+      <td>Negative</td>
+    </tr>
+    <tr>
+      <td><strong>Culture</strong></td>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>Positive 70&ndash;85%</td>
+      <td>TB: 38&ndash;88% (serial sampling improves yield)</td>
+      <td>Negative</td>
+    </tr>
+    <tr>
+      <td><strong>Key PCR / serology</strong></td>
+      <td>&mdash;</td>
+      <td>Enterovirus PCR; WNV IgM (serum + CSF)</td>
+      <td>Multiplex PCR (targeted use); Gram stain guides</td>
+      <td>NAAT; Cryptococcal Ag; &beta;-D-glucan</td>
+      <td><strong>HSV PCR (98% sensitivity, 94% specificity)</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">Pitfalls</span>
+  (1) Early bacterial meningitis can show lymphocytic predominance. (2) Viral meningitis can show early PMN predominance. (3) Glucose &gt;600 mm H2O suggests cerebral edema, hydrocephalus, or intracranial suppuration. (4) Neoplastic meningitis: severe hypoglycorrhachia (&lt;10 mg/dL), atypical cells on cytology.
+</div>
+</div>
+`},
+
+// ── 6. CHAPTER BREAK — BACTERIAL MENINGITIS ───────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">01</div>
+  <div class="chapter-title">Bacterial Meningitis</div>
+  <div class="chapter-sub">Pathogens by age, empiric regimens, dexamethasone timing, and the N. meningitidis contact prophylaxis rule</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-red">S. pneumoniae</span>
+    <span class="badge badge-blue">N. meningitidis</span>
+    <span class="badge badge-yellow">Listeria</span>
+    <span class="badge badge-orange">Dexamethasone</span>
+  </div>
+</div>
+`},
+
+// ── 7. BACTERIAL MENINGITIS — PATHOGENS ───────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Bacterial Meningitis: Pathogens by Risk Group</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Population</th><th>Primary Organisms</th><th>Key Pearl</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Immunocompetent adult &le;50y</strong></td>
+      <td><em>S. pneumoniae</em> (most common overall), <em>N. meningitidis</em></td>
+      <td>Pneumococcus mortality ~25% despite antibiotics. Meningococcus: petechial/purpuric rash is a medical emergency.</td>
+    </tr>
+    <tr>
+      <td><strong>Age &gt;50y or immunocompromised</strong></td>
+      <td><em>S. pneumoniae</em>, <em>L. monocytogenes</em>, gram-negative bacilli</td>
+      <td>Add ampicillin for Listeria coverage. Listeria is ampicillin-susceptible; cephalosporins have no activity.</td>
+    </tr>
+    <tr>
+      <td><strong>Neonates</strong></td>
+      <td>Group B Strep, <em>E. coli</em>, <em>L. monocytogenes</em></td>
+      <td>Different regimen: ampicillin + gentamicin or ampicillin + cefotaxime</td>
+    </tr>
+    <tr>
+      <td><strong>Healthcare-associated / post-neurosurgical</strong></td>
+      <td><em>Staphylococcus</em> spp. (including MRSA), gram-negative bacilli (<em>Pseudomonas</em>)</td>
+      <td>Vancomycin + cefepime/ceftazidime/meropenem. <em>Cutibacterium acnes</em>: requires prolonged culture incubation.</td>
+    </tr>
+    <tr>
+      <td><strong>Lyme-endemic area, summer/fall</strong></td>
+      <td><em>Borrelia burgdorferi</em></td>
+      <td>Lymphocytic meningitis + facial nerve palsy (unilateral or bilateral) + erythema migrans history. IV ceftriaxone.</td>
+    </tr>
+    <tr>
+      <td><strong>Fresh water exposure, summer</strong></td>
+      <td><em>Naegleria fowleri</em> (primary amebic meningoencephalitis)</td>
+      <td>Clinically resembles bacterial meningitis. CSF: motile trophozoites on fresh sample. Near-universally fatal. Amphotericin B + miltefosine. Confirm with CDC PCR.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-blue">
+  <span class="callout-label">N. meningitidis Contact Prophylaxis</span>
+  Regardless of vaccination status, close contacts of persons with meningococcal disease require antimicrobial prophylaxis: <strong>ciprofloxacin 500 mg PO &times;1</strong> (preferred if susceptible) or <strong>ceftriaxone 250 mg IM &times;1</strong>. Note: the quadrivalent vaccine covers serogroups A, C, W, Y &mdash; not serogroup B, which accounts for a significant proportion of US cases.
+</div>
+</div>
+`},
+
+// ── 8. EMPIRIC TREATMENT ──────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Bacterial Meningitis: Empiric Treatment</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Clinical Setting</th><th>Empiric Regimen</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Immunocompetent, age &le;50y</strong></td>
+      <td>IV <strong>Ceftriaxone</strong> 2g q12h + IV <strong>Vancomycin</strong> 15&ndash;20 mg/kg q8&ndash;12h</td>
+      <td>Vancomycin covers penicillin/cephalosporin-resistant pneumococcus. Target vancomycin AUC/MIC 400&ndash;600.</td>
+    </tr>
+    <tr>
+      <td><strong>Age &gt;50y or immunocompromised</strong></td>
+      <td>IV <strong>Ampicillin</strong> 2g q4h + IV <strong>Ceftriaxone</strong> 2g q12h + IV <strong>Vancomycin</strong></td>
+      <td>Ampicillin adds Listeria coverage. Cephalosporins have no Listeria activity &mdash; do not omit ampicillin.</td>
+    </tr>
+    <tr>
+      <td><strong>Beta-lactam allergy</strong></td>
+      <td>IV <strong>Moxifloxacin</strong> (instead of cephalosporin) + IV <strong>TMP-SMX</strong> (instead of ampicillin)</td>
+      <td>Confirm allergy history; true anaphylactic allergy to penicillins requires alternative coverage.</td>
+    </tr>
+    <tr>
+      <td><strong>Healthcare-associated / post-neurosurgical</strong></td>
+      <td>IV <strong>Vancomycin</strong> + IV <strong>Cefepime</strong> or <strong>Ceftazidime</strong> or <strong>Meropenem</strong></td>
+      <td>Meropenem preferred if ESBL gram-negatives or Pseudomonas suspected. Remove infected device (shunt, drain) surgically.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-orange">
+  <span class="callout-label">Dexamethasone &mdash; Timing Is Everything</span>
+  <strong>0.15 mg/kg IV q6h &times;4 days</strong> (IDSA/MKSAP; weight-based) <strong>&mdash; equivalent to approximately 10 mg IV q6h</strong> in a 70 kg adult (the dose used in the European dexamethasone trial). Must be given <em>with or before</em> the first antibiotic dose. No benefit if given afterward &mdash; the inflammatory cascade triggered by bacterial cell lysis is already underway. Proven to reduce morbidity and mortality in community-acquired bacterial meningitis in developed countries. Continue for 4 days in confirmed <em>S. pneumoniae</em> meningitis; emerging data support use in non-pneumococcal disease as well.
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">Pathogen-Directed Therapy (Once Known)</span>
+  <em>S. pneumoniae</em> (penicillin-susceptible): penicillin G or ampicillin. <em>S. pneumoniae</em> (cephalosporin-resistant): vancomycin + ceftriaxone &mdash; <em>continue both</em>. <em>N. meningitidis</em>: penicillin G (if susceptible) or ceftriaxone. <em>Listeria</em>: ampicillin &plusmn; gentamicin (synergy) for 21 days.
+</div>
+</div>
+`},
+
+// ── 9. CHAPTER BREAK — VIRAL MENINGITIS & ENCEPHALITIS ───────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">02</div>
+  <div class="chapter-title">Viral Meningitis &amp; Encephalitis</div>
+  <div class="chapter-sub">Enteroviruses, HSV-1 and HSV-2, VZV, West Nile virus, arboviral encephalitis &mdash; and when acyclovir cannot wait for the PCR result</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-purple">HSV-1 Encephalitis</span>
+    <span class="badge badge-blue">Enterovirus</span>
+    <span class="badge badge-green">West Nile</span>
+    <span class="badge badge-yellow">Acyclovir</span>
+  </div>
+</div>
+`},
+
+// ── 10. VIRAL MENINGITIS ──────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Viral Meningitis: Pathogens &amp; Management</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Pathogen</th><th>Seasonality / Clues</th><th>CSF / Diagnosis</th><th>Treatment</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Enteroviruses</strong> (most common)</td>
+      <td>May&ndash;November. Maculopapular rash, pharyngitis, myalgia, cough.</td>
+      <td>Lymphocytic pleocytosis; normal glucose; mildly elevated protein. Early: may see PMNs. Enterovirus PCR confirms.</td>
+      <td>Supportive. Benign course. No antiviral needed.</td>
+    </tr>
+    <tr>
+      <td><strong>HSV-2</strong></td>
+      <td>Year-round. May recur (Mollaret meningitis). Often no active genital lesions.</td>
+      <td>CSF resembles enteroviral meningitis. HSV PCR (CSF).</td>
+      <td>Generally favorable without acyclovir. Acyclovir often given to hospitalized patients; 5&ndash;7 days if treated.</td>
+    </tr>
+    <tr>
+      <td><strong>VZV</strong></td>
+      <td>Year-round. Vesicular rash (may be absent &mdash; zoster sine herpete). Older/immunocompromised at higher risk.</td>
+      <td>VZV PCR (CSF). VZV IgG CSF antibodies if vasculopathy suspected (PCR less sensitive in this context). May have hemorrhagic CSF.</td>
+      <td>IV acyclovir 10&ndash;15 mg/kg q8h &times;10&ndash;14 days. Do not withhold because rash is absent.</td>
+    </tr>
+    <tr>
+      <td><strong>West Nile Virus</strong></td>
+      <td>June&ndash;October. Mosquito exposure. Older and immunocompromised at highest risk of neuroinvasive disease.</td>
+      <td>WNV IgM in serum or CSF confirms. CSF: lymphocytic pleocytosis.</td>
+      <td>Supportive. May cause acute flaccid paralysis (polio-like), thalamic/basal ganglia lesions, parkinsonism, tremors. No antiviral proven effective.</td>
+    </tr>
+    <tr>
+      <td><strong>Mumps, EBV, HIV (acute)</strong></td>
+      <td>HIV: mononucleosis-like syndrome, fever, rash at seroconversion. EBV: young immunocompetent patients.</td>
+      <td>HIV RNA/Ag-Ab. EBV PCR or monospot.</td>
+      <td>Supportive (mumps, EBV). HIV: ART initiation per ID guidance.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-blue">
+  <span class="callout-label">Do Not LP Patients With Uncomplicated Varicella or Zoster</span>
+  VZV PCR may be detected in CSF without clinical CNS involvement. LP is indicated only if there are clinical signs of meningitis or encephalitis. A positive VZV PCR in the absence of CNS symptoms does not require antiviral therapy or alter management.
+</div>
+</div>
+`},
+
+// ── 11. HSV ENCEPHALITIS ──────────────────────────────────────────────────────
+{ cls: 'slide-danger', html: `
+<h2 style="color:var(--red);border-color:var(--red-border);"> HSV-1 Encephalitis &mdash; Do Not Miss</h2>
+<div class="slide-body">
+<div class="callout callout-red">
+  <span class="callout-label">Most Common Cause of Sporadic Encephalitis in the US</span>
+  HSV-1 encephalitis is treatable and fatal if missed. IV acyclovir must be started empirically in any patient with encephalitis pending CSF PCR results. Delay in starting antiviral therapy is independently associated with adverse outcomes.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Classic Presentation</h3>
+    <ul style="font-size:15px;">
+      <li>Fever + altered mental status + <strong>focal neurologic deficits</strong></li>
+      <li>Temporal lobe predilection: personality change, olfactory hallucinations, aphasia, memory disturbance</li>
+      <li>Seizures (focal or generalized) in up to 60%</li>
+      <li>Headache, nuchal rigidity may be present</li>
+      <li>CSF: lymphocytic pleocytosis, elevated protein, <strong>normal glucose</strong>; may have RBCs (hemorrhagic)</li>
+      <li>Little or no pleocytosis occasionally seen &mdash; do not use normal CSF WBC to exclude HSV</li>
+    </ul>
+    <h3 style="margin-top:10px;">Adverse Outcome Predictors</h3>
+    <ul style="font-size:15px;">
+      <li>Older age</li>
+      <li>Low GCS at presentation</li>
+      <li>Delay in starting acyclovir</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Diagnosis</h3>
+    <ul style="font-size:15px;">
+      <li><strong>HSV PCR of CSF:</strong> 98% sensitivity, 94% specificity. Gold standard.</li>
+      <li><strong>False negatives occur</strong> in first 24&ndash;72h of illness. If HSV suspected: repeat PCR within 1 week while continuing acyclovir.</li>
+      <li><strong>MRI:</strong> T2/FLAIR hyperintensity in temporal lobes, insula, cingulate gyrus. Hemorrhagic signal (GRE/SWI) in severe disease.</li>
+      <li><strong>EEG:</strong> Temporal lobe lateralized periodic discharges (LPDs, formerly PLEDs). Helps identify subclinical seizures.</li>
+    </ul>
+    <h3 style="margin-top:10px;">Treatment</h3>
+    <div class="callout callout-green" style="margin-top:4px;">
+      <span class="callout-label">Acyclovir Dosing</span>
+      IV acyclovir <strong>10 mg/kg q8h &times;14&ndash;21 days.</strong> Renal dose adjustment required (CrCl-based). Ensure adequate hydration to prevent crystalline nephropathy. Do not switch to oral until PCR is negative and patient is improving.
+    </div>
+    <div class="callout callout-purple" style="margin-top:6px;">
+      <span class="callout-label">Autoimmune Encephalitis &mdash; Evaluate in Parallel (Binks et al., Lancet 2026)</span>
+      Autoimmune encephalitis (anti-NMDAR, anti-LGI1, anti-CASPR2, and others) can be clinically indistinguishable from infectious encephalitis. Key clues: subacute onset over days&ndash;weeks, prominent psychiatric symptoms, movement disorder, autonomic instability, refractory seizures. Infectious and autoimmune evaluation should proceed <strong>simultaneously</strong> &mdash; do not anchor on infection and defer autoimmune workup. Send autoimmune encephalitis panel (serum + CSF) early when the syndrome is encephalitic and infectious workup is negative or atypical.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 12. CHAPTER BREAK — SUBACUTE & CHRONIC MENINGITIS ───────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">03</div>
+  <div class="chapter-title">Subacute &amp; Chronic Meningitis</div>
+  <div class="chapter-sub">Tuberculous meningitis, fungal meningitis, parasitic causes, and the noninfectious mimics that send you down the wrong path</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-yellow">TB Meningitis</span>
+    <span class="badge badge-green">Cryptococcus</span>
+    <span class="badge badge-purple">Eosinophilic</span>
+    <span class="badge badge-blue">Noninfectious</span>
+  </div>
+</div>
+`},
+
+// ── 13. TB & FUNGAL MENINGITIS ────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>TB Meningitis &amp; Fungal Meningitis</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Tuberculous Meningitis</h3>
+    <div class="callout callout-yellow" style="margin-top:4px;">
+      <span class="callout-label">Classic Presentation</span>
+      Basilar meningitis + cranial neuropathies (especially CN VI) + mental status changes + <strong>hyponatremia</strong> (SIADH or cerebral salt wasting). Subacute onset over days&ndash;weeks.
+    </div>
+    <ul style="font-size:15px;">
+      <li>Risk factors: TB exposure, abnormal CXR, positive TST or IGRA (can be absent)</li>
+      <li>CSF: lymphocytic pleocytosis (100&ndash;500/&micro;L), elevated protein, <strong>low glucose</strong></li>
+      <li>AFB smear: insensitive. Culture: 38&ndash;88% (serial 3-day sampling improves yield)</li>
+      <li><strong>NAAT (nucleic acid amplification):</strong> order when AFB smear negative and suspicion high &mdash; expedites treatment</li>
+      <li>Imaging: basal meningeal enhancement, hydrocephalus, infarcts</li>
+    </ul>
+    <h3 style="margin-top:10px;">Treatment</h3>
+    <ul style="font-size:15px;">
+      <li><strong>4-drug regimen:</strong> rifampin + isoniazid + pyrazinamide + ethambutol until susceptibilities return</li>
+      <li><strong>Dexamethasone</strong> for 6&ndash;8 weeks &mdash; improves outcomes</li>
+      <li>Total duration: <strong>12 months</strong></li>
+    </ul>
+  </div>
+  <div>
+    <h3>Fungal Meningitis</h3>
+    <div class="callout callout-green" style="margin-top:4px;">
+      <span class="callout-label">Cryptococcus neoformans &mdash; Most Common Fungal Meningitis</span>
+      AIDS (CD4 &lt;100) and solid organ transplant recipients. Subacute headache and fever; mental status changes; elevated opening pressure (may require serial LPs or CSF drainage for ICP control). Diagnosis: India ink preparation + <strong>cryptococcal antigen</strong> in CSF and serum (highly sensitive). Treatment: liposomal amphotericin B + flucytosine &times;2 weeks (induction) &rarr; fluconazole consolidation and maintenance.
+    </div>
+    <ul style="font-size:15px;">
+      <li><strong>Coccidioides immitis:</strong> SW US, Central/South America. Eosinophilic pleocytosis may be present. Serology (CSF + serum IgM/IgG). Tx: fluconazole; intrathecal amphotericin for refractory disease.</li>
+      <li><strong>Histoplasma capsulatum:</strong> Ohio/Mississippi River valleys. Urine histoplasma antigen (most sensitive test). Tx: liposomal amphotericin B &rarr; itraconazole.</li>
+      <li><strong>&beta;-D-glucan and galactomannan</strong> CSF assays: adjuncts for healthcare-associated fungal ventriculitis/meningitis.</li>
+    </ul>
+    <h3 style="margin-top:8px;">Eosinophilic Meningitis (Parasitic)</h3>
+    <ul style="font-size:15px;">
+      <li>CSF + blood eosinophilia with compatible exposure history is the diagnostic clue</li>
+      <li><em>Angiostrongylus cantonensis:</em> raw snail/slug ingestion, Pacific islands. <em>Baylisascaris procyonis:</em> raccoon feces exposure</li>
+      <li>Treatment: glucocorticoids + albendazole</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// ── 14. NONINFECTIOUS MENINGITIS MIMICS ───────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Noninfectious Causes of Meningitis</h2>
+<div class="slide-body">
+<p>Several noninfectious processes produce an aseptic meningitis syndrome that mimics infection. Failure to recognize these leads to unnecessary antibiotic courses and missed diagnoses.</p>
+<div class="grid-2">
+  <div class="card-yellow">
+    <div class="card-title" style="color:var(--yellow);">Drug-Induced Aseptic Meningitis</div>
+    <ul style="font-size:15px;">
+      <li>NSAIDs (ibuprofen most common)</li>
+      <li>Trimethoprim-sulfamethoxazole</li>
+      <li>IV immune globulin (IVIG)</li>
+      <li>Intrathecal medications</li>
+      <li>Clue: temporal relation to drug + resolution on discontinuation</li>
+      <li>CSF: pleocytosis (often PMN), normal or mildly elevated protein, normal glucose</li>
+    </ul>
+  </div>
+  <div class="card-purple">
+    <div class="card-title" style="color:var(--purple);">Neoplastic Meningitis (Leptomeningeal Carcinomatosis)</div>
+    <ul style="font-size:15px;">
+      <li>Breast, lung, melanoma most common primaries</li>
+      <li>CSF: lymphocytic pleocytosis OR atypical/immature cells; severe hypoglycorrhachia (&lt;10 mg/dL)</li>
+      <li>Diagnosis: cytology on large-volume CSF samples (repeated sampling increases yield)</li>
+      <li>Lymphomatous meningitis: lymphocytic pleocytosis; flow cytometry</li>
+    </ul>
+  </div>
+  <div class="card-blue">
+    <div class="card-title" style="color:var(--blue);">Autoimmune / Inflammatory</div>
+    <ul style="font-size:15px;">
+      <li>Systemic lupus erythematosus &mdash; extraneurologic markers</li>
+      <li>Neurosarcoidosis &mdash; ACE, bilateral hilar adenopathy, biopsy</li>
+      <li>Beh&ccedil;et syndrome &mdash; oral/genital ulcers, uveitis, thrombosis</li>
+      <li>Vogt-Koyanagi-Harada &mdash; uveomeningoencephalitis + hearing loss + vitiligo</li>
+    </ul>
+  </div>
+  <div class="card-accent">
+    <div class="card-title">Chemical Meningitis</div>
+    <ul style="font-size:15px;">
+      <li>After intrathecal injections, intracranial hemorrhage, neurosurgical procedures, spinal anesthesia</li>
+      <li>CSF: marked pleocytosis (can be PMN), elevated protein, very low glucose</li>
+      <li>Meningeal biopsy occasionally required for uncertain diagnoses after workup exhausted</li>
+    </ul>
+  </div>
+</div>
+<div class="callout callout-green">
+  <span class="callout-label">Key Differentiator: Glucose</span>
+  A CSF glucose &lt;10 mg/dL (very severe hypoglycorrhachia) is most consistent with neoplastic or chemical meningitis, not infection. Bacterial meningitis typically has glucose 20&ndash;40 mg/dL. Viral meningitis: normal glucose.
+</div>
+</div>
+`},
+
+// ── 15. CHAPTER BREAK — FOCAL CNS INFECTIONS ─────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">04</div>
+  <div class="chapter-title">Focal CNS Infections</div>
+  <div class="chapter-sub">Brain abscess, cranial epidural abscess and subdural empyema, spinal epidural abscess, and the immunocompromised host</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-red">Brain Abscess</span>
+    <span class="badge badge-orange">Spinal Epidural</span>
+    <span class="badge badge-yellow">Subdural Empyema</span>
+    <span class="badge badge-purple">Immunocompromised</span>
+  </div>
+</div>
+`},
+
+// ── 16. BRAIN ABSCESS ─────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Brain Abscess</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Predisposing Conditions &amp; Pathogens</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Source</th><th>Freq.</th><th>Typical Organisms</th></tr></thead>
+      <tbody>
+        <tr><td>Contiguous (sinusitis, otitis)</td><td>~50%</td><td>Streptococci, Bacteroides, Enterobacterales, Prevotella</td></tr>
+        <tr><td>Hematogenous (endocarditis, IVDU, dental, R-to-L shunt)</td><td>25%</td><td>Viridans streptococci, S. aureus, polymicrobial</td></tr>
+        <tr><td>Cryptogenic (likely odontogenic)</td><td>15%</td><td>Mixed organisms</td></tr>
+        <tr><td>Post-neurosurgery / trauma</td><td>10%</td><td>S. aureus, Pseudomonas, Enterobacterales, Clostridium</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3 style="margin-top:10px;">Clinical Presentation</h3>
+    <ul style="font-size:15px;">
+      <li>Headache (most common), fever (only ~50%), focal neuro deficits, seizures</li>
+      <li>Triad of fever + headache + focal deficits in only 20&ndash;50%</li>
+      <li>Location clue: frontal lobe (sinusitis), temporal lobe or cerebellum (otitis media)</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Management</h3>
+    <div class="callout callout-blue" style="margin-top:4px;">
+      <span class="callout-label">Empiric Antibiotic Regimen (Unknown Source)</span>
+      IV <strong>Vancomycin</strong> + IV <strong>Ceftriaxone</strong> + IV <strong>Metronidazole</strong><br>
+      Post-neurosurgery: replace ceftriaxone with <strong>cefepime</strong> (Pseudomonas coverage).<br>
+      Duration: <strong>6&ndash;8 weeks</strong>. Follow-up cranial imaging to confirm resolution.
+    </div>
+    <ul style="font-size:15px;margin-top:8px;">
+      <li><strong>Surgical drainage:</strong> indicated for abscess &gt;2.5 cm; provides culture specimen for definitive pathogen identification</li>
+      <li>Abscesses &le;2.5 cm or inaccessible: antimicrobials alone with close imaging follow-up</li>
+      <li>Do not perform LP in known brain abscess: herniation risk</li>
+      <li><strong>Immunocompromised:</strong> broaden for Listeria, Nocardia, Mycobacterium, fungi, toxoplasma &mdash; see slide 18</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// ── 17. SPINAL EPIDURAL ABSCESS ───────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Spinal Epidural Abscess &amp; Subdural Empyema</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Spinal Epidural Abscess</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Pathogen:</strong> S. aureus in ~50%; streptococci; gram-negative bacilli (E. coli)</li>
+      <li><strong>Source:</strong> hematogenous (endocarditis, IVDU, HD catheters, UTI) or direct (spinal fusion, epidural catheter, paraspinal injection)</li>
+      <li><strong>Classic triad:</strong> fever + spine pain &rarr; radicular pain &rarr; neurologic deficits (weakness, numbness, bowel/bladder dysfunction)</li>
+    </ul>
+    <div class="callout callout-blue" style="margin-top:8px;">
+      <span class="callout-label">Imaging &amp; Workup</span>
+      <strong>MRI with contrast</strong> &mdash; modality of choice; identifies location, extent, and cord compression. Baseline ESR and CRP. Blood cultures before antibiotics (do not delay if neurologic deficits present).
+    </div>
+    <h3 style="margin-top:10px;">Treatment</h3>
+    <ul style="font-size:15px;">
+      <li>At least <strong>6 weeks</strong> of effective antimicrobial therapy</li>
+      <li><strong>Surgical drainage:</strong> indicated for any neurologic symptoms or signs &mdash; lower extremity weakness, numbness, bladder/bowel dysfunction. Urgency correlates with deficit severity.</li>
+      <li>Consider TB (Pott disease) and brucellosis if cultures negative + appropriate exposure history</li>
+      <li>Follow-up MRI: not routine unless persistent elevated inflammatory markers, no clinical response, or new neurologic signs</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Cranial Epidural Abscess</h3>
+    <ul style="font-size:15px;">
+      <li>Complicates paranasal sinusitis (Pott puffy tumor), otitis media, neurosurgery, or head trauma</li>
+      <li>Slow-growing: subacute headache, localized bone pain, focal neuro signs</li>
+      <li>CSF: neutrophilic pleocytosis, very high protein, negative Gram stain/culture (parameningeal &mdash; not in the CSF directly)</li>
+      <li>Pathogen identification by culture of abscess obtained at surgical drainage</li>
+    </ul>
+    <h3 style="margin-top:10px;">Subdural Empyema</h3>
+    <div class="callout callout-red" style="margin-top:4px;">
+      <span class="callout-label">Neurosurgical Emergency</span>
+      Rapidly progressive infection with high mortality. Fever + severe headache + focal deficits + rapid deterioration. Requires emergent surgical drainage. Mortality approaches 25% even with prompt treatment. Do not wait for cultures before calling neurosurgery.
+    </div>
+    <ul style="font-size:15px;margin-top:6px;">
+      <li>Same sources as epidural: sinusitis, otitis, post-surgical</li>
+      <li>MRI: crescentic collection with restricted diffusion, peripheral enhancement</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// ── 18. PML, NEUROCYSTICERCOSIS, ACUTE FLACCID MYELITIS ──────────────────────
+{ cls: 'slide-content', html: `
+<h2>Other CNS Infections Worth Knowing</h2>
+<div class="slide-body">
+<div class="callout callout-yellow">
+  <span class="callout-label">Ring-Enhancing Lesion in AIDS &mdash; The Two-Diagnosis Problem</span>
+  CD4 &lt;100 + single or multiple ring-enhancing lesions: <strong>toxoplasmosis</strong> (most common) vs. <strong>primary CNS lymphoma</strong>. If toxoplasma serology is positive, treat empirically with pyrimethamine + sulfadiazine + leucovorin &mdash; clinical and radiographic response within 2&ndash;3 weeks is both therapeutic and diagnostic. Failure to respond: send CSF EBV PCR and FDG-PET (lymphoma). Toxoplasma seronegative: biopsy or empiric lymphoma workup first.
+</div>
+<div class="grid-2">
+  <div class="card-purple">
+    <div class="card-title" style="color:var(--purple);">Progressive Multifocal Leukoencephalopathy (PML)</div>
+    <ul style="font-size:15px;">
+      <li>JC virus (John Cunningham virus) reactivation in immunocompromised hosts: AIDS (CD4 &lt;200), natalizumab (MS), rituximab, other immunomodulatory agents</li>
+      <li>Clinical: behavioral/cognitive changes, motor weakness, gait abnormalities, visual field deficits, speech disturbance, seizures, ataxia</li>
+      <li>MRI: multifocal white matter lesions; T2/FLAIR hyperintense; <strong>no mass effect, no contrast enhancement</strong> (unlike lymphoma or toxo)</li>
+      <li>Diagnosis: clinical + radiographic + <strong>CSF JCV PCR</strong> (all 3 = definitive)</li>
+      <li>Tissue biopsy rarely needed; may be required if JCV PCR negative and other causes excluded</li>
+      <li>Management: <strong>restore immune function</strong> (ART for HIV; stop offending immunosuppressant). No proven antiviral. IRIS (immune reconstitution inflammatory syndrome) can complicate recovery.</li>
+    </ul>
+  </div>
+  <div>
+    <div class="card-yellow" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--yellow);">Neurocysticercosis (<em>Taenia solium</em>)</div>
+      <ul style="font-size:15px;">
+        <li>Endemic: Mexico, Central/South America, Asia</li>
+        <li>Most common cause of seizures in endemic regions</li>
+        <li>CT: multiple cysts, calcified lesions (dead parasites &mdash; no treatment needed for calcified); scolex visible within viable cyst</li>
+        <li>Treatment: seizure management + glucocorticoids + <strong>praziquantel</strong> (viable cysts only) &plusmn; albendazole. Calcified lesions: no antiparasitic needed.</li>
+        <li>Hydrocephalus: ventricular shunting; antiparasitic may worsen inflammation acutely</li>
+      </ul>
+    </div>
+    <div class="card-orange">
+      <div class="card-title" style="color:var(--orange);">Acute Flaccid Myelitis</div>
+      <ul style="font-size:15px;">
+        <li>Causes: WNV (adults), non-polio enteroviruses EV-D68 and EV-71 (children), poliovirus (endemic countries)</li>
+        <li>Acute-onset limb weakness mimicking poliomyelitis; anterior horn cell involvement</li>
+        <li>May progress to respiratory failure &mdash; all patients hospitalized initially</li>
+        <li>MRI: T2 signal in gray matter (anterior horn)</li>
+        <li>No proven therapy; supportive care, close respiratory monitoring</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 19. CLINICAL PEARLS ───────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"><strong>Antibiotics before imaging, not imaging before antibiotics.</strong> If CT is required, draw blood cultures and give the first antibiotic dose + dexamethasone immediately. Do not wait for CT results. LP culture yield falls after antibiotics, but the stakes of delay are far higher. Dexamethasone after the first antibiotic dose provides no proven benefit.</div>
+<div class="pearl"><strong>Start acyclovir empirically in any patient with encephalitis.</strong> HSV-1 encephalitis is the most common treatable cause of sporadic encephalitis in the US and is fatal if missed. IV acyclovir 10 mg/kg q8h should be started before CSF PCR returns. A false-negative HSV PCR can occur in the first 72h &mdash; if clinical suspicion is high, repeat PCR and continue acyclovir.</div>
+<div class="pearl"><strong>Add ampicillin for Listeria when age &gt;50 or immunocompromised.</strong> Cephalosporins have zero activity against Listeria monocytogenes. Empiric ceftriaxone + vancomycin alone is insufficient in this population. Listeria accounts for a small but important fraction of bacterial meningitis in older and immunosuppressed patients and carries high mortality if treatment is delayed.</div>
+<div class="pearl"><strong>VZV can cause encephalitis without rash.</strong> Zoster sine herpete is well-documented. Order CSF VZV PCR in all patients with encephalitis regardless of whether a vesicular rash is present. In suspected VZV vasculopathy, also send CSF VZV IgG antibodies &mdash; PCR sensitivity is much lower in this presentation.</div>
+<div class="pearl"><strong>Spinal epidural abscess: fever + back pain + neurologic deficit = surgical emergency.</strong> This triad should trigger emergent MRI with contrast and neurosurgical consultation. Deficits that are present and worsening may become permanent within hours. Do not wait for blood culture results before calling surgery if the patient has a neurologic deficit.</div>
+<div class="pearl"><strong>Subdural empyema is not the same as epidural abscess.</strong> Subdural empyema is a rapidly fatal neurosurgical emergency with much higher mortality than epidural abscess. Any patient with fever, headache, focal deficits, and a history of sinusitis or otitis in the context of rapid neurological deterioration needs urgent neurosurgical consultation, not observation.</div>
+<div class="pearl"><strong>Ring-enhancing lesion in AIDS: treat for toxoplasmosis empirically.</strong> If CD4 &lt;100 and serology is positive, empiric pyrimethamine + sulfadiazine + leucovorin for 2&ndash;3 weeks is both diagnostic and therapeutic. Failure to respond should raise concern for CNS lymphoma (send CSF EBV PCR; FDG-PET).</div>
+</div>
+`},
+
+// ── 20. REFERENCES ────────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>van de Beek D, Brouwer MC, Koedel U, Wall EC. "Community-Acquired Bacterial Meningitis." <em>Lancet.</em> 2021;398(10306):1171&ndash;1183. [Best current review; pathogen distribution, treatment, outcomes]</li>
+  <li>Hasbun R. "Progress and Challenges in Bacterial Meningitis." <em>JAMA.</em> 2022;328(21):2178&ndash;2189. [High-yield clinical review; JAMA 2022]</li>
+  <li>Binks SNM, Saylor D, Easton A, Thakur KT, Irani SR. "Encephalitis." <em>Lancet.</em> 2026. [Most recent encephalitis review; autoimmune vs. infectious framework]</li>
+  <li>Krebs L, Durden B, Saguil A. "Aseptic and Bacterial Meningitis: Diagnosis, Treatment, and Prevention." <em>Am Fam Physician.</em> 2026. [Recent review; LP timing, empiric therapy]</li>
+  <li>Glimåker M, Sjölin J, Åkesson S, Naucler P. "Lumbar Puncture Performed Promptly or After Neuroimaging in Acute Bacterial Meningitis in Adults." <em>Clin Infect Dis.</em> 2018;67(8):1183&ndash;1192. [Supports prompt LP over delayed LP after neuroimaging; prospective national cohort]</li>
+  <li>Miller JM, Binnicker MJ, Campbell S, et al. "Guide to Utilization of the Microbiology Laboratory for Diagnosis of Infectious Diseases: 2024 Update." IDSA/ASM. <em>Clin Infect Dis.</em> 2024;78(9):e88&ndash;e265.</li>
+  <li>Shahan B, Choi EY, Nieves G. "Cerebrospinal Fluid Analysis." <em>Am Fam Physician.</em> 2021;103(8):469&ndash;478. [CSF patterns comparison table; AFP 2021]</li>
+  <li>Tunkel AR, et al. "Practice Guidelines for the Management of Bacterial Meningitis." <em>Clin Infect Dis.</em> 2004;39(9):1267&ndash;1284. [IDSA Bacterial Meningitis Guidelines &mdash; foundational]</li>
+  <li>Tunkel AR, et al. "The Management of Encephalitis: Clinical Practice Guidelines by the IDSA." <em>Clin Infect Dis.</em> 2008;47(3):303&ndash;327. [IDSA Encephalitis Guidelines &mdash; foundational]</li>
+  <li>de Gans J, van de Beek D. "Dexamethasone in Adults with Bacterial Meningitis." <em>N Engl J Med.</em> 2002;347(20):1549&ndash;1556. [European Dexamethasone Trial &mdash; 0.15 mg/kg q6h &times;4 days]</li>
+  <li>Tunkel AR, et al. "2017 IDSA Clinical Practice Guidelines for Healthcare-Associated Ventriculitis and Meningitis." <em>Clin Infect Dis.</em> 2017;64(6):e34&ndash;e65.</li>
+  <li>MKSAP 19. "Central Nervous System Infections." <em>Infectious Disease.</em> American College of Physicians, 2025.</li>
+</ol>
+</div>
+`},
+
+]; // END SLIDES
+
+// ENGINE
+const deck = document.getElementById('deck');
+const counter = document.getElementById('slide-counter');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+const bar = document.getElementById('progress-bar');
+let cur = 0;
+
+SLIDES.forEach((s, i) => {
+  const el = document.createElement('div');
+  el.className = 'slide ' + s.cls;
+  el.innerHTML = s.html;
+  if (i === 0) el.classList.add('active');
+  deck.appendChild(el);
+});
+
+const slides = deck.querySelectorAll('.slide');
+
+function goTo(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  const body = slides[cur].querySelector('.slide-body');
+  if (body) body.scrollTop = 0;
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  btnPrev.disabled = cur === 0;
+  btnNext.disabled = cur === slides.length - 1;
+  bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+}
+
+btnPrev.addEventListener('click', () => goTo(cur - 1));
+btnNext.addEventListener('click', () => goTo(cur + 1));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(cur - 1); }
+});
+let tx = 0;
+deck.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+deck.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
+}, { passive: true });
+
+goTo(0);
+</script>
+</body>
+</html>
