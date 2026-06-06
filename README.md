@@ -2,7 +2,7 @@
 
 **Internal Medicine · Guthrie Lourdes Hospital · David Comstock, MD**
 
-A curated repository of teaching cases and evidence-based topic presentations built for morning report. Each deck is a single-file, full-screen HTML slide presentation optimized for iPad projection, keyboard and swipe navigation, and self-study review. Content is referenced against MKSAP 19, IDSA/ATS/ACC/AHA guidelines, and landmark trials, with Open Evidence comparison passes for the most recent decks.
+A curated repository of teaching cases and evidence-based topic presentations built for morning report. Each deck is a single-file, full-screen HTML slide presentation optimized for iPad projection, keyboard and swipe navigation, and self-study review. Content is referenced against MKSAP 20, IDSA/ATS/ACC/AHA guidelines, and landmark trials, with Open Evidence comparison passes for the most recent decks.
 
 **Live site:** [https://comstocd.github.io/presentations/](https://comstocd.github.io/presentations/)
 
@@ -156,7 +156,7 @@ Each deck includes: title slide with case vignette or framing, pathophysiology, 
 
 ## Evidence Standards
 
-All topic decks are built from **MKSAP 19** (ACP, October 2025) as the primary source, supplemented by:
+All topic decks are built from **MKSAP 20** (ACP, October 2025) as the primary source, supplemented by:
 
 - IDSA, ATS, ACC/AHA, GOLD guidelines
 - Landmark RCTs (DOSE, EMPULSE, OVIVA, POET, EAST-AFNET 4, INTERACT2, ADVOR, RACE II, CABANA)
