@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 38 — Infectious Arthritis | Morning Report</title>
+<style>
+  :root {
+    --bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+    --blue:#0969da;--blue-bg:#ddf4ff;--blue-border:#54aeff;
+    --green:#1a7f37;--green-bg:#dafbe1;--green-border:#4ac26b;
+    --yellow:#9a6700;--yellow-bg:#fff8c5;--yellow-border:#d4a72c;
+    --red:#cf222e;--red-bg:#ffebe9;--red-border:#ff8182;
+    --purple:#8250df;--purple-bg:#fbefff;--purple-border:#c297ff;
+    --orange:#bc4c00;--orange-bg:#fff1e5;--orange-border:#fb8f44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);font-size:18px;line-height:1.5;}
+  #deck{width:100%;height:100%;position:relative;overflow:hidden;}
+  .slide{position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;flex-direction:column;padding:34px 52px 54px;
+    opacity:0;pointer-events:none;transition:opacity 0.2s;overflow:hidden;}
+  .slide.active{opacity:1;pointer-events:all;}
+  .slide-content{background:var(--bg);}
+  .slide-accent{background:var(--bg2);}
+  .slide-title{background:var(--bg);justify-content:center;}
+
+  .slide-body{flex:1;overflow-y:auto;overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;padding-right:4px;}
+  .slide-body::-webkit-scrollbar{width:3px;}
+  .slide-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+  .slide-label{font-size:13px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+  .slide h1{font-size:38px;font-weight:700;line-height:1.1;margin-bottom:14px;}
+  .slide h2{font-size:26px;font-weight:700;padding-bottom:9px;
+    border-bottom:2px solid var(--border);margin-bottom:14px;}
+  .slide h3{font-size:19px;font-weight:600;margin:12px 0 6px;}
+  .slide p{font-size:16px;margin-bottom:8px;}
+  .slide ul,.slide ol{padding-left:20px;margin-bottom:8px;}
+  .slide li{font-size:17px;margin-bottom:5px;line-height:1.4;}
+  .slide strong{font-weight:600;}
+  .tagline{font-size:19px;color:var(--muted);max-width:620px;line-height:1.5;margin-bottom:20px;}
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .badge{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;border:1px solid;}
+  .badge-blue  {background:var(--blue-bg);  color:var(--blue);  border-color:var(--blue-border);}
+  .badge-green {background:var(--green-bg); color:var(--green); border-color:var(--green-border);}
+  .badge-red   {background:var(--red-bg);   color:var(--red);   border-color:var(--red-border);}
+  .badge-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border);}
+  .badge-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border);}
+  .badge-orange{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border);}
+
+  .callout{border-radius:8px;padding:11px 15px;margin:9px 0;border-left:4px solid;font-size:15px;line-height:1.5;}
+  .callout-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:3px;}
+  .callout-blue  {background:var(--blue-bg);  border-color:var(--blue);  color:#0550ae;}  .callout-blue   .callout-label{color:var(--blue);}
+  .callout-yellow{background:var(--yellow-bg);border-color:var(--yellow-border);color:var(--yellow);} .callout-yellow .callout-label{color:var(--yellow);}
+  .callout-red   {background:var(--red-bg);   border-color:var(--red);   color:#82071e;}  .callout-red    .callout-label{color:var(--red);}
+  .callout-green {background:var(--green-bg); border-color:var(--green); color:#116329;}  .callout-green  .callout-label{color:var(--green);}
+  .callout-orange{background:var(--orange-bg);border-color:var(--orange-border);color:var(--orange);} .callout-orange .callout-label{color:var(--orange);}
+  .callout-purple{background:var(--purple-bg);border-color:var(--purple);color:#5a32a3;}  .callout-purple .callout-label{color:var(--purple);}
+
+  .table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin:9px 0;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--bg3);color:var(--muted);font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:15px;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--bg2);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:9px 0;}
+  .card      {background:var(--bg);        border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-red  {background:var(--red-bg);    border:1px solid var(--red-border);   border-radius:10px;padding:13px 15px;}
+  .card-green{background:var(--green-bg);  border:1px solid var(--green-border); border-radius:10px;padding:13px 15px;}
+  .card-blue {background:var(--blue-bg);   border:1px solid var(--blue-border);  border-radius:10px;padding:13px 15px;}
+  .card-yellow{background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:10px;padding:13px 15px;}
+  .card-orange{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:10px;padding:13px 15px;}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+
+  /* SF LADDER */
+  .sf-row{display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center;margin-bottom:5px;}
+  .sf-label{font-size:13px;font-weight:700;text-align:right;padding-right:8px;color:var(--muted);text-transform:uppercase;}
+  .sf-bar{border-radius:6px;padding:8px 13px;font-size:16px;}
+  .sf-n {background:var(--bg3);        border:1px solid var(--border);        color:var(--muted);}
+  .sf-ni{background:var(--blue-bg);    border:1px solid var(--blue-border);   color:#0550ae;}
+  .sf-i {background:var(--yellow-bg);  border:1px solid var(--yellow-border); color:var(--yellow);}
+  .sf-ov{background:var(--orange-bg);  border:1px solid var(--orange-border); color:var(--orange);}
+  .sf-s {background:var(--red-bg);     border:1px solid var(--red-border);    color:#82071e;}
+
+  /* DECISION STEPS */
+  .step{display:flex;gap:12px;align-items:flex-start;margin-bottom:9px;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .step-body{flex:1;}
+  .step-title{font-size:17px;font-weight:600;display:block;margin-bottom:1px;}
+  .step-sub{font-size:14px;color:var(--muted);}
+
+  /* TIMELINE */
+  .tl{list-style:none;padding:0;position:relative;}
+  .tl::before{content:'';position:absolute;left:13px;top:0;bottom:0;width:2px;background:var(--border);}
+  .tl li{padding:0 0 12px 34px;position:relative;}
+  .tl li::before{content:'';position:absolute;left:7px;top:5px;width:12px;height:12px;
+    border-radius:50%;background:var(--bg);border:2px solid var(--blue);}
+  .tl-label{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+
+  .pearl{background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+    padding:12px 15px;margin:8px 0;font-size:16px;line-height:1.5;}
+
+  .ch{display:flex;flex-direction:column;justify-content:center;height:100%;}
+  .ch-num{font-size:72px;font-weight:800;color:var(--bg3);line-height:1;margin-bottom:8px;}
+  .ch-title{font-size:30px;font-weight:700;margin-bottom:8px;}
+  .ch-sub{font-size:18px;color:var(--muted);max-width:540px;line-height:1.4;}
+
+  .refs{font-size:13px;color:var(--muted);line-height:1.7;}
+  .refs li{margin-bottom:7px;}
+
+  #nav{position:fixed;bottom:0;left:0;right:0;height:44px;background:var(--bg);
+    border-top:1px solid var(--border);display:flex;align-items:center;
+    justify-content:space-between;padding:0 16px;z-index:200;user-select:none;}
+  .nav-btn{background:none;border:1px solid var(--border);border-radius:6px;
+    padding:5px 14px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;}
+  .nav-btn:hover{background:var(--bg2);}
+  .nav-btn:disabled{opacity:.3;cursor:default;}
+  #slide-counter{font-size:14px;color:var(--muted);font-weight:500;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--blue);transition:width .2s;z-index:300;}
+
+  @media(max-width:720px){
+    .slide{padding:18px 14px 54px;}
+    .slide h1{font-size:26px;} .slide h2{font-size:20px;}
+    .grid-2{grid-template-columns:1fr;}
+    .sf-row{grid-template-columns:80px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+<script>
+const SLIDES = [
+
+// 1. TITLE
+{cls:'slide-title',html:`
+<div class="slide-label">Topic 38 &middot; Infectious Disease / Rheumatology / Hospital Medicine</div>
+<h1>Infectious Arthritis</h1>
+<p class="tagline">Acute monoarthritis is septic until proven otherwise. Crystals don't rule out infection. Two faces of gonorrhea. Lyme as a late diagnosis. Prosthetic joints need a different playbook entirely.</p>
+<div class="badge-row">
+  <span class="badge badge-red">Septic Arthritis</span>
+  <span class="badge badge-blue">Gonococcal</span>
+  <span class="badge badge-green">Lyme</span>
+  <span class="badge badge-yellow">Prosthetic Joint</span>
+  <span class="badge badge-orange">MKSAP 2025</span>
+</div>
+<div style="margin-top:26px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// 2. CASE
+{cls:'slide-content',html:`
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="tl">
+  <li><div class="tl-label">History</div>24F &middot; fever &middot; 2d swollen right knee &middot; 1 week migratory joint pain (ankle, wrist) &middot; painless skin lesions &middot; sexually active, no contraception &middot; LMP 10 days ago</li>
+  <li><div class="tl-label">Exam</div>T 38.3 &middot; moderate knee effusion &middot; tendon sheath tenderness at wrist and ankle (no effusion) &middot; 4 pustular lesions, hemorrhagic centers, forearm &middot; no murmur</li>
+  <li><div class="tl-label">Synovial fluid</div>WBC 68,000 (91% PMN) &middot; no crystals &middot; Gram stain negative &middot; cultures pending</li>
+  <li><div class="tl-label">Sent</div>Cervical + urethral + pharyngeal + rectal NAATs &middot; blood cultures &times;2</li>
+  <li><div class="tl-label">Treatment</div>Ceftriaxone 1g IV daily &middot; doxycycline pending chlamydia NAAT &middot; orthopedics notified</li>
+</ul>
+<div class="callout callout-blue">
+  <span class="callout-label">Teaching Frame</span>
+  Classic DGI arthritis-dermatitis syndrome: <strong>tenosynovitis + skin lesions + migratory polyarthralgia</strong>. WBC 68k = septic. But pathogen, diagnosis, and duration differ fundamentally from S. aureus arthritis.
+</div>
+</div>
+`},
+
+// 3. PATHOPHYSIOLOGY
+{cls:'slide-accent',html:`
+<h2>Pathophysiology</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Why the Joint Gets Infected</h3>
+    <ul>
+      <li>Synovium is highly vascular, no basement membrane &mdash; easy bacteremic seeding</li>
+      <li>Three routes: <strong>hematogenous</strong> (most common) &middot; direct inoculation &middot; contiguous spread</li>
+      <li>Prior joint damage (RA, OA, crystals) impairs local defense &rarr; dramatically increased risk</li>
+    </ul>
+    <h3 style="margin-top:14px;">Why Cartilage Destruction Is Rapid</h3>
+    <div class="callout callout-red">
+      <span class="callout-label">PMN-Protease Cascade</span>
+      PMNs degranulate &rarr; collagenase, elastase, hyaluronidase destroy cartilage matrix in <strong>24&ndash;72 hours</strong>. Articular cartilage has no blood supply. It cannot regenerate.
+    </div>
+    <ul>
+      <li>Antibiotics kill bacteria &mdash; they do not stop PMN proteases already released</li>
+      <li>Drainage removes the enzymatic threat directly</li>
+      <li>Tense effusion = elevated intra-articular pressure = cartilage ischemia</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Why This Matters Clinically</h3>
+    <div class="card-red" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--red);">Delay = Permanent Damage</div>
+      <ul style="font-size:16px;">
+        <li>48h of inadequate drainage = irreversible cartilage loss</li>
+        <li>Drainage is co-equal with antibiotics, not an add-on</li>
+        <li>Start both immediately; do not wait for cultures to return</li>
+      </ul>
+    </div>
+    <div class="card-blue">
+      <div class="card-title" style="color:var(--blue);">Why Preexisting Joint Disease Amplifies Risk</div>
+      <ul style="font-size:16px;">
+        <li>Damaged synovium = impaired local bacterial clearance</li>
+        <li>RA on biologics: structural damage + immune suppression compound</li>
+        <li>Prosthetic joint: biofilm nidus antibiotics cannot penetrate</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 4. CRITICAL THINKING FRAMEWORK
+{cls:'slide-content',html:`
+<h2>Approaching Acute Monoarthritis: Six Questions</h2>
+<div class="slide-body">
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <span class="step-title">Is this patient unstable? Is this a surgical joint?</span>
+    <span class="step-sub">Septic shock &rarr; don't delay antibiotics. Hip or shoulder &rarr; call orthopedics immediately; needle drainage is insufficient.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <span class="step-title">What does the host tell you?</span>
+    <span class="step-sub">Under 40 + sexually active = GC first. IVDU = S. aureus / Pseudomonas / axial joints. Sickle cell = Salmonella. RA on biologic = S. aureus / gram-negatives. Tick-endemic = Lyme.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <span class="step-title">What does the pattern suggest?</span>
+    <span class="step-sub">Tenosynovitis + skin lesions + migratory = DGI. Knee monoarthritis + endemic area = Lyme. Oligoarthritis after enteric/GU infection + sterile cultures = reactive. Symmetric small joint poly + rash = viral.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <span class="step-title">Tap the joint before anything else.</span>
+    <span class="step-sub">Send: WBC + differential, Gram stain, bacterial culture, crystal analysis. Do not order glucose, LDH, or protein &mdash; no diagnostic value.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <span class="step-title">Interpret the WBC in context, not in isolation.</span>
+    <span class="step-sub">&gt;50k = presume infectious. &lt;50k does not exclude infection (GC, Lyme, fungal, mycobacterial). Crystals present = still rule out infection. The overlap zone is the danger zone.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">6</div>
+  <div class="step-body">
+    <span class="step-title">Blood cultures &rarr; arthrocentesis &rarr; empiric antibiotics + drainage. Simultaneously.</span>
+    <span class="step-sub">Do not wait for Gram stain. Do not wait for culture. Do not wait for imaging.</span>
+  </div>
+</div>
+</div>
+`},
+
+// 5. HOST-PATHOGEN MATRIX
+{cls:'slide-accent',html:`
+<h2>Host-Pathogen Matrix</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Host / Context</th><th>Dominant Pathogen(s)</th><th>Key Clue</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Any adult</strong></td><td>S. aureus (MSSA or MRSA)</td><td>Most common; most destructive; always in differential</td></tr>
+    <tr><td><strong>Sexually active &lt;40</strong></td><td>N. gonorrhoeae</td><td>Tenosynovitis / skin lesions / migratory; or monoarthritis without skin findings</td></tr>
+    <tr><td><strong>IVDU</strong></td><td>S. aureus, Pseudomonas, Enterobacterales</td><td>Axial joints disproportionately involved (sternoclavicular, sacroiliac)</td></tr>
+    <tr><td><strong>Sickle cell / SLE</strong></td><td>Salmonella species</td><td>Functional asplenia impairs clearance; also consider S. aureus</td></tr>
+    <tr><td><strong>RA / prior joint damage</strong></td><td>S. aureus, streptococci, gram-negatives</td><td>Damaged synovium + biologic immunosuppression = high risk</td></tr>
+    <tr><td><strong>Prosthetic joint</strong></td><td>CoNS, S. aureus, Cutibacterium acnes (shoulder)</td><td>Timing determines organism: early = S. aureus; delayed = CoNS/Cutibacterium; late = S. aureus/strep</td></tr>
+    <tr><td><strong>Tick-endemic area</strong></td><td>Borrelia burgdorferi</td><td>Late Lyme; knee monoarthritis; may not recall tick bite</td></tr>
+    <tr><td><strong>Immunocompromised</strong></td><td>Fungi, mycobacteria, gram-negatives</td><td>Indolent course; large weight-bearing joints; standard cultures often negative</td></tr>
+    <tr><td><strong>Terminal complement deficiency / eculizumab</strong></td><td>N. gonorrhoeae, N. meningitidis</td><td>Recurrent Neisseria infections &rarr; test complement (CH50, C3, C4)</td></tr>
+  </tbody>
+</table>
+</div>
+</div>
+`},
+
+// 6. SYNOVIAL FLUID
+{cls:'slide-content',html:`
+<h2>Synovial Fluid Analysis</h2>
+<div class="slide-body">
+<div class="sf-row"><div class="sf-label">Normal</div><div class="sf-bar sf-n">&lt;200/&micro;L &middot; clear &middot; no infection</div></div>
+<div class="sf-row"><div class="sf-label">Non-inflammatory</div><div class="sf-bar sf-ni">200&ndash;2,000/&micro;L &middot; OA, trauma, AVN</div></div>
+<div class="sf-row"><div class="sf-label">Inflammatory</div><div class="sf-bar sf-i">2,000&ndash;20,000/&micro;L &middot; RA, lupus, reactive arthritis</div></div>
+<div class="sf-row"><div class="sf-label">Overlap zone</div><div class="sf-bar sf-ov">10,000&ndash;50,000/&micro;L &middot; crystal arthropathy AND early/treated infection both land here</div></div>
+<div class="sf-row"><div class="sf-label">Septic range</div><div class="sf-bar sf-s">&gt;50,000/&micro;L &middot; PMN predominance &middot; presume infectious</div></div>
+<div class="callout callout-yellow" style="margin-top:10px;">
+  <span class="callout-label">The Overlap Zone Problem</span>
+  Crystal arthritis triggers PMN influx via the NLRP3 inflammasome &mdash; same mechanism as bacteria. A WBC of 35k with urate crystals could be crystals alone, infection alone, or both. Treat for infection. Await cultures.
+</div>
+<div class="callout callout-blue" style="margin-top:8px;">
+  <span class="callout-label">Better Thresholds — Massey et al., JAAOS 2021</span>
+  Traditional teaching uses &gt;50,000/&micro;L as the septic arthritis cutoff, but ROC analysis shows better diagnostic accuracy at <strong>&gt;33,000/&micro;L in non-pretreated patients</strong> and <strong>&gt;16,000/&micro;L after antibiotics</strong>. Clinical implication: a WBC of 25,000 in a patient who received antibiotics 24h ago does <em>not</em> exclude septic arthritis. Treat based on overall clinical picture, not the threshold alone.
+</div>
+<div class="grid-2" style="margin-top:8px;">
+  <div class="callout callout-blue" style="margin:0;">
+    <span class="callout-label">Gram Stain &amp; Culture Limits</span>
+    Gram stain: 30&ndash;50% sensitive (lower for GC). Culture: 70&ndash;85% for nongonococcal; &le;50% for GC. Negative result does not rule out infection.
+  </div>
+  <div class="callout callout-red" style="margin:0;">
+    <span class="callout-label">Do Not Order</span>
+    Synovial fluid glucose, LDH, total protein. No diagnostic value. Not in any guideline.
+  </div>
+</div>
+</div>
+`},
+
+// 7. NONGONOCOCCAL TREATMENT
+{cls:'slide-accent',html:`
+<h2>Nongonococcal Bacterial Arthritis: Treatment</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Empiric Antibiotics</h3>
+    <div class="callout callout-blue">
+      <span class="callout-label">Standard Regimen</span>
+      <strong>Vancomycin</strong> (MRSA) + <strong>ceftriaxone</strong> (gram-negatives)<br>
+      Swap ceftriaxone for <strong>cefepime / ceftazidime</strong> if Pseudomonas risk (IVDU, immunocompromised)
+    </div>
+    <h3 style="margin-top:12px;">Duration by Pathogen</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Pathogen</th><th>Duration</th></tr></thead>
+      <tbody>
+        <tr><td>S. aureus</td><td>3&ndash;4 weeks</td></tr>
+        <tr><td>Streptococci</td><td>2&ndash;4 weeks</td></tr>
+        <tr><td>Gram-negative bacilli</td><td>3&ndash;4 weeks</td></tr>
+        <tr><td>Pseudomonas</td><td>4 weeks</td></tr>
+        <tr><td>Gonococcal (DGI)</td><td>7&ndash;14 days</td></tr>
+        <tr><td>Lyme arthritis</td><td>28 days oral</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout callout-green" style="margin-top:8px;">
+      <span class="callout-label">Oral Step-Down?</span>
+      Less evidence than osteomyelitis (OVIVA). Acceptable in stable, improving patients with susceptible organisms and high-bioavailability agents (fluoroquinolones, TMP-SMX, linezolid). Consult ID.
+    </div>
+  </div>
+  <div>
+    <h3>Joint Drainage</h3>
+    <div class="callout callout-red">
+      <span class="callout-label">Antibiotics Alone Are Not Enough</span>
+      PMN proteases are unaffected by antibiotics. Drainage removes the enzymatic threat.
+    </div>
+    <ul style="margin-top:8px;">
+      <li><strong>Repeated arthrocentesis</strong> &mdash; accessible joints (knee, wrist, ankle); daily or every other day until WBC declining and fluid sterile</li>
+      <li><strong>Surgical drainage</strong> &mdash; hip, shoulder; failed needle aspiration; loculated effusion; no improvement in 5&ndash;7 days; prosthetic joint</li>
+      <li>Monitor: serial WBC on repeat aspirates; fever curve; range of motion</li>
+      <li>Expect improvement within 48&ndash;72h of adequate treatment</li>
+    </ul>
+    <div class="callout callout-blue" style="margin-top:8px;">
+      <span class="callout-label">Arthroscopy vs. Arthrotomy &mdash; Current Evidence</span>
+      Three recent systematic reviews (Nudelman et al., AJSM 2025; Puzzitiello et al., Arthroscopy 2024; Dobek et al., J Knee Surg 2023) show <strong>arthroscopy is at least as effective as open arthrotomy</strong> for native joint septic arthritis of large/intermediate joints, with similar or lower complication rates. Arthroscopic washout with debridement is now a standard option for most patients. Choice still depends on joint anatomy, degree of destruction, loculations, and surgeon expertise &mdash; the key resident point is early orthopedic involvement, not reliance on antibiotics alone.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 8. CHAPTER — DGI
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">01</div>
+  <div class="ch-title">Disseminated Gonococcal Infection</div>
+  <div class="ch-sub">Two presentations. One pathogen. Why NAAT beats culture. Why empiric ceftriaxone should not wait.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-blue">Tenosynovitis</span>
+    <span class="badge badge-red">Purulent Arthritis</span>
+    <span class="badge badge-yellow">Pustular Skin</span>
+    <span class="badge badge-green">NAAT &gt; Culture</span>
+  </div>
+</div>
+`},
+
+// 9. DGI
+{cls:'slide-content',html:`
+<h2>Disseminated Gonococcal Infection</h2>
+<div class="slide-body">
+<p style="font-size:16px;">Most common septic arthritis in sexually active adults under 40. Two presentations &mdash; different diagnostic approach for each.</p>
+<div class="grid-2">
+  <div class="card-blue">
+    <div class="card-title" style="color:var(--blue);">Presentation 1 &mdash; Arthritis-Dermatitis Syndrome</div>
+    <ul>
+      <li>Triad: <strong>tenosynovitis + dermatitis + migratory polyarthralgia</strong></li>
+      <li>Tenosynovitis of wrists, fingers, ankles, toes &mdash; distinguishing feature</li>
+      <li>Skin: painless pustular / vesiculopustular lesions, hemorrhagic centers</li>
+      <li>Fever and systemic symptoms common</li>
+      <li>Joint culture often negative; blood cultures more likely positive</li>
+    </ul>
+  </div>
+  <div class="card-red">
+    <div class="card-title" style="color:var(--red);">Presentation 2 &mdash; Purulent Arthritis</div>
+    <ul>
+      <li>Acute mono- or oligoarthritis: knees, wrists, ankles</li>
+      <li>WBC &gt;50,000; PMN predominant</li>
+      <li>Fever and skin lesions usually <strong>absent</strong></li>
+      <li>Indistinguishable from S. aureus arthritis on exam</li>
+      <li>Culture positive in &le;50%</li>
+    </ul>
+  </div>
+</div>
+<div class="callout callout-green" style="margin-top:8px;">
+  <span class="callout-label">Diagnosis: NAAT from Multiple Sites</span>
+  Cervix/urethra &middot; pharynx &middot; rectum &middot; urine &middot; joint fluid. Culture joint fluid too (susceptibility data). Empiric ceftriaxone before results in the right clinical picture.
+</div>
+<h3>Treatment</h3>
+<ul>
+  <li><strong>IV ceftriaxone 1g daily</strong> &middot; add doxycycline until chlamydia excluded</li>
+  <li>Oral step-down only after 1&ndash;2 days improvement <strong>and</strong> confirmed susceptibility &mdash; GC resistance is rising</li>
+  <li>Total duration: <strong>7&ndash;14 days</strong></li>
+  <li>Dissemination risk factors: terminal complement deficiency &middot; eculizumab &middot; pregnancy &middot; recent menses</li>
+</ul>
+</div>
+`},
+
+// 10. CHAPTER — LYME / REACTIVE / VIRAL
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">02</div>
+  <div class="ch-title">Lyme, Reactive &amp; Viral Arthritis</div>
+  <div class="ch-sub">Three infection-triggered arthritides. Only one has live organisms in the joint. Knowing which is which determines whether antibiotics help.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-green">Lyme Arthritis</span>
+    <span class="badge badge-orange">Reactive Arthritis</span>
+    <span class="badge badge-purple">Viral Arthritis</span>
+  </div>
+</div>
+`},
+
+// 11. LYME + REACTIVE
+{cls:'slide-content',html:`
+<h2>Lyme &amp; Reactive Arthritis</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Lyme Arthritis</h3>
+    <ul>
+      <li>Late disseminated &mdash; weeks to months after tick bite</li>
+      <li>Monoarticular; <strong>knee</strong> most common</li>
+      <li>Migratory; may resolve and recur without treatment</li>
+      <li>Not all patients recall tick bite or EM rash</li>
+    </ul>
+    <h3 style="margin-top:12px;">Diagnosis: Two-Tiered Serology</h3>
+    <div class="step" style="margin-top:6px;">
+      <div class="step-num">1</div>
+      <div class="step-body"><span class="step-title">ELISA / IFA</span><span class="step-sub">Negative &rarr; stop. Positive or equivocal &rarr; proceed to Step 2.</span></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body"><span class="step-title">Western blot (IgM + IgG)</span><span class="step-sub">Both must confirm. Serology over PCR or synovial culture.</span></div>
+    </div>
+    <h3 style="margin-top:10px;">Treatment</h3>
+    <ul>
+      <li>Doxycycline, amoxicillin, or cefuroxime &times;28 days PO</li>
+      <li>IV ceftriaxone if inadequate oral response</li>
+      <li><strong>Post-treatment Lyme arthritis:</strong> not active infection &mdash; refer rheumatology for NSAIDs / DMARDs</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Reactive Arthritis</h3>
+    <div class="callout callout-orange">
+      <span class="callout-label">No Live Organisms in the Joint</span>
+      Autoimmune response to prior infection. Sterile cultures. Antibiotics treat the trigger, not the arthritis.
+    </div>
+    <ul style="margin-top:8px;">
+      <li>Triggers: urogenital chlamydia &middot; enteric (Salmonella, Shigella, Campylobacter, Yersinia)</li>
+      <li>Onset 1&ndash;4 weeks after infection</li>
+      <li>Asymmetric oligoarthritis: knees, ankles, feet</li>
+      <li>Classic triad: <strong>arthritis + urethritis + conjunctivitis</strong></li>
+      <li>Skin: keratoderma blennorrhagica &middot; circinate balanitis</li>
+      <li>Synovial fluid: inflammatory WBC, <strong>sterile cultures</strong></li>
+      <li>Treatment: NSAIDs &middot; treat active chlamydia &middot; DMARDs for chronic disease</li>
+    </ul>
+    <div class="callout callout-yellow" style="margin-top:8px;">
+      <span class="callout-label">Key Distinction</span>
+      Sterile cultures + oligoarthritis + post-infectious timing = reactive arthritis, not culture-negative septic arthritis. Management is anti-inflammatory, not antimicrobial.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 12. VIRAL ARTHRITIS
+{cls:'slide-accent',html:`
+<h2>Viral Arthritis: Patterns to Recognize</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Virus</th><th>Pattern</th><th>Key Clue</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Parvovirus B19</strong></td><td>Acute symmetric polyarthritis; proximal small joints of hands</td><td>Exposure to children; "slapped-cheek" rash in child contacts; women &gt; men</td></tr>
+    <tr><td><strong>Hepatitis B</strong></td><td>Sudden symmetric polyarthritis; hands and knees</td><td>Prodromal &mdash; before jaundice; self-limited; resolves with jaundice onset</td></tr>
+    <tr><td><strong>Chikungunya</strong></td><td>Severe polyarthritis; hands, feet, ankles; fever and rash</td><td>Aedes mosquito endemic area; <strong>chronic arthritis months to years</strong> distinguishes from other arboviruses</td></tr>
+    <tr><td><strong>HIV</strong></td><td>Asymmetric oligoarthritis; ankles and knees; &lt;6 weeks; nonerosive</td><td>Any phase of HIV illness; still tap the joint &mdash; opportunistic infection possible</td></tr>
+    <tr><td><strong>Hepatitis C</strong></td><td>Oligo-polyarthritis; small joints, wrists, shoulders</td><td>Cryoglobulinemia: arthralgia + purpura + weakness</td></tr>
+    <tr><td><strong>Rubella / vaccine</strong></td><td>Symmetric migratory; small joints, wrists, elbows</td><td>Onset with rash; primarily women; self-limited ~2 weeks</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-purple">
+  <span class="callout-label">The Unifying Rule</span>
+  Sterile cultures + inflammatory (not severely elevated) WBC + polyarticular or oligoarticular pattern = think viral or reactive before "culture-negative septic arthritis." The distinction changes management entirely.
+</div>
+</div>
+`},
+
+// 13. CHAPTER — PJI
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">03</div>
+  <div class="ch-title">Prosthetic Joint Infections</div>
+  <div class="ch-sub">Biofilm kills culture yield and antibiotic efficacy. Timing determines organism. Hold antibiotics until after cultures. DAIR vs. two-stage is surgical, not medical.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-red">Two-Stage Exchange</span>
+    <span class="badge badge-blue">DAIR</span>
+    <span class="badge badge-yellow">Cutibacterium</span>
+    <span class="badge badge-purple">Biofilm</span>
+  </div>
+</div>
+`},
+
+// 14. PJI
+{cls:'slide-content',html:`
+<h2>Prosthetic Joint Infections</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Temporal Classification &amp; Pathogens</h3>
+    <div class="card-red" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--red);">Early &lt;3 months &mdash; Surgical Contamination</div>
+      S. aureus &middot; gram-negative bacilli &middot; anaerobes &middot; polymicrobial<br>
+      <span style="font-size:14px;">Fever, wound breakdown, drainage &mdash; clinically obvious</span>
+    </div>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Delayed 3&ndash;24 months &mdash; Low-Virulence Biofilm</div>
+      CoNS &middot; Cutibacterium acnes (shoulder) &middot; enterococci<br>
+      <span style="font-size:14px;">Pain and loosening without fever &mdash; easily missed</span>
+    </div>
+    <div class="card-blue" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--blue);">Late &gt;24 months &mdash; Hematogenous</div>
+      S. aureus &middot; streptococci &middot; gram-negative bacilli<br>
+      <span style="font-size:14px;">Acute onset; look for distant bacteremic source</span>
+    </div>
+    <div class="callout callout-orange">
+      <span class="callout-label">Dental Prophylaxis Myth</span>
+      Not recommended for prosthetic joints (ADA/AAOS). One of the most commonly prescribed unnecessary antibiotics.
+    </div>
+  </div>
+  <div>
+    <h3>Diagnosis</h3>
+    <ul>
+      <li>ESR, CRP &middot; plain radiograph (loosening, periosteal reaction)</li>
+      <li>Arthrocentesis: WBC + diff + culture (blood culture bottles = higher yield)</li>
+      <li>Blood cultures in acute PJI</li>
+      <li>Criteria: sinus tract to prosthesis OR &ge;2 periprosthetic cultures, same organism</li>
+    </ul>
+    <div class="callout callout-red" style="margin-top:8px;">
+      <span class="callout-label">Hold Antibiotics Until After Cultures (Stable Patient)</span>
+      Empiric antibiotics before culture = permanent unknown pathogen. Exception: septic/unstable patient.
+    </div>
+    <h3 style="margin-top:12px;">Surgical Strategy</h3>
+    <ul>
+      <li><strong>DAIR</strong> &mdash; acute (&lt;3&ndash;4 wk), stable hardware, susceptible organism, no sinus tract; exchange modular components; + rifampin if staphylococcal</li>
+      <li><strong>Two-stage exchange</strong> &mdash; remove hardware &rarr; antibiotic cement spacer &rarr; 4&ndash;6 wk IV &rarr; reimplant. Success 80&ndash;90%. Standard for chronic / high-virulence PJI.</li>
+    </ul>
+    <div class="callout callout-yellow" style="margin-top:8px;">
+      <span class="callout-label">Cutibacterium acnes</span>
+      Grows in 14 days, not 5&ndash;7. Alert the lab. Shoulder hardware, delayed presentation, male patient.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 15. PEARLS
+{cls:'slide-accent',html:`
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"><strong>Acute monoarthritis = septic until proven otherwise.</strong> Applies in patients with known gout, known RA, known pseudogout. Crystals do not rule out infection. Tap first. Always.</div>
+<div class="pearl"><strong>The WBC cutoff is a probability, not a rule.</strong> GC, Lyme, fungal, and mycobacterial arthritis regularly present below 50k. The overlap zone (10&ndash;50k with crystals) is the danger zone: treat for infection and await cultures.</div>
+<div class="pearl"><strong>Tenosynovitis = DGI until proven otherwise.</strong> No other form of septic arthritis does this. Wrists, fingers, ankles, toes &mdash; empiric ceftriaxone before any result. Send NAAT from multiple sites; culture alone will miss it.</div>
+<div class="pearl"><strong>Reactive arthritis has sterile joints.</strong> Post-chlamydia or post-enteric oligoarthritis with sterile cultures is not culture-negative septic arthritis. Antibiotics treat the trigger, not the arthritis. Management is anti-inflammatory.</div>
+<div class="pearl"><strong>Hold antibiotics in stable PJI until after cultures.</strong> One chance at a microbiologic diagnosis. Don't waste it. Exception: septic or unstable patient.</div>
+<div class="pearl"><strong>Cutibacterium acnes needs 14 days to grow.</strong> Standard 5&ndash;7d incubation misses it. Alert the lab proactively for any shoulder hardware infection.</div>
+<div class="pearl"><strong>Drain as aggressively as you treat with antibiotics.</strong> PMN proteases dissolve cartilage regardless of antibiotic coverage. Orthopedics is your partner from day one, not a consult placed when medical management fails.</div>
+</div>
+`},
+
+// 16. REFERENCES
+{cls:'slide-content',html:`
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>Miller JM, Binnicker MJ, Campbell S, et al. "Guide to Utilization of the Microbiology Laboratory for Diagnosis of Infectious Diseases: 2024 Update." IDSA/ASM. <em>Clin Infect Dis.</em> 2024;78(9):e88&ndash;e265. [Synovial fluid testing; culture standards; NAAT for GC]</li>
+  <li>Earwood JS, Walker TR, Sue GJC. "Septic Arthritis: Diagnosis and Treatment." <em>Am Fam Physician.</em> 2021;104(6):589&ndash;597. [Best practical clinical review; crystals don't exclude infection; empiric therapy framework]</li>
+  <li>Mathews CJ, Weston VC, Jones A, Field M, Coakley G. "Bacterial Septic Arthritis in Adults." <em>Lancet.</em> 2010;375(9717):846&ndash;855. [Classic pathophysiology and outcomes review]</li>
+  <li>Massey PA, Clark MD, Walt JS, et al. "Optimal Synovial Fluid Leukocyte Count Cutoff for Diagnosing Native Joint Septic Arthritis After Antibiotics." <em>J Am Acad Orthop Surg.</em> 2021;29(9):370&ndash;376. [&gt;33k untreated; &gt;16k post-antibiotics optimal thresholds]</li>
+  <li>Nudelman BM, Piple AS, Ferkel RD. "Arthroscopy Is at Least as Effective as Arthrotomy for Treatment of Septic Arthritis in Adults." <em>Am J Sports Med.</em> 2025. [Most recent systematic review; arthroscopy non-inferior for large/intermediate joints]</li>
+  <li>Puzzitiello RN, Agarwalla A, Masood R, et al. "Arthroscopic Treatment Is a Safe and Effective Alternative to Open Treatment for Acute Septic Arthritis of the Native Knee." <em>Arthroscopy.</em> 2024. [Systematic review; knee-specific; supports arthroscopic washout]</li>
+  <li>Patel R. "Periprosthetic Joint Infection." <em>N Engl J Med.</em> 2023;388(3):251&ndash;262. [Best current PJI review; DAIR criteria; two-stage exchange; biofilm]</li>
+  <li>Osmon DR, et al. "Diagnosis and Management of Prosthetic Joint Infection: IDSA Guidelines." <em>Clin Infect Dis.</em> 2013;56(1):1&ndash;10. [IDSA PJI Guidelines &mdash; foundational]</li>
+  <li>Lantos PM, et al. "2020 IDSA/AAN/ACR Lyme Disease Guidelines." <em>Arthritis Rheumatol.</em> 2021;73(1):12&ndash;20.</li>
+  <li>Workowski KA, et al. "STI Treatment Guidelines 2021." <em>MMWR Recomm Rep.</em> 2021;70(4):1&ndash;187. [DGI: ceftriaxone, multi-site NAAT, chlamydia co-treatment]</li>
+  <li>MKSAP 20. Infectious Arthritis. American College of Physicians, 2025.</li>
+</ol>
+</div>
+`},
+
+];
+
+const deck=document.getElementById('deck'),counter=document.getElementById('slide-counter'),
+  btnPrev=document.getElementById('btn-prev'),btnNext=document.getElementById('btn-next'),
+  bar=document.getElementById('progress-bar');
+let cur=0;
+SLIDES.forEach((s,i)=>{
+  const el=document.createElement('div');
+  el.className='slide '+s.cls; el.innerHTML=s.html;
+  if(i===0)el.classList.add('active');
+  deck.appendChild(el);
+});
+const slides=deck.querySelectorAll('.slide');
+function goTo(n){
+  if(n<0||n>=slides.length)return;
+  slides[cur].classList.remove('active'); cur=n;
+  slides[cur].classList.add('active');
+  const b=slides[cur].querySelector('.slide-body'); if(b)b.scrollTop=0;
+  counter.textContent=(cur+1)+' / '+slides.length;
+  btnPrev.disabled=cur===0; btnNext.disabled=cur===slides.length-1;
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+}
+btnPrev.addEventListener('click',()=>goTo(cur-1));
+btnNext.addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();goTo(cur+1);}
+  if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();goTo(cur-1);}
+});
+let tx=0;
+deck.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+deck.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)dx<0?goTo(cur+1):goTo(cur-1);
+},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>

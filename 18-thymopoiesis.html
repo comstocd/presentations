@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 18 — Intrathymic Thymopoiesis | Morning Report</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --blue-mid: #dbeafe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --slate: #475569;
+      --slate-light: #f8fafc;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --tag-immuno: #7c3aed;
+      --tag-immuno-bg: #ede9fe;
+      --tag-edu: #0891b2;
+      --tag-edu-bg: #e0f2fe;
+      --tag-heme: #b45309;
+      --tag-heme-bg: #fef3c7;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--slate-light);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    nav a {
+      color: #93c5fd;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: #fff; }
+    nav .sep { color: #475569; font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+      color: white;
+      padding: 2.5rem 1.5rem 2rem;
+    }
+    .hero-meta {
+      font-size: 0.8rem;
+      color: #93c5fd;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.875rem;
+    }
+    .hero p {
+      color: #bfdbfe;
+      font-size: 0.975rem;
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+    .tag-immuno { background: var(--tag-immuno-bg); color: var(--tag-immuno); }
+    .tag-edu { background: var(--tag-edu-bg); color: var(--tag-edu); }
+    .tag-heme { background: var(--tag-heme-bg); color: var(--tag-heme); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+      .toc-aside { display: none; }
+    }
+
+    /* TOC SIDEBAR */
+    .toc-aside {
+      position: sticky;
+      top: 4rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .toc-aside h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.875rem;
+    }
+    .toc-aside ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc-aside li {
+      counter-increment: toc;
+      margin-bottom: 0.375rem;
+    }
+    .toc-aside a {
+      font-size: 0.8rem;
+      color: var(--slate);
+      text-decoration: none;
+      display: flex;
+      gap: 0.5rem;
+      line-height: 1.4;
+      transition: color 0.15s;
+    }
+    .toc-aside a::before {
+      content: counter(toc) ".";
+      color: var(--blue);
+      font-weight: 700;
+      min-width: 1.25rem;
+    }
+    .toc-aside a:hover { color: var(--blue); }
+
+    /* CONTENT */
+    .content section { margin-bottom: 2.5rem; }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      border-bottom: 2px solid var(--blue-mid);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+      scroll-margin-top: 5rem;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin: 1.25rem 0 0.625rem;
+    }
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 1rem 0 0.5rem;
+    }
+
+    p { margin-bottom: 0.875rem; color: var(--text); }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 0.875rem;
+    }
+    li { margin-bottom: 0.35rem; }
+    li::marker { color: var(--blue); }
+
+    strong { color: var(--navy); }
+    em { color: var(--slate); }
+
+    /* TABLES */
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead { background: var(--navy); color: white; }
+    th { padding: 0.625rem 0.875rem; text-align: left; font-weight: 600; font-size: 0.8rem; }
+    td { padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tbody tr:nth-child(even) { background: var(--slate-light); }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--blue-light); }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-left: 4px solid;
+    }
+    .callout-blue { background: var(--blue-light); border-color: var(--blue); }
+    .callout-teal { background: var(--teal-light); border-color: var(--teal); }
+    .callout-amber { background: #fffbeb; border-color: #d97706; }
+    .callout-red { background: #fef2f2; border-color: #dc2626; }
+    .callout h4 { margin-top: 0; color: inherit; font-size: 0.8rem; }
+
+    /* STAGE PROGRESSION */
+    .stage-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .stage-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      text-align: center;
+      border-top: 3px solid var(--blue);
+    }
+    .stage-card .stage-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stage-card .stage-name { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .stage-card .stage-markers { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* PEARLS */
+    .pearls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.875rem;
+      margin: 1rem 0;
+    }
+    .pearl {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.875rem 1rem;
+      border-left: 3px solid var(--teal);
+    }
+    .pearl strong { color: var(--teal); font-size: 0.8rem; display: block; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .pearl p { font-size: 0.85rem; margin: 0; }
+
+    /* REFERENCES */
+    .ref-list { list-style: decimal; padding-left: 1.5rem; }
+    .ref-list li { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.5; }
+    .ref-list li span { color: var(--blue); font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: #93c5fd;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      margin-top: 3rem;
+    }
+    footer p { margin: 0.2rem 0; }
+    footer .disclaimer { color: #64748b; font-size: 0.75rem; max-width: 700px; margin: 0.75rem auto 0; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://comstocd.github.io/presentations/index.html">📋 Morning Report</a>
+  <span class="sep">›</span>
+  <a href="https://comstocd.github.io/presentations/index.html">← All Cases</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-meta">Topic 18 &middot; Immunology &middot; Educational</div>
+  <h1>Intrathymic Thymopoiesis and T Cell Development</h1>
+  <p>A systematic approach to T cell maturation in the thymus: progenitor migration, TCR rearrangement, beta-selection, positive and negative selection, lineage commitment, and the clinical consequences of thymic dysfunction.</p>
+  <div class="tags">
+    <span class="tag tag-immuno">Immunology</span>
+    <span class="tag tag-heme">Hematology</span>
+    <span class="tag tag-edu">Educational</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc-aside">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#overview">Overview and Clinical Relevance</a></li>
+      <li><a href="#migration">Progenitor Migration to Thymus</a></li>
+      <li><a href="#dn-stages">Double Negative Stages (DN1-DN4)</a></li>
+      <li><a href="#beta-selection">Beta-Selection</a></li>
+      <li><a href="#vdj">V(D)J Recombination</a></li>
+      <li><a href="#dp">Double Positive Stage</a></li>
+      <li><a href="#positive-selection">Positive Selection</a></li>
+      <li><a href="#negative-selection">Negative Selection and AIRE</a></li>
+      <li><a href="#lineage">CD4/CD8 Lineage Commitment</a></li>
+      <li><a href="#repertoire">Repertoire Outcomes</a></li>
+      <li><a href="#involution">Thymic Involution and Aging</a></li>
+      <li><a href="#clinical">Clinical Correlates</a></li>
+      <li><a href="#pearls">Clinical Pearls</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- 1. OVERVIEW -->
+    <section id="overview">
+      <h2>Overview and Clinical Relevance</h2>
+      <p>The thymus is the sole site of T cell development. Bone marrow-derived lymphoid progenitors that lack committed T cell identity migrate to the thymic cortex, where a strictly regulated multi-stage developmental program generates a self-tolerant, self-restricted, diverse T cell repertoire before export to the peripheral circulation.</p>
+      <p>Understanding thymopoiesis is clinically essential because its failure — whether from congenital absence, surgical removal, or age-related involution — produces T cell lymphopenia with predictable immunological and clinical consequences. Approximately <strong>1-2% of lymphocytes in peripheral blood are newly exported naive T cells</strong> in young adults; this fraction falls substantially with age as thymic output declines.</p>
+      <div class="callout callout-blue">
+        <h4>Key Statistic</h4>
+        Only <strong>2-5% of thymocytes</strong> that enter the thymus survive to export. The remainder die by apoptosis during positive or negative selection. This extraordinary attrition rate reflects the stringency of self-tolerance induction.
+      </div>
+    </section>
+
+    <!-- 2. PROGENITOR MIGRATION -->
+    <section id="migration">
+      <h2>Progenitor Migration to the Thymus</h2>
+      <p>The thymus does not contain resident self-renewing stem cells. It depends on continuous seeding by bone marrow-derived <strong>early thymic progenitors (ETPs)</strong>, also called thymus-seeding progenitors, which arrive via blood vessels at the corticomedullary junction. These progenitors express CD44 and CD117 (c-Kit) but lack committed lymphoid markers.</p>
+      <p>Chemokines CCL19, CCL21, and CXCL12 mediate progenitor homing to the thymus. Once resident, progenitors lose the capacity to generate B cells or myeloid cells under the influence of <strong>Notch signaling</strong> provided by thymic stromal cells expressing Delta-like ligand 4 (DLL4). Notch signaling is obligatory for T cell lineage commitment and is the first major developmental checkpoint.</p>
+      <div class="callout callout-teal">
+        <h4>Clinical Connection: Notch Pathway</h4>
+        Activating mutations in NOTCH1 are found in approximately 60% of T-cell acute lymphoblastic leukemia (T-ALL), underscoring the role of constitutive Notch signaling in T cell malignant transformation.
+      </div>
+    </section>
+
+    <!-- 3. DN STAGES -->
+    <section id="dn-stages">
+      <h2>Double Negative Stages (DN1-DN4)</h2>
+      <p>Thymocytes are classified as "double negative" (DN) when they lack surface expression of both CD4 and CD8. DN thymocytes progress through four sequential stages defined by CD44 and CD25 expression, traversing from the corticomedullary junction toward the subcapsular cortex.</p>
+
+      <div class="stage-row">
+        <div class="stage-card">
+          <div class="stage-num">DN1</div>
+          <div class="stage-name">ETP / DN1</div>
+          <div class="stage-markers">CD44+ CD25- CD117+</div>
+        </div>
+        <div class="stage-card">
+          <div class="stage-num">DN2</div>
+          <div class="stage-name">Expansion</div>
+          <div class="stage-markers">CD44+ CD25+ CD117+</div>
+        </div>
+        <div class="stage-card">
+          <div class="stage-num">DN3</div>
+          <div class="stage-name">beta-Selection</div>
+          <div class="stage-markers">CD44- CD25+ CD117-</div>
+        </div>
+        <div class="stage-card">
+          <div class="stage-num">DN4</div>
+          <div class="stage-name">Post-Selection</div>
+          <div class="stage-markers">CD44- CD25- CD117-</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Key Events</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DN1 (ETP)</strong></td>
+              <td>Notch signaling commits to T lineage; TCRgamma/delta rearrangement begins; some cells become gamma-delta T cells (~5% of output)</td>
+              <td>Corticomedullary junction</td>
+            </tr>
+            <tr>
+              <td><strong>DN2</strong></td>
+              <td>Extensive proliferation; TCRbeta locus opens; RAG1/RAG2 expression initiates; lineage commitment solidified; no return to myeloid or B cell fate</td>
+              <td>Inner cortex</td>
+            </tr>
+            <tr>
+              <td><strong>DN3</strong></td>
+              <td>TCRbeta V(D)J rearrangement; pre-TCR assembly; beta-selection checkpoint; proliferation arrest until checkpoint passed</td>
+              <td>Subcapsular cortex</td>
+            </tr>
+            <tr>
+              <td><strong>DN4</strong></td>
+              <td>Post-beta-selection proliferation; allelic exclusion of second TCRbeta allele; transition to DP stage initiated</td>
+              <td>Subcapsular cortex</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-amber">
+        <h4>Gamma-Delta vs. Alpha-Beta Lineage Split</h4>
+        The decision to become a gamma-delta or alpha-beta T cell occurs at the DN1-DN2 transition and is driven by the strength of pre-TCR signaling and Notch levels. Gamma-delta T cells represent approximately 1-5% of peripheral T cells but are enriched in mucosal tissues. They do not require MHC restriction and develop more rapidly. This lineage split is not equivalent to and should not be conflated with the CD4/CD8 effector subset commitment that occurs much later.
+      </div>
+    </section>
+
+    <!-- 4. BETA SELECTION -->
+    <section id="beta-selection">
+      <h2>Beta-Selection</h2>
+      <p>Beta-selection is the first major quality-control checkpoint in T cell development. It occurs at the DN3 stage and tests whether productive TCRbeta rearrangement has occurred.</p>
+      <p>A successfully rearranged TCRbeta chain pairs with the invariant <strong>pre-T-alpha (pTalpha)</strong> chain and the CD3 signaling complex to form the <strong>pre-TCR</strong>. Pre-TCR surface expression triggers:</p>
+      <ul>
+        <li>Rescue from apoptosis (survival signal)</li>
+        <li>Rapid proliferation (4-6 cell divisions)</li>
+        <li><strong>Allelic exclusion</strong>: the second TCRbeta allele is silenced, ensuring each T cell expresses a single beta chain</li>
+        <li>Progression to the DN4 and then DP stage</li>
+        <li>Initiation of TCRalpha locus rearrangement</li>
+      </ul>
+      <p>Thymocytes that fail to produce a functional TCRbeta chain undergo apoptosis at DN3. Approximately <strong>35-45% of DN3 thymocytes</strong> successfully pass beta-selection. This should be understood as the fraction passing this specific checkpoint, not total thymic output survival.</p>
+      <div class="callout callout-red">
+        <h4>Clinical: T-B+NK- SCID</h4>
+        Defects in RAG1, RAG2, or Artemis (required for V(D)J recombination) result in failure to generate a productive TCRbeta chain, blocking development at the DN3 stage. This produces T-B-NK+ SCID (T cells and B cells absent; NK cells present, as they do not require V(D)J). Bare lymphocyte syndrome (MHC II deficiency) is a distinct entity producing CD4 lymphopenia through failed positive selection.
+      </div>
+    </section>
+
+    <!-- 5. VDJ -->
+    <section id="vdj">
+      <h2>V(D)J Recombination</h2>
+      <p>The extraordinary diversity of the T cell receptor is generated by somatic DNA rearrangement of germline variable (V), diversity (D), and joining (J) gene segments at the TCR loci. The enzyme complex <strong>RAG1/RAG2</strong> recognizes recombination signal sequences (RSS) flanking each gene segment and catalyzes site-specific double-strand DNA cleavage.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Chain</th>
+              <th>Locus</th>
+              <th>Segments Used</th>
+              <th>Approximate Germline Combinations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TCRbeta</strong></td>
+              <td>Chr 7q34</td>
+              <td>V (52) + D (2) + J (13)</td>
+              <td>~1,352 germline; ~10^13 with junctional diversity</td>
+            </tr>
+            <tr>
+              <td><strong>TCRalpha</strong></td>
+              <td>Chr 14q11</td>
+              <td>V (70) + J (61)</td>
+              <td>~4,270 germline; further amplified by junctional diversity</td>
+            </tr>
+            <tr>
+              <td><strong>TCRgamma</strong></td>
+              <td>Chr 7p14</td>
+              <td>V (14) + J (5)</td>
+              <td>Limited; gamma-delta T cells have restricted diversity</td>
+            </tr>
+            <tr>
+              <td><strong>TCRdelta</strong></td>
+              <td>Chr 14q11 (within alpha locus)</td>
+              <td>V (8) + D (3) + J (4)</td>
+              <td>Limited; V(D)J joining deleted when TCRalpha locus rearranges</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Junctional Diversity</h3>
+      <p>The theoretical diversity of the TCR repertoire is amplified far beyond germline combinations by three mechanisms at the V-D and D-J junctions:</p>
+      <ul>
+        <li><strong>P-nucleotides</strong>: palindromic nucleotides generated from hairpin opening by Artemis endonuclease</li>
+        <li><strong>N-nucleotides</strong>: non-templated nucleotides added by terminal deoxynucleotidyl transferase (TdT)</li>
+        <li><strong>Exonuclease trimming</strong>: removal of nucleotides from coding ends before joining</li>
+      </ul>
+      <p>The CDR3 region, which contacts the MHC-bound peptide most directly, is encoded at the V-J junction for TCRalpha and the V-D-J junction for TCRbeta. Junctional diversity is concentrated precisely in CDR3, maximizing antigen contact site variation. The theoretical total alpha-beta TCR diversity exceeds <strong>10^15 to 10^20</strong> unique sequences.</p>
+    </section>
+
+    <!-- 6. DOUBLE POSITIVE -->
+    <section id="dp">
+      <h2>Double Positive Stage</h2>
+      <p>Following successful beta-selection and the proliferative DN4 burst, thymocytes upregulate both CD4 and CD8 coreceptors, becoming <strong>CD4+CD8+ double positive (DP)</strong> cells. DP thymocytes constitute approximately <strong>80-85%</strong> of the total thymocyte pool and occupy the thymic cortex, where they represent the stage at which TCRalpha rearrangement occurs and positive selection is tested.</p>
+      <p>Key events at the DP stage:</p>
+      <ul>
+        <li>TCRalpha V-J rearrangement (multiple attempts permitted, as there is no allelic exclusion at the alpha locus)</li>
+        <li>Complete alpha-beta TCR surface expression with CD3 complex</li>
+        <li>Positive selection testing by cortical thymic epithelial cells (cTECs)</li>
+        <li>Downregulation of RAG expression after successful TCR pairing</li>
+      </ul>
+    </section>
+
+    <!-- 7. POSITIVE SELECTION -->
+    <section id="positive-selection">
+      <h2>Positive Selection</h2>
+      <p>Positive selection tests whether the newly assembled TCR can recognize self-MHC molecules. It occurs in the <strong>thymic cortex</strong> and is mediated primarily by <strong>cortical thymic epithelial cells (cTECs)</strong>, which express both MHC class I and MHC class II molecules presenting self-peptides.</p>
+
+      <div class="callout callout-blue">
+        <h4>The "Goldilocks" Signal Strength Model</h4>
+        <ul>
+          <li><strong>No signal</strong> (TCR fails to recognize self-MHC): death by neglect. Approximately 90% of DP thymocytes die this way.</li>
+          <li><strong>Intermediate signal</strong> (TCR binds self-MHC with appropriate affinity): survival and maturation. This is positive selection.</li>
+          <li><strong>Too strong a signal</strong> (TCR binds self-MHC:peptide with high affinity): clonal deletion. This is negative selection.</li>
+        </ul>
+      </div>
+
+      <h3>MHC Restriction</h3>
+      <p>The coreceptor expressed during positive selection determines MHC class specificity:</p>
+      <ul>
+        <li>TCRs that engage <strong>MHC class I</strong> (expressed on all nucleated cells) select the <strong>CD8+ cytotoxic</strong> T cell lineage</li>
+        <li>TCRs that engage <strong>MHC class II</strong> (expressed on professional antigen-presenting cells) select the <strong>CD4+ helper</strong> T cell lineage</li>
+      </ul>
+      <p>This is the mechanistic basis for MHC restriction: peripheral T cells only recognize antigen presented by the same MHC class that selected them in the thymus. CD4+ T cells recognize exogenous antigens processed through the endosomal pathway and presented on MHC II. CD8+ T cells recognize endogenous antigens processed through the proteasome and presented on MHC I.</p>
+
+      <h3>Unique cTEC Antigen Processing</h3>
+      <p>cTECs use a specialized proteasome variant called the <strong>thymoproteasome</strong> (containing the beta5t subunit) that generates a distinct self-peptide repertoire compared with peripheral cells. This unique self-peptide landscape is thought to optimize the selection of T cells with moderate, rather than high, self-affinity.</p>
+    </section>
+
+    <!-- 8. NEGATIVE SELECTION AND AIRE -->
+    <section id="negative-selection">
+      <h2>Negative Selection and AIRE</h2>
+      <p>Negative selection eliminates thymocytes whose TCRs bind self-MHC:peptide complexes with high affinity, preventing autoimmunity. It occurs primarily in the <strong>thymic medulla</strong> and at the corticomedullary junction, mediated by <strong>medullary thymic epithelial cells (mTECs)</strong> and dendritic cells.</p>
+
+      <h3>AIRE: The Central Tolerance Master Regulator</h3>
+      <p>The <strong>autoimmune regulator (AIRE)</strong> gene is expressed in mTECs and drives ectopic transcription of thousands of tissue-restricted antigens (TRAs) -- proteins normally expressed only in peripheral tissues such as insulin (pancreas), thyroglobulin (thyroid), and myelin basic protein (CNS). By presenting these antigens in the thymus, AIRE enables deletion of potentially autoreactive T cell clones before they exit to the periphery.</p>
+
+      <div class="callout callout-red">
+        <h4>Clinical: Autoimmune Polyendocrinopathy-Candidiasis-Ectodermal Dystrophy (APECED)</h4>
+        Loss-of-function mutations in AIRE cause APECED syndrome, characterized by autoimmune destruction of multiple endocrine glands (hypoparathyroidism, adrenal insufficiency, type 1 diabetes), mucocutaneous candidiasis, and ectodermal manifestations. The syndrome demonstrates that AIRE-mediated central tolerance is non-redundant: peripheral tolerance mechanisms cannot fully compensate. Inheritance is autosomal recessive; the AIRE gene is located on chromosome 21q22.3.
+      </div>
+
+      <h3>Mechanisms of Negative Selection</h3>
+      <ul>
+        <li><strong>Clonal deletion</strong>: apoptosis of strongly self-reactive thymocytes (most common outcome)</li>
+        <li><strong>Clonal anergy</strong>: functional inactivation without deletion (less common in thymus)</li>
+        <li><strong>Regulatory T cell induction</strong>: high-affinity TCR signaling can redirect thymocytes to the Foxp3+ Treg lineage rather than deletion (agonist selection -- see Repertoire Outcomes)</li>
+      </ul>
+    </section>
+
+    <!-- 9. LINEAGE COMMITMENT -->
+    <section id="lineage">
+      <h2>CD4/CD8 Lineage Commitment</h2>
+      <p>Following positive selection, DP thymocytes must commit to either the CD4+ helper or CD8+ cytotoxic single positive (SP) lineage. This commitment is not entirely determined by MHC class at selection -- subsequent signals refine the decision.</p>
+      <p>The <strong>kinetic signaling model</strong> provides the current best mechanistic account: all DP thymocytes initially downregulate CD8 after positive selection. Cells that received sustained TCR signaling (MHC II interaction with CD4 coreceptor) maintain that signal and commit to CD4+ SP. Cells that received attenuated signal after CD8 downregulation (MHC I interaction, now without CD8) re-upregulate CD8 and commit to CD8+ SP.</p>
+      <p>Transcription factors <strong>ThPOK</strong> and <strong>Runx3</strong> are the master regulators of CD4 and CD8 lineage fate, respectively. ThPOK drives CD4 commitment and represses CD8 fate; Runx3 is required for CD8 SP development and cytotoxic gene expression.</p>
+    </section>
+
+    <!-- 10. REPERTOIRE OUTCOMES -->
+    <section id="repertoire">
+      <h2>Repertoire Outcomes</h2>
+      <p>Not all thymocytes that survive selection become conventional CD4+ helper or CD8+ cytotoxic T cells. Several alternative fates are specified within the thymus:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cell Type</th>
+              <th>TCR Signal at Selection</th>
+              <th>Transcription Factor</th>
+              <th>Peripheral Function</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Conventional CD4+ T cells</strong></td>
+              <td>Intermediate (MHC II)</td>
+              <td>ThPOK</td>
+              <td>TH1, TH2, TH17, Tfh effector subsets upon antigen exposure</td>
+            </tr>
+            <tr>
+              <td><strong>Conventional CD8+ T cells</strong></td>
+              <td>Intermediate (MHC I)</td>
+              <td>Runx3</td>
+              <td>Cytotoxic killing of infected/transformed cells</td>
+            </tr>
+            <tr>
+              <td><strong>Foxp3+ Regulatory T cells (Tregs)</strong></td>
+              <td>High (agonist selection)</td>
+              <td>Foxp3</td>
+              <td>Peripheral self-tolerance; suppression of effector responses</td>
+            </tr>
+            <tr>
+              <td><strong>NKT cells</strong></td>
+              <td>Recognizes CD1d (lipid antigen)</td>
+              <td>PLZF</td>
+              <td>Innate-like bridging of adaptive and innate immunity</td>
+            </tr>
+            <tr>
+              <td><strong>Gamma-delta T cells</strong></td>
+              <td>MHC-independent; selected at DN1-DN2</td>
+              <td>SOX13</td>
+              <td>Mucosal surveillance, stress ligand recognition</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Regulatory T Cells and Agonist Selection</h3>
+      <p>Thymic Tregs are generated when a thymocyte receives a <strong>high-affinity TCR signal</strong> during selection -- the same signal that would cause clonal deletion in conventional thymocytes. This agonist selection signal, in the context of appropriate cytokine cues (particularly IL-2), induces Foxp3 expression and redirects the cell to the Treg fate. Approximately <strong>5-10% of CD4+ SP thymocytes</strong> become Foxp3+ Tregs. Their TCRs are biased toward self-reactivity, which is mechanistically necessary for their function: peripheral Tregs suppress autoimmune responses by recognizing self-antigens in target tissues.</p>
+    </section>
+
+    <!-- 11. THYMIC INVOLUTION -->
+    <section id="involution">
+      <h2>Thymic Involution and Aging</h2>
+      <p>The thymus undergoes progressive fibrofatty involution beginning in early childhood, accelerating through puberty and continuing throughout adult life. By age 40-50, the majority of functional thymic parenchyma has been replaced by adipose tissue, and naive T cell output falls to a small fraction of its peak in early life.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Age</th>
+              <th>Thymus Weight</th>
+              <th>Naive T Cell Export</th>
+              <th>Consequence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Newborn - 1 year</td>
+              <td>15-35 g (peak)</td>
+              <td>High</td>
+              <td>Rapid TCR repertoire diversification</td>
+            </tr>
+            <tr>
+              <td>Puberty (12-18 yr)</td>
+              <td>Declining; sex hormone-driven involution accelerates</td>
+              <td>Declining</td>
+              <td>Repertoire established; peripheral homeostatic proliferation takes over</td>
+            </tr>
+            <tr>
+              <td>Middle age (40-60 yr)</td>
+              <td>5-15 g (mostly fat)</td>
+              <td>Very low</td>
+              <td>TCR diversity narrows; immunosenescence begins</td>
+            </tr>
+            <tr>
+              <td>Elderly (>70 yr)</td>
+              <td>~5 g (mostly adipose)</td>
+              <td>Minimal</td>
+              <td>Peripheral pool maintained by memory T cell homeostatic proliferation only</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-teal">
+        <h4>Thymic Involution, Inflammaging, and Clonal Hematopoiesis</h4>
+        Thymic involution is the lymphoid arm of hematopoietic aging -- parallel to the myeloid skewing and clonal hematopoiesis of indeterminate potential (CHIP) that accumulates in the same aging bone marrow compartment. As naive T cell output declines, the peripheral T cell pool depends increasingly on homeostatic proliferation of pre-existing memory clones, narrowing TCR diversity. This impairs immune surveillance of pre-malignant cells, including CHIP clones. Simultaneously, CHIP-mutant myeloid cells generate chronic inflammatory cytokine output (IL-1beta, IL-6) that accelerates T cell exhaustion and further impairs thymic function. These two aging processes are mutually reinforcing: each amplifies the immunological failure the other produces.
+      </div>
+    </section>
+
+    <!-- 12. CLINICAL CORRELATES -->
+    <section id="clinical">
+      <h2>Clinical Correlates</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Condition</th>
+              <th>Mechanism</th>
+              <th>Immunological Consequence</th>
+              <th>Key Feature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DiGeorge Syndrome</strong></td>
+              <td>22q11.2 deletion; failure of 3rd/4th pharyngeal pouches; thymic aplasia or hypoplasia</td>
+              <td>T cell lymphopenia; B cells and NK cells present but poorly regulated without T cell help</td>
+              <td>Hypocalcemia (absent parathyroid glands), conotruncal cardiac defects, palatal anomalies. Severity correlates with degree of thymic hypoplasia.</td>
+            </tr>
+            <tr>
+              <td><strong>T-B-NK+ SCID</strong></td>
+              <td>RAG1/RAG2 or Artemis mutations; failure of V(D)J recombination</td>
+              <td>Absent T and B cells; NK cells intact. Thymus empty of DP and SP thymocytes.</td>
+              <td>Presents in first months of life with recurrent infections. Curative with hematopoietic stem cell transplantation.</td>
+            </tr>
+            <tr>
+              <td><strong>MHC II Deficiency (Bare Lymphocyte Syndrome)</strong></td>
+              <td>Mutations in MHC II transactivator (CIITA) or RFX factors</td>
+              <td>Failure of positive selection for CD4+ T cells; severe CD4 lymphopenia with normal CD8</td>
+              <td>Combined immunodeficiency; normal lymphocyte counts but severely impaired helper function. Autosomal recessive.</td>
+            </tr>
+            <tr>
+              <td><strong>APECED</strong></td>
+              <td>AIRE loss-of-function; failure of central tolerance to tissue-restricted antigens</td>
+              <td>Escape of autoreactive T cell clones; multi-organ autoimmunity</td>
+              <td>Hypoparathyroidism, adrenal insufficiency, mucocutaneous candidiasis. Autosomal recessive; chromosome 21q22.</td>
+            </tr>
+            <tr>
+              <td><strong>Thymoma</strong></td>
+              <td>Neoplasm of thymic epithelium; abnormal selection environment</td>
+              <td>Paraneoplastic immune dysregulation; may produce myasthenia gravis, pure red cell aplasia, hypogammaglobulinemia</td>
+              <td>Anterior mediastinal mass; associations with myasthenia gravis (~30%), other autoimmune conditions.</td>
+            </tr>
+            <tr>
+              <td><strong>HIV/AIDS</strong></td>
+              <td>Preferential destruction of CD4+ T cells by HIV-1</td>
+              <td>Progressive CD4 lymphopenia; loss of T helper function for humoral and cellular immunity</td>
+              <td>AIDS defined as CD4 count below 200 cells/uL. Opportunistic infections correlate with degree of CD4 depletion.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 13. PEARLS -->
+    <section id="pearls">
+      <h2>Clinical Pearls</h2>
+      <div class="pearls-grid">
+        <div class="pearl">
+          <strong>Pearl 1</strong>
+          <p>Only 2-5% of thymocytes survive thymic selection to reach the periphery. The remainder die in the thymus -- primarily by death by neglect at positive selection, not by negative selection.</p>
+        </div>
+        <div class="pearl">
+          <strong>Pearl 2</strong>
+          <p>The gamma-delta vs. alpha-beta lineage split is not the same as CD4 vs. CD8 commitment. Gamma-delta cells are specified early at DN1-DN2; CD4/CD8 commitment happens after positive selection in DP thymocytes.</p>
+        </div>
+        <div class="pearl">
+          <strong>Pearl 3</strong>
+          <p>Regulatory T cells arise from the same high-affinity TCR signal that would cause clonal deletion in conventional T cells. Context (cytokines, especially IL-2) determines whether the outcome is Treg induction or apoptosis.</p>
+        </div>
+        <div class="pearl">
+          <strong>Pearl 4</strong>
+          <p>AIRE enables central tolerance by expressing peripheral tissue antigens in the thymus. AIRE loss causes APECED -- multi-organ autoimmunity due to escape of self-reactive T cells. Chromosome 21q22.</p>
+        </div>
+        <div class="pearl">
+          <strong>Pearl 5</strong>
+          <p>DiGeorge syndrome (22q11.2 deletion) presents with the triad of conotruncal cardiac defects, hypocalcemia from absent parathyroid glands, and T cell immunodeficiency from thymic aplasia/hypoplasia. Severity of immunodeficiency is highly variable.</p>
+        </div>
+        <div class="pearl">
+          <strong>Pearl 6</strong>
+          <p>Thymic involution and clonal hematopoiesis (CHIP) are parallel age-related failures in the hematopoietic system -- one lymphoid, one myeloid. Both contribute to immunosenescence and each amplifies the other's effects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. REFERENCES -->
+    <section id="references">
+      <h2>References</h2>
+      <ol class="ref-list">
+        <li>Blackburn CC, Manley NR. Developing a new paradigm for thymus organogenesis. <span>Nat Rev Immunol. 2004;4(4):278-289.</span></li>
+        <li>Klein L, Kyewski B, Allen PM, Hogquist KA. Positive and negative selection of the T cell repertoire: what thymocytes see (and don't see). <span>Nat Rev Immunol. 2014;14(6):377-391.</span></li>
+        <li>Anderson MS, Venanzi ES, Klein L, et al. Projection of an immunological self shadow within the thymus by the aire protein. <span>Science. 2002;298(5597):1395-1401.</span></li>
+        <li>Germain RN. T-cell development and the CD4-CD8 lineage decision. <span>Nat Rev Immunol. 2002;2(5):309-322.</span></li>
+        <li>Hogquist KA, Starr TK, Jameson SC. Positive selection of T cells. <span>Curr Opin Immunol. 2003;15(2):188-195.</span></li>
+        <li>von Boehmer H, Melchers F. Checkpoints in lymphocyte development and autoimmune disease. <span>Nat Immunol. 2010;11(1):14-20.</span></li>
+        <li>Nikolich-Zugich J. Thymic involution and T cell immune senescence. <span>J Exp Med. 2018;215(7):1765-1778.</span></li>
+        <li>Fernandez MA, Martin F. DiGeorge syndrome. <span>StatPearls. NCBI Bookshelf. 2024.</span></li>
+        <li>Kisand K, Peterson P. Autoimmune polyendocrinopathy candidiasis ectodermal dystrophy: known and novel aspects of the syndrome. <span>Ann N Y Acad Sci. 2011;1246:77-91.</span></li>
+        <li>Steensma DP, et al. Clonal hematopoiesis of indeterminate potential and its distinction from myelodysplastic syndromes. <span>Blood. 2015;126(1):9-16.</span></li>
+        <li>Jaiswal S, et al. Age-related clonal hematopoiesis associated with adverse outcomes. <span>N Engl J Med. 2014;371(26):2488-2498.</span></li>
+      </ol>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>Morning Report Case Repository &middot; Internal Medicine &middot; Topic 18</p>
+  <p class="disclaimer">These case presentations are for educational purposes only. Clinical decision-making should be guided by current guidelines, patient-specific factors, and institutional protocols. Content is enhanced with evidence-based references current as of 2024-2025.</p>
+</footer>
+
+</body>
+</html>

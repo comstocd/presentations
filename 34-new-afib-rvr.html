@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Case 21 — New Atrial Fibrillation with RVR | Morning Report</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f6f8fa;
+    --bg3: #eaeef2;
+    --border: #d0d7de;
+    --text: #1f2328;
+    --muted: #656d76;
+    --blue: #0969da;
+    --blue-bg: #ddf4ff;
+    --blue-border: #54aeff;
+    --green: #1a7f37;
+    --green-bg: #dafbe1;
+    --green-border: #4ac26b;
+    --yellow: #9a6700;
+    --yellow-bg: #fff8c5;
+    --yellow-border: #d4a72c;
+    --red: #cf222e;
+    --red-bg: #ffebe9;
+    --red-border: #ff8182;
+    --purple: #8250df;
+    --purple-bg: #fbefff;
+    --purple-border: #c297ff;
+    --orange: #bc4c00;
+    --orange-bg: #fff1e5;
+    --orange-border: #fb8f44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6;
+  }
+  a { color: var(--blue); text-decoration: none; }
+
+  #deck { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 38px 52px 58px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease; overflow: hidden;
+  }
+  .slide.active { opacity: 1; pointer-events: all; }
+  .slide-content { background: var(--bg); }
+  .slide-accent  { background: var(--bg2); }
+  .slide-title   { background: var(--bg); justify-content: center; }
+  .slide-danger  { background: #fff5f5; }
+
+  .slide-body {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; padding-right: 4px;
+  }
+  .slide-body::-webkit-scrollbar { width: 3px; }
+  .slide-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .slide-label { font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+  .slide h1 { font-size: 36px; font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 14px; }
+  .slide h2 { font-size: 24px; font-weight: 700; color: var(--text);
+    padding-bottom: 10px; border-bottom: 2px solid var(--border); margin-bottom: 18px; }
+  .slide h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 18px 0 8px; }
+  .slide p  { color: var(--text); margin-bottom: 12px; font-size: 15px; }
+  .slide ul, .slide ol { padding-left: 20px; margin-bottom: 12px; }
+  .slide li { margin-bottom: 6px; font-size: 15px; color: var(--text); line-height: 1.5; }
+  .slide strong { font-weight: 600; }
+  .tagline { font-size: 18px; color: var(--muted); max-width: 640px; line-height: 1.55; margin-bottom: 22px; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; border: 1px solid; }
+  .badge-blue   { background: var(--blue-bg);   color: var(--blue);   border-color: var(--blue-border); }
+  .badge-green  { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+  .badge-red    { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-border); }
+
+  .callout { border-radius: 8px; padding: 12px 16px; margin: 12px 0;
+    border-left: 4px solid; font-size: 14px; line-height: 1.6; }
+  .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; display: block; margin-bottom: 4px; }
+  .callout-blue   { background: var(--blue-bg);   border-color: var(--blue);         color: #0550ae; }
+  .callout-blue   .callout-label { color: var(--blue); }
+  .callout-yellow { background: var(--yellow-bg); border-color: var(--yellow-border); color: var(--yellow); }
+  .callout-yellow .callout-label { color: var(--yellow); }
+  .callout-red    { background: var(--red-bg);    border-color: var(--red);           color: #82071e; }
+  .callout-red    .callout-label { color: var(--red); }
+  .callout-green  { background: var(--green-bg);  border-color: var(--green);         color: #116329; }
+  .callout-green  .callout-label { color: var(--green); }
+  .callout-orange { background: var(--orange-bg); border-color: var(--orange-border); color: var(--orange); }
+  .callout-orange .callout-label { color: var(--orange); }
+  .callout-purple { background: var(--purple-bg); border-color: var(--purple);        color: #5a32a3; }
+  .callout-purple .callout-label { color: var(--purple); }
+
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--bg3); color: var(--muted); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13px; color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg2); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0; }
+
+  .card        { background: var(--bg);         border: 1px solid var(--border);        border-radius: 10px; padding: 14px 16px; }
+  .card-accent { background: var(--bg2);         border: 1px solid var(--border);        border-radius: 10px; padding: 14px 16px; }
+  .card-red    { background: var(--red-bg);      border: 1px solid var(--red-border);    border-radius: 10px; padding: 14px 16px; }
+  .card-green  { background: var(--green-bg);    border: 1px solid var(--green-border);  border-radius: 10px; padding: 14px 16px; }
+  .card-yellow { background: var(--yellow-bg);   border: 1px solid var(--yellow-border); border-radius: 10px; padding: 14px 16px; }
+  .card-blue   { background: var(--blue-bg);     border: 1px solid var(--blue-border);   border-radius: 10px; padding: 14px 16px; }
+  .card-orange { background: var(--orange-bg);   border: 1px solid var(--orange-border); border-radius: 10px; padding: 14px 16px; }
+  .card-purple { background: var(--purple-bg);   border: 1px solid var(--purple-border); border-radius: 10px; padding: 14px 16px; }
+  .card-title  { font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+
+  /* SCORE CARD */
+  .score-grid { display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 12px 0; }
+  .score-row { display: grid; grid-template-columns: 2fr 1fr 3fr; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .score-row:last-child { border-bottom: none; }
+  .score-row > div { padding: 8px 12px; }
+  .score-factor { font-weight: 500; }
+  .score-pts { font-weight: 700; color: var(--blue); text-align: center; background: var(--blue-bg); display: flex; align-items: center; justify-content: center; }
+  .score-note { color: var(--muted); font-size: 12px; display: flex; align-items: center; }
+  .score-header { background: var(--bg3); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+
+  /* DRUG CARD */
+  .drug-card { border-radius: 10px; border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 10px; }
+  .drug-name  { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
+  .drug-class { font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); margin-bottom: 10px; }
+  .drug-row   { display: grid; grid-template-columns: 80px 1fr; gap: 3px 12px; font-size: 13px; margin-bottom: 2px; }
+  .drug-key   { font-weight: 600; color: var(--muted); }
+
+  /* TIMELINE */
+  .timeline { list-style: none; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline li { padding: 0 0 16px 36px; position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: 7px; top: 5px;
+    width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--blue); }
+  .tl-label { font-size: 11px; font-weight: 700; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+
+  /* DECISION FLOW */
+  .flow-step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 10px; }
+  .flow-num  { width: 28px; height: 28px; border-radius: 50%; background: var(--blue);
+    color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .flow-body { flex: 1; font-size: 14px; line-height: 1.55; }
+  .flow-title { font-weight: 600; margin-bottom: 2px; }
+
+  /* WINDOW GRAPHIC */
+  .window-graphic { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: stretch; margin: 14px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .wg-left  { background: var(--green-bg); padding: 16px; }
+  .wg-mid   { background: var(--bg3); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--muted); }
+  .wg-right { background: var(--red-bg); padding: 16px; }
+  .wg-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .wg-left  .wg-title { color: var(--green); }
+  .wg-right .wg-title { color: var(--red); }
+
+  .pearl { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 13px 16px; margin: 9px 0; font-size: 14px; line-height: 1.6; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+
+  .refs { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .refs li { margin-bottom: 8px; }
+
+  #nav { position: fixed; bottom: 0; left: 0; right: 0; height: 44px;
+    background: var(--bg); border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; z-index: 200; user-select: none; }
+  .nav-btn { background: none; border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 14px; font-size: 13px; font-weight: 500; color: var(--text);
+    cursor: pointer; transition: background 0.1s; }
+  .nav-btn:hover { background: var(--bg2); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  #slide-counter { font-size: 13px; color: var(--muted); font-weight: 500; }
+  #progress-bar  { position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--blue); transition: width 0.2s ease; z-index: 300; }
+
+  @media (max-width: 720px) {
+    .slide { padding: 22px 16px 58px; }
+    .slide h1 { font-size: 26px; }
+    .slide h2 { font-size: 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .score-row { grid-template-columns: 2fr 1fr; }
+    .score-note { display: none; }
+    .window-graphic { grid-template-columns: 1fr; }
+    .wg-mid { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div id="deck"></div>
+
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+
+<script>
+const SLIDES = [
+
+// ── 1. TITLE ──────────────────────────────────────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="slide-label">Case 21 &middot; Cardiology / Hospital Medicine</div>
+<h1>New Atrial Fibrillation<br>with RVR</h1>
+<p class="tagline">A 67-year-old woman develops a rapid irregular rhythm on telemetry overnight. The night intern must decide: control the rate or the rhythm? Anticoagulate now or wait? And — before any of that — rule out the one precipitant that changes everything.</p>
+<div class="badge-row">
+  <span class="badge badge-red">Cardiology</span>
+  <span class="badge badge-blue">Hospital Medicine</span>
+  <span class="badge badge-yellow">AHA/ACC 2023</span>
+  <span class="badge badge-orange">ACS Trap</span>
+</div>
+<div style="margin-top:28px;font-size:13px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// ── 2. CASE VIGNETTE ─────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="timeline">
+  <li>
+    <div class="tl-label">Admission context</div>
+    <p style="font-size:14px;margin:0;">67F admitted 18 hours ago for community-acquired pneumonia. PMH: HTN, DM2, HLD. No known cardiac history. No prior AF. Medications: lisinopril, metformin, atorvastatin. On telemetry per protocol.</p>
+  </li>
+  <li>
+    <div class="tl-label">3:20 AM — telemetry alarm</div>
+    <p style="font-size:14px;margin:0;">Nurse calls: rate 138, irregular. Patient awake, reports palpitations and mild dyspnea. No chest pain. No syncope. BP 108/72. SpO2 93% on 2L NC (was 96% at midnight). RR 22.</p>
+  </li>
+  <li>
+    <div class="tl-label">Bedside exam</div>
+    <p style="font-size:14px;margin:0;">Irregular tachycardia, rate ~130&ndash;140. No S3. Mild bibasilar crackles (present since admission). No JVD. No new murmur. Extremities warm. Alert and oriented.</p>
+  </li>
+  <li>
+    <div class="tl-label">ECG</div>
+    <p style="font-size:14px;margin:0;">Irregularly irregular rhythm. Absent P waves. Ventricular rate 136. No ST elevation. No ST depression. No new bundle branch block. QTc 428 ms.</p>
+  </li>
+  <li>
+    <div class="tl-label">Immediate labs</div>
+    <p style="font-size:14px;margin:0;">Troponin I: 0.04 ng/mL (assay ULN 0.04). K 3.3, Mg 1.6. TSH pending. BMP otherwise unremarkable. CBC: WBC 14.2 (known, pneumonia). No new anemia.</p>
+  </li>
+</ul>
+<div class="callout callout-red">
+  <span class="callout-label">Three Questions Before You Write Any Orders</span>
+  1. Is this patient hemodynamically unstable? &rarr; If yes: synchronized cardioversion now.<br>
+  2. Is there an acute precipitant driving this? &rarr; Find it and treat it.<br>
+  3. Is this ACS? &rarr; The troponin is at the ULN. ECG has no ST changes now — but AF with RVR <em>is</em> a cause of demand ischemia, and ACS <em>is</em> a cause of new AF.
+</div>
+</div>
+`},
+
+// ── 3. HEMODYNAMIC STABILITY — FIRST BRANCH ──────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Step 1: Is This Patient Stable?</h2>
+<div class="slide-body">
+<div class="callout callout-red">
+  <span class="callout-label">Unstable AF with RVR &mdash; Immediate Synchronized Cardioversion</span>
+  Do not delay cardioversion for anticoagulation if the patient is hemodynamically unstable. The risk of stroke from cardioversion of very short-duration AF is far lower than the risk of continued hemodynamic compromise. AHA/ACC 2023: immediate electrical cardioversion is indicated for AF with rapid ventricular rate and hemodynamic instability (Class I).
+</div>
+<h3>Signs of Hemodynamic Instability</h3>
+<div class="grid-2">
+  <div class="card-red">
+    <div class="card-title" style="color:var(--red);">Cardiovert Now &mdash; Do Not Wait</div>
+    <ul style="font-size:13px;">
+      <li>Hypotension (SBP &lt;90) not responsive to rate control</li>
+      <li>Acute pulmonary edema / respiratory failure</li>
+      <li>Active chest pain with ischemic ECG changes</li>
+      <li>Altered mental status from low output</li>
+      <li>Cardiogenic shock</li>
+    </ul>
+    <p style="font-size:12px;color:var(--red);margin-top:8px;font-weight:600;">200J biphasic synchronized &rarr; reassess &rarr; repeat if needed</p>
+  </div>
+  <div class="card-green">
+    <div class="card-title" style="color:var(--green);">Stable &mdash; Proceed Systematically</div>
+    <ul style="font-size:13px;">
+      <li>BP maintained (&ge;90 systolic)</li>
+      <li>No active ischemia on ECG</li>
+      <li>Alert, conversant</li>
+      <li>Tolerable dyspnea, no pulmonary edema</li>
+      <li>Rate 100&ndash;150 with preserved perfusion</li>
+    </ul>
+    <p style="font-size:12px;color:var(--green);margin-top:8px;font-weight:600;">Rate control &rarr; precipitant workup &rarr; anticoagulation decision &rarr; rhythm strategy</p>
+  </div>
+</div>
+<div class="callout callout-blue">
+  <span class="callout-label">This patient</span>
+  BP 108/72, alert, warm extremities, no pulmonary edema &mdash; hemodynamically stable. Proceed with rate control and systematic workup. The BP of 108 warrants attention but is not shock &mdash; monitor closely.
+</div>
+</div>
+`},
+
+// ── 4. PRECIPITANTS — THE FULL DIFFERENTIAL ──────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Step 2: Find the Precipitant</h2>
+<div class="slide-body">
+<p>New AF in a hospitalized patient almost always has a reversible cause. Treating the precipitant is as important as treating the rate. Failure to find it is the most common reason for refractory rate control and AF recurrence.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Precipitant</th><th>Clue</th><th>Workup / Action</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--red);">ACS</strong></td>
+      <td>Chest pain (may be absent), troponin elevation, ST changes, risk factors</td>
+      <td>Serial troponins, 12-lead ECG, cardiology consult; do not attribute troponin rise to "demand" without ruling out type 1 MI</td>
+    </tr>
+    <tr>
+      <td><strong>Infection / Sepsis</strong></td>
+      <td>Fever, leukocytosis, known infection &mdash; this patient's pneumonia</td>
+      <td>Optimize source control; treat infection; AF often resolves as infection improves</td>
+    </tr>
+    <tr>
+      <td><strong>Pulmonary Embolism</strong></td>
+      <td>Unexplained tachycardia, hypoxia, right heart strain on ECG (S1Q3T3)</td>
+      <td>PERC/Wells; CT-PA or V/Q if intermediate-high probability; new AF + PE can coexist</td>
+    </tr>
+    <tr>
+      <td><strong>Thyrotoxicosis</strong></td>
+      <td>Weight loss, heat intolerance, tremor, goiter; TSH suppressed</td>
+      <td>TSH (reflexive free T4); if thyroid storm suspected: propranolol + PTU/MMI + iodine + steroids</td>
+    </tr>
+    <tr>
+      <td><strong>Electrolyte abnormality</strong></td>
+      <td>Hypokalemia, hypomagnesemia &mdash; both present in this patient</td>
+      <td>Aggressively replete K &gt;4.0 and Mg &gt;2.0 before or concurrent with rate control; both are proarrhythmic when low</td>
+    </tr>
+    <tr>
+      <td><strong>Volume overload / ADHF</strong></td>
+      <td>Elevated filling pressures &rarr; atrial stretch &rarr; AF; worsened dyspnea</td>
+      <td>Clinical exam, BNP; IV diuresis if volume-overloaded; often resolves with decongestion</td>
+    </tr>
+    <tr>
+      <td><strong>Post-operative state</strong></td>
+      <td>Post-cardiac or thoracic surgery, post-ablation; peak day 2&ndash;4</td>
+      <td>Often self-limited; rate control and observation; anticoagulation decision is nuanced</td>
+    </tr>
+    <tr>
+      <td><strong>Alcohol / stimulants</strong></td>
+      <td>"Holiday heart"; binge drinking; cocaine; caffeine excess</td>
+      <td>History; CIWA if withdrawal concern; usually self-limited if precipitant removed</td>
+    </tr>
+    <tr>
+      <td><strong>Pericarditis / myocarditis</strong></td>
+      <td>Pleuritic chest pain, friction rub, diffuse ST elevation, elevated troponin</td>
+      <td>ECG pattern, echo, CRP; NSAIDs/colchicine for pericarditis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">This patient's likely precipitants</span>
+  Pneumonia (primary), hypokalemia (K 3.3), hypomagnesemia (Mg 1.6), and a troponin at the ULN requiring serial monitoring. All four require attention simultaneously.
+</div>
+</div>
+`},
+
+// ── 5. ACS AS PRECIPITANT — THE TRAP ─────────────────────────────────────────
+{ cls: 'slide-danger', html: `
+<h2 style="color:var(--red);border-color:var(--red-border);"> ACS as Precipitant &mdash; The Trap</h2>
+<div class="slide-body">
+<div class="callout callout-red">
+  <span class="callout-label">Two-Way Causality &mdash; Do Not Assume Direction</span>
+  AF with RVR causes demand ischemia (type 2 MI). ACS causes new AF in 6&ndash;21% of STEMI and 6&ndash;10% of NSTEMI cases. You cannot determine which caused which from the first troponin alone. Serial troponins and clinical context are mandatory.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>AF causing troponin rise (Type 2 MI)</h3>
+    <ul style="font-size:13px;">
+      <li>Rapid rate increases myocardial O2 demand</li>
+      <li>Reduced diastolic filling time impairs coronary perfusion</li>
+      <li>Troponin rises modestly, peaks early, resolves with rate control</li>
+      <li>No obstructive coronary disease on cath</li>
+      <li>ECG: no ST changes beyond tachycardia-related T-wave flattening</li>
+    </ul>
+  </div>
+  <div>
+    <h3>ACS causing AF (Do Not Miss)</h3>
+    <ul style="font-size:13px;">
+      <li>RCA occlusion: sinus node and AV node ischemia &rarr; AF, heart block</li>
+      <li>Large LCx/LAD ischemia: atrial stretch from elevated LVEDP &rarr; AF</li>
+      <li>Troponin rising significantly, not plateauing</li>
+      <li>ST changes on serial ECG &mdash; obtain ECG every 30&ndash;60 min if suspicion</li>
+      <li>Hemodynamic instability disproportionate to rate alone</li>
+    </ul>
+  </div>
+</div>
+<h3>Decision Framework for This Patient</h3>
+<div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><span class="flow-title">Serial troponins q3&ndash;6h</span> &mdash; a troponin at exactly the ULN requires at least one repeat. Rising delta &gt;20% = acute MI until proven otherwise.</div></div>
+<div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><span class="flow-title">Serial ECGs</span> &mdash; q30&ndash;60 min while rate is uncontrolled. ST changes may be masked by tachycardia; once rate is controlled, repeat ECG immediately.</div></div>
+<div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><span class="flow-title">Avoid agents that worsen ACS</span> &mdash; if ACS is on the differential, avoid digoxin (vagotonic, does not work in sympathetic states, unreliable in ACS). Prefer beta-blocker if BP tolerates.</div></div>
+<div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><span class="flow-title">Low threshold for cardiology consult</span> &mdash; new AF + troponin elevation + pneumonia in a 67-year-old woman is not a routine night cross-cover call.</div></div>
+</div>
+`},
+
+// ── 6. RATE CONTROL — AGENTS ─────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Rate Control: Agents and Strategy</h2>
+<div class="slide-body">
+<div class="callout callout-blue">
+  <span class="callout-label">AHA/ACC 2023 Rate Target</span>
+  A resting ventricular rate &lt;110 bpm is acceptable for most patients (lenient control). A rate &lt;80 bpm (strict control) is reasonable in patients with persistent symptoms or LV dysfunction. RACE II trial: lenient rate control (&lt;110) was non-inferior to strict control (&lt;80) for composite cardiovascular outcomes.
+</div>
+<div class="drug-card" style="border-color:var(--blue-border);background:var(--blue-bg);">
+  <div class="drug-name" style="color:var(--blue);">IV Metoprolol (Beta-1 Blocker)</div>
+  <div class="drug-class">First-line for most hemodynamically stable AF with RVR without contraindications</div>
+  <div class="drug-row"><span class="drug-key">Dose:</span><span>2.5&ndash;5 mg IV over 2 min; repeat q5 min &times;3 prn. Max 15 mg IV initially.</span></div>
+  <div class="drug-row"><span class="drug-key">Onset:</span><span>1&ndash;5 min. Duration 3&ndash;8h.</span></div>
+  <div class="drug-row"><span class="drug-key">Best for:</span><span>High sympathetic tone (infection, post-op, pain, anxiety); ACS co-management; hyperthyroid AF</span></div>
+  <div class="drug-row"><span class="drug-key">Avoid:</span><span>Decompensated HF with low output, bronchospasm, high-degree AV block, pre-excitation (WPW)</span></div>
+</div>
+<div class="drug-card" style="border-color:var(--purple-border);background:var(--purple-bg);">
+  <div class="drug-name" style="color:var(--purple);">IV Diltiazem (Non-DHP CCB)</div>
+  <div class="drug-class">Effective alternative; preferred when beta-blockers are contraindicated (bronchospasm, COPD)</div>
+  <div class="drug-row"><span class="drug-key">Dose:</span><span>0.25 mg/kg IV over 2 min (usual 15&ndash;20 mg); if inadequate response after 15 min, 0.35 mg/kg. Infusion: 5&ndash;15 mg/hr.</span></div>
+  <div class="drug-row"><span class="drug-key">Onset:</span><span>2&ndash;7 min. Duration 1&ndash;3h IV bolus.</span></div>
+  <div class="drug-row"><span class="drug-key">Best for:</span><span>COPD/asthma (no beta-2 blockade), adequate LV function</span></div>
+  <div class="drug-row"><span class="drug-key">Avoid:</span><span>HFrEF (EF &lt;40%) &mdash; negative inotropy worsens low-output states; WPW; hypotension</span></div>
+</div>
+<div class="drug-card" style="border-color:var(--green-border);background:var(--green-bg);">
+  <div class="drug-name" style="color:var(--green);">IV Digoxin</div>
+  <div class="drug-class">Third-line; limited role in acute setting due to slow onset and reliance on vagal tone</div>
+  <div class="drug-row"><span class="drug-key">Dose:</span><span>0.25&ndash;0.5 mg IV loading; repeat 0.25 mg q6h &times;2. Maintenance 0.125&ndash;0.25 mg/day. Narrow therapeutic window.</span></div>
+  <div class="drug-row"><span class="drug-key">Onset:</span><span>30&ndash;60 min; full effect 6&ndash;8h. Unreliable in high sympathetic states.</span></div>
+  <div class="drug-row"><span class="drug-key">Best for:</span><span>HFrEF (no negative inotropy); oral maintenance in patients who cannot tolerate beta-blockers or CCBs</span></div>
+  <div class="drug-row"><span class="drug-key">Avoid:</span><span>ACS (proarrhythmic, vagotonic); renal failure (accumulates); WPW (dangerous)</span></div>
+</div>
+<div class="drug-card" style="border-color:var(--orange-border);background:var(--orange-bg);">
+  <div class="drug-name" style="color:var(--orange);">IV Magnesium Sulfate</div>
+  <div class="drug-class">Adjunct rate-control agent &mdash; frequently underused, low risk, practical in most hospitalized patients</div>
+  <div class="drug-row"><span class="drug-key">Dose:</span><span>2 g IV over 5&ndash;15 min; may repeat once. Particularly useful when Mg is low or low-normal.</span></div>
+  <div class="drug-row"><span class="drug-key">Onset:</span><span>Minutes. Mechanism: slows AV nodal conduction; also corrects hypomagnesemia-driven proarrhythmia.</span></div>
+  <div class="drug-row"><span class="drug-key">Best for:</span><span>Add-on to beta-blocker or diltiazem when rate remains elevated; when Mg &lt;2.0 (as in this patient); when other agents are dose-limited by BP</span></div>
+  <div class="drug-row"><span class="drug-key">Avoid:</span><span>Renal failure (accumulates); use with caution if already receiving other AV nodal agents causing bradycardia</span></div>
+</div>
+</div>
+`},
+
+// ── 7. RATE vs. RHYTHM — THE STRATEGY DECISION ───────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Rate vs. Rhythm Control: Which Strategy?</h2>
+<div class="slide-body">
+<div class="callout callout-blue">
+  <span class="callout-label">EAST-AFNET 4 (NEJM 2020) &mdash; A Paradigm Shift</span>
+  Early rhythm control (within 1 year of AF diagnosis) reduced the composite of cardiovascular death, stroke, and hospitalization for worsening HF or ACS vs. usual care (largely rate control) &mdash; HR 0.79 (96% CI 0.66&ndash;0.94). Benefit was seen regardless of whether sinus rhythm was maintained, suggesting the rhythm control strategy itself &mdash; not just the restoration of sinus rhythm &mdash; may be beneficial. This challenges the prior AFFIRM-era assumption that rate and rhythm control are equivalent.
+</div>
+<div class="grid-2">
+  <div class="card-blue">
+    <div class="card-title" style="color:var(--blue);">Favor Rhythm Control (Cardioversion / AAD)</div>
+    <ul style="font-size:13px;">
+      <li>Younger patient (&lt;65), first-detected AF</li>
+      <li>Symptomatic despite adequate rate control</li>
+      <li>AF likely to resolve with precipitant treatment (infection, post-op)</li>
+      <li>AF duration clearly &lt;48h &mdash; low thrombus risk</li>
+      <li>Hemodynamic compromise from loss of atrial kick (HFpEF, diastolic dysfunction)</li>
+      <li>Patient preference for sinus rhythm</li>
+      <li>EAST-AFNET 4 supports early rhythm control for newly diagnosed AF</li>
+    </ul>
+  </div>
+  <div class="card-accent">
+    <div class="card-title">Favor Rate Control (Accept AF)</div>
+    <ul style="font-size:13px;">
+      <li>Older patient (&gt;75), long-standing persistent AF</li>
+      <li>Minimal or no symptoms at controlled rate</li>
+      <li>Multiple prior cardioversion failures</li>
+      <li>AF driven by irreversible structural disease (large LA, severe valve disease)</li>
+      <li>High antiarrhythmic drug risk (severe LV dysfunction, QT prolongation, renal failure)</li>
+      <li>Patient preference to avoid procedures / AADs</li>
+    </ul>
+  </div>
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">This Patient</span>
+  First-detected AF in the context of pneumonia. Likely to resolve as infection improves. Rhythm control (allowing spontaneous cardioversion or planning electrical cardioversion once 48h window is clarified) is a reasonable goal. Anticoagulation decision must come first.
+</div>
+</div>
+`},
+
+// ── 8. THE 48-HOUR WINDOW ─────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>The 48-Hour Window &mdash; Cardioversion Timing</h2>
+<div class="slide-body">
+<div class="window-graphic">
+  <div class="wg-left">
+    <div class="wg-title">&#x2714; &lt;48 Hours Onset</div>
+    <ul style="font-size:13px;color:#116329;padding-left:16px;">
+      <li>Left atrial thrombus is unlikely to have formed</li>
+      <li>Cardioversion (electrical or pharmacological) can be performed <strong>without TEE</strong></li>
+      <li>Anticoagulate with heparin or DOAC before cardioversion</li>
+      <li>Continue anticoagulation for at least 4 weeks post-cardioversion (atrial stunning)</li>
+      <li>If CHA&#x2082;DS&#x2082;-VASc &ge;2(M)/&ge;3(F): long-term anticoagulation regardless</li>
+    </ul>
+  </div>
+  <div class="wg-mid">&#x23F1;</div>
+  <div class="wg-right">
+    <div class="wg-title"> &ge;48 Hours or Unknown Onset</div>
+    <ul style="font-size:13px;color:#82071e;padding-left:16px;">
+      <li>Left atrial thrombus risk is clinically significant</li>
+      <li>Two options before cardioversion:<br>
+        <strong>Option A:</strong> TEE to exclude LA/LAA thrombus, then cardiovert<br>
+        <strong>Option B:</strong> Anticoagulate for &ge;3 weeks (therapeutic), then cardiovert, then continue &ge;4 weeks post-CV</li>
+      <li>Both strategies require anticoagulation for &ge;4 weeks post-cardioversion (atrial stunning)</li>
+      <li>TEE-guided strategy allows earlier cardioversion if thrombus excluded</li>
+    </ul>
+  </div>
+</div>
+<div class="callout callout-orange">
+  <span class="callout-label">Atrial Stunning &mdash; Why 4 Weeks Post-Cardioversion?</span>
+  After cardioversion, the left atrium is mechanically stunned &mdash; atrial contraction is impaired even though electrical sinus rhythm is restored. Stasis persists despite sinus rhythm, creating thrombus risk for 4&ndash;6 weeks. Most post-cardioversion strokes occur in this period. Anticoagulation for &ge;4 weeks post-cardioversion is mandatory regardless of CHA&#x2082;DS&#x2082;-VASc score.
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">The "Unknown Onset" Problem &mdash; Clinical Reality</span>
+  Many hospitalized patients cannot reliably report when their AF started. Palpitations woke this patient at 3:20 AM, but telemetry showed the rhythm change at 2:47 AM. "Onset" in AF is often the first symptomatic moment, which may lag the actual arrhythmia onset significantly. When onset is truly unknown, treat as &ge;48h &mdash; the safer assumption.
+</div>
+</div>
+`},
+
+// ── 9. CHA2DS2-VASC ───────────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Anticoagulation: CHA&#x2082;DS&#x2082;-VASc Score</h2>
+<div class="slide-body">
+<div class="score-grid">
+  <div class="score-row">
+    <div class="score-factor score-header">Risk Factor</div>
+    <div class="score-pts score-header" style="background:var(--bg3);color:var(--muted);">Points</div>
+    <div class="score-note score-header">Notes</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>C</strong> &mdash; Congestive heart failure / LV dysfunction</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">Any HF with EF &le;40% or clinical HF; HFpEF counts</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>H</strong> &mdash; Hypertension</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">Even if controlled on medication; this patient: +1</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>A&#x2082;</strong> &mdash; Age &ge;75 years</div>
+    <div class="score-pts">2</div>
+    <div class="score-note">Double-weighted; highest single risk factor</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>D</strong> &mdash; Diabetes mellitus</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">Any type; this patient: +1</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>S&#x2082;</strong> &mdash; Stroke / TIA / thromboembolism</div>
+    <div class="score-pts">2</div>
+    <div class="score-note">Double-weighted; strongest single predictor of future stroke</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>V</strong> &mdash; Vascular disease (prior MI, PAD, aortic plaque)</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">Clinically significant atherosclerosis; not just risk factors</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>A</strong> &mdash; Age 65&ndash;74 years</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">This patient is 67: +1</div>
+  </div>
+  <div class="score-row">
+    <div class="score-factor"><strong>Sc</strong> &mdash; Sex category (female)</div>
+    <div class="score-pts">1</div>
+    <div class="score-note">Female sex is a risk modifier, not an independent risk factor &mdash; counts only if other risk factors are present (see note)</div>
+  </div>
+</div>
+<div class="callout callout-blue">
+  <span class="callout-label">This Patient's Score</span>
+  HTN (+1) + DM2 (+1) + Age 65&ndash;74 (+1) + Female (+1) = <strong>CHA&#x2082;DS&#x2082;-VASc 4.</strong> Annual stroke risk ~4%. Anticoagulation is clearly indicated. DOAC preferred over warfarin (Class I, LOE A).
+</div>
+<div class="callout callout-yellow">
+  <span class="callout-label">The Female Sex Caveat (AHA/ACC 2023)</span>
+  Female sex should not be counted if it is the <em>only</em> risk factor (score = 1 in women). Anticoagulation is not recommended for a woman with AF and no other risk factors. Female sex modifies risk in the context of other risk factors &mdash; it does not independently confer it.
+</div>
+</div>
+`},
+
+// ── 10. ANTICOAGULATION — DOAC SELECTION ─────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Anticoagulation: DOAC Selection</h2>
+<div class="slide-body">
+<div class="callout callout-green">
+  <span class="callout-label">AHA/ACC 2023 &mdash; Class I</span>
+  DOACs are preferred over warfarin for AF stroke prevention in patients without mechanical heart valves or moderate-to-severe mitral stenosis. Apixaban, rivaroxaban, dabigatran, and edoxaban are all approved. Warfarin is reserved for specific indications where DOACs are contraindicated.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Agent</th><th>Target</th><th>Dosing (AF)</th><th>Renal Dosing</th><th>Key Advantage / Caveat</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--blue);">Apixaban</strong></td>
+      <td>FXa</td>
+      <td>5 mg BID; 2.5 mg BID if &ge;2 of: age &ge;80, weight &le;60 kg, Cr &ge;1.5</td>
+      <td>ESRD: labeled; use with caution</td>
+      <td>Lowest GI bleeding of all DOACs (ARISTOTLE). Does not increase GI bleeding vs. warfarin. Often preferred in high-GI-risk patients.</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--green);">Rivaroxaban</strong></td>
+      <td>FXa</td>
+      <td>20 mg once daily with evening meal; 15 mg daily if CrCl 15&ndash;50</td>
+      <td>Avoid if CrCl &lt;15</td>
+      <td>Once-daily dosing improves adherence. Higher GI bleeding than warfarin (ROCKET-AF). Must be taken with food for absorption.</td>
+    </tr>
+    <tr>
+      <td><strong>Dabigatran</strong></td>
+      <td>FIIa (direct thrombin)</td>
+      <td>150 mg BID (110 mg BID if age &ge;80 or high bleeding risk)</td>
+      <td>Avoid if CrCl &lt;30; dose-reduce CrCl 15&ndash;30 in some guidelines</td>
+      <td>Only DOAC with specific reversal agent (idarucizumab). Highest GI bleeding. Requires twice-daily dosing. Avoid in significant renal impairment.</td>
+    </tr>
+    <tr>
+      <td><strong>Edoxaban</strong></td>
+      <td>FXa</td>
+      <td>60 mg once daily; 30 mg if CrCl 15&ndash;50, weight &le;60 kg, or P-gp inhibitors</td>
+      <td>Paradoxically less effective if CrCl &gt;95 (ENGAGE-AF): avoid in very high renal function</td>
+      <td>Once daily. Requires parenteral anticoagulation for 5&ndash;10 days before starting (cannot be started de novo orally in acute setting like apixaban or rivaroxaban).</td>
+    </tr>
+    <tr>
+      <td><strong>Warfarin</strong></td>
+      <td>Vit K-dependent factors</td>
+      <td>Individualized; target INR 2.0&ndash;3.0</td>
+      <td>No renal adjustment; safe in ESRD</td>
+      <td>Preferred: mechanical heart valves, moderate-to-severe mitral stenosis, antiphospholipid syndrome. Requires INR monitoring; multiple drug/food interactions.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout callout-blue">
+  <span class="callout-label">When to Start Anticoagulation in New AF</span>
+  In most patients with newly diagnosed AF and CHA&#x2082;DS&#x2082;-VASc &ge;2(M)/&ge;3(F): start anticoagulation promptly once the decision is made &mdash; do not wait for the patient to "settle down" or "see cardiology outpatient." In this patient, apixaban 5 mg BID is appropriate to start tonight. If cardioversion is planned within 48h, heparin bridging or DOAC pre-treatment is needed before the procedure.
+</div>
+</div>
+`},
+
+// ── 11. ELECTRICAL CARDIOVERSION ─────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Electrical Cardioversion</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Procedure Essentials</h3>
+    <ul style="font-size:14px;">
+      <li><strong>Synchronized</strong> cardioversion only &mdash; sync to R wave to avoid R-on-T and VF induction</li>
+      <li><strong>Energy:</strong> 200J biphasic preferred for initial shock; escalate to 300&ndash;360J if needed</li>
+      <li><strong>Anterior-posterior pad placement</strong> is more effective than anterior-lateral for AF cardioversion</li>
+      <li><strong>Sedation required:</strong> Propofol, midazolam, or etomidate; monitor airway</li>
+      <li><strong>NPO status:</strong> Ideally &ge;4h; in urgent (but not emergent) cardioversion, document risk-benefit and proceed with anesthesia support</li>
+      <li><strong>Post-cardioversion monitoring:</strong> Telemetry for at least 1&ndash;2h; assess for atrial stunning (persist anticoagulation)</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Pharmacological Cardioversion</h3>
+    <ul style="font-size:14px;">
+      <li><strong>IV ibutilide:</strong> 1 mg IV over 10 min; repeat &times;1. Effective in 50&ndash;70% for AF &lt;90 days. Risk: QT prolongation and torsades (1&ndash;4%); requires monitored setting and QTc &le;440 ms before administration.</li>
+      <li><strong>IV amiodarone:</strong> 150 mg over 10 min, then 1 mg/min &times;6h, then 0.5 mg/min. Slower to convert; preferred if LV dysfunction or HF. Rate control benefit while waiting for cardioversion.</li>
+      <li><strong>Flecainide / propafenone ("pill-in-pocket"):</strong> Outpatient use for paroxysmal AF with structurally normal heart; not appropriate in this inpatient setting with active infection and uncertain cardiac status.</li>
+    </ul>
+    <div class="callout callout-red" style="margin-top:8px;">
+      <span class="callout-label">Do Not Use Flecainide/Propafenone Without Echo</span>
+      Class IC antiarrhythmics are contraindicated in structural heart disease (HF, significant LVH, ischemic cardiomyopathy). Echo or confirmed normal cardiac function is required before use.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 12. LONG-TERM RHYTHM STRATEGY ────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Long-Term Rhythm Strategy: AADs and Ablation</h2>
+<div class="slide-body">
+<div class="callout callout-blue">
+  <span class="callout-label">Catheter Ablation (Pulmonary Vein Isolation)</span>
+  For symptomatic paroxysmal AF, catheter ablation is superior to antiarrhythmic drug therapy for maintaining sinus rhythm and reducing AF burden (CABANA trial, JAMA 2019; FIRE AND ICE, NEJM 2016). AHA/ACC 2023 upgraded ablation to Class I for symptomatic paroxysmal AF in appropriate candidates. This is now a standard of care conversation, not a last resort.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Agent</th><th>Class</th><th>Indicated In</th><th>Avoid In</th><th>Key Toxicity</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Amiodarone</strong></td>
+      <td>III</td>
+      <td>HFrEF (EF &lt;40%); structural heart disease; most effective AAD</td>
+      <td>Relative: young patients (cumulative toxicity); liver/thyroid disease</td>
+      <td>Pulmonary toxicity, thyroid dysfunction (hypo and hyper), hepatotoxicity, corneal deposits, photosensitivity, QT prolongation. Annual monitoring required.</td>
+    </tr>
+    <tr>
+      <td><strong>Sotalol</strong></td>
+      <td>III / beta-blocker</td>
+      <td>Structurally normal heart or mild LVH; CAD without HF</td>
+      <td>QTc &gt;460 ms, renal failure, HF, bronchospasm</td>
+      <td>QT prolongation, torsades de pointes (dose-dependent). Requires in-hospital initiation with QTc monitoring.</td>
+    </tr>
+    <tr>
+      <td><strong>Flecainide / Propafenone</strong></td>
+      <td>IC</td>
+      <td>Paroxysmal AF, structurally normal heart (normal EF, no significant LVH, no CAD)</td>
+      <td>Structural heart disease, ischemic cardiomyopathy, HF &mdash; proarrhythmic (CAST)</td>
+      <td>Proarrhythmic in structural heart disease; may organize AF into atrial flutter with 1:1 conduction &mdash; always co-prescribe an AV nodal agent</td>
+    </tr>
+    <tr>
+      <td><strong>Dronedarone</strong></td>
+      <td>III (multi-channel)</td>
+      <td>Paroxysmal/persistent AF, structurally normal or mild structural disease; CAD without HF</td>
+      <td>Permanent AF, HFrEF, recent hospitalization for HF (PALLAS: increased mortality)</td>
+      <td>Hepatotoxicity (rare but fatal cases reported); pulmonary toxicity (rare); less effective than amiodarone</td>
+    </tr>
+    <tr>
+      <td><strong>Dofetilide</strong></td>
+      <td>III</td>
+      <td>HF, structural heart disease (safe in reduced EF); converts AF in 30&ndash;60%</td>
+      <td>QTc &gt;440 ms, CrCl &lt;20 mL/min, certain drug interactions (CYP3A4 inhibitors)</td>
+      <td>QT prolongation, torsades. Requires 3-day in-hospital initiation with continuous telemetry monitoring &mdash; REMS program.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+`},
+
+// ── 13. SPECIAL POPULATIONS ──────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Special Populations</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div class="card-orange">
+    <div class="card-title" style="color:var(--orange);">WPW + AF &mdash; A Lethal Trap</div>
+    <ul style="font-size:13px;">
+      <li>AF with pre-excitation (wide, bizarre, irregular QRS with delta waves) can conduct rapidly down the accessory pathway</li>
+      <li>Ventricular rates can exceed 300 bpm &rarr; VF &rarr; sudden death</li>
+      <li><strong>Absolutely contraindicated:</strong> AV nodal blockers (beta-blockers, diltiazem, verapamil, digoxin, adenosine) &mdash; blocking the AV node forces all conduction down the accessory pathway</li>
+      <li><strong>Treatment:</strong> Immediate electrical cardioversion if unstable. If stable: IV procainamide or ibutilide (block the accessory pathway). Definitive: accessory pathway ablation.</li>
+    </ul>
+  </div>
+  <div class="card-red">
+    <div class="card-title" style="color:var(--red);">AF + HFrEF (EF &lt;40%)</div>
+    <ul style="font-size:13px;">
+      <li>Avoid non-DHP CCBs (diltiazem, verapamil) &mdash; negative inotropy worsens low-output state</li>
+      <li>Beta-blockers: use cautiously in acute decompensation; continue if already on them</li>
+      <li>Digoxin: acceptable for rate control; no mortality benefit, possible harm at high levels</li>
+      <li>Amiodarone: preferred antiarrhythmic if rhythm control desired</li>
+      <li>Dofetilide: safe in reduced EF; requires in-hospital initiation</li>
+      <li>Anticoagulation: DOAC preferred; apixaban has best evidence in HF population</li>
+    </ul>
+  </div>
+  <div class="card-yellow">
+    <div class="card-title" style="color:var(--yellow);">Thyrotoxicosis-Related AF</div>
+    <ul style="font-size:13px;">
+      <li>Propranolol (non-selective beta-blocker) preferred for rate control &mdash; also reduces peripheral T4 to T3 conversion</li>
+      <li>Diltiazem is an alternative if beta-blockers are contraindicated</li>
+      <li>Treat underlying thyroid disease aggressively; AF often resolves with euthyroid state</li>
+      <li>Anticoagulate per CHA&#x2082;DS&#x2082;-VASc; thyrotoxicosis itself is prothrombotic</li>
+      <li>Cardioversion generally deferred until euthyroid to reduce recurrence risk</li>
+    </ul>
+  </div>
+  <div class="card-purple">
+    <div class="card-title" style="color:var(--purple);">Post-Operative AF</div>
+    <ul style="font-size:13px;">
+      <li>Most common after cardiac and thoracic surgery; peak days 2&ndash;4</li>
+      <li>Often self-limited; rate control and observation first</li>
+      <li>Anticoagulation decision nuanced: surgical bleeding risk vs. stroke risk; usually deferred 24&ndash;48h post-op pending hemostasis</li>
+      <li>Beta-blockers reduce incidence when given prophylactically; amiodarone for high-risk cases</li>
+      <li>Most patients revert to sinus rhythm within 6&ndash;8 weeks; long-term anticoagulation per CHA&#x2082;DS&#x2082;-VASc if AF persists</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// ── 14. CLINICAL PEARLS ──────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"> <strong>Hemodynamic stability determines your first move &mdash; not the rate.</strong> A patient with AF at a rate of 140 who is alert with a BP of 110 is stable. Proceed systematically. A patient with AF at 130 and a BP of 80 with altered mentation gets synchronized cardioversion in the next 5 minutes. Do not reach for a rate-control drip in cardiogenic shock.</div>
+<div class="pearl"> <strong>WPW + AF + AV nodal blocker = potentially lethal.</strong> Adenosine, diltiazem, verapamil, digoxin, and beta-blockers can all precipitate VF in AF with pre-excitation by forcing conduction exclusively down the accessory pathway. If you see a wide, irregularly irregular tachycardia with bizarre QRS morphology &mdash; do not give these drugs. Cardiovert or use procainamide.</div>
+<div class="pearl"> <strong>The 48-hour window clock starts at known onset, not presentation.</strong> If a patient has been in AF since yesterday morning per telemetry at an outside hospital, the clock started yesterday morning &mdash; not when they arrived in your ED. If onset is unknown, treat as &ge;48h. When in doubt: TEE or 3-week therapeutic anticoagulation before cardioversion.</div>
+<div class="pearl"> <strong>Atrial stunning is real and requires 4 weeks of anticoagulation post-cardioversion.</strong> Most post-cardioversion strokes occur in the first weeks after restoration of sinus rhythm, when electrical activity has returned but mechanical atrial contraction has not. Anticoagulate for a minimum of 4 weeks post-cardioversion regardless of CHA&#x2082;DS&#x2082;-VASc score.</div>
+<div class="pearl"> <strong>Female sex is a risk modifier, not an independent risk factor.</strong> A woman with AF and a CHA&#x2082;DS&#x2082;-VASc of 1 (from female sex alone) does not meet the threshold for anticoagulation. Female sex counts only when other risk factors are present. Anticoagulate women with CHA&#x2082;DS&#x2082;-VASc &ge;3 (AHA/ACC 2023).</div>
+<div class="pearl"> <strong>EAST-AFNET 4 changes the rate-vs-rhythm conversation.</strong> Early rhythm control within the first year of AF diagnosis reduced cardiovascular events vs. rate control in a large RCT. This does not mean every patient needs cardioversion tonight &mdash; but it does mean the default assumption that rate control is equivalent is no longer supported by the strongest evidence. Discuss rhythm control with cardiology early in newly diagnosed AF.</div>
+<div class="pearl"> <strong>Replete electrolytes aggressively before and during rate control.</strong> Hypokalemia and hypomagnesemia are proarrhythmic, reduce the effectiveness of rate-control agents, and increase the risk of torsades if antiarrhythmics are used. Target K &gt;4.0 and Mg &gt;2.0 in any patient with AF. This patient needs both repleted before or concurrent with pharmacological rate control.</div>
+<div class="pearl"> <strong>"Transient AF &mdash; no follow-up needed" is a dangerous discharge note.</strong> (AHA Scientific Statement on AF during acute hospitalization, Chyou et al., Circulation 2023.) Even when AF appears to be purely secondary to a reversible trigger, the occurrence establishes a future AF and stroke risk that requires documentation of a CHA&#x2082;DS&#x2082;-VASc assessment, an anticoagulation decision, and an outpatient follow-up plan. Acute AF often recurs. Discharging without addressing stroke risk is a standard-of-care gap.</div>
+</div>
+`},
+
+// ── 15. REFERENCES ───────────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>Joglar JA, et al. "2023 ACC/AHA/ACCP/HRS Guideline for Diagnosis and Management of Atrial Fibrillation." <em>J Am Coll Cardiol.</em> 2024;83(1):109&ndash;279.</li>
+  <li>Chyou JY, et al. "Atrial Fibrillation Occurring During Acute Hospitalization: A Scientific Statement From the American Heart Association." <em>Circulation.</em> 2023;147(15):e676&ndash;e698. [AHA 2023 &mdash; inpatient AF; discharge documentation; stroke risk assessment after hospital-acquired AF]</li>
+  <li>Ko D, Chung MK, Evans PT, Benjamin EJ, Helm RH. "Atrial Fibrillation: A Review." <em>JAMA.</em> 2025;333(4):324&ndash;336. [Current clinical review with care pathway figure]</li>
+  <li>Kirchhof P, et al. "Early Rhythm-Control Therapy in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2020;383(14):1305&ndash;1316. [EAST-AFNET 4]</li>
+  <li>Wyse DG, et al. "A Comparison of Rate Control and Rhythm Control in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2002;347(23):1825&ndash;1833. [AFFIRM]</li>
+  <li>Van Gelder IC, et al. "Lenient versus Strict Rate Control in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2010;362(15):1363&ndash;1373. [RACE II]</li>
+  <li>Packer DL, et al. "Effect of Catheter Ablation vs Antiarrhythmic Drug Therapy on Mortality, Stroke, Bleeding, and Cardiac Arrest Among Patients With Atrial Fibrillation." <em>JAMA.</em> 2019;321(13):1261&ndash;1274. [CABANA]</li>
+  <li>Kuck KH, et al. "Cryoballoon or Radiofrequency Ablation for Paroxysmal Atrial Fibrillation." <em>N Engl J Med.</em> 2016;374(23):2235&ndash;2245. [FIRE AND ICE]</li>
+  <li>Granger CB, et al. "Apixaban versus Warfarin in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2011;365(11):981&ndash;992. [ARISTOTLE]</li>
+  <li>Patel MR, et al. "Rivaroxaban versus Warfarin in Nonvalvular Atrial Fibrillation." <em>N Engl J Med.</em> 2011;365(10):883&ndash;891. [ROCKET-AF]</li>
+  <li>Connolly SJ, et al. "Dabigatran versus Warfarin in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2009;361(12):1139&ndash;1151. [RE-LY]</li>
+  <li>Lip GYH, et al. "Refining Clinical Risk Stratification for Predicting Stroke and Thromboembolism in Atrial Fibrillation Using a Novel Risk Factor-Based Approach: The Euro Heart Survey on Atrial Fibrillation." <em>Chest.</em> 2010;137(2):263&ndash;272. [CHA&#x2082;DS&#x2082;-VASc derivation]</li>
+</ol>
+</div>
+`},
+
+]; // END SLIDES
+
+// ENGINE
+const deck = document.getElementById('deck');
+const counter = document.getElementById('slide-counter');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+const bar = document.getElementById('progress-bar');
+let cur = 0;
+
+SLIDES.forEach((s, i) => {
+  const el = document.createElement('div');
+  el.className = 'slide ' + s.cls;
+  el.innerHTML = s.html;
+  if (i === 0) el.classList.add('active');
+  deck.appendChild(el);
+});
+
+const slides = deck.querySelectorAll('.slide');
+
+function goTo(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  const body = slides[cur].querySelector('.slide-body');
+  if (body) body.scrollTop = 0;
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  btnPrev.disabled = cur === 0;
+  btnNext.disabled = cur === slides.length - 1;
+  bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+}
+
+btnPrev.addEventListener('click', () => goTo(cur - 1));
+btnNext.addEventListener('click', () => goTo(cur + 1));
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(cur - 1); }
+});
+
+let tx = 0;
+deck.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+deck.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
+}, { passive: true });
+
+goTo(0);
+</script>
+</body>
+</html>

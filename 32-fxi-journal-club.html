@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 19 — FXI Inhibitors: A Tale of Two Trials | Morning Report</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f6f8fa;
+    --bg3: #eaeef2;
+    --border: #d0d7de;
+    --text: #1f2328;
+    --muted: #656d76;
+    --blue: #0969da;
+    --blue-bg: #ddf4ff;
+    --blue-border: #54aeff;
+    --green: #1a7f37;
+    --green-bg: #dafbe1;
+    --green-border: #4ac26b;
+    --yellow: #9a6700;
+    --yellow-bg: #fff8c5;
+    --yellow-border: #d4a72c;
+    --red: #cf222e;
+    --red-bg: #ffebe9;
+    --red-border: #ff8182;
+    --purple: #8250df;
+    --purple-bg: #fbefff;
+    --purple-border: #c297ff;
+    --orange: #bc4c00;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 14px;
+  }
+  nav a { color: var(--muted); }
+  nav a:hover { color: var(--text); text-decoration: none; }
+  nav .sep { color: var(--border); }
+
+  .hero {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 48px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .case-meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight: 500; letter-spacing: 0.03em; }
+  h1 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .tagline { color: var(--muted); font-size: 16px; margin-bottom: 20px; max-width: 680px; line-height: 1.6; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 99px; border: 1px solid; }
+  .badge-blue { background: var(--blue-bg); color: var(--blue); border-color: var(--blue-border); }
+  .badge-green { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-border); }
+  .badge-red { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
+
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 40px;
+    align-items: start;
+  }
+  .content { min-width: 0; }
+  .sidebar { position: sticky; top: 56px; padding-top: 32px; }
+
+  .toc { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 13px; margin-bottom: 16px; }
+  .toc-title { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .toc ol { padding-left: 16px; }
+  .toc li { margin-bottom: 6px; line-height: 1.4; }
+  .toc a { color: var(--muted); font-size: 12px; }
+  .toc a:hover { color: var(--blue); }
+
+  section { padding-top: 40px; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); padding-bottom: 8px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+  h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 24px 0 10px; }
+  h4 { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 16px 0 8px; }
+  p { margin-bottom: 14px; color: var(--text); }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; font-size: 15px; }
+  strong { font-weight: 600; }
+
+  .callout { border-radius: 8px; padding: 14px 16px; margin: 16px 0; border-left: 4px solid; font-size: 14px; line-height: 1.6; }
+  .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+  .callout-blue { background: var(--blue-bg); border-color: var(--blue); color: #0550ae; }
+  .callout-blue .callout-label { color: var(--blue); }
+  .callout-yellow { background: var(--yellow-bg); border-color: var(--yellow-border); color: var(--yellow); }
+  .callout-yellow .callout-label { color: var(--yellow); }
+  .callout-red { background: var(--red-bg); border-color: var(--red); color: #82071e; }
+  .callout-red .callout-label { color: var(--red); }
+  .callout-green { background: var(--green-bg); border-color: var(--green); color: #116329; }
+  .callout-green .callout-label { color: var(--green); }
+  .callout-purple { background: var(--purple-bg); border-color: var(--purple); color: #5a32a3; }
+  .callout-purple .callout-label { color: var(--purple); }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--bg2); color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg2); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .card-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 8px; }
+
+  /* LAUNCH BUTTONS */
+  .launch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .launch-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 22px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+    gap: 6px;
+  }
+  .launch-btn:hover { border-color: var(--blue); background: var(--blue-bg); text-decoration: none; }
+  .launch-btn-icon { font-size: 24px; }
+  .launch-btn-title { font-size: 16px; font-weight: 600; color: var(--text); }
+  .launch-btn-sub { font-size: 13px; color: var(--muted); }
+  .launch-btn-tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); margin-top: 4px; }
+
+  /* STATS ROW */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; text-align: center; }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--blue); }
+  .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* TIMELINE */
+  .timeline { list-style: none; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline li { padding: 0 0 20px 40px; position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: 7px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--blue); }
+  .tl-label { font-size: 12px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+
+  .pearl { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; margin: 12px 0; font-size: 14px; line-height: 1.6; }
+  .pearl-icon { margin-right: 6px; }
+
+  .refs { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .refs li { margin-bottom: 10px; }
+
+  footer { max-width: 900px; margin: 0 auto; padding: 24px 48px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 720px) {
+    .main { grid-template-columns: 1fr; padding: 0 16px 60px; }
+    .hero { padding: 24px 16px 20px; }
+    .sidebar { display: none; }
+    h1 { font-size: 24px; }
+    .grid-2, .launch-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    footer { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://comstocd.github.io/presentations/index.html">&#x1F4CB; Morning Report</a>
+  <span class="sep">&#x203A;</span>
+  <a href="https://comstocd.github.io/presentations/index.html">&larr; All Cases</a>
+</nav>
+
+<div class="hero">
+  <div class="case-meta">Topic 19 &middot; Cardiology / Hematology / Hospital Medicine &middot; Journal Club</div>
+  <h1>FXI Inhibitors: A Tale of Two Trials</h1>
+  <p class="tagline">Factor XI inhibitors promise to uncouple thrombosis from hemostasis &mdash; the holy grail of anticoagulation. Two Phase 3 trials reported opposite results within months of each other. This session asks why, and what it means for the 3&ndash;4 million Americans currently deemed ineligible for anticoagulation.</p>
+  <div class="badge-row">
+    <span class="badge badge-blue">Cardiology</span>
+    <span class="badge badge-purple">Hematology</span>
+    <span class="badge badge-green">Hospital Medicine</span>
+    <span class="badge badge-yellow">NEJM 2024 &amp; 2025</span>
+    <span class="badge badge-red">Journal Club</span>
+  </div>
+</div>
+
+<div class="main">
+<article class="content">
+
+<section id="launch">
+  <h2>Session Materials</h2>
+  <p>This journal club comprises three linked documents. The slide deck is the primary presentation tool (iPad / projector). The moderator guide supports the discussion facilitator. The reference document provides full annotated trial cards and inpatient management guidance.</p>
+
+  <div class="launch-grid">
+    <a class="launch-btn" href="https://comstocd.github.io/fxi-journal-club/slides.html">
+      <span class="launch-btn-icon">&#x1F4F1;</span>
+      <span class="launch-btn-title">Slide Deck</span>
+      <span class="launch-btn-sub">24 slides &middot; iPad / projector optimized &middot; keyboard + swipe navigation</span>
+      <span class="launch-btn-tag">slides.html</span>
+    </a>
+    <a class="launch-btn" href="https://comstocd.github.io/fxi-journal-club/moderator.html">
+      <span class="launch-btn-icon">&#x1F4CB;</span>
+      <span class="launch-btn-title">Moderator Guide</span>
+      <span class="launch-btn-sub">17 discussion questions &middot; cold-call openers &middot; ideal responses &middot; advance cues</span>
+      <span class="launch-btn-tag">moderator.html</span>
+    </a>
+    <a class="launch-btn" href="https://comstocd.github.io/fxi-journal-club/index.html">
+      <span class="launch-btn-icon">&#x1F4D6;</span>
+      <span class="launch-btn-title">Reference Document</span>
+      <span class="launch-btn-sub">Annotated trial cards &middot; presenter notes &middot; inpatient management guidance</span>
+      <span class="launch-btn-tag">index.html</span>
+    </a>
+    <div class="launch-btn" style="cursor:default;opacity:0.6;">
+      <span class="launch-btn-icon">&#x23F1;</span>
+      <span class="launch-btn-title">Session Format</span>
+      <span class="launch-btn-sub">45 minutes total &middot; ~22 min discussion &middot; structured debate &middot; case-based opening and close</span>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <h2>Session Overview</h2>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">24</div>
+      <div class="stat-lbl">Slides</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">17</div>
+      <div class="stat-lbl">Discussion questions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">45</div>
+      <div class="stat-lbl">Minutes total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-lbl">Key NEJM trials</div>
+    </div>
+  </div>
+
+  <h3>Narrative Arc</h3>
+  <ul class="timeline">
+    <li>
+      <div class="tl-label">Act I &mdash; Phase 2 Promise (slides 1&ndash;13)</div>
+      <p style="font-size:14px;margin:0;">Opening clinical case. Coagulation cascade as a drug target map. Hemophilia C as the human proof-of-concept. FXI vs. FXIa inhibition &mdash; the mechanistic distinction that determined which drug succeeded. Phase 2 venographic DVT data and its limitations.</p>
+    </li>
+    <li>
+      <div class="tl-label">Act II &mdash; Reality Check: OCEANIC-AF (slides 14&ndash;15)</div>
+      <p style="font-size:14px;margin:0;">Asundexian (FXIa inhibitor) vs. apixaban in 14,000 patients with AF. Stopped for inferiority at interim analysis. The drug reduced bleeding but failed stroke prevention. Critical appraisal: noninferiority design, early stopping, dose-kinetics as mechanistic explanation.</p>
+    </li>
+    <li>
+      <div class="tl-label">Act III &mdash; The Signal: AZALEA-TIMI 71 (slides 16&ndash;19)</div>
+      <p style="font-size:14px;margin:0;">Abelacimab (FXI zymogen inhibitor) vs. rivaroxaban in 1,287 high-bleeding-risk AF patients. Stopped early for overwhelming safety benefit. 67% reduction in major bleeding; near-zero ICH. Critical appraisal: winner's curse, wide efficacy CI, open-label design, adherence.</p>
+    </li>
+    <li>
+      <div class="tl-label">Act IV &mdash; The Unanswered Question: LILAC-TIMI 76 (slide 20)</div>
+      <p style="font-size:14px;margin:0;">Phase 3, placebo-controlled. ~1,900 patients unsuitable for any anticoagulation. Primary endpoint: ischemic stroke. Results expected second half of 2026. Until LILAC reports: AZALEA proves abelacimab is safer than rivaroxaban; it does not prove abelacimab prevents stroke.</p>
+    </li>
+    <li>
+      <div class="tl-label">Close &mdash; Return to case + structured debate (slides 21&ndash;24)</div>
+      <p style="font-size:14px;margin:0;">Reconsidering the opening patient with AZALEA data in hand. Split-room debate: adopt FXI inhibitors as first-line for high-bleeding-risk AF upon approval? Six take-home points.</p>
+    </li>
+  </ul>
+
+  <h3>Learning Objectives</h3>
+  <ol>
+    <li>Explain why FXI is mechanistically distinct from FXa and thrombin as an anticoagulation target</li>
+    <li>Distinguish FXI inhibition from FXIa inhibition and explain why this difference appears to have determined trial outcomes</li>
+    <li>Critically appraise AZALEA-TIMI 71 and OCEANIC-AF: design, endpoints, early stopping, phase distinctions, and what LILAC-TIMI 76 must still prove</li>
+    <li>Articulate the class-wide absence of reversal agents and its inpatient management implications</li>
+    <li>Identify the highest-priority patient populations for FXI inhibitor candidacy</li>
+  </ol>
+</section>
+
+<section id="case">
+  <h2>Opening Clinical Case</h2>
+  <div class="callout callout-blue">
+    <span class="callout-label">Case &mdash; Keep This Patient in Mind Throughout</span>
+    A <strong>78-year-old woman</strong> with paroxysmal AF (CHA&#x2082;DS&#x2082;-VASc 5), ESRD on hemodialysis, and a hospitalization 4 months ago for a GI bleed from a cecal AVM is admitted with aspiration pneumonia. Her apixaban was held at that admission. Hematology recommended indefinite hold. Cardiology now requests a formal anticoagulation recommendation.
+  </div>
+  <p>An estimated <strong>3&ndash;4 million Americans</strong> meet guideline criteria for anticoagulation in AF but are deemed ineligible due to bleeding risk. This patient is not an edge case &mdash; she is the target population. The session is structured so that residents revisit her at the end with the trial data in hand and reassess their initial decision.</p>
+</section>
+
+<section id="trials">
+  <h2>Key Trials</h2>
+
+  <h3>OCEANIC-AF (NEJM 2024)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Drug</strong></td><td>Asundexian 50 mg PO daily (FXIa active-site inhibitor, Bayer)</td></tr>
+        <tr><td><strong>Comparator</strong></td><td>Apixaban 5 mg BID (double-blind, double-dummy)</td></tr>
+        <tr><td><strong>Population</strong></td><td>~14,000 patients; AF with CHA&#x2082;DS&#x2082;-VASc &ge;2(M)/&ge;3(F); 41 countries</td></tr>
+        <tr><td><strong>Design</strong></td><td>Noninferiority for stroke/SE; superiority for major bleeding; median follow-up ~1.8 years</td></tr>
+        <tr><td><strong>Primary efficacy result</strong></td><td><strong>Failed noninferiority</strong> for stroke/SE. More strokes in asundexian arm. DSMB stopped for inferiority (not futility).</td></tr>
+        <tr><td><strong>Primary safety result</strong></td><td>Major bleeding significantly lower with asundexian; ICH and GI bleeding reduced</td></tr>
+        <tr><td><strong>Take-home</strong></td><td>Drug worked as a safer anticoagulant. It failed as an anticoagulant.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>AZALEA-TIMI 71 (NEJM 2025)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Drug</strong></td><td>Abelacimab 150 mg SC monthly (anti-FXI zymogen monoclonal antibody, Sanofi/TIMI)</td></tr>
+        <tr><td><strong>Comparator</strong></td><td>Rivaroxaban 20 mg daily (open-label, blinded endpoint adjudication)</td></tr>
+        <tr><td><strong>Population</strong></td><td>1,287 patients; AF CHA&#x2082;DS&#x2082;-VASc &ge;3; enriched for high bleeding risk (prior GI bleed, prior ICH, age &ge;80, CrCl 30&ndash;50, frailty)</td></tr>
+        <tr><td><strong>Design</strong></td><td>Phase 2b; primary endpoint: major or CRNM bleeding (safety). Stroke/SE secondary &mdash; not powered for efficacy. Median follow-up ~21 months.</td></tr>
+        <tr><td><strong>Primary result</strong></td><td>HR 0.33 (95% CI 0.21&ndash;0.53) for major bleeding. NNT 14 to prevent 1 major/CRNM bleed. ICH: near-zero in abelacimab arm. Stopped early for overwhelming safety benefit.</td></tr>
+        <tr><td><strong>Efficacy caveat</strong></td><td>Stroke/SE non-inferior but CI 0.58&ndash;2.14; only 25 total stroke events. Cannot conclude abelacimab is equivalent to rivaroxaban for stroke prevention.</td></tr>
+        <tr><td><strong>Take-home</strong></td><td>AZALEA proves abelacimab is dramatically safer than rivaroxaban. It does not prove abelacimab prevents stroke. LILAC-TIMI 76 (vs. placebo, Ph3, results expected H2 2026) answers this.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-yellow">
+    <span class="callout-label">Critical Methodological Point</span>
+    Both trials were stopped early. Trials stopped early for benefit (AZALEA) systematically inflate effect sizes &mdash; the winner's curse. HR 0.33 and NNT 14 are likely somewhat optimistic; real-world data will show regression toward the mean. This caveat is taught explicitly in the session and is one of the 17 discussion questions.
+  </div>
+</section>
+
+<section id="mechanism">
+  <h2>Core Mechanistic Distinction</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title" style="color:var(--green);">FXI Inhibition (Upstream)</div>
+      <p style="font-size:13px;">Targets the zymogen before activation. Prevents FXI &rarr; FXIa conversion entirely. Complete upstream blockade of the amplification loop. No unactivated FXI remains available.</p>
+      <p style="font-size:13px;"><strong>Example:</strong> Abelacimab (monoclonal antibody, SC monthly)</p>
+      <p style="font-size:13px;color:var(--green);"><strong>AZALEA-TIMI 71: dramatic bleeding reduction</strong></p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--red);">FXIa Inhibition (Downstream)</div>
+      <p style="font-size:13px;">Competes at the active site of already-activated enzyme. Leaves unactivated FXI available for activation. Partial suppression dependent on dose and pharmacokinetics. Trough levels may allow residual FXIa activity.</p>
+      <p style="font-size:13px;"><strong>Examples:</strong> Asundexian (PO daily), Milvexian (PO BID, in Phase 3)</p>
+      <p style="font-size:13px;color:var(--red);"><strong>OCEANIC-AF: failed stroke prevention</strong></p>
+    </div>
+  </div>
+
+  <p>This mechanistic distinction &mdash; blocking the zymogen versus competing at the active site &mdash; appears to have determined which drug class succeeded. Whether OCEANIC-AF's failure was dose-dependent, kinetics-dependent, or target-dependent will be answered by LIBREXIA-AF (milvexian, Phase 3, ongoing).</p>
+
+  <h3>The Natural Human Experiment: Hemophilia C</h3>
+  <p>Congenital FXI deficiency (Hemophilia C) provides the pharmacological justification for the entire drug class. Unlike hemophilia A and B (which cause spontaneous hemarthroses), FXI-deficient patients have:</p>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Effect on hemostasis</div>
+      <ul style="font-size:13px;">
+        <li>No spontaneous bleeding</li>
+        <li>Normal wound healing</li>
+        <li>Bleeding only with surgery/trauma at high-fibrinolytic sites (dental, urologic)</li>
+        <li>Extrinsic pathway intact &mdash; primary hemostatic plug preserved</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Effect on thrombosis</div>
+      <ul style="font-size:13px;">
+        <li>Significantly reduced DVT and PE rates</li>
+        <li>Lower ischemic stroke risk &mdash; especially cardioembolic</li>
+        <li>Reduced AF-related thrombus</li>
+        <li>Supported by Israeli population registry data (Salomon et al., Blood 2008)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="reversal">
+  <h2>Reversal &mdash; A Critical Inpatient Gap</h2>
+
+  <div class="callout callout-red">
+    <span class="callout-label">Class-Wide &mdash; No Exceptions</span>
+    No reversal agents exist for any FXI inhibitor. This is a non-negotiable consideration for in-hospital prescribing and must be part of every informed consent conversation.
+  </div>
+
+  <ul>
+    <li><strong>Andexanet alfa:</strong> Designed for FXa inhibitors only &mdash; irrelevant here</li>
+    <li><strong>Idarucizumab:</strong> Dabigatran-specific &mdash; irrelevant here</li>
+    <li><strong>4F-PCC (Kcentra):</strong> Not established; may not overcome mAb-mediated FXI inhibition</li>
+    <li><strong>FFP:</strong> Likely ineffective for abelacimab; possibly partial for small molecules</li>
+    <li><strong>rFVIIa (NovoSeven):</strong> Theoretical bypass via extrinsic pathway; no clinical evidence</li>
+    <li><strong>Abelacimab t&#x00BD; = 30 days:</strong> Drug effect persists 3+ months post-dose</li>
+  </ul>
+
+  <p>For life-threatening bleeding: supportive care and source control are primary. Consult hematology early. Management will be empirical. The proportionality argument &mdash; abelacimab's near-elimination of ICH means the most dangerous bleeding complication is largely removed &mdash; is addressed explicitly in the session.</p>
+</section>
+
+<section id="patients">
+  <h2>Patient Selection Framework</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Priority</th><th>Population</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--green);">Tier 1</strong></td>
+          <td>AF + prior major GI bleed</td>
+          <td>AZALEA-TIMI 71 enrichment population; LILAC-TIMI 76 tests abelacimab vs. placebo in this group. 93% reduction in GI bleeding vs. rivaroxaban.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">Tier 1</strong></td>
+          <td>AF + prior ICH</td>
+          <td>Current standard is no anticoagulation; near-zero ICH with abelacimab could be practice-changing for this previously unmanageable population.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">Tier 1</strong></td>
+          <td>AF + ESRD</td>
+          <td>No renal clearance; no dose adjustment uncertainty. Addresses the most complex DOAC dosing scenario in clinical practice.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--yellow);">Tier 2</strong></td>
+          <td>AF + frailty / high fall risk; AF + thrombocytopenia; VTE prophylaxis post-arthroplasty</td>
+          <td>High bleeding susceptibility where DOAC benefit-risk is marginal or unfavorable.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--muted);">Tier 3</strong></td>
+          <td>Mechanical heart valves; APS; cancer-associated thrombosis; AF + mild-moderate CKD</td>
+          <td>No data (mechanical valves likely contraindicated); adequate DOAC options available (mild CKD).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="pearls">
+  <h2>Clinical Pearls</h2>
+  <div class="pearl"><span class="pearl-icon">&#x1F9EC;</span><strong>The mechanism is real.</strong> Hemophilia C proves FXI inhibition reduces thrombosis with minimal spontaneous bleeding. Decades of population registry data support the concept. The pharmacological rationale is sound regardless of what any individual trial shows.</div>
+  <div class="pearl"><span class="pearl-icon">&#x26A0;&#xFE0F;</span><strong>FXI &ne; FXIa.</strong> OCEANIC-AF's failure and AZALEA-TIMI 71's bleeding signal together suggest that complete upstream FXI blockade (abelacimab) may be mechanistically superior to FXIa active-site competition (asundexian). But stroke efficacy awaits LILAC-TIMI 76.</div>
+  <div class="pearl"><span class="pearl-icon">&#x1F4CA;</span><strong>AZALEA's bleeding data is compelling. Its efficacy data is hypothesis-generating.</strong> HR 0.33 and near-zero ICH vs. rivaroxaban is extraordinary. But 25 total stroke events with a CI of 0.58&ndash;2.14 cannot establish non-inferiority to apixaban for stroke. These are not the same claim.</div>
+  <div class="pearl"><span class="pearl-icon">&#x23F1;&#xFE0F;</span><strong>Early stopping inflates effect size.</strong> NNT 14 and HR 0.33 are likely optimistic. Real-world data will show regression toward the mean. This is a feature of trial design, not evidence of fraud &mdash; but prescribers should expect real-world performance to be somewhat less dramatic.</div>
+  <div class="pearl"><span class="pearl-icon">&#x1F6AB;</span><strong>No reversal agents &mdash; class-wide.</strong> Abelacimab's 30-day half-life is the most acute clinical problem. The reversal gap must be part of every prescribing conversation. The counterpoint: near-zero ICH removes the complication that most required reversal.</div>
+  <div class="pearl"><span class="pearl-icon">&#x1F52D;</span><strong>Two trials will resolve the remaining uncertainty.</strong> LILAC-TIMI 76 (abelacimab vs. placebo, Ph3, results H2 2026) answers stroke efficacy. LIBREXIA-AF (milvexian, FXIa, Ph3) answers whether OCEANIC-AF failure was drug-specific or class-specific.</div>
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <ol class="refs">
+    <li>OCEANIC-AF Investigators. "Asundexian versus Apixaban in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2024. [Stopped for inferiority]</li>
+    <li>Ruff CT, et al. "Abelacimab versus Rivaroxaban in Patients with Atrial Fibrillation." <em>N Engl J Med.</em> 2025. [AZALEA-TIMI 71]</li>
+    <li>Salomon O, et al. "Low incidence of venous thromboembolism in patients with severe factor XI deficiency." <em>Blood.</em> 2008;111(8):4113&ndash;4117. [Hemophilia C population registry]</li>
+    <li>Weitz JI, et al. "Factor XI Inhibitors: New Anticoagulants on the Horizon." <em>Circulation.</em> 2024. [Comprehensive class review]</li>
+    <li>LILAC-TIMI 76: NCT05712200 &mdash; Phase 3, abelacimab vs. placebo in AF patients unsuitable for anticoagulation. Results expected H2 2026.</li>
+    <li>LIBREXIA-AF: NCT05757869 &mdash; Phase 3, milvexian (FXIa inhibitor) in AF. Results pending.</li>
+  </ol>
+</section>
+
+</article>
+
+<aside class="sidebar">
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#launch">Session Materials</a></li>
+      <li><a href="#overview">Session Overview</a></li>
+      <li><a href="#case">Opening Case</a></li>
+      <li><a href="#trials">Key Trials</a></li>
+      <li><a href="#mechanism">Mechanism</a></li>
+      <li><a href="#reversal">Reversal Gap</a></li>
+      <li><a href="#patients">Patient Selection</a></li>
+      <li><a href="#pearls">Clinical Pearls</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </div>
+  <div class="toc">
+    <div class="toc-title">Launch</div>
+    <ul style="list-style:none;padding:0;">
+      <li style="margin-bottom:8px;"><a href="https://comstocd.github.io/fxi-journal-club/slides.html" style="font-size:12px;font-weight:600;">&#x1F4F1; Slide Deck &rarr;</a></li>
+      <li style="margin-bottom:8px;"><a href="https://comstocd.github.io/fxi-journal-club/moderator.html" style="font-size:12px;font-weight:600;">&#x1F4CB; Moderator Guide &rarr;</a></li>
+      <li><a href="https://comstocd.github.io/fxi-journal-club/index.html" style="font-size:12px;font-weight:600;">&#x1F4D6; Reference Doc &rarr;</a></li>
+    </ul>
+  </div>
+</aside>
+
+</div>
+
+<footer>
+  <span><a href="https://comstocd.github.io/presentations/index.html">&larr; Back to Case Repository</a> &middot; Morning Report &middot; For educational use only</span>
+  <span style="color:var(--muted);font-size:12px;">Content references OCEANIC-AF (NEJM 2024), AZALEA-TIMI 71 (NEJM 2025), and ACC/AHA AF guidelines</span>
+</footer>
+
+</body>
+</html>

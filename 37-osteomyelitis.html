@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Topic 37 — Osteomyelitis | Morning Report</title>
+<style>
+  :root {
+    --bg: #ffffff; --bg2: #f6f8fa; --bg3: #eaeef2;
+    --border: #d0d7de; --text: #1f2328; --muted: #656d76;
+    --blue: #0969da; --blue-bg: #ddf4ff; --blue-border: #54aeff;
+    --green: #1a7f37; --green-bg: #dafbe1; --green-border: #4ac26b;
+    --yellow: #9a6700; --yellow-bg: #fff8c5; --yellow-border: #d4a72c;
+    --red: #cf222e; --red-bg: #ffebe9; --red-border: #ff8182;
+    --purple: #8250df; --purple-bg: #fbefff; --purple-border: #c297ff;
+    --orange: #bc4c00; --orange-bg: #fff1e5; --orange-border: #fb8f44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 18px; line-height: 1.6;
+  }
+
+  #deck { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 36px 52px 56px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease; overflow: hidden;
+  }
+  .slide.active { opacity: 1; pointer-events: all; }
+  .slide-content { background: var(--bg); }
+  .slide-accent  { background: var(--bg2); }
+  .slide-title   { background: var(--bg); justify-content: center; }
+  .slide-danger  { background: #fff5f5; }
+
+  .slide-body {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; padding-right: 4px;
+  }
+  .slide-body::-webkit-scrollbar { width: 3px; }
+  .slide-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .slide-label { font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+  .slide h1 { font-size: 36px; font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 14px; }
+  .slide h2 { font-size: 26px; font-weight: 700; color: var(--text);
+    padding-bottom: 10px; border-bottom: 2px solid var(--border); margin-bottom: 16px; }
+  .slide h3 { font-size: 18px; font-weight: 600; color: var(--text); margin: 14px 0 7px; }
+  .slide p  { color: var(--text); margin-bottom: 10px; font-size: 16px; }
+  .slide ul, .slide ol { padding-left: 20px; margin-bottom: 10px; }
+  .slide li { margin-bottom: 5px; font-size: 16px; color: var(--text); line-height: 1.5; }
+  .slide strong { font-weight: 600; }
+  .tagline { font-size: 19px; color: var(--muted); max-width: 640px; line-height: 1.55; margin-bottom: 22px; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .badge { font-size: 13px; font-weight: 600; padding: 3px 11px; border-radius: 99px; border: 1px solid; }
+  .badge-blue   { background: var(--blue-bg);   color: var(--blue);   border-color: var(--blue-border); }
+  .badge-green  { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+  .badge-red    { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-border); }
+
+  .callout { border-radius: 8px; padding: 12px 16px; margin: 10px 0;
+    border-left: 4px solid; font-size: 15px; line-height: 1.6; }
+  .callout-label { font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; display: block; margin-bottom: 4px; }
+  .callout-blue   { background: var(--blue-bg);   border-color: var(--blue);         color: #0550ae; }
+  .callout-blue   .callout-label { color: var(--blue); }
+  .callout-yellow { background: var(--yellow-bg); border-color: var(--yellow-border); color: var(--yellow); }
+  .callout-yellow .callout-label { color: var(--yellow); }
+  .callout-red    { background: var(--red-bg);    border-color: var(--red);           color: #82071e; }
+  .callout-red    .callout-label { color: var(--red); }
+  .callout-green  { background: var(--green-bg);  border-color: var(--green);         color: #116329; }
+  .callout-green  .callout-label { color: var(--green); }
+  .callout-orange { background: var(--orange-bg); border-color: var(--orange-border); color: var(--orange); }
+  .callout-orange .callout-label { color: var(--orange); }
+  .callout-purple { background: var(--purple-bg); border-color: var(--purple);        color: #5a32a3; }
+  .callout-purple .callout-label { color: var(--purple); }
+
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--bg3); color: var(--muted); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 14px; color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg2); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 10px 0; }
+
+  .card        { background: var(--bg);         border: 1px solid var(--border);        border-radius: 10px; padding: 14px 16px; }
+  .card-accent { background: var(--bg2);         border: 1px solid var(--border);        border-radius: 10px; padding: 14px 16px; }
+  .card-red    { background: var(--red-bg);      border: 1px solid var(--red-border);    border-radius: 10px; padding: 14px 16px; }
+  .card-green  { background: var(--green-bg);    border: 1px solid var(--green-border);  border-radius: 10px; padding: 14px 16px; }
+  .card-yellow { background: var(--yellow-bg);   border: 1px solid var(--yellow-border); border-radius: 10px; padding: 14px 16px; }
+  .card-blue   { background: var(--blue-bg);     border: 1px solid var(--blue-border);   border-radius: 10px; padding: 14px 16px; }
+  .card-purple { background: var(--purple-bg);   border: 1px solid var(--purple-border); border-radius: 10px; padding: 14px 16px; }
+  .card-orange { background: var(--orange-bg);   border: 1px solid var(--orange-border); border-radius: 10px; padding: 14px 16px; }
+  .card-title  { font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); margin-bottom: 7px; }
+
+  /* PATHWAY */
+  .flow-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 9px; }
+  .flow-num  { width: 26px; height: 26px; border-radius: 50%; background: var(--blue);
+    color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .flow-body { flex: 1; font-size: 15px; line-height: 1.55; }
+  .flow-title { font-weight: 600; }
+
+  /* TIMELINE */
+  .timeline { list-style: none; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline li { padding: 0 0 14px 34px; position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: 7px; top: 5px;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--blue); }
+  .tl-label { font-size: 12px; font-weight: 700; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+  /* SPINE DIAGRAM */
+  .spine-row { display: grid; grid-template-columns: 120px 1fr; gap: 10px; align-items: center; margin-bottom: 6px; }
+  .spine-label { font-size: 13px; font-weight: 700; text-align: right; padding-right: 8px; color: var(--muted); text-transform: uppercase; }
+  .spine-bar { border-radius: 6px; padding: 9px 14px; font-size: 15px; }
+  .spine-lumbar  { background: var(--red-bg);    border: 1px solid var(--red-border);    color: #82071e; }
+  .spine-thoracic{ background: var(--yellow-bg); border: 1px solid var(--yellow-border); color: var(--yellow); }
+  .spine-cervical{ background: var(--blue-bg);   border: 1px solid var(--blue-border);   color: #0550ae; }
+
+  .pearl { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 13px 16px; margin: 9px 0; font-size: 15px; line-height: 1.6; }
+
+  .chapter-header { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+  .chapter-num { font-size: 72px; font-weight: 800; color: var(--bg3); line-height: 1; margin-bottom: 8px; }
+  .chapter-title { font-size: 30px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+  .chapter-sub { font-size: 18px; color: var(--muted); max-width: 560px; line-height: 1.5; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+  .refs { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .refs li { margin-bottom: 8px; }
+
+  #nav { position: fixed; bottom: 0; left: 0; right: 0; height: 44px;
+    background: var(--bg); border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; z-index: 200; user-select: none; }
+  .nav-btn { background: none; border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 14px; font-size: 14px; font-weight: 500; color: var(--text);
+    cursor: pointer; transition: background 0.1s; }
+  .nav-btn:hover { background: var(--bg2); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  #slide-counter { font-size: 14px; color: var(--muted); font-weight: 500; }
+  #progress-bar  { position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--blue); transition: width 0.2s ease; z-index: 300; }
+
+  @media (max-width: 720px) {
+    .slide { padding: 20px 14px 56px; }
+    .slide h1 { font-size: 26px; } .slide h2 { font-size: 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+
+<script>
+const SLIDES = [
+
+// ── 1. TITLE ──────────────────────────────────────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="slide-label">Topic 37 &middot; Infectious Disease / Hospital Medicine / Orthopedics</div>
+<h1>Osteomyelitis</h1>
+<p class="tagline">When to biopsy before you treat. Why a swab of a sinus tract is almost meaningless. The paradigm shift toward oral therapy. Vertebral osteomyelitis as a diagnosis that hides behind "back pain." And the diabetic foot ulcer that has been there for six weeks.</p>
+<div class="badge-row">
+  <span class="badge badge-red">IDSA Guidelines</span>
+  <span class="badge badge-blue">Vertebral OM</span>
+  <span class="badge badge-yellow">Diabetic Foot</span>
+  <span class="badge badge-green">Oral IV Equivalence</span>
+  <span class="badge badge-orange">MKSAP 2025</span>
+</div>
+<div style="margin-top:28px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// ── 2. CASE VIGNETTE ──────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="timeline">
+  <li>
+    <div class="tl-label">History</div>
+    <p style="margin:0;">64M with T2DM (A1c 10.2%), peripheral neuropathy, and chronic venous insufficiency presents with a 7-week-old plantar ulcer on the right great toe that has not improved with wound care. He denies fever or chills. He reports the toe "doesn't hurt much" due to neuropathy.</p>
+  </li>
+  <li>
+    <div class="tl-label">Exam</div>
+    <p style="margin:0;">2.5 cm plantar ulcer with surrounding erythema 2.5 cm from the wound margin. No fluctuance. Sterile metal probe inserted into wound base contacts hard structure consistent with bone. No crepitus. Faint pedal pulses bilaterally. ABI 0.72 on right.</p>
+  </li>
+  <li>
+    <div class="tl-label">Labs &amp; Imaging</div>
+    <p style="margin:0;">WBC 9,400 (normal). ESR 88 mm/hr. CRP 4.2 mg/dL. Plain radiograph: periosteal reaction and cortical irregularity at the distal phalanx of the right great toe. MRI ordered: marrow signal abnormality and cortical destruction consistent with osteomyelitis.</p>
+  </li>
+  <li>
+    <div class="tl-label">Key Decision Point</div>
+    <p style="margin:0;">The wound care nurse swabs the ulcer base and sends it for culture. Wound care has also suggested a 6-week course of empiric antibiotics before orthopedic evaluation. The admitting team disagrees. Why?</p>
+  </li>
+</ul>
+<div class="callout callout-red">
+  <span class="callout-label">The Teaching Frame</span>
+  Swab cultures of ulcers and sinus tracts do not accurately reflect the organism causing osteomyelitis. Empiric antibiotics before biopsy reduce biopsy yield and drive unnecessary broad-spectrum use. This case illustrates three of the most common osteomyelitis management errors: culturing the wound surface, starting antibiotics before biopsy, and deferring orthopedic consultation.
+</div>
+</div>
+`},
+
+// ── 3. PATHOPHYSIOLOGY & CLASSIFICATION ──────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Pathophysiology &amp; Classification</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Why Bone Infection Is Hard to Cure</h3>
+    <div class="card-red" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--red);">Sequestrum &mdash; Dead Bone</div>
+      <p style="font-size:15px;margin:0;">Infection and thrombosis of nutrient vessels devitalize cortical bone, producing avascular necrotic fragments called sequesters. Antibiotics cannot penetrate avascular tissue. The sequestrum acts as a permanent foreign body harboring bacteria, driving relapse even after prolonged therapy. <strong>Surgical removal is the only cure.</strong></p>
+    </div>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Involucrum &mdash; New Bone Shell</div>
+      <p style="font-size:15px;margin:0;">Periosteal reaction produces new bone around the infected area, forming an involucrum that walls off the sequestrum. Sinus tracts form when pus tracks through the involucrum to the skin surface. Sinus tract drainage is a hallmark of chronic osteomyelitis.</p>
+    </div>
+    <div class="card-purple">
+      <div class="card-title" style="color:var(--purple);">Biofilm on Hardware</div>
+      <p style="font-size:15px;margin:0;">Bacteria adhere to implant surfaces and form a polysaccharide matrix (biofilm) in which organisms are metabolically dormant, resistant to phagocytosis, and tolerant of antibiotics at concentrations 100&ndash;1000&times; the MIC. Rifampin is the only agent with meaningful biofilm penetration for staphylococci. Hardware removal is often necessary for cure.</p>
+    </div>
+  </div>
+  <div>
+    <h3>Classification by Temporal Course</h3>
+    <div class="card-green" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--green);">Acute (&lt;2 weeks)</div>
+      <ul style="font-size:15px;">
+        <li>Systemic signs more common: fever, leukocytosis, elevated CRP</li>
+        <li>No sequestrum yet &mdash; bone still vascular</li>
+        <li>Better prognosis: antibiotics alone may be curative if started early</li>
+        <li>Classic presentation: hematogenous vertebral OM, acute hematogenous OM in children</li>
+      </ul>
+    </div>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Subacute (weeks&ndash;months)</div>
+      <ul style="font-size:15px;">
+        <li>Minimal or no systemic signs; insidious onset</li>
+        <li>Classic radiographic finding: Brodie abscess (well-circumscribed lytic lesion with sclerotic rim)</li>
+        <li>May mimic tumor on imaging</li>
+      </ul>
+    </div>
+    <div class="card-red">
+      <div class="card-title" style="color:var(--red);">Chronic (&gt;months)</div>
+      <ul style="font-size:15px;">
+        <li>Sinus tracts, sequestrum, involucrum on imaging</li>
+        <li>Relapse is expected; surgical debridement is almost always required</li>
+        <li>Antibiotic therapy without surgery is palliative, not curative</li>
+        <li>Classic in diabetic foot, pressure ulcer OM, hardware-related infections</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 3. FRAMEWORK: ROUTES & PATHOGENS ─────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Routes of Infection &amp; Pathogens</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Three Routes to Bone Infection</h3>
+    <div class="card-blue" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--blue);">Hematogenous</div>
+      <p style="font-size:15px;margin:0;">Bacteremia seeds bone via nutrient arteries. In adults: vertebral bodies (high flow, end-arteries). S. aureus most common. Also coagulase-negative staph (hardware-related), Enterobacteriaceae, Pseudomonas (IVDU), Candida (immunosuppressed).</p>
+    </div>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Contiguous Spread</div>
+      <p style="font-size:15px;margin:0;">Adjacent soft tissue infection or chronic wound spreads to bone. Diabetic foot ulcers, pressure ulcers, vasculopathic wounds. Polymicrobial: S. aureus + streptococci + gram-negative aerobes + anaerobes (ischemia/necrosis).</p>
+    </div>
+    <div class="card-orange">
+      <div class="card-title" style="color:var(--orange);">Direct Inoculation</div>
+      <p style="font-size:15px;margin:0;">Penetrating trauma, open fracture, surgical instrumentation, or hardware placement. S. aureus dominant; coagulase-negative staph (especially with hardware); gram-negative bacilli; Pseudomonas; polymicrobial.</p>
+    </div>
+  </div>
+  <div>
+    <h3>Pathogen Overview</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Pathogen</th><th>Clinical Association</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S. aureus</strong></td><td>Most common overall; all routes; most destructive. MRSA prevalence is rising in both community and healthcare settings.</td></tr>
+        <tr><td><strong>CoNS (S. lugdunensis)</strong></td><td>Hardware-related; direct inoculation. S. lugdunensis behaves more like S. aureus than other CoNS.</td></tr>
+        <tr><td><strong>Streptococci</strong></td><td>Hematogenous; contiguous spread from soft tissue infection.</td></tr>
+        <tr><td><strong>Enterobacteriaceae / Pseudomonas</strong></td><td>Vertebral OM in IVDU; diabetic foot; post-surgical. Pseudomonas: classic for nail-puncture foot OM in children but also IVDU adults.</td></tr>
+        <tr><td><strong>Anaerobes</strong></td><td>Contiguous spread in ischemia, necrosis, or gangrene. Often polymicrobial.</td></tr>
+        <tr><td><strong>Candida</strong></td><td>Immunosuppressed; TPN-dependent patients; hematogenous vertebral OM.</td></tr>
+        <tr><td><strong>Brucella / M. tuberculosis</strong></td><td>Vertebral OM with appropriate travel/exposure history. Brucella serology often diagnostic.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 4. DIAGNOSIS: LABS & IMAGING ─────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Diagnosis: Labs &amp; Imaging</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Laboratory Studies</h3>
+    <ul style="font-size:15px;">
+      <li><strong>ESR and CRP:</strong> elevated in most cases; support the diagnosis and are useful for monitoring therapeutic response. Normal values do not exclude osteomyelitis &mdash; especially in chronic disease and diabetic foot OM (up to 2/3 lack elevated markers).</li>
+      <li><strong>WBC:</strong> leukocytosis is uncommon except in acute hematogenous osteomyelitis. Absence of leukocytosis is not reassuring.</li>
+      <li><strong>Blood cultures:</strong> obtain in suspected hematogenous OM (vertebral) or any patient with fever. A positive blood culture in vertebral OM may obviate the need for biopsy.</li>
+      <li><strong>Probe-to-bone test:</strong> in chronic wounds, contact with bone has high sensitivity and specificity for OM. Simple, bedside, costs nothing.</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Imaging Sequence</h3>
+    <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><span class="flow-title">Plain radiograph first</span> &mdash; inexpensive, specific. Appropriate if symptoms present &ge;14 days (takes 10&ndash;21 days for lytic changes to appear). Negative result does not exclude OM.</div></div>
+    <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><span class="flow-title">MRI with and without contrast</span> &mdash; gold standard for bone marrow involvement, soft tissue extension, epidural abscess, and paravertebral collections. Order when plain film is negative but suspicion persists.</div></div>
+    <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><span class="flow-title">CT with IV contrast</span> &mdash; alternative if MRI unavailable. Better for cortical destruction and sequestrum identification. Worse than MRI for marrow signal.</div></div>
+    <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><span class="flow-title">Nuclear medicine (tagged WBC or bone scan)</span> &mdash; sensitive but nonspecific. Reserved for patients who cannot have MRI (retained metal hardware). High sensitivity means useful for ruling out.</div></div>
+    <div class="callout callout-blue" style="margin-top:8px;">
+      <span class="callout-label">MRI Performance Data (Llewellyn et al., HTA 2019)</span>
+      Adults (all OM sites): sensitivity ~95.6%, specificity ~80.7%. Diabetic foot OM specifically: pooled sensitivity ~90%, specificity ~79&ndash;82.5% (ACR 2025 Appropriateness Criteria). High sensitivity = good for ruling out. Imperfect specificity = MRI-positive marrow edema alone is not diagnostic &mdash; trauma, Charcot neuroarthropathy, surgery, and reactive changes can mimic infection.
+    </div>
+    <div class="callout callout-yellow" style="margin-top:6px;">
+      <span class="callout-label">Hardware and MRI</span>
+      Metal hardware causes MRI artifact. Tagged white cell scans or CT can be used. MRI-compatible hardware (titanium) produces less artifact &mdash; MRI may still be obtainable; consult radiology.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 5. BONE BIOPSY — THE CORNERSTONE ─────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Bone Biopsy: Why It Matters More Than You Think</h2>
+<div class="slide-body">
+<div class="callout callout-red">
+  <span class="callout-label">Do Not Culture the Wound Surface</span>
+  Cultures of swabs, sinus tracts, and superficial wound bases have <strong>poor correlation</strong> with deep bone biopsy culture results. Treating based on a wound swab culture leads to the wrong antibiotic in a significant proportion of cases. This is one of the most common and consequential errors in osteomyelitis management.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>When Biopsy Is Required</h3>
+    <ul style="font-size:15px;">
+      <li>All cases of suspected osteomyelitis without a positive blood culture</li>
+      <li>Before empiric antibiotics are started (in the absence of sepsis, bacteremia, or surrounding soft tissue infection)</li>
+      <li>Culture-negative disease: consider nucleic acid amplification on tissue (note: does not provide susceptibility data)</li>
+      <li>Atypical presentations: mycobacterial, fungal, Brucella</li>
+    </ul>
+    <h3 style="margin-top:12px;">When Biopsy Can Be Deferred</h3>
+    <ul style="font-size:15px;">
+      <li>Hematogenous OM with <strong>positive blood cultures</strong> &mdash; the blood culture organism is presumed to be the bone pathogen</li>
+      <li>Strongly positive Brucella serology in appropriate epidemiologic context</li>
+      <li>Patient declining or medically unable to undergo biopsy with clinical decision to treat conservatively</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Biopsy Technique</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Image-guided percutaneous biopsy</strong>: preferred for most locations, especially vertebral OM. Sensitivity 38&ndash;60% (variable). If inconclusive, repeat biopsy before empiric treatment.</li>
+      <li><strong>Open surgical biopsy</strong>: reserved for non-diagnostic aspiration or failure to respond to empiric antimicrobial therapy</li>
+      <li>Send for: aerobic culture, anaerobic culture, fungal culture, mycobacterial culture, and histopathology simultaneously</li>
+    </ul>
+    <div class="callout callout-blue" style="margin-top:10px;">
+      <span class="callout-label">The Empiric Antibiotic Timing Rule</span>
+      Unless the patient has <strong>systemic sepsis, bacteremia, or a concomitant soft tissue infection requiring immediate treatment</strong>, hold empiric antibiotics until biopsy is obtained. Antibiotics given before biopsy reduce culture yield and may result in months of empiric broad-spectrum therapy with no confirmed pathogen.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 7. TREATMENT PRINCIPLES ───────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Treatment Principles</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Oral Is the New IV &mdash; The Evidence</h3>
+    <div class="callout callout-green">
+      <span class="callout-label">OVIVA Trial (NEJM 2019)</span>
+      1,054 patients with bone and joint infection randomized to early oral switch (at 1 week) vs. continued IV therapy. <strong>Primary endpoint: treatment failure at 1 year. Result: oral was non-inferior</strong> (14.6% vs. 13.2% failure rate). Oral group had significantly fewer IV catheter complications. Conclusion: early transition to highly bioavailable oral agents is safe and effective for most bone and joint infections.
+    </div>
+    <div class="table-wrap" style="margin-top:8px;">
+    <table>
+      <thead><tr><th>Agent</th><th>Oral Bioavailability</th><th>Best Use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fluoroquinolones</strong> (ciprofloxacin, levofloxacin)</td><td>~95%</td><td>Gram-negative OM; Pseudomonas (cipro); Enterobacteriaceae</td></tr>
+        <tr><td><strong>Linezolid</strong></td><td>~100%</td><td>MRSA; VRE; gram-positive OM when other options limited. Monitor for thrombocytopenia, neuropathy with prolonged use.</td></tr>
+        <tr><td><strong>TMP-SMX</strong></td><td>~95%</td><td>MRSA (susceptible); MSSA; gram-negatives. Potassium-sparing; monitor renal function.</td></tr>
+        <tr><td><strong>Clindamycin</strong></td><td>~90%</td><td>MSSA; streptococci. Check inducible resistance (D-zone test).</td></tr>
+        <tr><td><strong>Metronidazole</strong></td><td>~99%</td><td>Anaerobes; often combined with another agent for polymicrobial OM.</td></tr>
+        <tr><td><strong>Vancomycin (IV only)</strong></td><td>~0% oral</td><td>Cannot be used orally for systemic infection. Parenteral required for MRSA when oral options not tolerable.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div>
+    <h3>Treatment Duration by Scenario</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Scenario</th><th>Duration</th></tr></thead>
+      <tbody>
+        <tr><td>Infected bone completely resected (clear margins)</td><td>2&ndash;5 days post-op</td></tr>
+        <tr><td>Acute OM; residual bone after debridement</td><td>4&ndash;6 weeks</td></tr>
+        <tr><td>Diabetic foot OM; viable bone, no surgery</td><td>6 weeks</td></tr>
+        <tr><td>Diabetic foot OM; minor amputation, positive margins</td><td>3&ndash;4 weeks post-op</td></tr>
+        <tr><td>Vertebral OM (uncomplicated)</td><td>&ge;6 weeks</td></tr>
+        <tr><td>Chronic OM or retained hardware</td><td>&gt;6 weeks; indefinite suppression may be required</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout callout-purple" style="margin-top:8px;">
+      <span class="callout-label">Rifampin for Hardware-Associated S. aureus</span>
+      Rifampin penetrates biofilm and targets metabolically dormant staphylococci that beta-lactams and vancomycin cannot reach. Combine with another active agent (never use as monotherapy &mdash; resistance emerges rapidly). Indicated when hardware cannot be removed and organism is susceptible.
+    </div>
+    <div class="callout callout-yellow" style="margin-top:6px;">
+      <span class="callout-label">Surgical Debridement</span>
+      Required when bone necrosis is extensive. Remove infected hardware when possible &mdash; retained hardware in the presence of active infection dramatically reduces cure rates. When hardware cannot be removed, indefinite oral suppression is the realistic goal, not cure.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 7. CHAPTER BREAK — VERTEBRAL OM ──────────────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">01</div>
+  <div class="chapter-title">Vertebral Osteomyelitis</div>
+  <div class="chapter-sub">The back pain that will not go away. Spondylodiskitis, blood cultures before antibiotics, percutaneous biopsy, epidural abscess as a complication, and the Brucella exception</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-blue">Spondylodiskitis</span>
+    <span class="badge badge-red">Epidural Abscess</span>
+    <span class="badge badge-yellow">Brucella</span>
+    <span class="badge badge-orange">IVDU / Pseudomonas</span>
+  </div>
+</div>
+`},
+
+// ── 8. VERTEBRAL OSTEOMYELITIS ────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Vertebral Osteomyelitis (Spondylodiskitis)</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Clinical Presentation</h3>
+    <ul style="font-size:15px;">
+      <li>Almost exclusively hematogenous in adults</li>
+      <li><strong>New-onset back/neck pain</strong> or progressive worsening of chronic pain unresponsive to conservative management &mdash; the key clinical trigger</li>
+      <li>Fever present in only ~50% &mdash; absence does not reassure</li>
+      <li>Point tenderness over involved vertebrae in only ~33% of patients</li>
+      <li>Neurologic findings in up to 33%: sensory loss, weakness, radiculopathy &mdash; raised by epidural extension</li>
+      <li>Elevated ESR/CRP in most (but not all) cases</li>
+    </ul>
+    <h3 style="margin-top:12px;">Spinal Distribution</h3>
+    <div class="spine-row"><div class="spine-label">Lumbar</div><div class="spine-bar spine-lumbar">Most common (~50%). L4&ndash;L5 most frequent level.</div></div>
+    <div class="spine-row"><div class="spine-label">Thoracic</div><div class="spine-bar spine-thoracic">Second most common (~35%). TB classically involves lower thoracic.</div></div>
+    <div class="spine-row"><div class="spine-label">Cervical</div><div class="spine-bar spine-cervical">Least common (~15%). Highest neurologic risk from cord compression.</div></div>
+  </div>
+  <div>
+    <h3>Pathogens by Risk Factor</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Pathogen</th><th>Risk Factor / Context</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S. aureus</strong></td><td>Most common overall. Skin infection, endocarditis, hemodialysis catheters.</td></tr>
+        <tr><td><strong>CoNS (S. lugdunensis)</strong></td><td>Indwelling hardware; persistent bacteremia with unusual CoNS should prompt vertebral imaging.</td></tr>
+        <tr><td><strong>Pseudomonas aeruginosa</strong></td><td>Injection drug use. Cervical and lumbar predilection.</td></tr>
+        <tr><td><strong>Enterobacteriaceae</strong></td><td>Urinary tract infections, GI sources, immunosuppression.</td></tr>
+        <tr><td><strong>Candida</strong></td><td>TPN, immunosuppression, prior fungemia.</td></tr>
+        <tr><td><strong>Brucella</strong></td><td>Animal exposure (cattle, goats, unpasteurized dairy). Lumbar predominance. Serology often diagnostic.</td></tr>
+        <tr><td><strong>M. tuberculosis</strong></td><td>Endemic exposure; immunosuppression. Pott disease: lower thoracic/lumbar; psoas abscess common.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout callout-orange" style="margin-top:8px;">
+      <span class="callout-label">Diagnostic Workup Sequence</span>
+      MRI with and without contrast &rarr; blood cultures (before antibiotics) &rarr; if blood cultures negative: image-guided percutaneous biopsy &rarr; if biopsy inconclusive: repeat biopsy or open biopsy. Test for Brucella and TB in at-risk patients.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── 9. VERTEBRAL OM: COMPLICATIONS & TREATMENT ───────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Vertebral OM: Complications &amp; Treatment</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Complications Requiring Urgent Surgery</h3>
+    <div class="callout callout-red">
+      <span class="callout-label">Immediate Surgical Evaluation</span>
+      Neurologic compromise (progressive deficit, myelopathy) &middot; spinal instability &middot; epidural abscess &middot; paravertebral or psoas abscess not amenable to percutaneous drainage. Do not delay surgical consultation waiting for culture results in these settings.
+    </div>
+    <ul style="font-size:15px;margin-top:8px;">
+      <li><strong>Epidural abscess:</strong> cord compression from pus in epidural space. MRI with contrast is diagnostic. Emergent decompression if neurologic deficit is present or worsening.</li>
+      <li><strong>Psoas abscess:</strong> extension of lumbar OM into psoas muscle. CT-guided drainage often possible. Fever + back pain + hip flexion contracture = psoas abscess until proven otherwise.</li>
+      <li><strong>Vertebral collapse:</strong> extensive bone destruction causing mechanical instability. Surgical stabilization required.</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Antibiotic Treatment</h3>
+    <ul style="font-size:15px;">
+      <li>Hold antibiotics until cultures obtained <strong>unless</strong> sepsis, progressive neurologic deficit, or spinal instability</li>
+      <li>Empiric regimen when antibiotics cannot wait: <strong>vancomycin + third- or fourth-generation cephalosporin</strong></li>
+      <li>Definitive therapy based on susceptibilities; parenteral generally preferred for S. aureus</li>
+      <li>Oral high-bioavailability agents acceptable for Enterobacteriaceae (fluoroquinolones) once clinical stability achieved</li>
+      <li>Duration: <strong>at least 6 weeks</strong> &mdash; RCT evidence (NEJM 2015, Bekker et al.) shows 6 weeks is non-inferior to 12 weeks for uncomplicated native vertebral OM; longer for MRSA, undrained collections, or extensive destruction</li>
+      <li>Retained hardware in the involved region: prolonged suppressive oral antibiotics often required</li>
+    </ul>
+    <h3 style="margin-top:12px;">Monitoring Response</h3>
+    <ul style="font-size:15px;">
+      <li>Weekly ESR and CRP during therapy &mdash; rising markers suggest treatment failure or new complication</li>
+      <li>Repeat MRI: reserved for patients who do not respond clinically; not routine for all patients</li>
+      <li>Relapse can occur months to years after apparently successful treatment</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// ── 10. CHAPTER BREAK — DIABETIC FOOT OM ─────────────────────────────────────
+{ cls: 'slide-title', html: `
+<div class="chapter-header">
+  <div class="chapter-num">02</div>
+  <div class="chapter-title">Diabetic Foot Osteomyelitis</div>
+  <div class="chapter-sub">When the ulcer won't heal. The probe-to-bone test, bone biopsy over wound swab, oral bioavailability as an alternative to PICC lines, and the amputation decision</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-yellow">Probe-to-Bone</span>
+    <span class="badge badge-blue">MRI</span>
+    <span class="badge badge-green">Oral Therapy</span>
+    <span class="badge badge-red">Amputation Criteria</span>
+  </div>
+</div>
+`},
+
+// ── 11. DIABETIC FOOT OSTEOMYELITIS ──────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>Diabetic Foot Osteomyelitis</h2>
+<div class="slide-body">
+<div class="callout callout-yellow">
+  <span class="callout-label">When to Suspect Osteomyelitis in a Diabetic Foot Ulcer</span>
+  <strong>Deep:</strong> exposed bone visible or palpable &middot; <strong>Large:</strong> surface area &gt;2 cm&sup2; &middot; <strong>Chronic:</strong> non-healing after 6 weeks of standard wound care. Any one of these criteria warrants probe-to-bone test, imaging, and consideration of biopsy.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Diagnosis</h3>
+    <ul style="font-size:15px;">
+      <li>Up to 2/3 of patients lack leukocytosis or elevated inflammatory markers &mdash; do not use normal labs to exclude OM</li>
+      <li><strong>Probe-to-bone test:</strong> sterile metal probe contacts bone through wound base = high PPV for OM in high-prevalence populations (~89%)</li>
+      <li>Plain radiograph first: cortical irregularity, periosteal reaction, osteolysis. Requires 10&ndash;21 days to show changes.</li>
+      <li>MRI with contrast: gold standard for bone involvement, marrow edema, and soft tissue extension</li>
+      <li><strong>Bone biopsy:</strong> recommended for microbiologic diagnosis. Deep wound culture correlates poorly with biopsy. Percutaneous image-guided biopsy; avoid going through ulcer if possible (contamination risk).</li>
+    </ul>
+    <h3 style="margin-top:12px;">Pathogens</h3>
+    <ul style="font-size:15px;">
+      <li>S. aureus and streptococci: most common</li>
+      <li>Gram-negative aerobes: up to 25% of cases</li>
+      <li>Anaerobes: associated with ischemia, necrosis, or gangrene</li>
+      <li>Polymicrobial: especially chronic wounds with prior antibiotic exposure</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Treatment</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Surgical Status</th><th>Duration</th></tr></thead>
+      <tbody>
+        <tr><td>No debridement; viable infected bone</td><td>6 weeks (parenteral or oral high-bioavailability)</td></tr>
+        <tr><td>Minor amputation; positive bone margins on histology</td><td>3&ndash;4 weeks post-op</td></tr>
+        <tr><td>Minor amputation; clear bone margins</td><td>2&ndash;5 days post-op</td></tr>
+        <tr><td>Nonviable bone persists after debridement</td><td>Extend to 6 weeks</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout callout-green" style="margin-top:8px;">
+      <span class="callout-label">Oral Therapy Is Acceptable</span>
+      High-bioavailability oral agents achieve therapeutic bone concentrations: fluoroquinolones, TMP-SMX, metronidazole, linezolid, clindamycin. Many patients can avoid PICC lines. Discuss with ID/orthopedics.
+    </div>
+    <div class="callout callout-red" style="margin-top:8px;">
+      <span class="callout-label">Amputation Indications</span>
+      Persistent sepsis &middot; progressive bone destruction despite appropriate therapy &middot; bone destruction compromising mechanical foot integrity &middot; inability to tolerate antibiotics. Limb salvage is possible with multidisciplinary care &mdash; but patient preference and vascular status are co-equal considerations.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── SPECIAL SCENARIOS ─────────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Special Scenarios</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <div class="card-yellow" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--yellow);">Pressure Ulcer Osteomyelitis</div>
+      <p style="font-size:15px;margin:0 0 8px 0;">Common sites: sacrum, ischium, calcaneus. Frequently occult &mdash; the wound appears chronic and unhealed but the depth of bone involvement is underestimated on clinical exam alone.</p>
+      <ul style="font-size:14px;">
+        <li>Probe-to-bone test is positive in a significant proportion of non-healing pressure ulcers</li>
+        <li>MRI is the gold standard for bone involvement; plain film insensitive early</li>
+        <li>Polymicrobial: S. aureus, streptococci, Enterobacteriaceae, obligate anaerobes</li>
+        <li>Do not swab the ulcer surface &mdash; result reflects colonization, not infection</li>
+        <li>Bone biopsy required for microbiologic diagnosis; surgical debridement of necrotic bone is usually necessary for cure</li>
+        <li>Consider in any patient with a chronic non-healing pressure ulcer not responding to appropriate wound care</li>
+      </ul>
+    </div>
+    <div class="card-orange">
+      <div class="card-title" style="color:var(--orange);">Hardware-Related / Post-Surgical OM</div>
+      <p style="font-size:15px;margin:0 0 8px 0;">Presentation: wound breakdown, pain, or drainage weeks to months after orthopedic hardware placement. Organisms: CoNS (especially S. lugdunensis and S. epidermidis), S. aureus, Cutibacterium acnes (shoulder, spine &mdash; requires prolonged culture incubation).</p>
+      <ul style="font-size:14px;">
+        <li><strong>DAIR (Debridement, Antibiotics, Implant Retention):</strong> appropriate for acute infections (&lt;3&ndash;4 weeks from implantation or symptom onset) with stable hardware and susceptible organisms. Requires prolonged suppressive therapy if hardware retained.</li>
+        <li><strong>Two-stage exchange:</strong> hardware removed, spacer placed with antibiotic-impregnated cement, reimplantation after 6&ndash;8 weeks of systemic antibiotics. Highest cure rates for chronic hardware infection.</li>
+        <li>Rifampin added when S. aureus is confirmed susceptible and hardware retained</li>
+        <li>Indefinite suppressive oral antibiotics when hardware cannot be removed and cure is not achievable</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="card-red" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--red);">Non-Diagnostic Biopsy &mdash; What Next?</div>
+      <p style="font-size:15px;margin:0 0 8px 0;">Percutaneous image-guided biopsy has a sensitivity of only 38&ndash;60% for vertebral OM. A negative or inconclusive result does not exclude the diagnosis.</p>
+      <ul style="font-size:14px;">
+        <li><strong>Step 1:</strong> Confirm biopsy was obtained from the correct location (MRI correlation) and sent for aerobic, anaerobic, fungal, <em>and</em> mycobacterial cultures</li>
+        <li><strong>Step 2:</strong> Repeat percutaneous biopsy &mdash; two attempts before escalating</li>
+        <li><strong>Step 3:</strong> Open surgical biopsy if two percutaneous attempts are non-diagnostic or if the patient is not responding to empiric therapy</li>
+        <li><strong>Nucleic acid amplification (NAAT) on tissue:</strong> increases diagnostic yield for organisms that are difficult to culture (mycobacteria, Brucella). Critical caveat: NAAT does not provide antimicrobial susceptibility data.</li>
+        <li>In the absence of sepsis or surrounding soft tissue infection, <strong>do not start empiric antibiotics after a negative biopsy</strong> &mdash; conservative wound care and monitoring is appropriate while pursuing a definitive microbiologic diagnosis</li>
+      </ul>
+    </div>
+    <div class="card-blue">
+      <div class="card-title" style="color:var(--blue);">Atypical Organisms &mdash; When to Expand Testing</div>
+      <ul style="font-size:14px;">
+        <li><strong>Brucella:</strong> lumbar predominance; animal or unpasteurized dairy exposure; strongly positive serology in the right context is diagnostic and eliminates need for biopsy. Treat: doxycycline + rifampin &times;6 weeks or doxycycline + streptomycin &times;2&ndash;3 weeks.</li>
+        <li><strong>M. tuberculosis (Pott disease):</strong> lower thoracic/lumbar; endemic exposure or immunosuppression; psoas abscess is common. Tissue NAAT for Mtb; culture on Lowenstein-Jensen medium (6&ndash;8 weeks). Treat: RIPE &times;6&ndash;12 months.</li>
+        <li><strong>Fungal (Candida, Aspergillus):</strong> immunosuppressed, TPN-dependent, prior fungemia. Tissue fungal culture required. Fluconazole for Candida (step-down); voriconazole or isavuconazole for Aspergillus.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// ── CLINICAL PEARLS ───────────────────────────────────────────────────────────
+{ cls: 'slide-accent', html: `
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"><strong>Do not culture the wound surface.</strong> Swab cultures of sinus tracts, ulcer bases, and wound drainage have poor correlation with bone biopsy cultures and frequently identify colonizers rather than pathogens. Treating based on a wound swab means treating the wrong organism in a significant proportion of cases. Bone biopsy is the required microbiologic standard.</div>
+<div class="pearl"><strong>Hold antibiotics until biopsy is obtained &mdash; unless the patient is septic.</strong> The one exception is the patient with systemic sepsis, bacteremia, progressive neurologic deficit, or surrounding soft tissue infection requiring immediate treatment. In all other cases, starting empiric antibiotics before biopsy converts a potentially curable infection into months of broad-spectrum therapy directed at an unknown pathogen.</div>
+<div class="pearl"><strong>A negative plain radiograph does not exclude osteomyelitis.</strong> Bone destruction requires loss of 30&ndash;50% of bone mineral density before it becomes visible on plain film, and this takes 10&ndash;21 days to develop. A patient with 5 days of vertebral pain and a normal X-ray needs MRI, not reassurance.</div>
+<div class="pearl"><strong>Back pain that does not respond to conservative management needs ESR, CRP, and MRI.</strong> Vertebral osteomyelitis is systematically delayed in diagnosis because back pain is common and OM is assumed uncommon. The combination of elevated inflammatory markers + back pain not responding to rest/NSAIDs should prompt MRI of the spine, not another course of physical therapy.</div>
+<div class="pearl"><strong>Positive blood cultures in vertebral OM often eliminate the need for biopsy.</strong> When blood cultures grow a typical pathogen (S. aureus, streptococci) in the context of vertebral osteomyelitis on MRI, the blood culture organism is assumed to be the bone pathogen. Image-guided biopsy can be reserved for blood culture-negative cases.</div>
+<div class="pearl"><strong>Oral is the new IV for most organisms.</strong> The OVIVA trial (NEJM 2019) demonstrated that early transition to highly bioavailable oral antibiotics was non-inferior to continued IV therapy for bone and joint infections. Fluoroquinolones, TMP-SMX, linezolid, and clindamycin achieve bone concentrations comparable to IV therapy. PICC lines carry their own morbidity &mdash; a patient who can absorb oral medications and is clinically stable does not need parenteral therapy for the full 6 weeks.</div>
+<div class="pearl"><strong>Rifampin for hardware-associated S. aureus &mdash; but never as monotherapy.</strong> Rifampin penetrates biofilm and is the only antibiotic with meaningful activity against sessile staphylococci on hardware surfaces. It must always be combined with another active antistaphylococcal agent because rifampin resistance develops rapidly as monotherapy. Use it when hardware cannot be removed and the organism is susceptible.</div>
+</div>
+`},
+
+// ── 13. REFERENCES ────────────────────────────────────────────────────────────
+{ cls: 'slide-content', html: `
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>Miller JM, Binnicker MJ, Campbell S, et al. "Guide to Utilization of the Microbiology Laboratory for Diagnosis of Infectious Diseases: 2024 Update." IDSA/ASM. <em>Clin Infect Dis.</em> 2024;78(9):e88&ndash;e265. [Swab culture unreliability; biopsy preference; bone culture standards]</li>
+  <li>Berbari EF, Kanj SS, Kowalski TJ, et al. "2015 IDSA Clinical Practice Guidelines for the Diagnosis and Treatment of Native Vertebral Osteomyelitis in Adults." <em>Clin Infect Dis.</em> 2015;61(6):e26&ndash;e46. [Empiric regimens; biopsy-before-antibiotics; 6-week duration]</li>
+  <li>Senneville É, Albalawi Z, van Asten SA, et al. "IWGDF/IDSA 2023 Guidelines on the Diagnosis and Treatment of Diabetes-Related Foot Infections." <em>Clin Infect Dis.</em> 2023. [Diabetic foot OM: biopsy, imaging, antibiotic duration]</li>
+  <li>Expert Panel on Musculoskeletal Imaging, Baker JC, Northrup BE, et al. "ACR Appropriateness Criteria: Suspected Osteomyelitis of the Foot in Patients With Diabetes Mellitus: 2025 Update." <em>J Am Coll Radiol.</em> 2025. [Most recent imaging guideline for diabetic foot OM; MRI sensitivity/specificity data]</li>
+  <li>Llewellyn A, Jones-Diette J, Kraft J, et al. "Imaging Tests for the Detection of Osteomyelitis: A Systematic Review." <em>Health Technol Assess.</em> 2019;23(61):1&ndash;128. [MRI sensitivity 95.6%, specificity 80.7% in adults]</li>
+  <li>Spellberg B, Aggrey G, Brennan MB, et al. "Use of Novel Strategies to Develop Guidelines for Management of Pyogenic Osteomyelitis in Adults: A WikiGuidelines Group Consensus Statement." <em>JAMA Netw Open.</em> 2022;5(5):e2211321. [Empiric therapy table; oral step-down; duration]</li>
+  <li>Li HK, et al. "Oral versus Intravenous Antibiotics for Bone and Joint Infection." <em>N Engl J Med.</em> 2019;380(5):425&ndash;436. [OVIVA Trial &mdash; oral non-inferior to IV at 1 year]</li>
+  <li>Wald-Dickler N, et al. "Oral Is the New IV. Challenging Decades of Blood and Bone Infection Dogma." <em>Am J Med.</em> 2022;135(3):369&ndash;379.</li>
+  <li>Schaper NC, et al. "IWGDF 2023 Update: Practical Guidelines on Diabetic-Related Foot Disease." <em>Diabetes Metab Res Rev.</em> 2023:e3657.</li>
+  <li>Masters EA, et al. "Skeletal Infections: Microbial Pathogenesis, Immunity and Clinical Management." <em>Nat Rev Microbiol.</em> 2022;20(7):385&ndash;400.</li>
+  <li>MKSAP 20. "Osteomyelitis." <em>Infectious Disease.</em> American College of Physicians, 2025.</li>
+</ol>
+</div>
+`},
+
+]; // END SLIDES
+
+// ENGINE
+const deck = document.getElementById('deck');
+const counter = document.getElementById('slide-counter');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+const bar = document.getElementById('progress-bar');
+let cur = 0;
+
+SLIDES.forEach((s, i) => {
+  const el = document.createElement('div');
+  el.className = 'slide ' + s.cls;
+  el.innerHTML = s.html;
+  if (i === 0) el.classList.add('active');
+  deck.appendChild(el);
+});
+
+const slides = deck.querySelectorAll('.slide');
+
+function goTo(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  const body = slides[cur].querySelector('.slide-body');
+  if (body) body.scrollTop = 0;
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  btnPrev.disabled = cur === 0;
+  btnNext.disabled = cur === slides.length - 1;
+  bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+}
+
+btnPrev.addEventListener('click', () => goTo(cur - 1));
+btnNext.addEventListener('click', () => goTo(cur + 1));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(cur - 1); }
+});
+let tx = 0;
+deck.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+deck.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
+}, { passive: true });
+
+goTo(0);
+</script>
+</body>
+</html>

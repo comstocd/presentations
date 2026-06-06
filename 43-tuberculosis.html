@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 43 — Tuberculosis | Morning Report</title>
+<style>
+  :root {
+    --bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+    --blue:#0969da;--blue-bg:#ddf4ff;--blue-border:#54aeff;
+    --green:#1a7f37;--green-bg:#dafbe1;--green-border:#4ac26b;
+    --yellow:#9a6700;--yellow-bg:#fff8c5;--yellow-border:#d4a72c;
+    --red:#cf222e;--red-bg:#ffebe9;--red-border:#ff8182;
+    --purple:#8250df;--purple-bg:#fbefff;--purple-border:#c297ff;
+    --orange:#bc4c00;--orange-bg:#fff1e5;--orange-border:#fb8f44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);font-size:18px;line-height:1.5;}
+  #deck{width:100%;height:100%;position:relative;overflow:hidden;}
+  .slide{position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;flex-direction:column;padding:34px 52px 54px;
+    opacity:0;pointer-events:none;transition:opacity 0.2s;overflow:hidden;}
+  .slide.active{opacity:1;pointer-events:all;}
+  .slide-content{background:var(--bg);}
+  .slide-accent{background:var(--bg2);}
+  .slide-title{background:var(--bg);justify-content:center;}
+  .slide-danger{background:#fff5f5;}
+
+  .slide-body{flex:1;overflow-y:auto;overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;padding-right:4px;}
+  .slide-body::-webkit-scrollbar{width:3px;}
+  .slide-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+  .slide-label{font-size:13px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+  .slide h1{font-size:38px;font-weight:700;line-height:1.1;margin-bottom:14px;}
+  .slide h2{font-size:26px;font-weight:700;padding-bottom:9px;
+    border-bottom:2px solid var(--border);margin-bottom:14px;}
+  .slide h3{font-size:19px;font-weight:600;margin:12px 0 6px;}
+  .slide p{font-size:16px;margin-bottom:8px;}
+  .slide ul,.slide ol{padding-left:20px;margin-bottom:8px;}
+  .slide li{font-size:17px;margin-bottom:5px;line-height:1.4;}
+  .slide strong{font-weight:600;}
+  .tagline{font-size:19px;color:var(--muted);max-width:620px;line-height:1.5;margin-bottom:20px;}
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .badge{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;border:1px solid;}
+  .badge-blue  {background:var(--blue-bg);  color:var(--blue);  border-color:var(--blue-border);}
+  .badge-green {background:var(--green-bg); color:var(--green); border-color:var(--green-border);}
+  .badge-red   {background:var(--red-bg);   color:var(--red);   border-color:var(--red-border);}
+  .badge-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border);}
+  .badge-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border);}
+  .badge-orange{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border);}
+
+  .callout{border-radius:8px;padding:11px 15px;margin:9px 0;border-left:4px solid;font-size:15px;line-height:1.5;}
+  .callout-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:3px;}
+  .c-blue  {background:var(--blue-bg);  border-color:var(--blue);  color:#0550ae;} .c-blue   .callout-label{color:var(--blue);}
+  .c-yellow{background:var(--yellow-bg);border-color:var(--yellow-border);color:var(--yellow);} .c-yellow .callout-label{color:var(--yellow);}
+  .c-red   {background:var(--red-bg);   border-color:var(--red);   color:#82071e;} .c-red    .callout-label{color:var(--red);}
+  .c-green {background:var(--green-bg); border-color:var(--green); color:#116329;} .c-green  .callout-label{color:var(--green);}
+  .c-orange{background:var(--orange-bg);border-color:var(--orange-border);color:var(--orange);} .c-orange .callout-label{color:var(--orange);}
+  .c-purple{background:var(--purple-bg);border-color:var(--purple);color:#5a32a3;} .c-purple .callout-label{color:var(--purple);}
+
+  .table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin:9px 0;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--bg3);color:var(--muted);font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:15px;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--bg2);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:9px 0;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:9px 0;}
+  .card      {background:var(--bg);        border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-red  {background:var(--red-bg);    border:1px solid var(--red-border);   border-radius:10px;padding:13px 15px;}
+  .card-green{background:var(--green-bg);  border:1px solid var(--green-border); border-radius:10px;padding:13px 15px;}
+  .card-blue {background:var(--blue-bg);   border:1px solid var(--blue-border);  border-radius:10px;padding:13px 15px;}
+  .card-yellow{background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:10px;padding:13px 15px;}
+  .card-orange{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:10px;padding:13px 15px;}
+  .card-accent{background:var(--bg2);      border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+
+  .step{display:flex;gap:12px;align-items:flex-start;margin-bottom:9px;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .step-body{flex:1;}
+  .step-title{font-size:17px;font-weight:600;display:block;margin-bottom:1px;}
+  .step-sub{font-size:14px;color:var(--muted);}
+
+  .tl{list-style:none;padding:0;position:relative;}
+  .tl::before{content:'';position:absolute;left:13px;top:0;bottom:0;width:2px;background:var(--border);}
+  .tl li{padding:0 0 12px 34px;position:relative;}
+  .tl li::before{content:'';position:absolute;left:7px;top:5px;width:12px;height:12px;
+    border-radius:50%;background:var(--bg);border:2px solid var(--blue);}
+  .tl-label{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+
+  .pearl{background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+    padding:12px 15px;margin:8px 0;font-size:16px;line-height:1.5;}
+
+  .ch{display:flex;flex-direction:column;justify-content:center;height:100%;}
+  .ch-num{font-size:72px;font-weight:800;color:var(--bg3);line-height:1;margin-bottom:8px;}
+  .ch-title{font-size:30px;font-weight:700;margin-bottom:8px;}
+  .ch-sub{font-size:18px;color:var(--muted);max-width:540px;line-height:1.4;}
+
+  .refs{font-size:13px;color:var(--muted);line-height:1.7;}
+  .refs li{margin-bottom:7px;}
+
+  /* Spectrum bar for LTBI vs active disease */
+  .spectrum{display:flex;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--border);margin:10px 0;}
+  .spec-cell{flex:1;padding:14px 16px;}
+  .spec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+  .spec-exp{background:var(--bg2);} .spec-exp .spec-label{color:var(--muted);}
+  .spec-ltbi{background:var(--yellow-bg);} .spec-ltbi .spec-label{color:var(--yellow);}
+  .spec-act{background:var(--red-bg);} .spec-act .spec-label{color:var(--red);}
+
+  #nav{position:fixed;bottom:0;left:0;right:0;height:44px;background:var(--bg);
+    border-top:1px solid var(--border);display:flex;align-items:center;
+    justify-content:space-between;padding:0 16px;z-index:200;user-select:none;}
+  .nav-btn{background:none;border:1px solid var(--border);border-radius:6px;
+    padding:5px 14px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;}
+  .nav-btn:hover{background:var(--bg2);}
+  .nav-btn:disabled{opacity:.3;cursor:default;}
+  #slide-counter{font-size:14px;color:var(--muted);font-weight:500;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--blue);transition:width .2s;z-index:300;}
+
+  @media(max-width:720px){
+    .slide{padding:18px 14px 54px;}
+    .slide h1{font-size:26px;} .slide h2{font-size:20px;}
+    .grid-2,.grid-3{grid-template-columns:1fr;}
+    .spectrum{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+<script>
+const SLIDES = [
+
+// 1. TITLE
+{cls:'slide-title',html:`
+<div class="slide-label">Topic 43 &middot; Infectious Disease / Public Health / Hospital Medicine</div>
+<h1>Tuberculosis</h1>
+<p class="tagline">The positive IGRA is not the diagnosis. Airborne isolation is a bedside action, not a paperwork formality. And RIPE is only the beginning of a conversation about multidrug resistance.</p>
+<div class="badge-row">
+  <span class="badge badge-red">Airborne Isolation</span>
+  <span class="badge badge-blue">LTBI vs Active</span>
+  <span class="badge badge-yellow">RIPE</span>
+  <span class="badge badge-green">3HP / 4R Preferred</span>
+  <span class="badge badge-orange">MKSAP 20</span>
+</div>
+<div style="margin-top:26px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// 2. CASE
+{cls:'slide-content',html:`
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="tl">
+  <li><div class="tl-label">History</div>47M, born in South Asia, relocated to US 14 months ago. Presents to his primary care physician with 10-week history of productive cough, night sweats, 14 lb weight loss. One episode of blood-tinged sputum last week. Works as a taxi driver.</div></li>
+  <li><div class="tl-label">Vitals &amp; Exam</div>T 38.2&deg;C, HR 96, BP 118/74, SpO2 97% RA. Thin-appearing. Crackles at right apex. No lymphadenopathy. No hepatosplenomegaly.</li>
+  <li><div class="tl-label">Chest Radiograph</div>Right upper lobe cavitary infiltrate with surrounding airspace disease. Left upper lobe fibronodular changes.</li>
+  <li><div class="tl-label">Immediate Actions</div>Patient sent immediately to clinic isolation room. Surgical mask placed on patient. Infection control notified. Sputum AFB smear, NAAT, and culture ordered (3 serial specimens &ge;8h apart). State public health reported. HIV test ordered.</li>
+</ul>
+<div class="callout c-red">
+  <span class="callout-label">The Teaching Frame</span>
+  Classic reactivation tuberculosis: foreign-born, upper lobe cavitary disease, constitutional symptoms, hemoptysis. Before any test result: <strong>airborne isolation, sputum collection, public health reporting</strong>. The most dangerous error is admitting this patient to a regular room while waiting for culture results.
+</div>
+</div>
+`},
+
+// 3. THREE CONCEPTS — THE SPECTRUM
+{cls:'slide-accent',html:`
+<h2>Three Concepts Residents Must Keep Separate</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">The Most Consequential Error</span>
+  Treating a positive IGRA as a diagnosis of LTBI without first excluding active disease. Starting preventive therapy in a patient with unrecognized active TB delays appropriate treatment, misses the infection control response, and harms public health.
+</div>
+<div class="spectrum">
+  <div class="spec-cell spec-exp">
+    <div class="spec-label">Exposure</div>
+    <ul style="font-size:15px;">
+      <li>Contact with a person with infectious TB</li>
+      <li>No immune sensitization confirmed yet</li>
+      <li>IGRA / TST may be negative initially; repeat in 8&ndash;10 weeks</li>
+      <li>Asymptomatic, no clinical or radiographic findings</li>
+      <li>Not infectious</li>
+    </ul>
+  </div>
+  <div class="spec-cell spec-ltbi">
+    <div class="spec-label">Latent TB Infection (LTBI)</div>
+    <ul style="font-size:15px;">
+      <li>Positive IGRA or TST</li>
+      <li>No symptoms, no active disease on imaging</li>
+      <li>Not infectious</li>
+      <li>Lifetime risk of progression: <strong>5&ndash;10%</strong> in immunocompetent adults (highest in first 2 years)</li>
+      <li>Risk dramatically higher with HIV, TNF inhibitors, transplant</li>
+      <li>Treatment prevents future active disease</li>
+    </ul>
+  </div>
+  <div class="spec-cell spec-act">
+    <div class="spec-label">Active TB Disease</div>
+    <ul style="font-size:15px;">
+      <li>Symptoms: cough &gt;2&ndash;3 weeks, night sweats, weight loss, hemoptysis, fever</li>
+      <li>Radiographic findings: upper lobe infiltrates, cavities, miliary pattern</li>
+      <li>Positive AFB smear, NAAT, or culture</li>
+      <li>Pulmonary / laryngeal: infectious (airborne precautions required)</li>
+      <li>Multidrug treatment required; public health notification mandatory</li>
+    </ul>
+  </div>
+</div>
+<div class="callout c-blue" style="margin-top:6px;">
+  <span class="callout-label">IGRA and TST Detect Infection, Not Disease</span>
+  Both tests are indirect immunologic assays for prior sensitization to M. tuberculosis antigens. Neither can distinguish LTBI from active TB. A positive test must always be followed by symptom evaluation and chest imaging before LTBI treatment is started.
+</div>
+</div>
+`},
+
+// 4. IGRA vs TST
+{cls:'slide-content',html:`
+<h2>IGRA vs. TST: Choosing and Interpreting the Right Test</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>IGRA (Preferred in Most Adults)</h3>
+    <div class="card-blue" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--blue);">QuantiFERON-TB Gold Plus / T-SPOT.TB</div>
+      <ul style="font-size:15px;">
+        <li>Single blood draw &mdash; no return visit required</li>
+        <li>Not affected by prior BCG vaccination (preferred in BCG-vaccinated persons)</li>
+        <li>Fewer false positives from nontuberculous mycobacteria than TST</li>
+        <li>Preferred for those unlikely to return for TST reading</li>
+        <li>Preferred in persons with low/intermediate risk of disease progression</li>
+        <li>Cannot monitor response to treatment &mdash; do not repeat to assess treatment efficacy</li>
+      </ul>
+    </div>
+    <h3>TST (Tuberculin Skin Test)</h3>
+    <ul style="font-size:15px;">
+      <li>Intradermal PPD injection; read induration (not erythema) at 48&ndash;72h</li>
+      <li>Widely available; acceptable when IGRA unavailable</li>
+      <li>False positives: prior BCG, NTM infection</li>
+      <li>False negatives: recent infection (&lt;4&ndash;10 weeks), overwhelming active TB, severe immunosuppression, anergy</li>
+      <li>Two-step testing for healthcare workers (booster effect): 7&ndash;21 days after initial test, opposite forearm</li>
+    </ul>
+  </div>
+  <div>
+    <h3>TST Interpretation &mdash; 5 / 10 / 15 mm Thresholds</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Threshold</th><th>Populations</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--red);">&ge;5 mm</strong></td>
+          <td>HIV infection &middot; Close contacts of infectious TB &middot; Organ transplant / immunosuppressed (&ge;15 mg/d prednisone &times;&ge;4 weeks) &middot; Fibrotic CXR changes suggesting old TB</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--yellow);">&ge;10 mm</strong></td>
+          <td>Non-US-born from high-prevalence countries (within 5 years) &middot; Substance use disorder &middot; Residents/employees of congregate settings (prisons, shelters, nursing homes, hospitals) &middot; Diabetes, silicosis, CKD, hematologic malignancy &middot; Low body weight (&lt;90% IBW) &middot; Mycobacteriology lab personnel</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">&ge;15 mm</strong></td>
+          <td>All others with no risk factors for TB</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Who NOT to Test</span>
+      Avoid routine testing in very low-risk persons. False positives in low-prevalence populations create downstream harm: unnecessary workup, inappropriate preventive treatment, and patient anxiety with no benefit.
+    </div>
+    <div class="callout c-blue" style="margin-top:6px;">
+      <span class="callout-label">Healthcare Personnel (NTCA/CDC 2019)</span>
+      Baseline risk assessment + IGRA or TST. <strong>No routine serial annual testing</strong> unless known exposure or ongoing transmission. Annual TB education is still recommended.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 5. POSITIVE TEST — WHAT TO DO
+{cls:'slide-danger',html:`
+<h2>Positive IGRA or TST &mdash; The Mandatory Next Steps</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">Never Start LTBI Treatment Without This Sequence</span>
+  Every positive screening test must be followed by exclusion of active disease before initiating preventive therapy.
+</div>
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <span class="step-title">Take a full symptom history</span>
+    <span class="step-sub">Cough (&gt;2&ndash;3 weeks) &middot; Fever &middot; Night sweats &middot; Weight loss &middot; Hemoptysis &middot; Fatigue &middot; Chest pain. Any of these symptoms in a TST/IGRA-positive patient = evaluate for active TB before LTBI treatment.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <span class="step-title">Obtain a chest radiograph</span>
+    <span class="step-sub">Look for upper lobe infiltrates, cavities, fibronodular changes, pleural effusion, miliary pattern, or lymphadenopathy. A normal radiograph is reassuring but does not completely exclude TB in severely immunocompromised patients.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <span class="step-title">If symptoms OR imaging suggest active disease &mdash; STOP and escalate</span>
+    <span class="step-sub">Do not start LTBI therapy. Place in airborne isolation. Obtain 3 sputum specimens for AFB smear, mycobacterial culture, and NAAT. Notify infection control and public health. HIV test.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <span class="step-title">If asymptomatic AND normal imaging &mdash; diagnose LTBI and offer treatment</span>
+    <span class="step-sub">Screen for HIV. Review medications (rifamycin drug interactions). Select a preferred short-course regimen. Counsel on adverse effects. Provide pyridoxine if isoniazid is used and neuropathy risk is present.</span>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <span class="step-title">Before starting a biologic agent or JAK inhibitor &mdash; always screen first</span>
+    <span class="step-sub">TNF inhibitors, other biologics, and JAK inhibitors substantially increase reactivation risk. IGRA (preferred) or TST + chest radiograph before initiation. Treat LTBI before starting the immunosuppressant unless timing is urgent.</span>
+  </div>
+</div>
+</div>
+`},
+
+// 6. ACTIVE TB — PRESENTATION + IMAGING
+{cls:'slide-content',html:`
+<h2>Active Pulmonary TB: Recognition</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Classic Presentation</h3>
+    <ul>
+      <li>Subacute/chronic cough (&gt;2&ndash;3 weeks) &mdash; often productive</li>
+      <li>Constitutional: night sweats, weight loss, fatigue, fever</li>
+      <li>Hemoptysis in 10&ndash;20% of smear-positive cases</li>
+      <li>Pleuritic chest pain</li>
+      <li>Symptoms often insidious &mdash; weeks before presentation</li>
+    </ul>
+    <h3 style="margin-top:12px;">Imaging Patterns</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Pattern</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Upper lobe cavitary infiltrates</strong></td><td>Classic reactivation; high-burden disease</td></tr>
+        <tr><td><strong>Fibronodular upper lobe changes</strong></td><td>Partially treated or chronic disease</td></tr>
+        <tr><td><strong>Miliary (millet-seed nodules)</strong></td><td>Hematogenous dissemination; immunosuppressed</td></tr>
+        <tr><td><strong>Lower lobe or diffuse infiltrates</strong></td><td>HIV/advanced immunosuppression; primary TB</td></tr>
+        <tr><td><strong>Pleural effusion</strong></td><td>Primary or reactivation; exudative, lymphocyte-predominant</td></tr>
+        <tr><td><strong>Normal chest radiograph</strong></td><td>Advanced HIV (CD4 &lt;200), early primary infection</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div>
+    <h3>High-Risk Groups for Active TB</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Category</th><th>Key Examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Recent infection</strong></td><td>Contact within 2 years; highest reactivation risk window</td></tr>
+        <tr><td><strong>Immunosuppression</strong></td><td>HIV (especially CD4 &lt;200) &middot; TNF inhibitors &middot; JAK inhibitors &middot; Transplant &middot; Glucocorticoids &ge;15 mg/d prednisone &times;&ge;4 weeks</td></tr>
+        <tr><td><strong>Comorbidities</strong></td><td>Silicosis &middot; DM &middot; CKD &middot; Low body weight &middot; Hematologic malignancy &middot; Head/neck cancer</td></tr>
+        <tr><td><strong>Substance use</strong></td><td>Alcohol use disorder &middot; Injection drug use &middot; Smoking</td></tr>
+        <tr><td><strong>Social risk</strong></td><td>Foreign-born from high-prevalence country &middot; Persons without housing &middot; Incarceration &middot; Long-term care facilities</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="flex:0 0 auto;">
+        <img src="data:image/jpeg;base64,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" alt="Reactivation TB — bilateral upper lobe cavitary infiltrates" style="width:200px;border-radius:8px;border:1px solid var(--border);">
+        <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:4px;max-width:200px;line-height:1.3;">Bilateral upper lobe cavitary infiltrates &mdash; classic reactivation TB</div>
+      </div>
+      <div style="flex:1;">
+    <div class="callout c-orange" style="margin:0;">
+      <span class="callout-label">Extrapulmonary TB</span>
+      Pleura &middot; Lymph nodes &middot; CNS (TB meningitis) &middot; Pericardium &middot; Spine (Pott disease) &middot; Genitourinary &middot; Peritoneum. More common with HIV and advanced immunosuppression. Biopsy of affected site: AFB smear, culture, histopathology (caseating granulomas).
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 7. MICROBIOLOGIC WORKUP
+{cls:'slide-accent',html:`
+<h2>Microbiologic Workup for Suspected Active TB</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">The Framework: Smear &rarr; NAAT &rarr; Culture &rarr; Susceptibility</span>
+  All four are complementary. No single test replaces the others. Speed drives smear and NAAT; accuracy and susceptibility data require culture.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Test</th><th>Specimen</th><th>Turnaround</th><th>Role &amp; Limitations</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>AFB Smear Microscopy</strong></td>
+      <td>3 sputum specimens &ge;8h apart (one early morning, &ge;3 mL each). If unable to produce sputum: induced sputum or bronchoscopy.</td>
+      <td>Hours</td>
+      <td>Rapid, cheap. Sensitivity 50&ndash;80% in pulmonary TB. Positive result does not confirm M. tuberculosis (NTM can cause false positives). Requires culture confirmation regardless of result.</td>
+    </tr>
+    <tr>
+      <td><strong>NAAT (e.g., Xpert MTB/RIF)</strong></td>
+      <td>Initial respiratory specimen (first sputum)</td>
+      <td>Hours&ndash;1 day</td>
+      <td>Positive predictive value 95% on smear-positive specimens. Sensitivity 50&ndash;80% on smear-negative. Simultaneously detects rifampin resistance. A negative NAAT does not exclude TB. Does not replace culture for susceptibility data.</td>
+    </tr>
+    <tr>
+      <td><strong>Mycobacterial Culture</strong></td>
+      <td>All specimens (liquid + solid media)</td>
+      <td>2&ndash;6 weeks (liquid: 2&ndash;4 weeks)</td>
+      <td>Gold standard. Required for definitive diagnosis and susceptibility testing. Liquid culture faster; solid culture confirms. Required for every specimen regardless of smear/NAAT result.</td>
+    </tr>
+    <tr>
+      <td><strong>Drug Susceptibility Testing (DST)</strong></td>
+      <td>From culture isolate; rapid molecular DST from specimen</td>
+      <td>Days (molecular) to weeks (phenotypic)</td>
+      <td>Essential to guide therapy. NAAT detects rifampin resistance rapidly. Full phenotypic DST includes isoniazid, rifampin, pyrazinamide, ethambutol. If rifampin-resistant on NAAT: expand to second-line DST immediately.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout c-yellow" style="margin-top:6px;">
+  <span class="callout-label">Blood Cultures in Disseminated TB</span>
+  In suspected miliary or disseminated TB, mycobacterial blood cultures using lysis-centrifugation (isolator) methodology improve yield. Also send LFTs, CBC &mdash; pancytopenia and hepatitis can occur with disseminated disease.
+</div>
+</div>
+`},
+
+// 8. CHAPTER — ISOLATION + INFECTION CONTROL
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">01</div>
+  <div class="ch-title">Infection Control</div>
+  <div class="ch-sub">Airborne isolation is a bedside action. Noncontagious criteria. HCW screening. Public health reporting. This is not paperwork &mdash; it protects patients, staff, and the community.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-red">Airborne Precautions</span>
+    <span class="badge badge-blue">N95 Respirator</span>
+    <span class="badge badge-yellow">Negative-Pressure Room</span>
+    <span class="badge badge-green">3 Negative Smears</span>
+  </div>
+</div>
+`},
+
+// 9. ISOLATION + HCW + PUBLIC HEALTH
+{cls:'slide-content',html:`
+<h2>Airborne Isolation, Release Criteria &amp; Public Health</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Airborne Precautions &mdash; Required for Suspected Pulmonary / Laryngeal TB</h3>
+    <div class="card-red" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--red);">Implement Immediately When TB Is Suspected</div>
+      <ul style="font-size:15px;">
+        <li><strong>Airborne infection isolation room (AIIR)</strong> &mdash; negative-pressure, &ge;12 air changes/hour, exhaust to outside</li>
+        <li><strong>HCW respiratory protection:</strong> fit-tested N95 respirator (not a surgical mask)</li>
+        <li><strong>Patient</strong> wears surgical mask when leaving the room to contain respiratory secretions</li>
+        <li><strong>Notify infection prevention</strong> immediately</li>
+        <li>Discontinue airborne precautions only after approval by infection prevention program</li>
+      </ul>
+    </div>
+    <h3 style="margin-top:10px;">Criteria: When Is a Patient No Longer Contagious?</h3>
+    <p style="font-size:15px;">All three must be met:</p>
+    <ul>
+      <li>Appropriate antimicrobial therapy for <strong>&ge;2 weeks</strong></li>
+      <li>Clinical improvement in signs and symptoms</li>
+      <li><strong>Three negative AFB smears</strong> collected &ge;8 hours apart (one early-morning)</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Smear-Negative &ne; Not Contagious</span>
+      Smear-negative patients are <em>less</em> contagious but may still have active TB. Infection prevention determines when precautions can safely be removed.
+    </div>
+  </div>
+  <div>
+    <h3>Public Health Reporting</h3>
+    <ul>
+      <li>Suspected or confirmed active TB is reportable in all US states</li>
+      <li>Report to local/state health department as soon as suspected</li>
+      <li>Contact investigation identifies exposed close contacts who need screening</li>
+      <li>Directly Observed Therapy (DOT) coordination through public health for active TB</li>
+    </ul>
+    <h3 style="margin-top:12px;">Healthcare Personnel (HCW) Screening &mdash; NTCA/CDC 2019</h3>
+    <div class="card-accent">
+      <div class="card-title">Current Recommendations</div>
+      <ul style="font-size:15px;">
+        <li>Baseline: risk assessment + symptom screen + IGRA or TST (if no prior documented LTBI/TB)</li>
+        <li><strong>No routine serial annual testing</strong> for HCW without known exposure or ongoing transmission</li>
+        <li>Post-exposure evaluation when exposure is identified</li>
+        <li>Annual TB education remains recommended</li>
+        <li>Two-step TST for initial baseline testing (7&ndash;21 days later, opposite forearm) to identify booster effect; not needed if IGRA is used</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 10. CHAPTER — TREATMENT
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">02</div>
+  <div class="ch-title">Treatment</div>
+  <div class="ch-sub">Short-course LTBI regimens. The standard RIPE framework for active disease. Toxicity and drug interactions every resident must know. Drug-resistant TB as a specialist and public health problem.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-green">3HP / 4R / 3HR</span>
+    <span class="badge badge-yellow">RIPE 2+4</span>
+    <span class="badge badge-red">Rifamycin Interactions</span>
+    <span class="badge badge-purple">Bedaquiline</span>
+  </div>
+</div>
+`},
+
+// 11. LTBI TREATMENT
+{cls:'slide-content',html:`
+<h2>LTBI Treatment: Preferred Regimens</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">Goal of LTBI Treatment</span>
+  Prevent future progression to active disease. Especially important in persons with immunosuppression, recent infection, or prior to initiation of biologic or immunosuppressive therapy.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Regimen</th><th>Frequency</th><th>Duration</th><th>Priority</th><th>Key Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--green);">Isoniazid + Rifapentine (3HP)</strong></td>
+      <td>Once weekly</td>
+      <td>3 months (12 doses)</td>
+      <td>Preferred</td>
+      <td>Best completion rates. Can be self-administered or DOT. Rifapentine dose by weight (750 mg if 32.1&ndash;49.9 kg; 900 mg if &ge;50 kg). Major drug interactions (see below). NOT for use in pregnancy (rifamycins).</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--green);">Rifampin (4R)</strong></td>
+      <td>Daily</td>
+      <td>4 months (120 doses)</td>
+      <td>Preferred</td>
+      <td>Good option when isoniazid is not tolerated or when source case is isoniazid-resistant. Major drug interactions. Not in pregnancy.</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--green);">Isoniazid + Rifampin (3HR)</strong></td>
+      <td>Daily</td>
+      <td>3 months (90 doses)</td>
+      <td>Preferred</td>
+      <td>Useful when either 3HP or 4R cannot be used. Drug interactions apply for rifampin component.</td>
+    </tr>
+    <tr>
+      <td><strong>Isoniazid (6H or 9H)</strong></td>
+      <td>Daily</td>
+      <td>6 or 9 months</td>
+      <td>Alternative</td>
+      <td>Longer courses; lower completion rates; more hepatotoxicity than rifamycin-based regimens. Use when rifamycins are contraindicated or not tolerated. 9H preferred over 6H in HIV and other high-risk populations.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="grid-2">
+  <div class="callout c-yellow" style="margin:0;">
+    <span class="callout-label">Pyridoxine (Vitamin B6)</span>
+    Give with isoniazid when neuropathy risk factors are present: diabetes mellitus &middot; CKD &middot; malnutrition &middot; HIV &middot; alcohol use disorder &middot; pregnancy &middot; older adults. Dose: 25&ndash;50 mg daily (100 mg/d if active peripheral neuropathy).
+  </div>
+  <div class="callout c-red" style="margin:0;">
+    <span class="callout-label">Rifamycin Drug Interactions &mdash; Always Check</span>
+    Major interactions: anticoagulants (warfarin &mdash; dramatically reduces INR) &middot; hormonal contraceptives &middot; methadone &middot; many antiretrovirals (PIs, NNRTIs) &middot; corticosteroids &middot; antifungals &middot; anticonvulsants. Orange discoloration of urine, saliva, tears &mdash; counsel patients before prescribing.
+  </div>
+</div>
+</div>
+`},
+
+// 12. ACTIVE TB TREATMENT — RIPE
+{cls:'slide-accent',html:`
+<h2>Active Drug-Susceptible TB: Treatment Framework</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">Fundamental Rule</span>
+  Never use monotherapy. Never use a single new drug to a failing regimen. Resistance emerges from single-drug treatment. Multidrug therapy is mandatory.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Standard Option 1 &mdash; 6-Month Regimen (RIPE)</h3>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Intensive Phase &mdash; 8 weeks (56 doses)</div>
+      <strong>R</strong>ifampin + <strong>I</strong>soniazid + <strong>P</strong>yrazinamide + <strong>E</strong>thambutol daily
+    </div>
+    <div class="card-green">
+      <div class="card-title" style="color:var(--green);">Continuation Phase &mdash; 18 weeks (126 doses)</div>
+      Isoniazid + Rifampin daily (ethambutol can be stopped once susceptibility confirms no INH or RIF resistance)
+    </div>
+    <div class="callout c-blue" style="margin-top:8px;">
+      <span class="callout-label">Why Ethambutol Is Included Up Front</span>
+      Protects the regimen if isoniazid resistance is present until susceptibility data return. Can be discontinued once susceptibility confirms full first-line susceptibility. A classic board question.
+    </div>
+    <div class="callout c-yellow" style="margin-top:6px;">
+      <span class="callout-label">Extending Continuation Phase</span>
+      7 months (31 weeks) instead of 4 months when: cavitation on initial CXR AND positive culture at 2 months of therapy. Expert guidance recommended.
+    </div>
+  </div>
+  <div>
+    <h3>Standard Option 2 &mdash; 4-Month Regimen (Select Patients)</h3>
+    <div class="card-blue" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--blue);">Intensive Phase &mdash; 8 weeks</div>
+      Rifapentine + Moxifloxacin + Isoniazid + Pyrazinamide daily (at least 5/7 doses under DOT)
+    </div>
+    <div class="card-blue">
+      <div class="card-title" style="color:var(--blue);">Continuation Phase &mdash; 9 weeks</div>
+      Rifapentine + Moxifloxacin + Isoniazid daily (at least 5/7 doses under DOT)
+    </div>
+    <p style="font-size:15px;margin-top:8px;">ATS/CDC/ERS/IDSA 2025 guideline: equally effective in select patients. Cannot miss doses &mdash; strict timing required. Not yet for all populations including HIV on complex ART.</p>
+    <h3 style="margin-top:10px;">General Principles</h3>
+    <ul style="font-size:15px;">
+      <li>HIV test every patient with active TB</li>
+      <li>Pyridoxine with all isoniazid-containing regimens when neuropathy risk present</li>
+      <li>Sputum evaluation at 1 and 2 months to assess clearance</li>
+      <li>Directly Observed Therapy (DOT) preferred &mdash; coordinate with public health</li>
+      <li>Culture conversion at 2 months is a key prognostic marker</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+
+// 13. DRUG TOXICITY TABLE
+{cls:'slide-content',html:`
+<h2>First-Line Drug Toxicity &mdash; What Residents Must Know</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Drug</th><th>Key Adverse Effects</th><th>Monitoring / Pearls</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--red);">Isoniazid (INH)</strong></td>
+      <td>Hepatotoxicity (hepatitis, elevated LFTs) &middot; Peripheral neuropathy &middot; Lupus-like syndrome &middot; Rash</td>
+      <td>Hepatitis risk increases with age and alcohol use. Give pyridoxine to neuropathy-risk patients. Routine LFT monitoring not required unless hepatotoxicity risk factors present (HIV, chronic hepatitis, alcohol use, pregnancy, underlying liver disease, concurrent hepatotoxic drugs).</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--blue);">Rifampin / Rifapentine</strong></td>
+      <td>Hepatotoxicity &middot; Rash &middot; GI upset &middot; Orange discoloration of body fluids &middot; Thrombocytopenia (rifabutin more common) &middot; Cytopenias</td>
+      <td>Major drug interactions (anticoagulants, OCPs, methadone, antiretrovirals &mdash; see prior slide). Contraindicated in pregnancy. Rifapentine broadly contraindicated in HIV (unacceptable failure/relapse rate per MKSAP 20 drug table; note: some 2025 guideline nuance for select HIV regimens &mdash; defer to ID/HIV specialist).</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--green);">Pyrazinamide (PZA)</strong></td>
+      <td>Hepatotoxicity &middot; Hyperuricemia (may precipitate gout) &middot; GI upset &middot; Rash &middot; Arthralgia</td>
+      <td>Dose-adjust for renal impairment. May worsen glucose control in DM. Baseline uric acid helpful.</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--orange);">Ethambutol (EMB)</strong></td>
+      <td>Optic neuritis (decreased acuity, color vision loss) &middot; Rash</td>
+      <td>Baseline visual acuity and color vision before starting. Periodic testing during therapy. Instruct patients to report visual changes immediately. Dose-adjust for renal impairment. Discontinue if visual symptoms develop.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout c-red" style="margin-top:8px;">
+  <span class="callout-label">Hypersensitivity Reaction During RIPE</span>
+  If a hypersensitivity reaction develops, stop all four drugs. Sequential rechallenge one at a time to identify the culprit. Do not rechallenge with multiple agents simultaneously.
+</div>
+<div class="callout c-yellow" style="margin-top:6px;">
+  <span class="callout-label">Before Starting Any Anti-TB Regimen</span>
+  CBC &middot; LFTs &middot; creatinine &middot; visual acuity/color vision (EMB) &middot; uric acid (PZA) &middot; HIV test &middot; hepatitis B and C serology. Review full medication list for rifamycin interactions.
+</div>
+</div>
+`},
+
+// 14. DRUG-RESISTANT TB
+{cls:'slide-accent',html:`
+<h2>Drug-Resistant TB &mdash; Framework for Residents</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">Never Manage Drug-Resistant TB Without Expert Consultation</span>
+  MDR-TB and XDR-TB are specialist and public health emergencies. The resident's role is recognition, rapid molecular testing, airborne isolation, and urgent escalation &mdash; not regimen selection.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Definitions</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MDR-TB</strong></td><td>Resistant to <em>at least</em> isoniazid + rifampin</td></tr>
+        <tr><td><strong>Pre-XDR-TB</strong></td><td>MDR-TB + resistance to any fluoroquinolone</td></tr>
+        <tr><td><strong>XDR-TB</strong></td><td>MDR-TB + resistance to any fluoroquinolone + &ge;1 additional Group A drug (bedaquiline or linezolid)</td></tr>
+        <tr><td><strong>Isoniazid-resistant TB</strong></td><td>Susceptible to rifampin; treat with RIF + EMB + PZA &times;6 months + fluoroquinolone</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">When to Suspect Drug Resistance</span>
+      Prior TB treatment &middot; Exposure to a known drug-resistant case &middot; Born in/resided in high MDR-TB prevalence country &middot; Rifampin resistance detected on initial NAAT &middot; Failure to culture-convert at 2 months
+    </div>
+  </div>
+  <div>
+    <h3>Conventional MDR-TB (Still Used)</h3>
+    <ul>
+      <li><strong>Intensive phase:</strong> 5 drugs, 5&ndash;7 months after culture conversion</li>
+      <li><strong>Continuation phase:</strong> 4 drugs, total treatment 15&ndash;21 months after culture conversion (MKSAP 20; ATS/IDSA 2019)</li>
+      <li>Regimen must use drugs with documented or high-likelihood susceptibility</li>
+    </ul>
+    <h3 style="margin-top:10px;">Modern DR-TB &mdash; The Bedaquiline Era</h3>
+    <ul>
+      <li>Paradigm shift: away from injectable-heavy regimens toward all-oral regimens</li>
+      <li><strong>Bedaquiline</strong> (FDA-approved): inhibits mycobacterial ATP synthase; novel mechanism; central to MDR-TB regimens. QT prolongation &mdash; monitor ECG.</li>
+      <li><strong>Pretomanid</strong> (FDA-approved): nitroimidazole; used with bedaquiline + linezolid (BPaL) for XDR-TB or nonresponsive MDR-TB</li>
+      <li><strong>BPaLM</strong> (Bed + pretomanid + linezolid + moxifloxacin): 6-month all-oral regimen; non-inferior to 15&ndash;24 month regimens for rifampin-resistant TB (WHO 2022, ATS/CDC/ERS/IDSA 2025)</li>
+      <li>Linezolid: effective but peripheral neuropathy, anemia, thrombocytopenia with prolonged use</li>
+    </ul>
+    <div class="callout c-purple" style="margin-top:8px;">
+      <span class="callout-label">Rapid Molecular DST Is Critical</span>
+      NAAT (Xpert MTB/RIF) provides rifampin resistance data within hours. If rifampin-resistant: immediately expand susceptibility testing to second-line drugs and contact TB expert and public health. Do not wait for phenotypic DST to escalate.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 15. SPECIAL POPULATIONS
+{cls:'slide-content',html:`
+<h2>Special Populations</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <div class="card-red" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--red);">HIV and TB &mdash; A High-Stakes Interaction</div>
+      <ul style="font-size:15px;">
+        <li>TB can occur at <em>any</em> CD4 count; risk is markedly elevated throughout HIV infection</li>
+        <li>At CD4 &lt;200: imaging is atypical &mdash; lower/diffuse infiltrates, normal CXR possible, extrapulmonary disease more common</li>
+        <li>At CD4 &lt;100: miliary disease, disseminated TB, bacteremia possible</li>
+        <li>Test every TB patient for HIV and every HIV patient for LTBI</li>
+        <li>Rifamycin drug interactions with antiretrovirals are major &mdash; rifabutin often substituted for rifampin (dose adjustment required with PIs/NNRTIs); rifapentine broadly contraindicated in HIV (unacceptable failure/relapse rate)</li>
+        <li>ART timing: start ART 2&ndash;8 weeks after TB therapy in most HIV/TB (CD4 &lt;50: start ART within 2 weeks, except CNS TB)</li>
+        <li>IRIS (immune reconstitution inflammatory syndrome): paradoxical worsening after ART initiation despite effective TB therapy &mdash; diagnose by exclusion; glucocorticoids for severe cases</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="card-yellow" style="margin-bottom:10px;">
+      <div class="card-title" style="color:var(--yellow);">TNF Inhibitors, Biologics, and JAK Inhibitors</div>
+      <ul style="font-size:15px;">
+        <li>TNF inhibitors substantially increase reactivation risk &mdash; estimated 5&ndash;25&times; increase</li>
+        <li>Screen before initiation: IGRA (preferred) or TST + symptom review + chest radiograph</li>
+        <li>Treat LTBI before starting the biologic whenever timing allows</li>
+        <li>Preferred LTBI regimen when starting biologic: 3HP or 4R (shorter, better completion)</li>
+        <li>LTBI treatment does not completely eliminate reactivation risk once biologic is started &mdash; continued vigilance required</li>
+        <li>Same screening principle applies for JAK inhibitors, transplant workup, and initiation of long-term corticosteroids</li>
+      </ul>
+    </div>
+    <div class="card-accent">
+      <div class="card-title">Pregnancy and TB</div>
+      <ul style="font-size:15px;">
+        <li>Active TB in pregnancy requires immediate treatment &mdash; untreated TB poses greater risk to mother and fetus than drug therapy</li>
+        <li>RIPE safe in pregnancy except: pyrazinamide (avoid in first trimester per some guidelines) and streptomycin (ototoxicity)</li>
+        <li>LTBI treatment in pregnancy: rifamycins contraindicated. Options: 6H or 9H isoniazid + pyridoxine; some experts defer until after delivery unless immunocompromised</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 16. CLINICAL PEARLS
+{cls:'slide-accent',html:`
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"><strong>IGRA and TST detect infection, not disease.</strong> A positive screening test is the beginning of the evaluation, not the end. Every positive test requires symptom review, chest imaging, and active disease exclusion before LTBI treatment is started. Skipping this step is the most dangerous error in TB management.</div>
+<div class="pearl"><strong>Airborne isolation is a bedside action, not a documentation task.</strong> Suspected pulmonary or laryngeal TB requires a negative-pressure room and N95 respirator use by staff immediately &mdash; before sputum results return. Once TB is suspected clinically, delay in isolation exposes other patients and staff.</div>
+<div class="pearl"><strong>A normal chest radiograph does not exclude active TB.</strong> Advanced HIV (CD4 &lt;200), miliary disease, and primary TB in immunocompromised patients can present with normal or atypical imaging. TB must remain in the differential regardless of CXR findings when clinical suspicion is present.</div>
+<div class="pearl"><strong>Ethambutol is included in RIPE to protect the regimen, not because it is the most potent drug.</strong> It guards against isoniazid monotherapy in the setting of unrecognized INH resistance. It can be stopped once susceptibility confirms full first-line sensitivity. Board favorite.</div>
+<div class="pearl"><strong>Check the full medication list before prescribing rifamycins.</strong> Rifampin is a potent inducer of CYP450 enzymes. It dramatically lowers warfarin INR, reduces hormonal contraceptive levels, reduces antiretroviral exposure, and interacts with methadone, antifungals, and corticosteroids. A rifamycin-naive prescriber can cause serious harm by ignoring these interactions.</div>
+<div class="pearl"><strong>Screen for TB before starting a biologic agent or JAK inhibitor.</strong> TNF inhibitors increase TB reactivation risk 5&ndash;25-fold. IGRA (preferred) or TST + chest radiograph must be done before initiation. LTBI should be treated before the biologic is started whenever timing permits. This is now standard pre-biologic practice.</div>
+<div class="pearl"><strong>MDR-TB is a specialist and public health emergency &mdash; not a ward management decision.</strong> If rifampin resistance appears on NAAT, immediately expand susceptibility testing, notify infection control and public health, and involve TB experts. Do not select a new empiric regimen without guidance. Adding one drug to a failing regimen selects for further resistance.</div>
+</div>
+`},
+
+// 17. REFERENCES
+{cls:'slide-content',html:`
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>Saukkonen JJ, Duarte R, Munsiff SS, et al. "Updates on the Treatment of Drug-Susceptible and Drug-Resistant Tuberculosis: An Official ATS/CDC/ERS/IDSA Clinical Practice Guideline." <em>Am J Respir Crit Care Med.</em> 2025;211:15&ndash;33. [Most current TB treatment guideline; 4-month rifapentine-moxifloxacin regimen; MDR-TB frameworks]</li>
+  <li>Shah M, Dorman SE. "Latent Tuberculosis Infection." <em>N Engl J Med.</em> 2021;385:2271&ndash;2280. [Comprehensive LTBI review; IGRA vs TST; preferred LTBI regimens; drug interactions]</li>
+  <li>US Preventive Services Task Force, Mangione CM, Barry MJ, et al. "Screening for Latent Tuberculosis Infection in Adults: USPSTF Recommendation Statement." <em>JAMA.</em> 2023;329:1495&ndash;1509. [Who to screen; risk-based approach; IGRA preferred]</li>
+  <li>CDC. "Latent TB Infection Testing and Treatment: Summary of US Recommendations." 2020. [3HP, 4R, 3HR as preferred LTBI regimens; pyridoxine guidance]</li>
+  <li>Lewinsohn DM, Leonard MK, LoBue PA, et al. "Official ATS/IDSA/CDC Clinical Practice Guidelines: Diagnosis of Tuberculosis in Adults and Children." <em>Clin Infect Dis.</em> 2017;64:111&ndash;115. [AFB smear, NAAT, culture framework; 3-specimen protocol]</li>
+  <li>Sosa LE, Njie GJ, Lobato MN, et al. "Tuberculosis Screening, Testing, and Treatment of US Health Care Personnel: Recommendations from the NTCA and CDC, 2019." <em>MMWR.</em> 2019;68(19):439&ndash;443. [No routine annual HCW testing; baseline risk assessment; two-step TST]</li>
+  <li>Nahid P, Mase SR, Migliori GB, et al. "Treatment of Drug-Resistant Tuberculosis: An Official ATS/CDC/ERS/IDSA Clinical Practice Guideline." <em>Am J Respir Crit Care Med.</em> 2019;200:e93&ndash;e142. [MDR-TB regimen principles; bedaquiline; injectable-sparing approaches]</li>
+  <li>Domínguez J, Boeree MJ, Cambau E, et al. "Clinical Implications of Molecular Drug Resistance Testing for Mycobacterium tuberculosis: A 2023 TBnet/RESIST-TB Consensus Statement." <em>Lancet Infect Dis.</em> 2023. [Rapid molecular DST; Xpert MTB/RIF; actionability of resistance results]</li>
+  <li>Carpenter SM, Bold TD. "How Do I Navigate Latent Tuberculosis Diagnosis?" <em>NEJM Evid.</em> 2022. [IGRA vs TST comparison; practical decision framework]</li>
+  <li>Constance Benson, John Brooks, et al. "Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents With HIV." IDSA/OARAC, 2025. [TB in HIV; ART timing; rifabutin substitution; IRIS]</li>
+  <li>MKSAP 20. "Mycobacterium tuberculosis Infection." <em>Infectious Disease.</em> American College of Physicians, 2025.</li>
+</ol>
+</div>
+`},
+
+];
+
+const deck=document.getElementById('deck'),counter=document.getElementById('slide-counter'),
+  btnPrev=document.getElementById('btn-prev'),btnNext=document.getElementById('btn-next'),
+  bar=document.getElementById('progress-bar');
+let cur=0;
+SLIDES.forEach((s,i)=>{
+  const el=document.createElement('div');
+  el.className='slide '+s.cls; el.innerHTML=s.html;
+  if(i===0)el.classList.add('active');
+  deck.appendChild(el);
+});
+const slides=deck.querySelectorAll('.slide');
+function goTo(n){
+  if(n<0||n>=slides.length)return;
+  slides[cur].classList.remove('active'); cur=n;
+  slides[cur].classList.add('active');
+  const b=slides[cur].querySelector('.slide-body'); if(b)b.scrollTop=0;
+  counter.textContent=(cur+1)+' / '+slides.length;
+  btnPrev.disabled=cur===0; btnNext.disabled=cur===slides.length-1;
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+}
+btnPrev.addEventListener('click',()=>goTo(cur-1));
+btnNext.addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();goTo(cur+1);}
+  if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();goTo(cur-1);}
+});
+let tx=0;
+deck.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+deck.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)dx<0?goTo(cur+1):goTo(cur-1);
+},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>

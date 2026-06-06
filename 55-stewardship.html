@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 55 — Stewardship and Emerging Resistance | Morning Report</title>
+<style>
+  :root{
+    --bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+    --blue:#0969da;--blue-bg:#ddf4ff;--blue-border:#54aeff;
+    --green:#1a7f37;--green-bg:#dafbe1;--green-border:#4ac26b;
+    --yellow:#9a6700;--yellow-bg:#fff8c5;--yellow-border:#d4a72c;
+    --red:#cf222e;--red-bg:#ffebe9;--red-border:#ff8182;
+    --purple:#8250df;--purple-bg:#fbefff;--purple-border:#c297ff;
+    --orange:#bc4c00;--orange-bg:#fff1e5;--orange-border:#fb8f44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);font-size:18px;line-height:1.5;}
+  #deck{width:100%;height:100%;position:relative;overflow:hidden;}
+  .slide{position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;flex-direction:column;padding:34px 52px 54px;
+    opacity:0;pointer-events:none;transition:opacity .2s;overflow:hidden;}
+  .slide.active{opacity:1;pointer-events:all;}
+  .slide-body{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-right:4px;}
+  .slide-body::-webkit-scrollbar{width:3px;}
+  .slide-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+  .slide-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+  .slide h1{font-size:38px;font-weight:700;line-height:1.1;margin-bottom:14px;}
+  .slide h2{font-size:26px;font-weight:700;padding-bottom:9px;border-bottom:2px solid var(--border);margin-bottom:14px;}
+  .slide h3{font-size:19px;font-weight:600;margin:12px 0 6px;}
+  .slide p{font-size:16px;margin-bottom:8px;}
+  .slide ul,.slide ol{padding-left:20px;margin-bottom:8px;}
+  .slide li{font-size:16px;margin-bottom:5px;line-height:1.4;}
+  .slide strong{font-weight:600;}
+  .tagline{font-size:19px;color:var(--muted);max-width:660px;line-height:1.5;margin-bottom:20px;}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .badge{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;border:1px solid;}
+  .badge-blue  {background:var(--blue-bg);  color:var(--blue);  border-color:var(--blue-border);}
+  .badge-green {background:var(--green-bg); color:var(--green); border-color:var(--green-border);}
+  .badge-red   {background:var(--red-bg);   color:var(--red);   border-color:var(--red-border);}
+  .badge-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border);}
+  .badge-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border);}
+  .badge-orange{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border);}
+  .callout{border-radius:8px;padding:11px 15px;margin:9px 0;border-left:4px solid;font-size:15px;line-height:1.5;}
+  .callout-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:3px;}
+  .c-blue  {background:var(--blue-bg);  border-color:var(--blue);  color:#0550ae;} .c-blue   .callout-label{color:var(--blue);}
+  .c-yellow{background:var(--yellow-bg);border-color:var(--yellow-border);color:var(--yellow);} .c-yellow .callout-label{color:var(--yellow);}
+  .c-red   {background:var(--red-bg);   border-color:var(--red);   color:#82071e;} .c-red    .callout-label{color:var(--red);}
+  .c-green {background:var(--green-bg); border-color:var(--green); color:#116329;} .c-green  .callout-label{color:var(--green);}
+  .c-orange{background:var(--orange-bg);border-color:var(--orange-border);color:var(--orange);} .c-orange .callout-label{color:var(--orange);}
+  .c-purple{background:var(--purple-bg);border-color:var(--purple);color:#5a32a3;} .c-purple .callout-label{color:var(--purple);}
+  .table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin:9px 0;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--bg3);color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:14px;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--bg2);}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:9px 0;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:9px 0;}
+  .card      {background:var(--bg);        border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-red  {background:var(--red-bg);    border:1px solid var(--red-border);   border-radius:10px;padding:13px 15px;}
+  .card-green{background:var(--green-bg);  border:1px solid var(--green-border); border-radius:10px;padding:13px 15px;}
+  .card-blue {background:var(--blue-bg);   border:1px solid var(--blue-border);  border-radius:10px;padding:13px 15px;}
+  .card-yellow{background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:10px;padding:13px 15px;}
+  .card-orange{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:10px;padding:13px 15px;}
+  .card-purple{background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:10px;padding:13px 15px;}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+  .refs{font-size:13px;color:var(--muted);line-height:1.7;}
+  .refs li{margin-bottom:7px;}
+  #nav{position:fixed;bottom:0;left:0;right:0;height:44px;background:var(--bg);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:200;user-select:none;}
+  .nav-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 14px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;}
+  .nav-btn:hover{background:var(--bg2);}
+  .nav-btn:disabled{opacity:.3;cursor:default;}
+  #slide-counter{font-size:14px;color:var(--muted);font-weight:500;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--blue);transition:width .2s;z-index:300;}
+  @media(max-width:720px){
+    .slide{padding:18px 14px 54px;}
+    .slide h1{font-size:26px;} .slide h2{font-size:20px;}
+    .grid-2,.grid-3{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+<script>
+const SLIDES = [
+
+// 1. TITLE
+{html:`
+<div class="slide-label">Topic 55 &middot; Infectious Disease</div>
+<h1>Stewardship and Emerging Resistance</h1>
+<p class="tagline">Antimicrobial stewardship principles. ESBL, CRE, and MDR gram-negatives. Novel antibiotics. OPAT. Colistin, fosfomycin, minocycline. IV-to-oral conversion.</p>
+<div class="badge-row">
+  <span class="badge badge-red">MDR Gram-Negatives</span>
+  <span class="badge badge-blue">Stewardship</span>
+  <span class="badge badge-orange">Novel Agents</span>
+  <span class="badge badge-green">OPAT</span>
+  <span class="badge badge-yellow">MKSAP 20 &middot; IDSA 2024</span>
+</div>
+<div style="margin-top:26px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// 2. ANTIMICROBIAL STEWARDSHIP — PRINCIPLES
+{html:`
+<h2>Antimicrobial Stewardship — Core Elements and Strategies</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>MKSAP 20 — Key Stewardship Components</h3>
+    <ul>
+      <li>Avoiding unnecessary antibiotic use</li>
+      <li>Simplifying unnecessary combination therapy</li>
+      <li><strong>Avoiding double anaerobic coverage</strong></li>
+      <li>Converting intravenous to oral agents</li>
+      <li>Streamlining de-escalation</li>
+      <li>Minimizing therapy duration</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Antibiotic Adverse Effects — MKSAP 20</span>
+      Risk per antibiotic per patient: ~5%. Stewardship goals include minimizing CDI risk and emergence of resistance. <strong>Fluoroquinolone-specific risks:</strong> QT prolongation, aortic aneurysm/dissection, hypoglycemia, tendinitis and tendon rupture.
+    </div>
+    <h3 style="margin-top:10px;">IV-to-Oral Conversion (MKSAP 20)</h3>
+    <p style="font-size:15px;">Criteria supporting readiness:</p>
+    <ul>
+      <li>Temperature &le;38.0&deg;C (100.4&deg;F)</li>
+      <li>Improving leukocyte count</li>
+      <li>Clinical stability and improvement</li>
+      <li>Functioning GI tract</li>
+      <li>No indication for IV therapy</li>
+      <li>Suitable oral alternative with good oral bioavailability available</li>
+    </ul>
+    <div class="callout c-blue">
+      <span class="callout-label">High Oral Bioavailability Agents (MKSAP 20)</span>
+      Fluoroquinolones, metronidazole, trimethoprim-sulfamethoxazole, doxycycline — all support IV-to-oral conversion.
+    </div>
+  </div>
+  <div>
+    <h3>Combination Antibiotic Therapy (MKSAP 20)</h3>
+    <div class="callout c-red">
+      <span class="callout-label">MKSAP 20 Key Point</span>
+      <strong>Combination antibiotic therapy does NOT prevent the emergence of resistance.</strong> It may be considered for: (1) empiric broadening pending cultures; (2) synergistic activity in specific situations — enterococcal endocarditis and CRE bacteremia.
+    </div>
+    <h3 style="margin-top:10px;">Scope of the Problem</h3>
+    <ul>
+      <li>~201.9 million outpatient antibiotic prescriptions dispensed in US in 2020; at least 28% unnecessary (MKSAP 20)</li>
+      <li>Most unnecessary Rx: acute respiratory infections (usually viral) and asymptomatic bacteriuria</li>
+      <li>~50% of hospitalized patients receive antibiotics; 50% of these are unnecessary or inappropriate (MKSAP 20)</li>
+    </ul>
+    <h3 style="margin-top:10px;">High-Risk Antibiotics for CDI (MKSAP 20)</h3>
+    <div class="card-red">
+      <div class="card-title">Target for Stewardship — CDI Risk</div>
+      Clindamycin, fluoroquinolones, and broad-spectrum antibiotics — highest CDI risk per MKSAP 20. Stewardship teams should monitor and minimize use.
+    </div>
+    <div class="callout c-green" style="margin-top:8px;">
+      <span class="callout-label">ID Consultation Value</span>
+      Stewardship teams include an <strong>infectious diseases physician and a dedicated pharmacist</strong>. ID consultation should be considered for infections with antibiotic-resistant organisms (MKSAP 20).
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 3. RESISTANT ORGANISMS — MKSAP 20 FRAMEWORK
+{html:`
+<h2>Antibiotic-Resistant Organisms — MKSAP 20 Framework</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Problematic Resistant Organisms (MKSAP 20)</h3>
+    <div class="card-red" style="margin-bottom:8px;">
+      <div class="card-title">The ESKAPE Pathogens</div>
+      <ul>
+        <li>Enterococcus faecium</li>
+        <li>Staphylococcus aureus</li>
+        <li>Klebsiella pneumoniae</li>
+        <li>Acinetobacter species</li>
+        <li>Pseudomonas aeruginosa</li>
+        <li>Enterobacter species</li>
+      </ul>
+    </div>
+    <h3>ESBL Detection (MKSAP 20)</h3>
+    <p style="font-size:15px;">ESBL presence can be inferred from antibiotic susceptibility pattern: <strong>resistance to cefotaxime, ceftazidime, ceftriaxone, or cefepime</strong>.</p>
+    <div class="callout c-yellow">
+      <span class="callout-label">ESBL Treatment — MKSAP 20</span>
+      <strong>Carbapenems are the preferred treatment</strong> for serious infections caused by ESBL-producing organisms (MKSAP 20). For uncomplicated cystitis caused by ESBL <em>E. coli</em>: oral fosfomycin (achieves high urine concentrations).
+    </div>
+  </div>
+  <div>
+    <h3>CRE Resistance Mechanisms (MKSAP 20)</h3>
+    <p style="font-size:15px;">CRE includes ESBL-producing and carbapenemase-producing organisms:</p>
+    <ul>
+      <li><strong>KPC (Klebsiella pneumoniae carbapenemase):</strong> destroys carbapenems; serine carbapenemase</li>
+      <li><strong>New Delhi metallo-&beta;-lactamase (NDM):</strong> destroys carbapenems; zinc-dependent; NOT inhibited by current BLIs alone</li>
+    </ul>
+    <h3 style="margin-top:10px;">Treatment Options for KPC-CRE (MKSAP 20)</h3>
+    <ul>
+      <li>Tigecycline</li>
+      <li>Ceftazidime-avibactam</li>
+      <li>Meropenem-vaborbactam</li>
+      <li>Imipenem-cilastatin-relebactam (newer)</li>
+      <li>Cefiderocol (newer)</li>
+    </ul>
+    <div class="callout c-orange">
+      <span class="callout-label">MDR Pseudomonas (MKSAP 20)</span>
+      <strong>Ceftolozane-tazobactam</strong> is an option for multidrug-resistant <em>P. aeruginosa</em> infections (MKSAP 20 key point).
+    </div>
+    <div class="callout c-blue">
+      <span class="callout-label">ID Consultation Required (MKSAP 20)</span>
+      An infectious diseases consultation should be considered for all infections with antibiotic-resistant organisms — few effective antibiotics are available and selection is complex.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 4. SPECIFIC AGENTS — MKSAP 20 KEY POINTS
+{html:`
+<h2>Antibiotics for Resistant Organisms — MKSAP 20 Key Points</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Minocycline (MKSAP 20 Key Point)</h3>
+    <div class="callout c-blue">
+      <span class="callout-label">MKSAP 20 Key Point</span>
+      Minocycline has activity against <strong>multidrug-resistant Acinetobacter</strong> and <strong>Stenotrophomonas maltophilia</strong>.
+    </div>
+    <ul>
+      <li>Used for ventilator-associated pneumonia caused by MDR Acinetobacter (80% clinical response rate per MKSAP 20)</li>
+      <li>Stenotrophomonas maltophilia has intrinsic resistance to many agents; minocycline is useful</li>
+      <li>In vitro susceptibility to minocycline can be inferred from susceptibility to tetracycline — but some tetracycline-resistant strains are sensitive to minocycline</li>
+    </ul>
+    <h3 style="margin-top:10px;">Fosfomycin (MKSAP 20 Key Point)</h3>
+    <div class="callout c-green">
+      <span class="callout-label">MKSAP 20 Key Point</span>
+      Oral fosfomycin achieves <strong>high concentrations in the urine</strong>, making it useful for treating <strong>uncomplicated cystitis caused by ESBL-producing <em>E. coli</em></strong>.
+    </div>
+    <ul>
+      <li>Bactericidal; gram-negative and gram-positive activity (including MRSA and VRE)</li>
+      <li><strong>NOT recommended</strong> for upper urinary tract infections (pyelonephritis) or for treatment of other MDR gram-negative pathogens</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Colistin (MKSAP 20 Key Point)</h3>
+    <div class="callout c-red">
+      <span class="callout-label">MKSAP 20 Key Point</span>
+      <strong>Nephrotoxicity occurs in up to 50% of patients</strong> treated with colistin, although it is usually reversible.
+    </div>
+    <ul>
+      <li>Polymyxin E; bactericidal; IV or nebulized aerosol</li>
+      <li>Used for multidrug- and pan-resistant aerobic gram-negative infections including <em>P. aeruginosa</em></li>
+      <li>Proteus, Providencia, Burkholderia, Morganella, and Serratia are <strong>intrinsically resistant</strong> to colistin</li>
+      <li>Colistin resistance described in some MDR gram-negatives (mostly carbapenemase-producing <em>K. pneumoniae</em>)</li>
+    </ul>
+    <h3 style="margin-top:10px;">Newer Agents (MKSAP 20 Table)</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Agent</th><th>Class</th><th>Key MKSAP Indications</th><th>Cautions</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cefiderocol</strong></td><td>Siderophore cephalosporin</td><td>Complicated UTI; HAP/VAP (susceptible organisms)</td><td>Increased all-cause mortality observed in CRE infections in one trial (CREDIBLE-CR)</td></tr>
+        <tr><td><strong>Imipenem-cilastatin + relebactam</strong></td><td>Carbapenem + new-gen BLI</td><td>KPC-CRE UTI/cIAI; HAP/VAP; <em>P. aeruginosa</em></td><td>NOT active against carbapenem-resistant Acinetobacter; seizure risk increased with valproic acid</td></tr>
+        <tr><td><strong>Sulbactam-durlobactam</strong></td><td>&beta;-lactam + BLI</td><td>HAP/VAP caused by <em>Acinetobacter baumannii</em> complex only</td><td>Activity limited to Acinetobacter</td></tr>
+        <tr><td><strong>Lefamulin</strong></td><td>Pleuromutilin</td><td>CABP (<em>S. pneumoniae</em>, MSSA, <em>Legionella</em>, <em>Mycoplasma</em>, <em>Chlamydia</em>)</td><td>QT prolongation; no activity vs. <em>P. aeruginosa</em> or <em>Acinetobacter</em></td></tr>
+        <tr><td><strong>Cefepime + enmetazobactam</strong></td><td>Cephalosporin + BLI</td><td>Complicated UTI/pyelonephritis</td><td>Neurotoxicity</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 5. CRE TREATMENT — MECHANISM MATTERS
+{html:`
+<h2>CRE Treatment — Carbapenemase Type Determines Therapy</h2>
+<div class="slide-body">
+<p style="font-size:15px;margin-bottom:8px;">Treatment of CRE depends on identifying the carbapenemase mechanism. Request carbapenemase testing (PCR or phenotypic) for all CRE isolates.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Carbapenemase</th><th>Type</th><th>Preferred Treatment (IDSA 2024)</th><th>Key Pitfall</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>KPC</strong></td>
+      <td>Serine carbapenemase — most common in US</td>
+      <td>Meropenem-vaborbactam, ceftazidime-avibactam, or imipenem-relebactam (all equivalent; meropenem-vaborbactam slightly favored for lower resistance emergence)</td>
+      <td>All three preferred agents have &gt;95% activity. Also listed in MKSAP 20: tigecycline, ceftazidime-avibactam, meropenem-vaborbactam.</td>
+    </tr>
+    <tr>
+      <td><strong>OXA-48</strong></td>
+      <td>Serine carbapenemase — Europe, Middle East, North Africa</td>
+      <td>Ceftazidime-avibactam</td>
+      <td><strong>Meropenem-vaborbactam and imipenem-relebactam have LIMITED activity</strong> — avoid even if susceptible in vitro. Cefiderocol alternative.</td>
+    </tr>
+    <tr>
+      <td><strong>NDM / VIM / IMP (MBLs)</strong></td>
+      <td>Metallo-&beta;-lactamases — zinc-dependent; India, South Asia, globally emerging</td>
+      <td>Ceftazidime-avibactam <strong>+</strong> aztreonam (combination) OR aztreonam-avibactam (FDA approved 2025, first single-agent for MBL-CRE) OR cefiderocol</td>
+      <td>No single BL/BLI covers MBLs alone. Aztreonam is stable against MBLs but hydrolyzed by co-produced ESBLs &mdash; avibactam inhibits those ESBLs. Avibactam, vaborbactam, and relebactam do NOT inhibit MBLs.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="grid-2" style="margin-top:8px;">
+  <div class="callout c-red">
+    <span class="callout-label">Why Carbapenemase Type Matters</span>
+    KPC: serine carbapenemase &rarr; inhibited by avibactam, vaborbactam, and relebactam.<br>
+    OXA-48: serine &rarr; inhibited by avibactam ONLY (NOT vaborbactam or relebactam).<br>
+    NDM/VIM/IMP: zinc-dependent metallo-&beta;-lactamases &rarr; NOT inhibited by any currently available BLI. Aztreonam is the only &beta;-lactam stable against MBLs.
+  </div>
+  <div class="callout c-yellow">
+    <span class="callout-label">Agents to Avoid for CRE (IDSA 2024)</span>
+    Colistin monotherapy — inferior outcomes, significant nephrotoxicity; no longer first-line.<br>
+    Tigecycline monotherapy for bacteremia — inadequate serum levels.<br>
+    Piperacillin-tazobactam and cefepime — should NOT be used for serious ESBL-E infections even if susceptible in vitro (MERINO trial for bacteremia).
+  </div>
+</div>
+</div>
+`},
+
+// 6. MDR PSEUDOMONAS AND CRAB
+{html:`
+<h2>DTR-Pseudomonas and Carbapenem-Resistant Acinetobacter (CRAB)</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Difficult-to-Treat Pseudomonas aeruginosa (DTR-PA)</h3>
+    <p style="font-size:15px;">Defined as resistant to all &beta;-lactams (including carbapenems) AND fluoroquinolones.</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Agent</th><th>Role</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ceftolozane-tazobactam</strong></td><td>First-line (if susceptible)</td><td>63%&ndash;95% of MDR <em>P. aeruginosa</em> isolates remain susceptible. Also in MKSAP 20. Enhanced affinity for <em>Pseudomonas</em> PBPs.</td></tr>
+        <tr><td>Ceftazidime-avibactam</td><td>Alternative</td><td>Check susceptibility</td></tr>
+        <tr><td>Imipenem-relebactam</td><td>Alternative</td><td>MKSAP 20: active vs. KPC-CRE and <em>P. aeruginosa</em></td></tr>
+        <tr><td>Cefiderocol</td><td>Alternative</td><td>Broad spectrum; use as alternative</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">SPACE/AmpC Organisms (MKSAP 20 Context)</span>
+      Serratia, <em>Pseudomonas</em>/Providencia, Acinetobacter, Citrobacter, Enterobacter carry inducible AmpC &beta;-lactamases. May appear susceptible to 3rd-gen cephalosporins in vitro but develop resistance on therapy. Use <strong>cefepime or carbapenems</strong> for serious infections.
+    </div>
+  </div>
+  <div>
+    <h3>Carbapenem-Resistant Acinetobacter baumannii (CRAB)</h3>
+    <p style="font-size:15px;">One of the most difficult-to-treat pathogens; mortality 40%&ndash;60%. CDC "urgent" threat.</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Agent</th><th>Role</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sulbactam-durlobactam (Xacduro)</strong></td><td>First-line (IDSA 2024)</td><td>FDA approved 2023; first agent specifically targeting CRAB. MKSAP 20 lists for HAP/VAP from <em>Acinetobacter</em>.</td></tr>
+        <tr><td>High-dose ampicillin-sulbactam</td><td>Alternative</td><td>Sulbactam has intrinsic bactericidal activity against Acinetobacter (unique among BLIs)</td></tr>
+        <tr><td>Cefiderocol</td><td>Alternative</td><td>Active vs. CRAB; some mortality signal in CREDIBLE-CR trial</td></tr>
+        <tr><td>Polymyxins (colistin)</td><td>Last resort</td><td>Up to 50% nephrotoxicity (MKSAP 20 key point); avoid monotherapy</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-red" style="margin-top:8px;">
+      <span class="callout-label">Minocycline for MDR Acinetobacter (MKSAP 20 Key Point)</span>
+      Minocycline has activity against MDR Acinetobacter and has been used for VAP with 80% clinical response rate. Also active against Stenotrophomonas maltophilia.
+    </div>
+    <div class="callout c-blue" style="margin-top:6px;">
+      <span class="callout-label">Imipenem-Relebactam — NOT for CRAB (MKSAP 20)</span>
+      MKSAP 20 explicitly notes: imipenem-cilastatin-relebactam is <strong>not active against carbapenem-resistant Acinetobacter calcoaceticus-baumannii</strong>.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 7. ESBL TREATMENT
+{html:`
+<h2>ESBL-Producing Enterobacterales — Treatment (IDSA 2024)</h2>
+<div class="slide-body">
+<div class="callout c-blue" style="margin-bottom:10px;">
+  <span class="callout-label">MKSAP 20 — ESBL Framework</span>
+  Carbapenems are the preferred treatment for <strong>serious ESBL infections</strong>. ESBL presence can be inferred from resistance to cefotaxime, ceftazidime, ceftriaxone, or cefepime. Oral fosfomycin is useful for uncomplicated cystitis caused by ESBL <em>E. coli</em> (achieves high urine concentrations).
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Clinical Situation</th><th>First-Line (IDSA 2024)</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Uncomplicated cystitis</strong></td>
+      <td>Nitrofurantoin or TMP-SMX (if susceptible); oral fosfomycin (<em>E. coli</em> only)</td>
+      <td>Avoid carbapenems for uncomplicated UTI — carbapenem stewardship</td>
+    </tr>
+    <tr>
+      <td><strong>Complicated UTI / pyelonephritis</strong></td>
+      <td>TMP-SMX or fluoroquinolone (if susceptible); if resistant or critically ill: ertapenem, meropenem, or imipenem-cilastatin</td>
+      <td>Major 2024 change: carbapenems are <strong>no longer first-line</strong> for complicated UTI from ESBL-E. Oral step-down encouraged.</td>
+    </tr>
+    <tr>
+      <td><strong>Bacteremia, pneumonia, intra-abdominal</strong></td>
+      <td>Carbapenems (meropenem, imipenem-cilastatin, or ertapenem)</td>
+      <td>MERINO trial: meropenem superior to piperacillin-tazobactam for ESBL-E bacteremia. Ertapenem: avoid in critically ill or hypoalbuminemic patients (increased clearance).</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="grid-2">
+  <div class="callout c-red">
+    <span class="callout-label">Agents to Avoid — ESBL-E (IDSA 2024)</span>
+    <strong>Piperacillin-tazobactam</strong>: do NOT use for serious ESBL-E infections even if susceptible in vitro (MERINO trial — inferior outcomes vs. meropenem for bacteremia).<br>
+    <strong>Cefepime</strong>: observational studies show poorer outcomes for invasive ESBL-E infections vs. carbapenems.<br>
+    <strong>Novel agents (ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol):</strong> reserve for CRE — do NOT use for ESBL-E.
+  </div>
+  <div class="callout c-green">
+    <span class="callout-label">Oral Step-Down (IDSA 2024)</span>
+    Once clinically stable, source controlled, and susceptibility confirmed: step down to TMP-SMX or fluoroquinolone. Reduces carbapenem exposure and supports stewardship goals.
+  </div>
+</div>
+</div>
+`},
+
+// 8. OPAT
+{html:`
+<h2>Outpatient Parenteral Antibiotic Therapy (OPAT)</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Definition and Primary Indications (MKSAP 20 Key Point)</h3>
+    <p style="font-size:15px;">Administration of at least <strong>two doses of IV antibiotics on different days without intervening hospitalization</strong>.</p>
+    <div class="callout c-blue">
+      <span class="callout-label">MKSAP 20 Key Point — OPAT Indications</span>
+      <strong>Bone and joint infections are the primary infections treated with OPAT.</strong> Other potentially OPAT-treatable infections include:
+      <ul style="margin-top:4px;">
+        <li>Endocarditis</li>
+        <li>Cardiac device infections</li>
+        <li>Abdominal infections</li>
+        <li>Skin and soft tissue infections</li>
+        <li>Central nervous system infections</li>
+        <li>Antibiotic-resistant infections where parenteral antibiotics are the only option (such as UTI)</li>
+      </ul>
+    </div>
+    <h3 style="margin-top:10px;">Pre-OPAT Requirements (MKSAP 20)</h3>
+    <ul>
+      <li>Clinically stable and infection improving</li>
+      <li>Medically stable; able to self-administer or reliable caregiver available</li>
+      <li>Functioning GI tract assessment</li>
+      <li>Fixed address, telephone, refrigerator, electricity, running water</li>
+      <li>Reliable transportation for outpatient follow-up</li>
+    </ul>
+  </div>
+  <div>
+    <h3>IV Catheter Selection (MKSAP 20)</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Catheter Type</th><th>Duration</th><th>Indications</th></tr></thead>
+      <tbody>
+        <tr><td>Peripheral IV</td><td>&lt;7 days</td><td>Short courses</td></tr>
+        <tr><td>Midline catheter</td><td>2&ndash;4 weeks</td><td>Intermediate duration</td></tr>
+        <tr><td>PICC (peripherally inserted central catheter)</td><td>&gt;14 days</td><td>Most common for OPAT</td></tr>
+        <tr><td>Tunneled catheter</td><td>Long-term</td><td>Preferred for advanced CKD</td></tr>
+        <tr><td>Implanted port</td><td>Rarely used unless already in place</td><td>Rarely used for OPAT</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3 style="margin-top:10px;">OPAT Monitoring Requirements (MKSAP 20)</h3>
+    <ul>
+      <li>Antibiotic levels (vancomycin, aminoglycosides)</li>
+      <li>CBC, creatinine, liver chemistries, coagulation tests</li>
+      <li>CRP and ESR</li>
+      <li>ID evaluation at least 14 days after hospital discharge</li>
+      <li>Catheter care evaluation at least weekly</li>
+    </ul>
+    <div class="callout c-yellow">
+      <span class="callout-label">Daptomycin Monitoring (MKSAP 20)</span>
+      Patients receiving daptomycin should have baseline kidney function and <strong>creatine kinase</strong> level measured, followed by <strong>weekly monitoring</strong> (myopathy risk).
+    </div>
+    <div class="callout c-red" style="margin-top:6px;">
+      <span class="callout-label">OPAT Failure Causes (MKSAP 20)</span>
+      Treatment failure results from: relapse or progression of primary infection (60% and 21%, respectively) or therapeutic complications (19%).
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 9. BOARD SUMMARY TABLE
+{html:`
+<h2>High-Yield Board Summary</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Topic</th><th>The Answer</th></tr></thead>
+  <tbody>
+    <tr><td>Does combination antibiotic therapy prevent resistance?</td><td>No (MKSAP 20). May be considered for empiric broadening or synergy (enterococcal endocarditis, CRE bacteremia).</td></tr>
+    <tr><td>Combination antibiotic therapy — when is synergy indicated?</td><td>Enterococcal endocarditis and CRE bacteremia (MKSAP 20)</td></tr>
+    <tr><td>Highest-risk antibiotics for CDI</td><td>Clindamycin, fluoroquinolones, broad-spectrum antibiotics (MKSAP 20)</td></tr>
+    <tr><td>Fluoroquinolone-specific adverse effects</td><td>QT prolongation, aortic aneurysm/dissection, hypoglycemia, tendinitis/tendon rupture (MKSAP 20)</td></tr>
+    <tr><td>IV-to-oral conversion: high-bioavailability agents</td><td>Fluoroquinolones, metronidazole, TMP-SMX, doxycycline (MKSAP 20)</td></tr>
+    <tr><td>ESBL presence inferred by</td><td>Resistance to cefotaxime, ceftazidime, ceftriaxone, or cefepime (MKSAP 20)</td></tr>
+    <tr><td>ESBL serious infections — preferred treatment</td><td>Carbapenems (MKSAP 20)</td></tr>
+    <tr><td>ESBL uncomplicated UTI — fosfomycin</td><td>Oral fosfomycin for ESBL <em>E. coli</em> uncomplicated cystitis (MKSAP 20 key point). NOT for pyelonephritis.</td></tr>
+    <tr><td>Piperacillin-tazobactam for ESBL bacteremia</td><td>Do NOT use — MERINO trial: inferior to meropenem</td></tr>
+    <tr><td>KPC-CRE treatment</td><td>Meropenem-vaborbactam, ceftazidime-avibactam, or imipenem-relebactam (MKSAP 20 + IDSA 2024)</td></tr>
+    <tr><td>OXA-48 CRE treatment</td><td>Ceftazidime-avibactam. Avoid meropenem-vaborbactam and imipenem-relebactam (limited activity).</td></tr>
+    <tr><td>NDM/MBL CRE treatment</td><td>Ceftazidime-avibactam + aztreonam; OR aztreonam-avibactam (FDA 2025); OR cefiderocol</td></tr>
+    <tr><td>MDR Pseudomonas first-line agent</td><td>Ceftolozane-tazobactam (MKSAP 20)</td></tr>
+    <tr><td>CRAB first-line agent</td><td>Sulbactam-durlobactam (Xacduro, FDA 2023)</td></tr>
+    <tr><td>Imipenem-relebactam: NOT active against</td><td>Carbapenem-resistant Acinetobacter (MKSAP 20)</td></tr>
+    <tr><td>Minocycline — organisms covered</td><td>MDR Acinetobacter and Stenotrophomonas maltophilia (MKSAP 20 key point)</td></tr>
+    <tr><td>Colistin nephrotoxicity rate</td><td>Up to 50%; usually reversible (MKSAP 20 key point)</td></tr>
+    <tr><td>Organisms intrinsically resistant to colistin</td><td>Proteus, Providencia, Burkholderia, Morganella, Serratia (MKSAP 20)</td></tr>
+    <tr><td>Cefiderocol — major caution</td><td>Increased all-cause mortality observed in CRE patients in CREDIBLE-CR trial (MKSAP 20)</td></tr>
+    <tr><td>OPAT primary indication</td><td>Bone and joint infections (MKSAP 20 key point)</td></tr>
+    <tr><td>OPAT — daptomycin monitoring</td><td>Baseline and weekly creatine kinase levels (MKSAP 20)</td></tr>
+    <tr><td>OPAT catheter for advanced CKD</td><td>Tunneled catheter (preferred — MKSAP 20)</td></tr>
+    <tr><td>OPAT treatment failure — most common cause</td><td>Relapse/progression of primary infection (60%) (MKSAP 20)</td></tr>
+    <tr><td>SPACE organisms — avoid which antibiotic?</td><td>3rd-gen cephalosporins (inducible AmpC resistance); use cefepime or carbapenems</td></tr>
+    <tr><td>Aztreonam-avibactam (Emblaveo)</td><td>FDA approved 2025; first single-product for MBL-producing CRE; replaces need for two-drug combination</td></tr>
+  </tbody>
+</table>
+</div>
+</div>
+`},
+
+// 10. REFERENCES
+{html:`
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>MKSAP 20: Stewardship and Emerging Resistance. American College of Physicians, 2022&ndash;2025.</li>
+  <li>Tamma PD, Heil EL, Justo JA, et al. IDSA 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. <em>Clin Infect Dis.</em> 2024. PMID: 39108079.</li>
+  <li>Harris PNA, Tambyah PA, Lye DC, et al. Effect of piperacillin-tazobactam vs meropenem on 30-day mortality for patients with <em>E. coli</em> or <em>Klebsiella</em> bloodstream infection and ceftriaxone nonsusceptibility (MERINO Trial). <em>JAMA.</em> 2018;320:984&ndash;994.</li>
+  <li>NCCN Clinical Practice Guidelines in Oncology: Prevention and Treatment of Cancer-Related Infections. Version 1.2026.</li>
+  <li>Surviving Sepsis Campaign International Guidelines for Management of Sepsis and Septic Shock 2021/2026 updates.</li>
+</ol>
+</div>
+`},
+
+];
+
+let cur = 0;
+function render() {
+  document.getElementById('deck').innerHTML = '';
+  SLIDES.forEach((s,i) => {
+    const div = document.createElement('div');
+    div.className = 'slide' + (i===cur?' active':'');
+    div.innerHTML = s.html;
+    document.getElementById('deck').appendChild(div);
+  });
+  document.getElementById('slide-counter').textContent = (cur+1)+' / '+SLIDES.length;
+  document.getElementById('btn-prev').disabled = cur===0;
+  document.getElementById('btn-next').disabled = cur===SLIDES.length-1;
+  document.getElementById('progress-bar').style.width = ((cur+1)/SLIDES.length*100)+'%';
+}
+document.getElementById('btn-prev').addEventListener('click',()=>{if(cur>0){cur--;render();}});
+document.getElementById('btn-next').addEventListener('click',()=>{if(cur<SLIDES.length-1){cur++;render();}});
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){if(cur<SLIDES.length-1){cur++;render();}}
+  else if(e.key==='ArrowLeft'){if(cur>0){cur--;render();}}
+});
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>40){if(dx<0&&cur<SLIDES.length-1){cur++;render();}else if(dx>0&&cur>0){cur--;render();}}
+});
+render();
+</script>
+</body>
+</html>
