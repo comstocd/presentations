@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 47 - Fever of Unknown Origin | Morning Report</title>
+<style>
+  :root{--bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+    --blue:#0969da;--blue-bg:#ddf4ff;--blue-border:#54aeff;
+    --green:#1a7f37;--green-bg:#dafbe1;--green-border:#4ac26b;
+    --yellow:#9a6700;--yellow-bg:#fff8c5;--yellow-border:#d4a72c;
+    --red:#cf222e;--red-bg:#ffebe9;--red-border:#ff8182;
+    --purple:#8250df;--purple-bg:#fbefff;--purple-border:#c297ff;
+    --orange:#bc4c00;--orange-bg:#fff1e5;--orange-border:#fb8f44;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:18px;line-height:1.5;}
+  #deck{width:100%;height:100%;position:relative;overflow:hidden;}
+  .slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;padding:34px 52px 54px;opacity:0;pointer-events:none;transition:opacity 0.2s;overflow:hidden;}
+  .slide.active{opacity:1;pointer-events:all;}
+  .slide-content{background:var(--bg);}.slide-accent{background:var(--bg2);}.slide-title{background:var(--bg);justify-content:center;}
+  .slide-body{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-right:4px;}
+  .slide-body::-webkit-scrollbar{width:3px;}.slide-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+  .slide-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+  .slide h1{font-size:38px;font-weight:700;line-height:1.1;margin-bottom:14px;}
+  .slide h2{font-size:26px;font-weight:700;padding-bottom:9px;border-bottom:2px solid var(--border);margin-bottom:14px;}
+  .slide h3{font-size:19px;font-weight:600;margin:12px 0 6px;}
+  .slide p{font-size:16px;margin-bottom:8px;}
+  .slide ul,.slide ol{padding-left:20px;margin-bottom:8px;}
+  .slide li{font-size:17px;margin-bottom:5px;line-height:1.4;}
+  .slide strong{font-weight:600;}
+  .tagline{font-size:19px;color:var(--muted);max-width:620px;line-height:1.5;margin-bottom:20px;}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .badge{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;border:1px solid;}
+  .badge-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);}
+  .badge-green{background:var(--green-bg);color:var(--green);border-color:var(--green-border);}
+  .badge-red{background:var(--red-bg);color:var(--red);border-color:var(--red-border);}
+  .badge-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border);}
+  .badge-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border);}
+  .badge-orange{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border);}
+  .callout{border-radius:8px;padding:11px 15px;margin:9px 0;border-left:4px solid;font-size:15px;line-height:1.5;}
+  .callout-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:3px;}
+  .c-blue{background:var(--blue-bg);border-color:var(--blue);color:#0550ae;}.c-blue .callout-label{color:var(--blue);}
+  .c-yellow{background:var(--yellow-bg);border-color:var(--yellow-border);color:var(--yellow);}.c-yellow .callout-label{color:var(--yellow);}
+  .c-red{background:var(--red-bg);border-color:var(--red);color:#82071e;}.c-red .callout-label{color:var(--red);}
+  .c-green{background:var(--green-bg);border-color:var(--green);color:#116329;}.c-green .callout-label{color:var(--green);}
+  .c-orange{background:var(--orange-bg);border-color:var(--orange-border);color:var(--orange);}.c-orange .callout-label{color:var(--orange);}
+  .c-purple{background:var(--purple-bg);border-color:var(--purple);color:#5a32a3;}.c-purple .callout-label{color:var(--purple);}
+  .table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin:9px 0;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--bg3);color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:15px;}
+  tr:last-child td{border-bottom:none;}tr:nth-child(even) td{background:var(--bg2);}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:9px 0;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:9px 0;}
+  .card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:13px 15px;}
+  .card-red{background:var(--red-bg);border:1px solid var(--red-border);border-radius:10px;padding:13px 15px;}
+  .card-green{background:var(--green-bg);border:1px solid var(--green-border);border-radius:10px;padding:13px 15px;}
+  .card-blue{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:10px;padding:13px 15px;}
+  .card-yellow{background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:10px;padding:13px 15px;}
+  .card-orange{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:10px;padding:13px 15px;}
+  .card-accent{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px 15px;}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+  .pearl{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 15px;margin:8px 0;font-size:16px;line-height:1.5;}
+  .ch{display:flex;flex-direction:column;justify-content:center;height:100%;}
+  .ch-num{font-size:72px;font-weight:800;color:var(--bg3);line-height:1;margin-bottom:8px;}
+  .ch-title{font-size:30px;font-weight:700;margin-bottom:8px;}
+  .ch-sub{font-size:18px;color:var(--muted);max-width:540px;line-height:1.4;}
+  .step{display:flex;gap:12px;align-items:flex-start;margin-bottom:9px;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .step-body{flex:1;}
+  .step-title{font-size:17px;font-weight:600;display:block;margin-bottom:1px;}
+  .step-sub{font-size:14px;color:var(--muted);}
+  .refs{font-size:13px;color:var(--muted);line-height:1.7;}
+  .refs li{margin-bottom:7px;}
+  #nav{position:fixed;bottom:0;left:0;right:0;height:44px;background:var(--bg);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:200;user-select:none;}
+  .nav-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 14px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;}
+  .nav-btn:hover{background:var(--bg2);}
+  .nav-btn:disabled{opacity:.3;cursor:default;}
+  #slide-counter{font-size:14px;color:var(--muted);font-weight:500;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--blue);transition:width .2s;z-index:300;}
+  @media(max-width:720px){.slide{padding:18px 14px 54px;}.slide h1{font-size:26px;}.slide h2{font-size:20px;}.grid-2,.grid-3{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+<script>
+const SLIDES = [
+{cls:'slide-title',html:`
+<div class="slide-label">Topic 47 &middot; Infectious Disease / Hospital Medicine / Rheumatology</div>
+<h1>Fever of Unknown<br>Origin</h1>
+<p class="tagline">FUO is a syndrome, not a diagnosis. History and physical exam are the most powerful tools. The workup is tiered, not shotgun. Empiric antibiotics are almost never the right first move.</p>
+<div class="badge-row">
+  <span class="badge badge-red">Four Categories</span>
+  <span class="badge badge-blue">Big Four Etiologies</span>
+  <span class="badge badge-yellow">AOSD vs HLH</span>
+  <span class="badge badge-green">FDG PET-CT</span>
+  <span class="badge badge-purple">Periodic Fever Syndromes</span>
+  <span class="badge badge-orange">MKSAP 20</span>
+</div>
+<div style="margin-top:26px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+{cls:'slide-content',html:`
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <ul style="list-style:none;padding:0;">
+      <li style="margin-bottom:10px;"><strong style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:3px;">History</strong>56F, 4 weeks of daily fevers (T 38.6&ndash;39.2&deg;C), night sweats, 12 lb weight loss. Former smoker. Works as an office manager. Cat owner, no recent travel. Medications: metoprolol (started 5 months ago), ibuprofen PRN.</li>
+      <li style="margin-bottom:10px;"><strong style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:3px;">Prior Workup (PCP)</strong>CBC, CMP, UA, CXR, ANA, TSH &mdash; all unremarkable. Blood cultures x2 (same phlebotomy session): no growth.</li>
+      <li style="margin-bottom:10px;"><strong style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:3px;">Exam</strong>T 38.7&deg;C, HR 92, BP 126/74. No lymphadenopathy. No rash. Mild right temporal artery tenderness. Normal cardiac exam. Mild splenomegaly.</li>
+      <li><strong style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:3px;">Initial Labs</strong>ESR 78 mm/h &middot; CRP 44 mg/L &middot; LDH 310 &middot; Ferritin 2,400 ng/mL &middot; Mild normocytic anemia &middot; ANA negative</li>
+    </ul>
+  </div>
+  <div>
+    <div class="callout c-red">
+      <span class="callout-label">This Case Meets the Definition of FUO</span>
+      Temperature &ge;38.3&deg;C on multiple occasions &middot; Duration &ge;3 weeks &middot; No diagnosis despite reasonable prior workup. This is the clinical syndrome called FUO &mdash; the job now is systematic evaluation, not empiric antibiotics.
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Immediately Noticeable Clues</span>
+      Right temporal artery tenderness + age 56 + ESR 78 + weight loss = GCA must be urgently excluded.<br>
+      Ferritin 2,400 = think AOSD, HLH, or malignancy.<br>
+      Blood cultures from same session = inadequate; need &ge;3 sets from <strong>separate phlebotomy sites</strong> to evaluate for endocarditis.<br>
+      Metoprolol started 5 months ago = drug fever on differential.
+    </div>
+    <div class="callout c-blue" style="margin-top:8px;">
+      <span class="callout-label">MKSAP 20 KP: History Must Include</span>
+      Past procedures/surgeries &middot; Foreign bodies or implants &middot; Immunosuppression &middot; Travel &middot; Animal and other exposures &middot; Dietary habits &middot; Medications (including OTC)
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>Definition &amp; Four Categories (MKSAP 20)</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">Definition</span>
+  Temperature &ge;38.3&deg;C (&ge;101&deg;F) on multiple occasions &middot; Duration &ge;3 weeks &middot; No diagnosis despite &ge;3 outpatient visits OR &ge;3 inpatient days of evaluation. FUO is a <strong>clinical syndrome</strong>, not a diagnosis.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Category</th><th>Setting</th><th>Common Causes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Classic</strong></td>
+      <td>Outpatient or inpatient; community-acquired illness</td>
+      <td>Infection (endocarditis, TB, abscess, endemic mycoses) &middot; Neoplasm (leukemia, lymphoma, RCC, HCC, ovarian) &middot; Rheumatologic (AOSD, PMR, vasculitis, SLE, GCA) &middot; Endocrine (hyperthyroidism, subacute thyroiditis) &middot; Genetic (FMF, TRAPS) &middot; Miscellaneous (drug fever, factitious)</td>
+    </tr>
+    <tr>
+      <td><strong>Health care&ndash;associated</strong></td>
+      <td>Develops in hospitalized patients; no fever at admission</td>
+      <td>Drug fever &middot; Septic thrombophlebitis &middot; DVT/PE &middot; Sinusitis (NG tube) &middot; Postoperative abscess &middot; C. difficile &middot; Device/procedure-related endocarditis</td>
+    </tr>
+    <tr>
+      <td><strong>Immunodeficiency-related</strong></td>
+      <td>Transplant, neutropenic, HIV/AIDS</td>
+      <td>Opportunistic fungal infections (aspergillosis, candidiasis) &middot; Drug fever &middot; DVT/PE &middot; Underlying malignancy &middot; Allograft rejection &middot; HIV-associated opportunistic infections</td>
+    </tr>
+    <tr>
+      <td><strong>Travel-associated</strong></td>
+      <td>Recent travel to endemic regions</td>
+      <td>Malaria (most important) &middot; Enteric fever &middot; Leptospirosis &middot; Rickettsial infections &middot; Measles &middot; TB &middot; Viral hemorrhagic fevers &middot; Respiratory infections</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout c-yellow" style="margin-top:6px;">
+  <span class="callout-label">MKSAP 20 KP: Undiagnosed Rate and Prognosis</span>
+  A definitive diagnosis is lacking in <strong>up to 50% of patients</strong> despite extensive evaluation. Duration of more than 1 year is unlikely to be caused by infection or malignancy &mdash; and is generally associated with a benign long-term course. Up to 75% of undiagnosed cases resolve spontaneously.
+</div>
+</div>
+`},
+{cls:'slide-content',html:`
+<h2>Etiologic Distribution: The Big Four</h2>
+<div class="slide-body">
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Category</th><th>Approximate Frequency</th><th>Top Diagnoses</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong style="color:var(--red);">Infections</strong></td>
+      <td>25&ndash;50% (worldwide); declining in high-income countries</td>
+      <td>TB (#1 worldwide; especially extrapulmonary) &middot; Infective endocarditis (including culture-negative) &middot; Occult abscess (hepatic, splenic, pelvic, perinephric) &middot; HIV &middot; Osteomyelitis &middot; Endemic mycoses</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--orange);">Non-Infectious Inflammatory Disease (NIID)</strong></td>
+      <td>10&ndash;30%; overtaking infections in high-income settings</td>
+      <td>Adult-onset Still&rsquo;s disease (AOSD) &middot; Giant cell arteritis / polymyalgia rheumatica &middot; SLE &middot; Vasculitis &middot; Inflammatory bowel disease</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--purple);">Malignancy</strong></td>
+      <td>5&ndash;15%</td>
+      <td>Lymphoma (#1; especially NHL and intravascular lymphoma) &middot; Renal cell carcinoma &middot; Hepatocellular carcinoma &middot; Leukemia &middot; Atrial myxoma</td>
+    </tr>
+    <tr>
+      <td><strong style="color:var(--blue);">Miscellaneous</strong></td>
+      <td>5&ndash;10%</td>
+      <td>Drug fever &middot; DVT/PE &middot; Subacute thyroiditis &middot; Factitious fever &middot; Kikuchi-Fujimoto disease &middot; Periodic fever syndromes</td>
+    </tr>
+    <tr>
+      <td><strong>Undiagnosed</strong></td>
+      <td>15&ndash;30%</td>
+      <td>Generally favorable prognosis; up to 75% resolve spontaneously; a negative FDG PET-CT predicts benign course</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="callout c-blue" style="margin-top:8px;">
+  <span class="callout-label">Key Trend (Open Evidence 2025)</span>
+  In high-income countries, NIID now rivals or exceeds infections as the most common identified cause of FUO. Italian registry 2025: NIID 31.8% vs infections 25.7%. Most FUO occurrences are <strong>atypical presentations of common diseases</strong>, not rare conditions.
+</div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>History &amp; Physical: The Most Powerful Diagnostic Tools</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">MKSAP 20 KP: Careful H&amp;P Should Be Performed and Repeated Often</span>
+  Potentially Diagnostic Clues (PDCs) from the H&amp;P lead to a diagnosis in ~62% of patients. The H&amp;P must be revisited at each encounter &mdash; new clues emerge over time.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Critical History Elements to Revisit</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Travel history:</strong> malaria, TB, enteric fever, endemic mycoses, leptospirosis</li>
+      <li><strong>Animal/pet exposure:</strong> Bartonella (cats), Brucella (livestock), Q fever (Coxiella, livestock/parturient animals), psittacosis (birds), leptospirosis (rodents/water)</li>
+      <li><strong>Occupational:</strong> farmers, veterinarians, healthcare workers, lab workers</li>
+      <li><strong>Sexual history:</strong> HIV, syphilis, gonococcal endocarditis</li>
+      <li><strong>Medications (including OTC, supplements, herbals):</strong> drug fever, serotonin syndrome; consider temporary discontinuation of any new or potentially offending medications</li>
+      <li><strong>Dental history:</strong> occult abscess, endocarditis portal</li>
+      <li><strong>Family history and ethnicity:</strong> FMF (Mediterranean), TRAPS, other periodic fever syndromes</li>
+      <li><strong>Surgical history:</strong> retained foreign body, mesh infection</li>
+      <li><strong>IV drug use:</strong> endocarditis, hepatitis, HIV, skin/soft tissue abscess</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Targeted Physical Exam Elements</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Fundoscopic exam:</strong> Roth spots (endocarditis) &middot; choroid tubercles (miliary TB)</li>
+      <li><strong>Oral cavity:</strong> dental abscess, mucous membrane lesions</li>
+      <li><strong>Lymphadenopathy:</strong> location and character</li>
+      <li><strong>Heart murmurs:</strong> new or changing &rarr; endocarditis, atrial myxoma</li>
+      <li><strong>Hepatosplenomegaly:</strong> lymphoma, AOSD, HLH, disseminated infection</li>
+      <li><strong>Skin:</strong> rash (AOSD salmon rash, Still&rsquo;s), embolic phenomena, nodules, livedo reticularis</li>
+      <li><strong>Temporal artery tenderness:</strong> GCA &mdash; low threshold in elderly FUO</li>
+      <li><strong>Testicular exam:</strong> lymphoma, TB, polyarteritis nodosa</li>
+      <li><strong>Rectal/pelvic exam:</strong> abscess, malignancy</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Fever Pattern Is Non-Specific</span>
+      MKSAP 20: &ldquo;The degree and pattern of fever is nonspecific and nondiagnostic in most instances.&rdquo; Classic fever patterns (quotidian, Pel-Ebstein) are board-relevant but rarely diagnostic in isolation.
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">01</div>
+  <div class="ch-title">Infectious Causes</div>
+  <div class="ch-sub">TB is the most common infectious cause worldwide. Culture-negative endocarditis misses HACEK, Coxiella, Bartonella, and Brucella. Occult abscess needs CT. Blood cultures must be from separate sites.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-red">TB Extrapulmonary</span>
+    <span class="badge badge-blue">Culture-Negative Endocarditis</span>
+    <span class="badge badge-green">Occult Abscess</span>
+    <span class="badge badge-yellow">HIV 4th-Gen Test</span>
+  </div>
+</div>
+`},
+{cls:'slide-content',html:`
+<h2>High-Yield Infectious Causes of FUO</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Tuberculosis &mdash; #1 Worldwide</h3>
+    <ul style="font-size:15px;">
+      <li>Most common infectious cause of FUO globally</li>
+      <li>Think <strong>extrapulmonary</strong> TB: miliary, peritoneal, vertebral (Pott disease), genitourinary, lymphadenitis</li>
+      <li>CXR may be normal in miliary TB (early) and immunocompromised patients</li>
+      <li>Workup: sputum AFB (3 specimens) &middot; IGRA (QuantiFERON/T-SPOT) &middot; CT chest/abdomen &middot; Consider tissue biopsy (lymph node, bone marrow, liver)</li>
+    </ul>
+    <h3 style="margin-top:10px;">Infective Endocarditis</h3>
+    <ul style="font-size:15px;">
+      <li>Blood cultures must be from <strong>&ge;3 sets, separate phlebotomy sites</strong>, ideally before antibiotics</li>
+      <li>Culture-negative endocarditis (5&ndash;10%): HACEK organisms &middot; Coxiella burnetii (Q fever) &middot; Bartonella species &middot; Brucella &middot; Tropheryma whipplei</li>
+      <li>For suspected culture-negative IE: serology for Coxiella, Bartonella, Brucella; 16S rRNA PCR on excised tissue</li>
+      <li>TTE first; escalate to TEE if high suspicion or TTE nondiagnostic</li>
+    </ul>
+    <h3 style="margin-top:10px;">HIV</h3>
+    <ul style="font-size:15px;">
+      <li>Acute retroviral syndrome: fever, rash, pharyngitis, lymphadenopathy 2&ndash;4 weeks after exposure</li>
+      <li>Use <strong>4th-generation Ag/Ab combo test</strong> (not 3rd-gen antibody alone)</li>
+      <li>Consider in every FUO workup regardless of reported risk factors</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Occult Abscess</h3>
+    <ul style="font-size:15px;">
+      <li>Hepatic &middot; Splenic &middot; Pelvic &middot; Perinephric &middot; Dental &middot; Parapharyngeal</li>
+      <li>May have no localizing symptoms; splenomegaly can be the only clue</li>
+      <li><strong>CT abdomen/pelvis with contrast</strong> is the imaging modality of choice</li>
+    </ul>
+    <h3 style="margin-top:10px;">Culture-Negative Endocarditis: The Board-Relevant Organisms</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Organism</th><th>Exposure / Clue</th></tr></thead>
+      <tbody>
+        <tr><td><em>Coxiella burnetii</em> (Q fever)</td><td>Livestock, parturient animals, unpasteurized dairy; hepatitis + myocarditis</td></tr>
+        <tr><td><em>Bartonella</em> spp.</td><td>Cat scratch (B. henselae); lice (B. quintana) in homeless/homeless persons</td></tr>
+        <tr><td><em>Brucella</em> spp.</td><td>Livestock exposure, unpasteurized cheese; vertebral osteomyelitis</td></tr>
+        <tr><td>HACEK organisms</td><td>Dental procedures; slow-growing gram-negatives</td></tr>
+        <tr><td><em>Tropheryma whipplei</em></td><td>Whipple disease: diarrhea + weight loss + arthralgias + PAS+ macrophages on small bowel Bx</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Zoonotic Infections Require Exposure History</span>
+      Serologic testing for tick-borne illnesses, endemic mycoses, and zoonotic infections (Q fever) is indicated based on epidemiologic risk factors (MKSAP 20 evaluation table).
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">02</div>
+  <div class="ch-title">NIID &amp; Malignancy</div>
+  <div class="ch-sub">AOSD in young adults. GCA/PMR in elderly. Lymphoma is the most common malignancy. Intravascular lymphoma is the great FUO masquerader. Ferritin >10,000 means AOSD or HLH until proven otherwise.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-orange">AOSD Salmon Rash</span>
+    <span class="badge badge-red">GCA Temporal Biopsy</span>
+    <span class="badge badge-purple">Intravascular Lymphoma</span>
+    <span class="badge badge-yellow">Ferritin >10,000</span>
+  </div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>Adult-Onset Still&rsquo;s Disease (AOSD)</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Classic Presentation</h3>
+    <ul style="font-size:15px;">
+      <li>Young adults (peak 16&ndash;35); second peak in 36&ndash;46 age group</li>
+      <li><strong>Quotidian or double quotidian fever</strong> &mdash; daily spikes (often evening, 39&ndash;40&deg;C), returning to baseline or near-baseline between spikes</li>
+      <li><strong>Evanescent salmon-colored rash</strong> &mdash; appears during fever spikes, fades when afebrile; trunk and proximal extremities; non-pruritic</li>
+      <li>Arthralgias/arthritis (wrists most common) &middot; Pharyngitis &middot; Lymphadenopathy &middot; Hepatosplenomegaly</li>
+    </ul>
+    <h3 style="margin-top:10px;">Diagnostic Laboratory Pattern</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Serum ferritin markedly elevated</strong> &mdash; often &gt;10,000 ng/mL; extreme hyperferritinemia (&gt;10,000) is a key marker</li>
+      <li><strong>Glycosylated ferritin &lt;20%</strong> is suggestive of AOSD (normal &gt;50%; glycosylation is reduced in inflammatory states)</li>
+      <li>Leukocytosis with neutrophilia (contrast with HLH which causes cytopenias)</li>
+      <li>Elevated LFTs &middot; Elevated ESR/CRP &middot; Negative ANA and RF (seronegative)</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Diagnosis</span>
+      Diagnosis of exclusion. Yamaguchi criteria most sensitive. Rule out infection, malignancy (especially lymphoma), and other rheumatologic diseases before diagnosing AOSD.
+    </div>
+  </div>
+  <div>
+    <h3>AOSD vs HLH &mdash; Critical Distinction</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Feature</th><th>AOSD</th><th>HLH</th></tr></thead>
+      <tbody>
+        <tr><td>Ferritin</td><td>&gt;10,000 ng/mL (often)</td><td>&gt;10,000 ng/mL (often; &gt;500 sensitivity ~100%)</td></tr>
+        <tr><td>CBC</td><td><strong>Leukocytosis</strong>, neutrophilia</td><td><strong>Cytopenias</strong> (&ge;2 cell lines)</td></tr>
+        <tr><td>Triglycerides</td><td>Normal or mildly elevated</td><td><strong>Elevated</strong> (&ge;265 mg/dL)</td></tr>
+        <tr><td>Fibrinogen</td><td>Normal or elevated</td><td><strong>Low</strong> (&le;150 mg/dL)</td></tr>
+        <tr><td>Rash</td><td>Salmon-colored, evanescent</td><td>Variable; not characteristic</td></tr>
+        <tr><td>Bone marrow Bx</td><td>Not diagnostic</td><td><strong>Hemophagocytosis</strong> (supportive)</td></tr>
+        <tr><td>sCD25 (IL-2R)</td><td>Modestly elevated</td><td><strong>Markedly elevated</strong></td></tr>
+        <tr><td>Treatment</td><td>NSAIDs, glucocorticoids, IL-1/IL-6 inhibitors</td><td>Etoposide-based protocols; treat trigger</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-red" style="margin-top:8px;">
+      <span class="callout-label">HLH Diagnostic Criteria (HLH-2004)</span>
+      &ge;5 of 8: fever &middot; splenomegaly &middot; cytopenias (&ge;2 lines) &middot; hypertriglyceridemia or low fibrinogen &middot; hemophagocytosis on BM/spleen/LN biopsy &middot; low/absent NK cell activity &middot; elevated ferritin &middot; elevated sCD25. HScore &gt;169 = &gt;93% probability HLH.
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-content',html:`
+<h2>GCA/PMR &amp; Malignancy</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Giant Cell Arteritis (GCA) / Polymyalgia Rheumatica (PMR)</h3>
+    <ul style="font-size:15px;">
+      <li>Age &gt;50 (virtually never younger); peak 70s&ndash;80s</li>
+      <li><strong>GCA:</strong> new headache &middot; jaw claudication &middot; visual changes (amaurosis fugax, diplopia, vision loss &mdash; ischemic optic neuropathy) &middot; scalp tenderness &middot; temporal artery beading/tenderness</li>
+      <li><strong>PMR:</strong> bilateral shoulder and hip girdle stiffness and pain; morning stiffness &gt;45 min; age &gt;50; no myositis (normal CK)</li>
+      <li>ESR often &gt;50 mm/h; may be &gt;100; CRP also elevated</li>
+      <li><strong>Temporal artery biopsy is gold standard</strong> (skip lesions &rarr; long specimen &ge;2 cm; bilateral if needed)</li>
+    </ul>
+    <div class="callout c-red" style="margin-top:8px;">
+      <span class="callout-label">GCA With Threatened Vision = Start Steroids Immediately</span>
+      Do not wait for biopsy results. High-dose prednisone (1 mg/kg/d) or IV methylprednisolone for ocular involvement. Biopsy remains positive for up to 2 weeks after starting steroids.
+    </div>
+    <div class="callout c-yellow" style="margin-top:6px;">
+      <span class="callout-label">FUO in Elderly: Low Threshold for Temporal Artery Biopsy</span>
+      Consider empiric temporal artery biopsy in elderly patients with unresolved FUO, even without classic GCA symptoms (MKSAP 20 / Open Evidence).
+    </div>
+  </div>
+  <div>
+    <h3>Malignancy-Associated FUO</h3>
+    <div class="card-purple" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--purple);">Lymphoma &mdash; Most Common Malignancy Causing FUO</div>
+      <ul style="font-size:14px;">
+        <li><strong>Intravascular lymphoma:</strong> FUO + cytopenias + elevated LDH + skin lesions or CNS symptoms. Diagnosed by <strong>random skin biopsy</strong> &mdash; even without visible lesions. Classic FUO masquerader.</li>
+        <li><strong>Pel-Ebstein fever:</strong> 1&ndash;2 weeks of high fever alternating with 1&ndash;2 weeks afebrile &mdash; classically Hodgkin lymphoma (rare but board-favorite)</li>
+        <li>B symptoms: fever &gt;38&deg;C &middot; night sweats &middot; &gt;10% weight loss in 6 months</li>
+        <li>LDH &uarr; &middot; ESR &uarr; &middot; PET-CT/CT for staging and localization</li>
+      </ul>
+    </div>
+    <div class="card-accent" style="margin-bottom:8px;">
+      <div class="card-title">Renal Cell Carcinoma</div>
+      <ul style="font-size:14px;">
+        <li>Classic triad (hematuria + flank pain + mass) in only ~10% of patients</li>
+        <li>Paraneoplastic fever common; may be the sole presenting feature</li>
+        <li>CT abdomen with contrast is diagnostic</li>
+      </ul>
+    </div>
+    <div class="callout c-purple" style="margin-top:6px;">
+      <span class="callout-label">Atrial Myxoma &mdash; Board Favorite</span>
+      FUO + embolic events (stroke, peripheral emboli) + cardiac murmur (changes with position) + elevated ESR. Diagnosed by <strong>echocardiography</strong>. Surgical removal is curative.
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>Miscellaneous Causes</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Drug Fever</h3>
+    <ul style="font-size:15px;">
+      <li>3&ndash;7% of febrile episodes in hospitalized patients</li>
+      <li><strong>Onset typically 7&ndash;10 days</strong> after starting the offending drug</li>
+      <li>Eosinophilia present in only ~25%; rash in only ~5% &mdash; absence does not exclude</li>
+      <li>Relative bradycardia may be a clue (~10% of cases)</li>
+      <li>Most common culprits: beta-lactam antibiotics &middot; anticonvulsants &middot; sulfonamides &middot; allopurinol &middot; hydralazine &middot; procainamide</li>
+      <li><strong>Diagnosis: fever resolves within 48&ndash;72 hours of drug discontinuation</strong></li>
+    </ul>
+    <div class="callout c-red" style="margin-top:8px;">
+      <span class="callout-label">DRESS Syndrome &mdash; Distinct and Dangerous</span>
+      Drug Reaction with Eosinophilia and Systemic Symptoms: severe rash + fever + eosinophilia + visceral involvement (liver, kidney, lung). Mortality up to 10%. Requires drug discontinuation and often systemic corticosteroids.
+    </div>
+    <h3 style="margin-top:10px;">DVT/PE</h3>
+    <ul style="font-size:15px;">
+      <li>Can present as isolated fever without respiratory or leg symptoms</li>
+      <li>Consider in postoperative, immobilized, or hypercoagulable patients</li>
+      <li>Lower extremity duplex + CT pulmonary angiography if suspected</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Subacute Thyroiditis (de Quervain)</h3>
+    <ul style="font-size:15px;">
+      <li>Tender thyroid &middot; Elevated ESR &middot; Elevated T3/T4 &middot; Suppressed TSH &middot; Low radioiodine uptake (distinguishes from Graves)</li>
+      <li>Usually follows viral illness; self-limited</li>
+    </ul>
+    <h3 style="margin-top:10px;">Factitious Fever</h3>
+    <ul style="font-size:15px;">
+      <li>Suspect when: bizarre fever pattern &middot; patient appears well during febrile episodes &middot; no tachycardia &middot; no diaphoresis &middot; associated psychiatric history</li>
+      <li>Witnessed temperature measurement; check urine temperature simultaneously (body temperature, not manipulated)</li>
+      <li>Often associated with healthcare worker background (Munchausen syndrome)</li>
+    </ul>
+    <div class="callout c-orange" style="margin-top:8px;">
+      <span class="callout-label">Atelectasis Does NOT Cause Fever</span>
+      The classic &ldquo;5 W&rsquo;s&rdquo; mnemonic for postoperative fever (Wind, Water, Wound, Walking, Wonder drugs) is historically embedded but poorly evidence-based. Atelectasis causes hypoxia, not fever. Wind (atelectasis) as a postoperative fever cause is a teaching myth that should be retired.
+    </div>
+    <h3 style="margin-top:10px;">Relative Bradycardia (Pulse-Temperature Dissociation)</h3>
+    <p style="font-size:14px;">Pulse fails to rise appropriately with fever. Classic associations: typhoid fever &middot; Legionella &middot; psittacosis &middot; Q fever &middot; drug fever &middot; lymphoma &middot; factitious fever.</p>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-content',html:`
+<h2>Diagnostic Workup: Tiered Approach &amp; FDG PET-CT</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Tiered Workup (MKSAP 20 / Haidar &amp; Singh NEJM 2022)</h3>
+    <div class="card-blue" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--blue);">Tier 1 &mdash; Initial Evaluation (MKSAP 20)</div>
+      <ul style="font-size:13px;">
+        <li>CBC with differential &middot; CMP (including LFTs)</li>
+        <li>ESR &middot; CRP</li>
+        <li>Urinalysis + urine culture</li>
+        <li>Blood cultures (&ge;2 sets, <strong>separate phlebotomy sites</strong>)</li>
+        <li>Chest imaging &middot; Echocardiography</li>
+        <li>HIV immunoassay (4th-gen) &middot; CMV &middot; TB evaluation</li>
+        <li>ANA &middot; Rheumatoid factor &middot; TSH</li>
+        <li>Serologies based on epidemiologic risk (tick-borne, zoonotic, endemic mycoses)</li>
+      </ul>
+    </div>
+    <div class="card-yellow" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--yellow);">Tier 2 &mdash; Directed by Clues</div>
+      <ul style="font-size:13px;">
+        <li>LDH &middot; Ferritin &middot; Procalcitonin</li>
+        <li>ANCA &middot; Complement (C3, C4) &middot; Additional specific serology</li>
+        <li>CT chest/abdomen/pelvis with contrast</li>
+        <li>TEE if endocarditis suspected and TTE nondiagnostic</li>
+        <li>Lower extremity duplex (DVT/PE)</li>
+      </ul>
+    </div>
+    <div class="card-orange">
+      <div class="card-title" style="color:var(--orange);">Tier 3 &mdash; When Tiers 1&ndash;2 Unrevealing</div>
+      <ul style="font-size:13px;">
+        <li><strong>FDG PET-CT</strong> (see right)</li>
+        <li>Tissue biopsy: bone marrow, lymph node, liver, temporal artery, skin</li>
+        <li>Metagenomic next-generation sequencing (emerging)</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h3>FDG PET-CT &mdash; The Game-Changer in FUO</h3>
+    <div class="callout c-green">
+      <span class="callout-label">MKSAP 20: PET Scan Is Increasingly Recognized as Valuable &mdash; Early Use Associated With Improved Diagnostic Efficiency and Reduced Costs</span>
+    </div>
+    <ul style="font-size:15px;margin-top:6px;">
+      <li>Detects foci of hypermetabolism from infection, inflammation, or neoplasia</li>
+      <li>Sensitivity 72&ndash;98%, specificity 52&ndash;85% (meta-analyses); diagnostic yield &gt;50%</li>
+      <li>Directly influences clinical management in ~75% of patients</li>
+      <li>Most useful: elevated CRP (&gt;30 mg/L) &middot; age &gt;50 &middot; fever present at time of imaging &middot; limited prior antibiotic use</li>
+      <li>Less useful: normal inflammatory markers &middot; rheumatologic diagnoses</li>
+    </ul>
+    <div class="callout c-blue" style="margin-top:8px;">
+      <span class="callout-label">A Negative PET-CT Has Diagnostic Value</span>
+      Reasonably excludes focal infection, malignancy, and large-vessel vasculitis. Associated with favorable prognosis and spontaneous resolution. Helps avoid unnecessary invasive procedures.
+    </div>
+    <h3 style="margin-top:10px;">Biopsy: Invasive Test of Choice When Noninvasive Fails</h3>
+    <ul style="font-size:14px;">
+      <li><strong>Bone marrow:</strong> cytopenias, elevated LDH/ferritin, hematologic malignancy, granulomatous disease, HLH</li>
+      <li><strong>Temporal artery:</strong> age &gt;50, elevated ESR, headache &mdash; even without classic GCA symptoms</li>
+      <li><strong>Random skin biopsy:</strong> diagnoses intravascular lymphoma even without visible lesions</li>
+      <li><strong>Bone marrow biopsy indicated when leukopenia or thrombocytopenia is present</strong> (MKSAP 20)</li>
+    </ul>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>Fever Patterns &amp; Periodic Fever Syndromes</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Board-Tested Fever Patterns</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Pattern</th><th>Classic Association</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Quotidian</strong> (daily spikes, returns to baseline)</td><td>Adult-onset Still&rsquo;s disease</td></tr>
+        <tr><td><strong>Double quotidian</strong> (2 spikes/day)</td><td>AOSD &middot; Visceral leishmaniasis &middot; Mixed malarial infections &middot; Gonococcal endocarditis</td></tr>
+        <tr><td><strong>Pel-Ebstein</strong> (1&ndash;2 wk fever alternating with 1&ndash;2 wk afebrile)</td><td>Hodgkin lymphoma (classic but rare)</td></tr>
+        <tr><td><strong>Tertian</strong> (fever every 48 hours)</td><td><em>P. vivax</em> / <em>P. ovale</em> malaria</td></tr>
+        <tr><td><strong>Quartan</strong> (fever every 72 hours)</td><td><em>P. malariae</em> malaria</td></tr>
+        <tr><td><strong>Continuous</strong> (sustained, minimal variation)</td><td>Typhoid fever &middot; Drug fever</td></tr>
+        <tr><td><strong>Relative bradycardia</strong> (pulse-temperature dissociation)</td><td>Typhoid &middot; Legionella &middot; Psittacosis &middot; Q fever &middot; Drug fever &middot; Lymphoma &middot; Factitious</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">MKSAP 20</span>
+      Fever patterns are nonspecific and nondiagnostic in most instances. Use patterns as hypothesis-generators, not diagnostic conclusions.
+    </div>
+  </div>
+  <div>
+    <h3>Periodic Fever Syndromes (Board Table)</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Syndrome</th><th>Inheritance</th><th>Episode</th><th>Key Features</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>FMF</strong><br><em>(MEFV gene)</em></td>
+          <td>AR; Mediterranean (Turkish, Armenian, Arab, Jewish)</td>
+          <td>1&ndash;3 days</td>
+          <td>Serositis (peritonitis, pleuritis) &middot; Monoarthritis &middot; Erysipelas-like rash on lower extremities. Complication: AA amyloidosis. Treatment: <strong>colchicine lifelong</strong> (prevents amyloidosis)</td>
+        </tr>
+        <tr>
+          <td><strong>TRAPS</strong><br><em>(TNFRSF1A)</em></td>
+          <td>AD; any (often Northern European)</td>
+          <td>1&ndash;4 weeks</td>
+          <td>Migratory myalgia &middot; Periorbital edema &middot; Centrifugal rash. Longest episodes of any periodic fever syndrome.</td>
+        </tr>
+        <tr>
+          <td><strong>HIDS</strong><br><em>(MVK gene)</em></td>
+          <td>AR; Dutch/French</td>
+          <td>3&ndash;7 days</td>
+          <td>Cervical lymphadenopathy &middot; Abdominal pain &middot; Diarrhea &middot; Elevated IgD (not always)</td>
+        </tr>
+        <tr>
+          <td><strong>PFAPA</strong></td>
+          <td>Sporadic; any</td>
+          <td>3&ndash;6 days</td>
+          <td>Periodic fever + aphthous stomatitis + pharyngitis + cervical adenitis. Most common periodic fever syndrome in children. Tonsillectomy often curative.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-content',html:`
+<h2>Empiric Therapy &amp; Prognosis</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Empiric Therapy Rules (MKSAP 20 / Haidar 2022)</h3>
+    <div class="callout c-red">
+      <span class="callout-label">General Rule: Empiric Antimicrobials Are NOT Recommended in Stable FUO</span>
+      Empiric antibiotics obscure the diagnosis, delay appropriate treatment, and have not been shown to improve outcomes. Avoid in clinically stable patients.
+    </div>
+    <h3 style="margin-top:10px;">Limited Exceptions Where Empiric Therapy IS Appropriate</h3>
+    <ul style="font-size:15px;">
+      <li><strong>Neutropenic fever:</strong> broad-spectrum antibiotics per IDSA guidelines (different syndrome)</li>
+      <li><strong>Critically ill / hemodynamically unstable:</strong> culture, then treat broadly</li>
+      <li><strong>Suspected TB in endemic setting with high pretest probability:</strong> empiric anti-TB therapy may be considered</li>
+      <li><strong>GCA with threatened vision loss:</strong> start high-dose corticosteroids immediately &mdash; biopsy remains positive for up to 2 weeks after steroids</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Empiric Corticosteroids &mdash; Generally Discouraged</span>
+      May mask lymphoma, suppress signs of infection, and delay diagnosis. Exception: GCA with visual threat. The "naproxen test" (distinguishing malignant from infectious fever by NSAID response) has low sensitivity and specificity and should NOT be used as a diagnostic tool.
+    </div>
+  </div>
+  <div>
+    <h3>Prognosis of Undiagnosed FUO</h3>
+    <div class="card-green" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--green);">Generally Favorable (MKSAP 20 KP)</div>
+      <ul style="font-size:15px;">
+        <li>15&ndash;30% of FUO cases remain undiagnosed despite thorough evaluation</li>
+        <li>Up to 75% of undiagnosed cases resolve spontaneously</li>
+        <li>Overall mortality in undiagnosed FUO is low (~2.8% at 6 months, Italian registry 2025)</li>
+        <li>FUO lasting <strong>&gt;1 year is unlikely to be caused by infection or malignancy</strong> (MKSAP 20 KP) &mdash; generally benign course</li>
+        <li>A negative FDG PET-CT in undiagnosed FUO predicts favorable prognosis</li>
+      </ul>
+    </div>
+    <h3 style="margin-top:10px;">Follow-Up of Undiagnosed FUO</h3>
+    <ul style="font-size:15px;">
+      <li>Serial clinical reassessment for new diagnostic clues</li>
+      <li>Medication reassessment at every visit</li>
+      <li>Repeat H&amp;P periodically &mdash; new findings emerge over time</li>
+      <li>Re-image if new symptoms develop</li>
+    </ul>
+    <div class="callout c-blue" style="margin-top:8px;">
+      <span class="callout-label">Drug Fever: Always Revisit the Medication List</span>
+      Temporary discontinuation of any new or potentially offending medications should be considered in every FUO evaluation (MKSAP 20). Fever resolves within 48&ndash;72 hours of stopping the offending drug.
+    </div>
+  </div>
+</div>
+</div>
+`},
+{cls:'slide-accent',html:`
+<h2>Clinical Pearls &amp; References</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <div class="pearl"><strong>FUO is a syndrome, not a diagnosis.</strong> Approach it systematically. History and physical are the most powerful tools and must be revisited at every encounter.</div>
+    <div class="pearl"><strong>Up to 50% of FUO cases have no diagnosis despite extensive evaluation.</strong> FUO lasting more than 1 year is unlikely to be infection or malignancy; up to 75% resolve spontaneously (MKSAP 20).</div>
+    <div class="pearl"><strong>Blood cultures must be from &ge;3 sets at separate phlebotomy sites.</strong> Two cultures from the same blood draw miss culture-negative endocarditis and contamination cannot be assessed.</div>
+    <div class="pearl"><strong>Ferritin &gt;10,000 ng/mL = AOSD or HLH until proven otherwise.</strong> Distinguish by CBC: AOSD causes leukocytosis; HLH causes cytopenias. Triglycerides and fibrinogen separate them.</div>
+    <div class="pearl"><strong>Intravascular lymphoma is diagnosed by random skin biopsy</strong> &mdash; even without visible skin lesions. Classic presentation: FUO + cytopenias + elevated LDH + CNS symptoms.</div>
+    <div class="pearl"><strong>Consider temporal artery biopsy in any elderly patient with unresolved FUO</strong> even without classic GCA symptoms. In GCA with visual threat, start steroids immediately &mdash; do not wait for biopsy.</div>
+    <div class="pearl"><strong>Empiric antibiotics in stable FUO are counterproductive.</strong> They obscure the diagnosis, delay appropriate treatment, and have no outcome benefit. The exception is hemodynamic instability and neutropenic fever.</div>
+  </div>
+  <div>
+    <ol class="refs">
+      <li>Haidar G, Singh N. "Fever of Unknown Origin." <em>N Engl J Med.</em> 2022;386:463&ndash;477. [Definitive modern FUO review; etiologic distribution; PET-CT role; diagnostic framework]</li>
+      <li>Luzzati R, Zerbato V, Attard L, et al. "Fever of Unknown Origin FADOI-SIMIT Italian Registry." <em>Intern Emerg Med.</em> 2025. [NIID 31.8% overtaking infections 25.7% in high-income setting; prognosis data]</li>
+      <li>Albano D, Lanfranchi F, Bauckneht M, et al. "Diagnostic Yield of [18F]FDG PET/CT in FUO: An Italian Multicenter Study of 929 Patients." <em>J Nucl Med.</em> 2026. [72% sensitivity, 85% specificity; clinical management impact 75%]</li>
+      <li>Wright WF, Kandiah S, Brady R, et al. "Nuclear Medicine Imaging Tools in FUO: Time for a Revisit and Appropriate Use Criteria." <em>Clin Infect Dis.</em> 2024. [SNMMI/IDSA/ACNM appropriate use criteria; FDG PET-CT as test of choice]</li>
+      <li>Betrains A, Moreel L, De Langhe E, Blockmans D, Vanderschueren S. "Rheumatic Disorders Among Patients With Fever of Unknown Origin." <em>Semin Arthritis Rheum.</em> 2022. [NIID 22.2% of FUO; AOSD 22.8%, GCA 11.4%, SLE 11.1%]</li>
+      <li>Beckett M, Spaner C, Goubran M, et al. "CRP and sCD25 help distinguish between AOSD and HLH." <em>Eur J Haematol.</em> 2024. [AOSD vs HLH differential biomarkers]</li>
+      <li>Wright WF, Betz JF, Auwaerter PG. "Prospective Studies Comparing Structured vs Nonstructured Diagnostic Protocol Evaluations in FUO." <em>JAMA Netw Open.</em> 2022. [Structured protocol improves diagnostic yield]</li>
+      <li>MKSAP 20. "Fever of Unknown Origin." <em>Infectious Disease.</em> American College of Physicians, 2025.</li>
+    </ol>
+  </div>
+</div>
+</div>
+`}
+];
+
+const deck=document.getElementById('deck'),counter=document.getElementById('slide-counter'),
+  btnPrev=document.getElementById('btn-prev'),btnNext=document.getElementById('btn-next'),
+  bar=document.getElementById('progress-bar');
+let cur=0;
+SLIDES.forEach((s,i)=>{
+  const el=document.createElement('div');
+  el.className='slide '+s.cls; el.innerHTML=s.html;
+  if(i===0)el.classList.add('active');
+  deck.appendChild(el);
+});
+const slides=deck.querySelectorAll('.slide');
+function goTo(n){
+  if(n<0||n>=slides.length)return;
+  slides[cur].classList.remove('active'); cur=n;
+  slides[cur].classList.add('active');
+  const b=slides[cur].querySelector('.slide-body'); if(b)b.scrollTop=0;
+  counter.textContent=(cur+1)+' / '+slides.length;
+  btnPrev.disabled=cur===0; btnNext.disabled=cur===slides.length-1;
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+}
+btnPrev.addEventListener('click',()=>goTo(cur-1));
+btnNext.addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();goTo(cur+1);}
+  if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();goTo(cur-1);}
+});
+let tx=0;
+deck.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+deck.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)dx<0?goTo(cur+1):goTo(cur-1);
+},{passive:true});
+goTo(0);
+
+</script>
+</body>
+</html>

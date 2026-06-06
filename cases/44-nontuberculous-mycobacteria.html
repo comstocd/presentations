@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Topic 44 — Nontuberculous Mycobacterial Infections | Morning Report</title>
+<style>
+  :root {
+    --bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+    --blue:#0969da;--blue-bg:#ddf4ff;--blue-border:#54aeff;
+    --green:#1a7f37;--green-bg:#dafbe1;--green-border:#4ac26b;
+    --yellow:#9a6700;--yellow-bg:#fff8c5;--yellow-border:#d4a72c;
+    --red:#cf222e;--red-bg:#ffebe9;--red-border:#ff8182;
+    --purple:#8250df;--purple-bg:#fbefff;--purple-border:#c297ff;
+    --orange:#bc4c00;--orange-bg:#fff1e5;--orange-border:#fb8f44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);font-size:18px;line-height:1.5;}
+  #deck{width:100%;height:100%;position:relative;overflow:hidden;}
+  .slide{position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;flex-direction:column;padding:34px 52px 54px;
+    opacity:0;pointer-events:none;transition:opacity 0.2s;overflow:hidden;}
+  .slide.active{opacity:1;pointer-events:all;}
+  .slide-content{background:var(--bg);}
+  .slide-accent{background:var(--bg2);}
+  .slide-title{background:var(--bg);justify-content:center;}
+  .slide-danger{background:#fff5f5;}
+
+  .slide-body{flex:1;overflow-y:auto;overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;padding-right:4px;}
+  .slide-body::-webkit-scrollbar{width:3px;}
+  .slide-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+  .slide-label{font-size:13px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+  .slide h1{font-size:38px;font-weight:700;line-height:1.1;margin-bottom:14px;}
+  .slide h2{font-size:26px;font-weight:700;padding-bottom:9px;
+    border-bottom:2px solid var(--border);margin-bottom:14px;}
+  .slide h3{font-size:19px;font-weight:600;margin:12px 0 6px;}
+  .slide p{font-size:16px;margin-bottom:8px;}
+  .slide ul,.slide ol{padding-left:20px;margin-bottom:8px;}
+  .slide li{font-size:17px;margin-bottom:5px;line-height:1.4;}
+  .slide strong{font-weight:600;}
+  .tagline{font-size:19px;color:var(--muted);max-width:620px;line-height:1.5;margin-bottom:20px;}
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .badge{font-size:13px;font-weight:600;padding:3px 11px;border-radius:99px;border:1px solid;}
+  .badge-blue  {background:var(--blue-bg);  color:var(--blue);  border-color:var(--blue-border);}
+  .badge-green {background:var(--green-bg); color:var(--green); border-color:var(--green-border);}
+  .badge-red   {background:var(--red-bg);   color:var(--red);   border-color:var(--red-border);}
+  .badge-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border);}
+  .badge-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border);}
+  .badge-orange{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border);}
+
+  .callout{border-radius:8px;padding:11px 15px;margin:9px 0;border-left:4px solid;font-size:15px;line-height:1.5;}
+  .callout-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:3px;}
+  .c-blue  {background:var(--blue-bg);  border-color:var(--blue);  color:#0550ae;} .c-blue   .callout-label{color:var(--blue);}
+  .c-yellow{background:var(--yellow-bg);border-color:var(--yellow-border);color:var(--yellow);} .c-yellow .callout-label{color:var(--yellow);}
+  .c-red   {background:var(--red-bg);   border-color:var(--red);   color:#82071e;} .c-red    .callout-label{color:var(--red);}
+  .c-green {background:var(--green-bg); border-color:var(--green); color:#116329;} .c-green  .callout-label{color:var(--green);}
+  .c-orange{background:var(--orange-bg);border-color:var(--orange-border);color:var(--orange);} .c-orange .callout-label{color:var(--orange);}
+  .c-purple{background:var(--purple-bg);border-color:var(--purple);color:#5a32a3;} .c-purple .callout-label{color:var(--purple);}
+
+  .table-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin:9px 0;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--bg3);color:var(--muted);font-size:11px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:15px;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--bg2);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:9px 0;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:9px 0;}
+  .card      {background:var(--bg);        border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-red  {background:var(--red-bg);    border:1px solid var(--red-border);   border-radius:10px;padding:13px 15px;}
+  .card-green{background:var(--green-bg);  border:1px solid var(--green-border); border-radius:10px;padding:13px 15px;}
+  .card-blue {background:var(--blue-bg);   border:1px solid var(--blue-border);  border-radius:10px;padding:13px 15px;}
+  .card-yellow{background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:10px;padding:13px 15px;}
+  .card-orange{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:10px;padding:13px 15px;}
+  .card-accent{background:var(--bg2);      border:1px solid var(--border);       border-radius:10px;padding:13px 15px;}
+  .card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+
+  .step{display:flex;gap:12px;align-items:flex-start;margin-bottom:9px;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .step-body{flex:1;}
+  .step-title{font-size:17px;font-weight:600;display:block;margin-bottom:1px;}
+  .step-sub{font-size:14px;color:var(--muted);}
+
+  .tl{list-style:none;padding:0;position:relative;}
+  .tl::before{content:'';position:absolute;left:13px;top:0;bottom:0;width:2px;background:var(--border);}
+  .tl li{padding:0 0 12px 34px;position:relative;}
+  .tl li::before{content:'';position:absolute;left:7px;top:5px;width:12px;height:12px;
+    border-radius:50%;background:var(--bg);border:2px solid var(--blue);}
+  .tl-label{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+
+  .pearl{background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+    padding:12px 15px;margin:8px 0;font-size:16px;line-height:1.5;}
+
+  .ch{display:flex;flex-direction:column;justify-content:center;height:100%;}
+  .ch-num{font-size:72px;font-weight:800;color:var(--bg3);line-height:1;margin-bottom:8px;}
+  .ch-title{font-size:30px;font-weight:700;margin-bottom:8px;}
+  .ch-sub{font-size:18px;color:var(--muted);max-width:540px;line-height:1.4;}
+
+  .refs{font-size:13px;color:var(--muted);line-height:1.7;}
+  .refs li{margin-bottom:7px;}
+
+  #nav{position:fixed;bottom:0;left:0;right:0;height:44px;background:var(--bg);
+    border-top:1px solid var(--border);display:flex;align-items:center;
+    justify-content:space-between;padding:0 16px;z-index:200;user-select:none;}
+  .nav-btn{background:none;border:1px solid var(--border);border-radius:6px;
+    padding:5px 14px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;}
+  .nav-btn:hover{background:var(--bg2);}
+  .nav-btn:disabled{opacity:.3;cursor:default;}
+  #slide-counter{font-size:14px;color:var(--muted);font-weight:500;}
+  #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--blue);transition:width .2s;z-index:300;}
+
+  @media(max-width:720px){
+    .slide{padding:18px 14px 54px;}
+    .slide h1{font-size:26px;} .slide h2{font-size:20px;}
+    .grid-2,.grid-3{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="deck"></div>
+<div id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592; Prev</button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next">Next &#8594;</button>
+</div>
+<script>
+const SLIDES = [
+
+// 1. TITLE
+{cls:'slide-title',html:`
+<div class="slide-label">Topic 44 &middot; Infectious Disease / Pulmonology / Hospital Medicine</div>
+<h1>Nontuberculous<br>Mycobacterial Infections</h1>
+<p class="tagline">A positive culture is a conversation starter, not a treatment order. The most common error in NTM care is treating a result instead of a patient. The second most common is not recognizing progressive disease in someone with bronchiectasis.</p>
+<div class="badge-row">
+  <span class="badge badge-blue">MAC</span>
+  <span class="badge badge-red">M. abscessus</span>
+  <span class="badge badge-yellow">Diagnostic Criteria</span>
+  <span class="badge badge-green">12 Months Post-Conversion</span>
+  <span class="badge badge-orange">MKSAP 20</span>
+</div>
+<div style="margin-top:26px;font-size:14px;color:var(--muted);">Morning Report &middot; Internal Medicine &middot; David Comstock, MD</div>
+`},
+
+// 2. CASE
+{cls:'slide-content',html:`
+<h2>Case Presentation</h2>
+<div class="slide-body">
+<ul class="tl">
+  <li><div class="tl-label">History</div>72F with known bronchiectasis and chronic cough &times;3 years, progressive fatigue and 8 lb weight loss over 6 months. Never-smoker. No prior TB exposure. No immunodeficiency. On inhaled fluticasone/salmeterol for asthma.</li>
+  <li><div class="tl-label">Imaging</div>HRCT chest: bilateral cylindrical bronchiectasis (right middle lobe and lingula predominant), multiple centrilobular nodules with tree-in-bud pattern. No cavitation.</li>
+  <li><div class="tl-label">Microbiology</div>Sputum AFB smear: negative. Sputum mycobacterial culture &times;1: <em>Mycobacterium avium complex</em>. Gram stain/standard bacterial culture: normal flora.</li>
+  <li><div class="tl-label">Provider question</div>"Should I start azithromycin, rifampin, and ethambutol?"</div></li>
+</ul>
+<div class="callout c-red">
+  <span class="callout-label">The Teaching Frame</span>
+  Not yet. One positive sputum culture for MAC does not meet ATS/ERS/ESCMID/IDSA diagnostic criteria for NTM pulmonary disease in most cases. The answer is: repeat sputum cultures, integrate symptoms and imaging, and determine whether she meets criteria before initiating prolonged, toxic, combination therapy.
+</div>
+</div>
+`},
+
+// 3. WHAT ARE NTM + SPECIES
+{cls:'slide-accent',html:`
+<h2>What Are NTM? Classification &amp; Epidemiology</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">Definition</span>
+  Nontuberculous mycobacteria (NTM) = all <em>Mycobacterium</em> species <strong>except</strong> M. tuberculosis complex and M. leprae. Found in water, soil, domestic and wild animals, milk, and food. Acquired from the environment &mdash; <strong>not person-to-person</strong> in most cases.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Slow Growers (solid media 2&ndash;4 weeks)</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Species</th><th>Key Association</th></tr></thead>
+      <tbody>
+        <tr><td><strong>M. avium complex (MAC)</strong></td><td>Most common US pulmonary NTM; disseminated in HIV (CD4 &lt;50)</td></tr>
+        <tr><td><strong>M. kansasii</strong></td><td>Relatively pathogenic; resembles TB radiographically</td></tr>
+        <tr><td><strong>M. xenopi</strong></td><td>Pulmonary; immunocompromised hosts; heater-cooler contamination</td></tr>
+        <tr><td><strong>M. marinum</strong></td><td>Fish tanks, swimming pools; skin/soft tissue (sporotrichoid pattern)</td></tr>
+        <tr><td><strong>M. chimaera</strong></td><td>Heater-cooler devices in cardiac surgery &rarr; PVE, dissemination</td></tr>
+        <tr><td><strong>M. gordonae</strong></td><td>Low pathogenicity; often contaminant</td></tr>
+        <tr><td>M. scrofulaceum</td><td>Cervical lymphadenitis, mainly in children</td></tr>
+        <tr><td>M. ulcerans</td><td>Buruli ulcer (tropics); not found in US</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div>
+    <h3>Rapid Growers (&lt;7 days on solid media)</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Species</th><th>Key Association</th></tr></thead>
+      <tbody>
+        <tr><td><strong>M. abscessus complex</strong></td><td>Pulmonary (esp. CF); skin/soft tissue; hardest to treat</td></tr>
+        <tr><td><strong>M. fortuitum</strong></td><td>Skin (pedicures, tattoos); surgical site infections</td></tr>
+        <tr><td><strong>M. chelonae</strong></td><td>Skin; cosmetic procedures; catheter infections</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3 style="margin-top:12px;">No Person-to-Person Transmission (with One Exception)</h3>
+    <div class="callout c-yellow" style="margin-top:4px;">
+      <span class="callout-label">M. abscessus in Cystic Fibrosis</span>
+      Person-to-person transmission of M. abscessus among CF patients has been reported, though the mechanism is not fully characterized. CF centers now apply strict infection control protocols for M. abscessus-positive patients. For all other NTM, environmental acquisition is the rule &mdash; no airborne isolation required.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 4. WHO GETS IT + CLINICAL SYNDROMES
+{cls:'slide-content',html:`
+<h2>Who Gets NTM Disease &amp; What Syndromes It Causes</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Pulmonary NTM &mdash; Risk Factors</h3>
+    <div class="callout c-blue">
+      <span class="callout-label">Strongest Association: Structural Lung Disease</span>
+      Bronchiectasis is the most consistent risk factor (meta-analysis: Loebinger et al., Chest 2023). Also: prior TB &middot; COPD &middot; interstitial lung disease &middot; asthma &middot; inhaled corticosteroid use &middot; cystic fibrosis
+    </div>
+    <ul style="margin-top:6px;">
+      <li>Older adults (MAC and M. kansasii: women &gt;50, classic Lady Windermere phenotype)</li>
+      <li>Middle-aged/older men with upper lobe cavitary disease and underlying lung disease</li>
+      <li>Hot tub use &rarr; MAC hypersensitivity pneumonitis ("hot tub lung")</li>
+      <li>Immunosuppression: inhaled corticosteroids, systemic steroids, biologics</li>
+    </ul>
+    <h3 style="margin-top:12px;">Major Clinical Syndromes</h3>
+    <ul>
+      <li><strong>Pulmonary disease</strong> &mdash; most common; MAC, M. kansasii, M. abscessus</li>
+      <li><strong>Skin &amp; soft tissue</strong> &mdash; rapid growers; M. marinum; trauma, procedures</li>
+      <li><strong>Lymphadenitis</strong> &mdash; MAC most common (80%); children &gt; adults; surgical excision curative</li>
+      <li><strong>Catheter-related BSI</strong> &mdash; rapid growers (M. abscessus, M. fortuitum)</li>
+      <li><strong>Disseminated</strong> &mdash; MAC in HIV (CD4 &lt;50/&micro;L); M. chimaera post-cardiac surgery</li>
+      <li><strong>Musculoskeletal</strong> &mdash; tenosynovitis, osteomyelitis, septic arthritis; M. marinum</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Extrapulmonary / Disseminated Risk Factors</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Host</th><th>Most Likely NTM</th></tr></thead>
+      <tbody>
+        <tr><td>HIV with CD4 &lt;50/&micro;L</td><td>MAC (classic disseminated disease)</td></tr>
+        <tr><td>TNF inhibitor / JAK inhibitor</td><td>MAC, M. kansasii</td></tr>
+        <tr><td>HSCT / solid organ transplant</td><td>MAC, rapid growers</td></tr>
+        <tr><td>Hematologic malignancy</td><td>MAC, M. haemophilum</td></tr>
+        <tr><td>Cardiac surgery / heater-cooler</td><td>M. chimaera (PVE months&ndash;years later)</td></tr>
+        <tr><td>Trauma / aquatic exposure</td><td>M. marinum, M. abscessus</td></tr>
+        <tr><td>Cosmetic surgery / pedicures</td><td>M. fortuitum, M. chelonae, M. abscessus</td></tr>
+        <tr><td>Long-term catheter</td><td>Rapid growers</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-orange" style="margin-top:8px;">
+      <span class="callout-label">M. chimaera &mdash; The Heater-Cooler Pearl</span>
+      Heater-cooler devices used in cardiac surgery were contaminated with M. chimaera at the manufacturing level. Patients may develop prosthetic valve endocarditis or disseminated infection months to years after surgery. Requires multiple mycobacterial blood cultures to diagnose. Prolonged treatment and often valve surgery required.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 5. THE CORE DIAGNOSTIC PEARL
+{cls:'slide-danger',html:`
+<h2>The Most Important Teaching Point: Positive Culture &ne; Disease</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">The Governing Rule (ATS/ERS/ESCMID/IDSA 2020)</span>
+  NTM are ubiquitous environmental organisms. A positive culture from a non-sterile site (sputum, bronchial wash) may represent environmental contamination, transient colonization, or non-progressive infection. Diagnosis requires clinical, radiographic, AND microbiologic criteria together. Never treat based on a single result alone.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Why One Sputum Culture Is Not Enough</h3>
+    <ul>
+      <li>NTM are found in water supplies, shower heads, soil &mdash; inhalation without disease is common</li>
+      <li>A single positive MAC sputum has low predictive value for true pulmonary disease</li>
+      <li>Disease likelihood rises substantially with &ge;2 positive cultures of the same species/subspecies</li>
+      <li>M. gordonae: commonly isolated, rarely pathogenic &mdash; almost always a contaminant</li>
+      <li>M. kansasii: exception &mdash; more pathogenic; a single positive culture may warrant workup in the right context</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:10px;">
+      <span class="callout-label">Before Starting Antibiotics, Ask These Three Questions</span>
+      1. Are there compatible symptoms? (chronic cough, fatigue, weight loss, dyspnea)<br>
+      2. Is there compatible imaging? (nodules, bronchiectasis, cavities on HRCT)<br>
+      3. Is the microbiology criterion met? (&ge;2 positive sputum cultures or 1 positive bronchoscopy/biopsy)
+    </div>
+  </div>
+  <div>
+    <h3>What Happens If You Treat Too Early</h3>
+    <ul>
+      <li>Prolonged, complex, toxic regimens (often &ge;12&ndash;18 months)</li>
+      <li>Macrolide monotherapy promotes macrolide resistance &mdash; permanently damages future treatment options</li>
+      <li>Ethambutol optic toxicity, rifamycin hepatotoxicity, amikacin ototoxicity/nephrotoxicity</li>
+      <li>Treatment failures are often toxicity failures or adherence failures</li>
+      <li>Some patients are better observed; spontaneous sputum conversion can occur</li>
+    </ul>
+    <div class="callout c-red" style="margin-top:10px;">
+      <span class="callout-label">Never Use Macrolide Monotherapy for MAC</span>
+      Macrolide monotherapy reliably selects for high-level macrolide resistance in MAC, eliminating the cornerstone drug from future regimens. Always pair the macrolide with ethambutol (which protects it) and a rifamycin.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 6. DIAGNOSTIC CRITERIA
+{cls:'slide-content',html:`
+<h2>Diagnostic Criteria for NTM Pulmonary Disease</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">ATS/ERS/ESCMID/IDSA 2020 &mdash; All Three Categories Must Be Met</span>
+  Clinical + Radiographic + Microbiologic. This is not optional. Meeting two of three is not sufficient.
+</div>
+<div class="grid-3">
+  <div class="card-blue">
+    <div class="card-title" style="color:var(--blue);">Clinical (both required)</div>
+    <ul style="font-size:15px;">
+      <li>Pulmonary or systemic symptoms: cough, dyspnea, fatigue, weight loss</li>
+      <li>Compatible radiologic findings (see below)</li>
+      <li>Reasonable exclusion of alternative diagnoses (TB, fungal, malignancy)</li>
+    </ul>
+  </div>
+  <div class="card-yellow">
+    <div class="card-title" style="color:var(--yellow);">Radiographic (either)</div>
+    <ul style="font-size:15px;">
+      <li>Nodular or cavitary opacities on chest radiograph</li>
+      <li><strong>HRCT</strong> showing bronchiectasis with multiple small nodules</li>
+      <li>HRCT is preferred &mdash; more sensitive and specific than plain radiograph</li>
+    </ul>
+  </div>
+  <div class="card-green">
+    <div class="card-title" style="color:var(--green);">Microbiologic (any one)</div>
+    <ul style="font-size:15px;">
+      <li>&ge;2 positive sputum cultures with the <strong>same NTM species/subspecies</strong>, collected over at least approximately 1 week</li>
+      <li>1 positive bronchial wash or lavage culture</li>
+      <li>Transbronchial biopsy or lung biopsy with compatible histopathology (granulomatous inflammation &plusmn; AFB) + positive culture from biopsy or respiratory specimen</li>
+    </ul>
+  </div>
+</div>
+<div class="grid-2" style="margin-top:8px;">
+  <div class="callout c-yellow" style="margin:0;">
+    <span class="callout-label">Standard Workup</span>
+    HRCT chest &middot; &ge;3 sputum specimens for AFB smear and culture &middot; Species identification &middot; Molecular sequencing for subspeciation (especially M. abscessus) &middot; Exclude TB, fungal infection, malignancy
+  </div>
+  <div class="callout c-orange" style="margin:0;">
+    <span class="callout-label">Susceptibility Testing</span>
+    MAC: macrolide MIC (resistance changes regimen) &middot; M. abscessus: full panel + erm gene testing for inducible resistance &middot; M. kansasii: rifampin resistance testing &middot; Correlation between in vitro susceptibility and clinical outcome is imperfect for some NTM
+  </div>
+</div>
+</div>
+`},
+
+// 7. TWO PULMONARY PHENOTYPES
+{cls:'slide-accent',html:`
+<h2>Two Pulmonary Phenotypes</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div class="card-blue">
+    <div class="card-title" style="color:var(--blue);">Nodular / Bronchiectatic (Lady Windermere) Phenotype</div>
+    <ul style="font-size:16px;">
+      <li>Classic host: women over 50, often slender, tall, scoliosis/pectus excavatum ("Lady Windermere")</li>
+      <li>Indolent, slowly progressive course</li>
+      <li>Chronic cough, fatigue, weight loss</li>
+      <li><strong>HRCT:</strong> bilateral bronchiectasis + centrilobular nodules + tree-in-bud pattern (right middle lobe and lingula predominant)</li>
+      <li>AFB smear usually negative</li>
+      <li>Species: MAC predominates</li>
+      <li>Treatment: 3-times-weekly regimen often appropriate for non-cavitary, macrolide-susceptible MAC</li>
+    </ul>
+  </div>
+  <div class="card-orange">
+    <div class="card-title" style="color:var(--orange);">Fibrocavitary Phenotype</div>
+    <ul style="font-size:16px;">
+      <li>Classic host: older men with underlying COPD, emphysema, or prior TB</li>
+      <li>More destructive; upper lobe predominant</li>
+      <li>Progressive; may resemble reactivation TB on imaging</li>
+      <li><strong>HRCT/CXR:</strong> upper lobe cavitary disease, fibronodular changes</li>
+      <li>AFB smear often positive in high-burden disease</li>
+      <li>Species: MAC, M. kansasii, M. abscessus</li>
+      <li>Treatment: daily regimen required; consider adding parenteral amikacin for severe/cavitary MAC</li>
+    </ul>
+  </div>
+</div>
+<div class="callout c-purple" style="margin-top:8px;">
+  <span class="callout-label">Hot Tub Lung &mdash; A Third MAC Pattern</span>
+  MAC exposure during hot tub use can cause <strong>hypersensitivity pneumonitis</strong> (not true pulmonary NTM infection). Presents with dyspnea, fever, cough after hot tub exposure. HRCT: diffuse ground-glass opacity &plusmn; small nodules. Diagnosis: exposure history + response to avoidance &plusmn; steroid; standard NTM antibiotics may not be required. Antigen removal (stop hot tub use) is the primary intervention.
+</div>
+</div>
+`},
+
+// 8. CHAPTER — TREATMENT
+{cls:'slide-title',html:`
+<div class="ch">
+  <div class="ch-num">01</div>
+  <div class="ch-title">Treatment</div>
+  <div class="ch-sub">To treat or observe. MAC: macrolide + ethambutol + rifamycin. M. kansasii: rifampin-based. M. abscessus: expert-guided multidrug, subspecies-specific. Twelve months after culture conversion.</div>
+  <div class="badge-row" style="margin-top:16px;">
+    <span class="badge badge-blue">MAC Standard Regimen</span>
+    <span class="badge badge-yellow">3&times;/week vs. Daily</span>
+    <span class="badge badge-red">M. abscessus Complex</span>
+    <span class="badge badge-green">Amikacin Indications</span>
+  </div>
+</div>
+`},
+
+// 9. TO TREAT OR OBSERVE
+{cls:'slide-content',html:`
+<h2>To Treat or Observe? The Decision Framework</h2>
+<div class="slide-body">
+<div class="callout c-blue">
+  <span class="callout-label">Meeting Diagnostic Criteria Does Not Automatically Require Treatment</span>
+  Some patients who meet criteria are best observed. Treatment is long, toxic, and has uncertain cure rates for some species. The decision integrates symptoms, severity, species, trajectory, and patient goals.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Factors Favoring Treatment</h3>
+    <div class="card-red">
+      <div class="card-title" style="color:var(--red);">Higher Urgency &mdash; Treat</div>
+      <ul style="font-size:15px;">
+        <li><strong>Cavitary disease</strong> &mdash; progressive destruction; smear positivity</li>
+        <li><strong>Smear-positive sputum</strong> &mdash; high bacterial burden, higher transmission risk in M. abscessus/CF context</li>
+        <li><strong>Progressive symptoms</strong> &mdash; accelerating weight loss, declining function</li>
+        <li><strong>Progressive imaging</strong> &mdash; expanding bronchiectasis, new cavities, new nodules</li>
+        <li><strong>Pathogenic species</strong> &mdash; M. kansasii and M. abscessus are more uniformly treated when criteria are met</li>
+        <li>Limited pulmonary reserve; high risk of decline</li>
+        <li>Immunosuppressed host</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h3>Factors Favoring Observation</h3>
+    <div class="card-accent">
+      <div class="card-title">Consider Watchful Waiting</div>
+      <ul style="font-size:15px;">
+        <li>Non-cavitary nodular/bronchiectatic disease with minimal symptoms</li>
+        <li>Stable imaging without progression over time</li>
+        <li>Low-pathogenicity species (e.g., M. gordonae &mdash; almost always observe)</li>
+        <li>High comorbidity burden making treatment toxicity especially risky</li>
+        <li>Patient preference after informed discussion of risks and uncertain cure rates</li>
+        <li>Spontaneous sputum culture conversion can occur</li>
+      </ul>
+    </div>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Monitoring When Observing</span>
+      Serial sputum cultures (every 1&ndash;3 months) &middot; HRCT at 1 year &middot; Symptom reassessment &middot; Reevaluate treatment threshold if progression occurs
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 10. MAC TREATMENT
+{cls:'slide-accent',html:`
+<h2>MAC Pulmonary Disease: Treatment</h2>
+<div class="slide-body">
+<div class="callout c-green">
+  <span class="callout-label">Standard 3-Drug Backbone for Macrolide-Susceptible MAC</span>
+  Azithromycin or clarithromycin + Ethambutol + Rifampin (or rifabutin). Ethambutol protects the macrolide from resistance selection. Never use macrolide alone.
+</div>
+<div class="grid-2">
+  <div>
+    <h3>Frequency: Radiology Determines Dosing Schedule</h3>
+    <div class="table-wrap" style="margin-top:4px;">
+    <table>
+      <thead><tr><th>Disease Severity</th><th>Regimen Frequency</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Noncavitary nodular / bronchiectatic disease</strong><br><em>(macrolide-susceptible)</em></td>
+          <td><strong>3&times;/week</strong> (azithromycin + ethambutol + rifampin, all three-times-weekly) &mdash; comparable efficacy, better tolerability</td>
+        </tr>
+        <tr>
+          <td><strong>Cavitary or severe / advanced bronchiectatic disease</strong></td>
+          <td><strong>Daily</strong> therapy required; consider adding parenteral amikacin or streptomycin</td>
+        </tr>
+        <tr>
+          <td><strong>Macrolide-resistant MAC</strong></td>
+          <td>Daily regimen; add parenteral amikacin; expert consultation</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout c-blue" style="margin-top:8px;">
+      <span class="callout-label">When to Add Parenteral Amikacin (or Streptomycin)</span>
+      Cavitary disease &middot; Severe/advanced bronchiectatic disease &middot; Macrolide-resistant disease. Early intensive-phase use; monitor for nephrotoxicity and ototoxicity closely.
+    </div>
+  </div>
+  <div>
+    <h3>Duration and Monitoring</h3>
+    <div class="card-green">
+      <div class="card-title" style="color:var(--green);">The Key Duration Rule</div>
+      Treat for <strong>&ge;12 months after sputum culture conversion</strong> &mdash; not 12 months total. Culture conversion = 3 consecutive negative monthly cultures. If conversion does not occur by month 6 of treatment, reconsider regimen and involve experts.
+    </div>
+    <ul style="margin-top:10px;">
+      <li>Monthly sputum AFB smears and cultures while on treatment</li>
+      <li>HRCT at baseline and at 12 months minimum; earlier if deteriorating</li>
+      <li>Macrolide susceptibility at baseline; repeat if culture persists on therapy</li>
+      <li>Monthly visual acuity and color vision testing (ethambutol)</li>
+      <li>Liver function tests at baseline and periodically (rifamycin)</li>
+      <li>Audiometry if amikacin is used</li>
+    </ul>
+    <div class="callout c-yellow" style="margin-top:8px;">
+      <span class="callout-label">Azithromycin vs. Clarithromycin</span>
+      Azithromycin preferred in most adults: once-daily dosing, fewer drug interactions, better tolerability. Clarithromycin BID; more interactions; avoid with certain antiretrovirals. Both equivalent for 3&times;/week noncavitary MAC.
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 11. M. KANSASII + M. ABSCESSUS
+{cls:'slide-content',html:`
+<h2>M. kansasii &amp; M. abscessus: The High-Yield Contrasts</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <div class="card-blue">
+      <div class="card-title" style="color:var(--blue);">M. kansasii &mdash; The Pathogenic Slow Grower</div>
+      <ul style="font-size:15px;">
+        <li>Second most common NTM pulmonary pathogen in US after MAC</li>
+        <li>Clinically significant in appropriate context &mdash; may be treated with a single positive culture in the right setting (unlike MAC, which generally requires &ge;2)</li>
+        <li>Radiographically resembles reactivation TB: upper lobe fibronodular/cavitary disease</li>
+        <li><strong>Treatment:</strong> rifampin-centered regimen (rifampin + ethambutol + isoniazid or macrolide) &times;12 months</li>
+        <li><strong>Pivotal drug = rifampin.</strong> Rifampin resistance is uncommon but dramatically worsens prognosis; test for it</li>
+        <li>Better outcomes and higher cure rates than MAC or M. abscessus</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="card-red">
+      <div class="card-title" style="color:var(--red);">M. abscessus Complex &mdash; Call for Help</div>
+      <ul style="font-size:15px;">
+        <li>Rapid grower; intrinsically resistant to most oral antibiotics</li>
+        <li>Three subspecies: <em>M. abscessus</em> subsp. abscessus, <em>massiliense</em>, <em>bolletii</em></li>
+        <li>Subspecies identification matters: massiliense usually macrolide-susceptible; abscessus subsp. abscessus often has inducible macrolide resistance (erm gene)</li>
+        <li><strong>Treatment framework:</strong></li>
+        <li><em>Intensive phase:</em> &ge;3 active IV drugs (amikacin + imipenem or cefoxitin &plusmn; tigecycline &plusmn; azithromycin) for 4&ndash;8 weeks</li>
+        <li><em>Continuation phase:</em> &ge;2&ndash;3 active oral agents (azithromycin, clofazimine, linezolid, inhaled amikacin) guided by susceptibility</li>
+        <li>Outcomes are worse; cure often not achievable; goals may shift to symptom control/disease suppression</li>
+        <li><strong>Always involve NTM/pulmonary ID expert before initiating treatment</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="callout c-orange" style="margin-top:8px;">
+  <span class="callout-label">M. abscessus Macrolide Resistance: The erm Mechanism</span>
+  M. abscessus subsp. abscessus carries the erm(41) gene encoding an inducible ribosomal methylase. Azithromycin may appear susceptible on standard testing but becomes resistant during prolonged therapy. This is why subspecies identification and erm(41) testing matter before building a regimen around the macrolide. Massiliense has a truncated, nonfunctional erm(41) &mdash; macrolide susceptibility more reliable.
+</div>
+</div>
+`},
+
+// 12. DRUG TOXICITY
+{cls:'slide-accent',html:`
+<h2>Drug Toxicity in NTM Treatment</h2>
+<div class="slide-body">
+<div class="callout c-red">
+  <span class="callout-label">NTM Treatment Failures Are Often Toxicity Failures</span>
+  Many patients discontinue or interrupt therapy due to drug adverse effects rather than microbiologic failure. Surveillance is mandatory.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Drug</th><th>Key Toxicities</th><th>Monitoring</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Azithromycin / Clarithromycin</strong></td>
+      <td>GI upset (nausea, diarrhea) &middot; Hearing loss (high dose/prolonged) &middot; QT prolongation &middot; Drug interactions (clarithromycin: CYP3A4 inhibitor)</td>
+      <td>Baseline audiology if long-term; EKG if QT risk factors; annual audiology with prolonged use</td>
+    </tr>
+    <tr>
+      <td><strong>Ethambutol</strong></td>
+      <td>Optic neuritis &mdash; decreased visual acuity, color vision loss; dose/duration-dependent</td>
+      <td>Baseline + monthly visual acuity and color vision testing. Stop immediately if changes noted. Avoid if CrCl &lt;30.</td>
+    </tr>
+    <tr>
+      <td><strong>Rifampin / Rifabutin</strong></td>
+      <td>Hepatotoxicity &middot; Rash &middot; GI upset &middot; Orange body fluids &middot; Major CYP450 induction (numerous drug interactions) &middot; Cytopenias (rifabutin more)</td>
+      <td>LFTs at baseline and periodically. Full medication reconciliation before prescribing &mdash; warfarin, contraceptives, antiretrovirals, antifungals all affected.</td>
+    </tr>
+    <tr>
+      <td><strong>Amikacin (IV or inhaled)</strong></td>
+      <td>Nephrotoxicity &middot; Ototoxicity (cochlear: high-frequency hearing loss; vestibular: imbalance) &mdash; may be irreversible</td>
+      <td>Baseline + serial creatinine, audiometry, and vestibular assessment. Monitor drug levels (trough). Inhaled amikacin (ALIS) has less systemic toxicity than IV.</td>
+    </tr>
+    <tr>
+      <td><strong>Clofazimine</strong></td>
+      <td>Skin/conjunctival discoloration (pink-red-brown, reversible) &middot; GI intolerance &middot; QT prolongation</td>
+      <td>Warn patients about skin discoloration (cosmetically distressing). EKG at baseline and periodically. GI adverse effects often limiting.</td>
+    </tr>
+    <tr>
+      <td><strong>Linezolid</strong></td>
+      <td>Myelosuppression (anemia, thrombocytopenia) &middot; Peripheral neuropathy &middot; Serotonin syndrome (with serotonergic drugs) &middot; Optic neuropathy</td>
+      <td>CBC weekly initially. Avoid prolonged use without monitoring. Consider pyridoxine for neuropathy prophylaxis.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+`},
+
+// 13. EXTRAPULMONARY NTM
+{cls:'slide-content',html:`
+<h2>Extrapulmonary NTM Syndromes</h2>
+<div class="slide-body">
+<div class="grid-2">
+  <div>
+    <h3>Skin &amp; Soft Tissue &mdash; Think NTM When SSTI Does Not Behave</h3>
+    <div class="callout c-yellow">
+      <span class="callout-label">Clues That Should Prompt NTM Consideration</span>
+      Poorly resolving "cellulitis" &middot; Nodular lesions progressing despite standard antibiotics &middot; Draining sinuses &middot; Aquatic exposure (fish tanks, swimming pools, hot tubs) &middot; Procedure/cosmetic surgery site &middot; Tattoo &middot; Pedicure &middot; Nail salon (whirlpool footbaths)
+    </div>
+    <ul style="margin-top:6px;">
+      <li><strong>M. marinum:</strong> fish tank granuloma &mdash; papulonodular lesion at inoculation site, ascending lymphatic spread ("sporotrichoid" pattern), typically upper extremity. Systemic toxicity absent. Treatment: clarithromycin &plusmn; ethambutol &plusmn; rifampin &times;3&ndash;6 months</li>
+      <li><strong>Rapid growers (M. abscessus, M. fortuitum, M. chelonae):</strong> nodules, abscesses, draining sinuses at procedure sites. Prolonged combination antibiotics &plusmn; surgical debridement</li>
+      <li><strong>Diagnosis:</strong> tissue biopsy for AFB smear, mycobacterial culture, and histopathology (granulomas). Standard wound swabs are insufficient.</li>
+    </ul>
+    <h3 style="margin-top:12px;">Lymphadenitis</h3>
+    <ul>
+      <li>MAC accounts for ~80% of NTM lymphadenitis (MKSAP 20)</li>
+      <li>Cervical nodes most common; mainly children; oropharyngeal route</li>
+      <li><strong>Surgical excision: &gt;90% cure rate</strong> &mdash; preferred over antibiotics alone</li>
+      <li>Incision and drainage &rarr; chronic draining sinus (avoid)</li>
+      <li>Antibiotics if surgery contraindicated</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Disseminated MAC in HIV</h3>
+    <div class="card-red" style="margin-bottom:8px;">
+      <div class="card-title" style="color:var(--red);">Classic Presentation: CD4 &lt;50/&micro;L</div>
+      <ul style="font-size:15px;">
+        <li>Fever, drenching night sweats, weight loss, fatigue</li>
+        <li>Hepatosplenomegaly &middot; Diffuse lymphadenopathy</li>
+        <li>Anemia (often severe) &middot; Elevated alkaline phosphatase</li>
+        <li>Diagnosis: mycobacterial blood cultures (high yield), bone marrow biopsy</li>
+        <li>Treatment: azithromycin + ethambutol &plusmn; rifabutin &times;&ge;12 months; start ART promptly (IRIS risk)</li>
+        <li>Prevention: azithromycin prophylaxis when CD4 &lt;50 (now less common with effective ART)</li>
+      </ul>
+    </div>
+    <h3>M. chimaera &mdash; Healthcare-Associated</h3>
+    <div class="card-orange">
+      <div class="card-title" style="color:var(--orange);">Post-Cardiac Surgery (Heater-Cooler Contamination)</div>
+      <ul style="font-size:15px;">
+        <li>Months to years after cardiac surgery (prosthetic valve, LVAD, CABG with CPB)</li>
+        <li>Subacute: fever, weight loss, hepatosplenomegaly, chorioretinitis, rash</li>
+        <li>Diagnosis: multiple mycobacterial blood cultures + echocardiogram</li>
+        <li>Prolonged multidrug therapy; often valve reoperation required</li>
+        <li>Alert: any unexplained systemic illness after cardiac surgery &rarr; ask about procedure details</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+`},
+
+// 14. CLINICAL PEARLS
+{cls:'slide-accent',html:`
+<h2>Clinical Pearls</h2>
+<div class="slide-body">
+<div class="pearl"><strong>One positive sputum culture for MAC is a data point, not a diagnosis.</strong> ATS/ERS/ESCMID/IDSA 2020 criteria require at least 2 positive sputum cultures of the same species, compatible symptoms, and compatible imaging before diagnosing NTM pulmonary disease. Starting a prolonged, toxic regimen after a single result is the most common NTM management error.</div>
+<div class="pearl"><strong>Never prescribe macrolide monotherapy for MAC.</strong> It reliably selects for high-level macrolide resistance, eliminating the most important drug from future treatment options. The macrolide must always be paired with ethambutol and a rifamycin. Ethambutol is the macrolide's bodyguard.</div>
+<div class="pearl"><strong>Dosing schedule is determined by radiology, not by patient preference.</strong> Noncavitary nodular/bronchiectatic MAC: 3-times-weekly is guideline-preferred. Cavitary or severe disease: daily therapy is required. This is a board-tested distinction.</div>
+<div class="pearl"><strong>Treat for &ge;12 months after culture conversion, not 12 months total.</strong> Culture conversion means three consecutive monthly negative sputum cultures. "12 months total" is a common but incorrect interpretation that leads to systematic undertreatment.</div>
+<div class="pearl"><strong>M. abscessus requires subspecies identification before you design a treatment plan.</strong> M. abscessus subsp. massiliense usually remains macrolide-susceptible; M. abscessus subsp. abscessus often has inducible resistance (erm gene) that emerges on therapy. These are treated differently. Always involve an NTM expert.</div>
+<div class="pearl"><strong>If SSTI is not responding to standard antibiotics and there is aquatic or procedural exposure, think NTM.</strong> M. marinum fish tank granuloma, rapid grower post-pedicure infections, and post-cosmetic-surgery wound infections all require tissue biopsy with mycobacterial culture &mdash; standard wound swabs will not grow NTM.</div>
+<div class="pearl"><strong>M. chimaera endocarditis: ask about cardiac surgery, not just exposure history.</strong> Any subacute systemic illness months to years after cardiac surgery with prosthetic valve involvement should prompt mycobacterial blood cultures. Heater-cooler contamination occurred at the manufacturing level and is not always apparent from local infection control records.</div>
+</div>
+`},
+
+// 15. REFERENCES
+{cls:'slide-content',html:`
+<h2>References</h2>
+<div class="slide-body">
+<ol class="refs">
+  <li>Daley CL, Iaccarino JM, Lange C, et al. "Treatment of Nontuberculous Mycobacterial Pulmonary Disease: An Official ATS/ERS/ESCMID/IDSA Clinical Practice Guideline." <em>Clin Infect Dis.</em> 2020;71:e1&ndash;e36. [Primary evidence base: diagnostic criteria, MAC regimens, M. abscessus framework, macrolide monotherapy prohibition, duration rule]</li>
+  <li>Lange C, B&ouml;ttger EC, Cambau E, et al. "Consensus Management Recommendations for Less Common Non-Tuberculous Mycobacterial Pulmonary Diseases." <em>Lancet Infect Dis.</em> 2022. [M. kansasii, M. xenopi, and less common species management]</li>
+  <li>Loebinger MR, Quint JK, van der Laan R, et al. "Risk Factors for Nontuberculous Mycobacterial Pulmonary Disease: A Systematic Literature Review and Meta-Analysis." <em>Chest.</em> 2023. [Bronchiectasis as strongest risk factor; COPD, prior TB, ILD, asthma, ICS use]</li>
+  <li>Malhotra AM, Arias M, Backx M, et al. "Extrapulmonary Nontuberculous Mycobacterial Infections: A Guide for the General Physician." <em>Clin Med.</em> 2024. [Skin/soft tissue, lymphadenitis, disseminated, M. chimaera; multidisciplinary management]</li>
+  <li>Ricotta EE, Adjemian J, Blakney RA, et al. "Extrapulmonary Nontuberculous Mycobacteria Infections in Hospitalized Patients, United States, 2009&ndash;2014." <em>Emerg Infect Dis.</em> 2021. [Epidemiology; skin/soft tissue most common extrapulmonary site; rapid growers overrepresented]</li>
+  <li>Longworth SA, Daly JS; AST Infectious Diseases Community of Practice. "Management of Infections Due to Nontuberculous Mycobacteria in Solid Organ Transplant Recipients: AST IDCOP Guidelines." <em>Clin Transplant.</em> 2019. [Immunocompromised host; transplant-specific NTM management]</li>
+  <li>Bergeron A, Mikulska M, De Greef J, et al. "Mycobacterial Infections in Adults With Haematological Malignancies and HSCT: Guidelines from the 8th European Conference on Infections in Leukaemia." <em>Lancet Infect Dis.</em> 2022. [NTM in hematologic malignancy and transplant]</li>
+  <li>Stevens DL, Bisno AL, Chambers HF, et al. "Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update." IDSA. <em>Clin Infect Dis.</em> 2014. [NTM skin/soft tissue management; tissue diagnosis; surgical debridement]</li>
+  <li>MKSAP 20. "Nontuberculous Mycobacterial Infections." <em>Infectious Disease.</em> American College of Physicians, 2025.</li>
+</ol>
+</div>
+`},
+
+];
+
+const deck=document.getElementById('deck'),counter=document.getElementById('slide-counter'),
+  btnPrev=document.getElementById('btn-prev'),btnNext=document.getElementById('btn-next'),
+  bar=document.getElementById('progress-bar');
+let cur=0;
+SLIDES.forEach((s,i)=>{
+  const el=document.createElement('div');
+  el.className='slide '+s.cls; el.innerHTML=s.html;
+  if(i===0)el.classList.add('active');
+  deck.appendChild(el);
+});
+const slides=deck.querySelectorAll('.slide');
+function goTo(n){
+  if(n<0||n>=slides.length)return;
+  slides[cur].classList.remove('active'); cur=n;
+  slides[cur].classList.add('active');
+  const b=slides[cur].querySelector('.slide-body'); if(b)b.scrollTop=0;
+  counter.textContent=(cur+1)+' / '+slides.length;
+  btnPrev.disabled=cur===0; btnNext.disabled=cur===slides.length-1;
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+}
+btnPrev.addEventListener('click',()=>goTo(cur-1));
+btnNext.addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)){e.preventDefault();goTo(cur+1);}
+  if(['ArrowLeft','ArrowUp'].includes(e.key)){e.preventDefault();goTo(cur-1);}
+});
+let tx=0;
+deck.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+deck.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)dx<0?goTo(cur+1):goTo(cur-1);
+},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
